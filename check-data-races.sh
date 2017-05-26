@@ -49,7 +49,7 @@ POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-be
 
 if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo
-    echo "Usage: $0 [--verbose] [--run] [--help]"
+    echo "Usage: $0 [--run] [--help]"
     echo
     echo "--help     : this option"
     echo "--run      : compile all tests with gcc."

@@ -94,6 +94,8 @@ if [[ "$1" == "--help" ]]; then
   usage && exit 0;
 fi
 
+mkdir -p "$OUTPUT_DIR"
+
 TOOLS=()
 DATASET_SIZES=()
 THREADLIST=()

@@ -52,7 +52,8 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo "Usage: $0 [--run] [--help]"
     echo
     echo "--help     : this option"
-    echo "--run      : compile all tests with gcc."
+    echo "--small    : compile and run small samples"
+    echo "--run      : compile all tests with gcc"
     echo "--archer   : compile and test all tests with archer"
     echo "--tsan     : compile and test all tests with clang ThreadSanitizer"
     echo "--inspector: compile and test all tests with Intel Inspector"

@@ -5,13 +5,14 @@ Written by Chunhua Liao, Pei-Hung Lin, Joshua Asplund,
 Markus Schordan, and Ian Karlin
 (email: liao6@llnl.gov, lin32@llnl.gov, asplund1@llnl.gov,
 schordan1@llnl.gov, karlin1@llnl.gov)
+LLNL-CODE-732144
 All rights reserved.
 
 This file is part of DataRaceBench. For details, see
 https://github.com/LLNL/dataracebench. Please also see the LICENSE file
-for our additional BSD notice
+for our additional BSD notice.
 
-Redistribution of Backstroke and use in source and binary forms, with
+Redistribution and use in source and binary forms, with
 or without modification, are permitted provided that the following
 conditions are met:
 

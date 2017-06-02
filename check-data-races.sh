@@ -6,6 +6,7 @@
 # Markus Schordan, and Ian Karlin
 # (email: liao6@llnl.gov, lin32@llnl.gov, asplund1@llnl.gov,
 # schordan1@llnl.gov, karlin1@llnl.gov)
+# LLNL-CODE-732144
 # All rights reserved.
 #
 # This file is part of DataRaceBench. For details, see

@@ -61,7 +61,7 @@ ARCHER_COMPILE_FLAGS="-larcher -lm"
 INSPECTOR=${INSPECTOR:-"inspxe-cl"}
 ICC_COMPILE_FLAGS="-O0 -fopenmp -std=c99 -lm"
 
-POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE"
+POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 
 VARLEN_PATTERN='[[:alnum:]]+-var-[[:alnum:]]+\.c'
 RACES_PATTERN='[[:alnum:]]+-[[:alnum:]]+-yes\.c'

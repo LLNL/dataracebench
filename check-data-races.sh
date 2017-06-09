@@ -46,7 +46,7 @@
 
 OPTION=$1
 TESTS=$(grep -l main micro-benchmarks/*.c)
-POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE"
+POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 
 if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo

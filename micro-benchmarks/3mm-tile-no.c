@@ -19,8 +19,8 @@
 
 static void init_array(int ni,int nj,int nk,int nl,int nm,double A[128 + 0][128 + 0],double B[128 + 0][128 + 0],double C[128 + 0][128 + 0],double D[128 + 0][128 + 0])
 {
-  int i;
-  int j;
+  //int i;
+  //int j;
 {
     int c3;
     int c4;
@@ -2610,11 +2610,11 @@ static void print_array(int ni,int nl,double G[128 + 0][128 + 0])
 
 static void kernel_3mm(int ni,int nj,int nk,int nl,int nm,double E[128 + 0][128 + 0],double A[128 + 0][128 + 0],double B[128 + 0][128 + 0],double F[128 + 0][128 + 0],double C[128 + 0][128 + 0],double D[128 + 0][128 + 0],double G[128 + 0][128 + 0])
 {
-  int i;
-  int j;
-  int k;
+  // int i;
+  // int j;
+  // int k;
   
-#pragma scop
+  //#pragma scop
 {
     int c5;
     int c10;
@@ -2730,7 +2730,7 @@ static void kernel_3mm(int ni,int nj,int nk,int nl,int nm,double E[128 + 0][128 
     }
   }
   
-#pragma endscop
+  //#pragma endscop
 }
 
 int main(int argc,char **argv)

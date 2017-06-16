@@ -19,8 +19,8 @@
 
 static void init_array(int n,double A[500 + 0][500 + 0],double B[500 + 0][500 + 0])
 {
-  int i;
-  int j;
+  //int i;
+  //int j;
 {
     int c2;
     int c1;
@@ -55,11 +55,11 @@ static void print_array(int n,double A[500 + 0][500 + 0])
 
 static void kernel_jacobi_2d_imper(int tsteps,int n,double A[500 + 0][500 + 0],double B[500 + 0][500 + 0])
 {
-  int t;
-  int i;
-  int j;
+  //int t;
+  //int i;
+  //int j;
   
-#pragma scop
+  //#pragma scop
 {
     int c2;
     int c1;
@@ -97,7 +97,7 @@ static void kernel_jacobi_2d_imper(int tsteps,int n,double A[500 + 0][500 + 0],d
     }
   }
   
-#pragma endscop
+//#pragma endscop
 }
 
 int main(int argc,char **argv)

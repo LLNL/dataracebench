@@ -20,8 +20,8 @@
 
 static void init_array(int n,double X[500 + 0][500 + 0],double A[500 + 0][500 + 0],double B[500 + 0][500 + 0])
 {
-  int i;
-  int j;
+  //int i;
+  //int j;
 {
     int c1;
     int c2;
@@ -57,11 +57,11 @@ static void print_array(int n,double X[500 + 0][500 + 0])
 
 static void kernel_adi(int tsteps,int n,double X[500 + 0][500 + 0],double A[500 + 0][500 + 0],double B[500 + 0][500 + 0])
 {
-  int t;
-  int i1;
-  int i2;
+  //int t;
+  //int i1;
+  //int i2;
   
-#pragma scop
+  //#pragma scop
 {
     int c0;
     int c2;
@@ -102,7 +102,7 @@ static void kernel_adi(int tsteps,int n,double X[500 + 0][500 + 0],double A[500 
     }
   }
   
-#pragma endscop
+//#pragma endscop
 }
 
 int main(int argc,char **argv)

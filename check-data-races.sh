@@ -6,6 +6,7 @@
 # Markus Schordan, and Ian Karlin
 # (email: liao6@llnl.gov, lin32@llnl.gov, asplund1@llnl.gov,
 # schordan1@llnl.gov, karlin1@llnl.gov)
+# LLNL-CODE-732144
 # All rights reserved.
 #
 # This file is part of DataRaceBench. For details, see
@@ -45,18 +46,19 @@
 
 OPTION=$1
 TESTS=$(grep -l main micro-benchmarks/*.c)
-POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE"
+POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 
 if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo
     echo "Usage: $0 [--run] [--help]"
     echo
     echo "--help     : this option"
-    echo "--run      : compile all tests with gcc."
-    echo "--archer   : compile and test all tests with archer"
-    echo "--tsan     : compile and test all tests with clang ThreadSanitizer"
-    echo "--inspector: compile and test all tests with Intel Inspector"
-    echo "--helgrind : compile and test all tests with Helgrind"
+    echo "--small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
+    echo "--run      : compile and run all benchmarks with gcc (no evaluation)"
+    echo "--helgrind : compile and test all benchmarks with Helgrind"
+    echo "--tsan     : compile and test all benchmarks with clang ThreadSanitizer"
+    echo "--archer   : compile and test all benchmarks with Archer"
+    echo "--inspector: compile and test all benchmarks with Intel Inspector"
     echo
     exit
 fi

@@ -1,7 +1,10 @@
 # DataRaceBench
 
-DataRaceBench is a collection of files that can be used to test and evaluate race detection tools.
-
+DataRaceBench is a benchmark suite designed to systematically and
+quantitatively evaluate the effectiveness of data race detection
+tools. It includes a set of microbenchmarks with and without data
+races. Parallelism is represented by OpenMP directives. OpenMP is a
+popular parallel programming model for multi-threaded applications.
 
 ## Overview of benchmarks
 
@@ -23,7 +26,7 @@ Label | Meaning
   N7  | Numerical kernels
 
 
-## Mircobenchmarks with known data races (some have variable length array versions)
+## Mircobenchmarks with known data races (some have a varying length version)
 
 P-Label| Micro-bechmark                           | Source     | Description
 -------|------------------------------------------|------------|----------------------------------------------------------------------------------------

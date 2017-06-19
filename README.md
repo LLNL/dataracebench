@@ -1,10 +1,22 @@
-# DataRaceBench
+# DataRaceBench 1.0.0
 
 DataRaceBench is a benchmark suite designed to systematically and
 quantitatively evaluate the effectiveness of data race detection
 tools. It includes a set of microbenchmarks with and without data
 races. Parallelism is represented by OpenMP directives. OpenMP is a
 popular parallel programming model for multi-threaded applications.
+
+Note that if you are using gcc for compiling the microbenchmarks, at
+least version 4.9 is required to have support for all used OpenMP
+directives.
+
+DataRaceBench also comes with an evaluation script
+(check-data-races.sh). The script can be used to evaluate the tools
+Helgrind, Archer, Thread Sanitizer, and Intel Inspector. In addition a
+parameterized test harness (scripts/test-harness.sh) is available
+which allows to provide a number of different parameters for the
+evaluation. The test harness is used by the evaluation script with
+some pre-defined values.
 
 ## Overview of benchmarks
 
@@ -26,28 +38,28 @@ Label | Meaning
   N7  | Numerical kernels
 
 
-## Mircobenchmarks with known data races (some have a varying length version)
+## Microbenchmarks with known data races (some have a varying length version)
 
-P-Label| Micro-bechmark                           | Source     | Description
+P-Label| Microbenchmark                           | Source     | Description
 -------|------------------------------------------|------------|----------------------------------------------------------------------------------------
 Y1     | antidep1-(orig&#124;var)-yes.c                | AutoPar    | Anti-dependence within a single loop
 Y1     | antidep2-(orig&#124;var)-yes.c                | AutoPar    | Anti-dependence within a two-level loop nest
-Y7     | indirectaccess1-orig-yes.c               | LLNL App   | Indirect access with overlapped index array elements
-Y7     | indirectaccess2-orig-yes.c               | LLNL App   | Overlapping index array elements when 36 or more threads are used
-Y7     | indirectaccess3-orig-yes.c               | LLNL App   | Overlapping index array elements when 60 or more threads are used
-Y7     | indirectaccess4-orig-yes.c               | LLNL App   | Overlapping index array elements when 180 or more threads are used
+Y7     | indirectaccess1-orig-yes.c                    | LLNL App   | Indirect access with overlapped index array elements
+Y7     | indirectaccess2-orig-yes.c                    | LLNL App   | Overlapping index array elements when 36 or more threads are used
+Y7     | indirectaccess3-orig-yes.c                    | LLNL App   | Overlapping index array elements when 60 or more threads are used
+Y7     | indirectaccess4-orig-yes.c                    | LLNL App   | Overlapping index array elements when 180 or more threads are used
 Y2     | lastprivatemissing-(orig&#124;var)-yes.c      | AutoPar    | Data race due to a missing `lastprivate()` clause
 Y3     | minusminus-(orig&#124;var)-yes.c              | AutoPar    | Unprotected `--` operation
-Y3     | nowait-orig-yes.c                        | AutoPar    | Missing barrier due to a wrongfully used nowait
+Y3     | nowait-orig-yes.c                             | AutoPar    | Missing barrier due to a wrongfully used nowait
 Y6     | outofbounds-(orig&#124;var)-yes.c             | AutoPar    | Out of bound access of the 2nd dimension of array
 Y1     | outputdep-(orig&#124;var)-yes.c               | AutoPar    | Output dependence and true dependence within a loop
 Y1     | plusplus-(orig&#124;var)-yes.c                | AutoPar    | `++` operation on array index variable
 Y2     | privatemissing-(orig&#124;var)-yes.c          | AutoPar    | Missing `private()` for a temp variable
 Y2     | reductionmissing-(orig&#124;var)-yes.c        | AutoPar    | Missing `reduction()` for a variable
-Y3     | sections1-orig-yes.c                     | New        | Unprotected data writes in parallel sections
+Y3     | sections1-orig-yes.c                          | New        | Unprotected data writes in parallel sections
 Y1,Y4  | simdtruedep-(orig&#124;var)-yes.c             | New        | SIMD instruction level data races
-Y1,Y5  | targetparallelfor-orig-yes.c             | New        | Data races in loops offloaded to accelerators
-Y3     | taskdependmissing-orig-yes.c             | New        | Unprotected data writes in two tasks
+Y1,Y5  | targetparallelfor-orig-yes.c                  | New        | Data races in loops offloaded to accelerators
+Y3     | taskdependmissing-orig-yes.c                  | New        | Unprotected data writes in two tasks
 Y1     | truedep1-(orig&#124;var)-yes.c                | AutoPar    | True data dependence among multiple array elements within a single level loop
 Y1     | truedepfirstdimension-(orig&#124;var)-yes.c   | AutoPar    | True data dependence of first dimension for a 2-D array accesses
 Y1     | truedeplinear-(orig&#124;var)-yes.c           | AutoPar    | Linear equation as array subscript
@@ -58,7 +70,7 @@ Y1     | truedepsingleelement-(orig&#124;var)-yes.c    | AutoPar    | True data 
 
 ## Microbenchmarks without known data races
 
-P-Label| Micro-bechmark                    | Source     | Description
+P-Label| Micro-benchmark                    | Source     | Description
 -------|-----------------------------------|------------|--------------------------------------------------------------------------------------
 N2     | 3mm-parallel-no.c                 | Polyhedral | 3-step matrix-matrix multiplication, non-optimized version
 N2,N4  | 3mm-tile-no.c                     | Polyhedral | 3-step matrix-matrix multiplication, with tiling and nested SIMD
@@ -92,3 +104,4 @@ N3     | sectionslock1-orig-no.c           | New        | OpenMP parallel sectio
 N1,N4  | simd1-orig-no.c                   | New        | OpenMP SIMD directive to indicate vectorization of a loop
 N1,N5  | targetparallelfor-orig-no.c       | New        | data races in loops offloaded to accelerators
 N3     | taskdep1-orig-no.c                | New        | OpenMP task with depend clauses to avoid data races
+

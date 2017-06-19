@@ -23,34 +23,34 @@ Label | Meaning
   N7  | Numerical kernels
 
 
-## Mircobenchmarks with known data races(some have varying length versions)
+## Mircobenchmarks with known data races (some have variable length array versions)
 
 P-Label| Micro-bechmark                           | Source     | Description
 -------|------------------------------------------|------------|----------------------------------------------------------------------------------------
-Y1     | antidep1-[orig&#124;var]-yes.c                | AutoPar    | Anti-dependence within a single loop
-Y1     | antidep2-[orig&#124;var]-yes.c                | AutoPar    | Anti-dependence within a two-level loop nest
+Y1     | antidep1-(orig&#124;var)-yes.c                | AutoPar    | Anti-dependence within a single loop
+Y1     | antidep2-(orig&#124;var)-yes.c                | AutoPar    | Anti-dependence within a two-level loop nest
 Y7     | indirectaccess1-orig-yes.c               | LLNL App   | Indirect access with overlapped index array elements
 Y7     | indirectaccess2-orig-yes.c               | LLNL App   | Overlapping index array elements when 36 or more threads are used
 Y7     | indirectaccess3-orig-yes.c               | LLNL App   | Overlapping index array elements when 60 or more threads are used
 Y7     | indirectaccess4-orig-yes.c               | LLNL App   | Overlapping index array elements when 180 or more threads are used
-Y2     | lastprivatemissing-[orig&#124;var]-yes.c      | AutoPar    | Data race due to a missing `lastprivate()` clause
-Y3     | minusminus-[orig&#124;var]-yes.c              | AutoPar    | Unprotected `--` operation
+Y2     | lastprivatemissing-(orig&#124;var)-yes.c      | AutoPar    | Data race due to a missing `lastprivate()` clause
+Y3     | minusminus-(orig&#124;var)-yes.c              | AutoPar    | Unprotected `--` operation
 Y3     | nowait-orig-yes.c                        | AutoPar    | Missing barrier due to a wrongfully used nowait
-Y6     | outofbounds-[orig&#124;var]-yes.c             | AutoPar    | Out of bound access of the 2nd dimension of array
-Y1     | outputdep-[orig&#124;var]-yes.c               | AutoPar    | Output dependence and true dependence within a loop
-Y1     | plusplus-[orig&#124;var]-yes.c                | AutoPar    | `++` operation on array index variable
-Y2     | privatemissing-[orig&#124;var]-yes.c          | AutoPar    | Missing `private()` for a temp variable
-Y2     | reductionmissing-[orig&#124;var]-yes.c        | AutoPar    | Missing `reduction()` for a variable
+Y6     | outofbounds-(orig&#124;var)-yes.c             | AutoPar    | Out of bound access of the 2nd dimension of array
+Y1     | outputdep-(orig&#124;var)-yes.c               | AutoPar    | Output dependence and true dependence within a loop
+Y1     | plusplus-(orig&#124;var)-yes.c                | AutoPar    | `++` operation on array index variable
+Y2     | privatemissing-(orig&#124;var)-yes.c          | AutoPar    | Missing `private()` for a temp variable
+Y2     | reductionmissing-(orig&#124;var)-yes.c        | AutoPar    | Missing `reduction()` for a variable
 Y3     | sections1-orig-yes.c                     | New        | Unprotected data writes in parallel sections
-Y1,Y4  | simdtruedep-[orig&#124;var]-yes.c             | New        | SIMD instruction level data races
+Y1,Y4  | simdtruedep-(orig&#124;var)-yes.c             | New        | SIMD instruction level data races
 Y1,Y5  | targetparallelfor-orig-yes.c             | New        | Data races in loops offloaded to accelerators
 Y3     | taskdependmissing-orig-yes.c             | New        | Unprotected data writes in two tasks
-Y1     | truedep1-[orig&#124;var]-yes.c                | AutoPar    | True data dependence among multiple array elements within a single level loop
-Y1     | truedepfirstdimension-[orig&#124;var]-yes.c   | AutoPar    | True data dependence of first dimension for a 2-D array accesses
-Y1     | truedeplinear-[orig&#124;var]-yes.c           | AutoPar    | Linear equation as array subscript
-Y1     | truedepscalar-[orig&#124;var]-yes.c           | AutoPar    | True data dependence due to scalar
-Y1     | truedepseconddimension-[orig&#124;var]-yes.c  | AutoPar    | True data dependence on 2nd dimension of a 2-D array accesses
-Y1     | truedepsingleelement-[orig&#124;var]-yes.c    | AutoPar    | True data dependence due to a single array element
+Y1     | truedep1-(orig&#124;var)-yes.c                | AutoPar    | True data dependence among multiple array elements within a single level loop
+Y1     | truedepfirstdimension-(orig&#124;var)-yes.c   | AutoPar    | True data dependence of first dimension for a 2-D array accesses
+Y1     | truedeplinear-(orig&#124;var)-yes.c           | AutoPar    | Linear equation as array subscript
+Y1     | truedepscalar-(orig&#124;var)-yes.c           | AutoPar    | True data dependence due to scalar
+Y1     | truedepseconddimension-(orig&#124;var)-yes.c  | AutoPar    | True data dependence on 2nd dimension of a 2-D array accesses
+Y1     | truedepsingleelement-(orig&#124;var)-yes.c    | AutoPar    | True data dependence due to a single array element
 
 
 ## Microbenchmarks without known data races

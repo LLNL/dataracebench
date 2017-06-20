@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
   ret = remove("mytempfile.txt");
   if (ret != 0)
   {
-    printf("Error: unable to delete mytempfile.txt\n");
+    fprintf(stderr, "Error: unable to delete mytempfile.txt\n");
   }
   return 0;
 }

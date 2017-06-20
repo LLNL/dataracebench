@@ -51,6 +51,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 int main(int argc, char* argv[])
 {
   int i;
+  int ret;
   FILE* pfile;
   int len=1000;
 
@@ -72,6 +73,11 @@ int main(int argc, char* argv[])
   }
 
   fclose(pfile);
+  ret = remove("mytempfile.txt");
+  if (ret != 0)
+  {
+    printf("Error: unable to delete mytempfile.txt\n");
+  }
   return 0;
 }
 

@@ -105,3 +105,16 @@ N1,N4  | simd1-orig-no.c                   | New        | OpenMP SIMD directive 
 N1,N5  | targetparallelfor-orig-no.c       | New        | data races in loops offloaded to accelerators
 N3     | taskdep1-orig-no.c                | New        | OpenMP task with depend clauses to avoid data races
 
+## Authors
+
+DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.
+
+## Release
+
+DataRaceBench is released under a BSD license. For more details see
+the file LICENSE.txt. The microbenchmarks marked 'Polyhedral' in above
+table were generated as optimization variants of benchmarks from the
+PolyOpt benchmark suite. For those benchmarks see the license file
+LICENSE.OSU.txt.
+
+`LLNL-CODE-732144`

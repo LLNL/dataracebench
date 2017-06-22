@@ -50,16 +50,16 @@ OUTPUT_DIR="results"
 LOGFILE="$OUTPUT_DIR/drfs.log"
 
 VALGRIND=${VALGRIND:-"valgrind"}
-VALGRIND_COMPILE_FLAGS="-g -std=c99 -fopenmp -lm"
+VALGRIND_COMPILE_FLAGS="-g -std=c99 -fopenmp"
 
 CLANG=${CLANG:-"clang"}
-TSAN_COMPILE_FLAGS="-fopenmp -fsanitize=thread -lm -g"
+TSAN_COMPILE_FLAGS="-fopenmp -fsanitize=thread -g"
 
 ARCHER=${ARCHER:-"clang-archer"}
-ARCHER_COMPILE_FLAGS="-larcher -lm"
+ARCHER_COMPILE_FLAGS="-larcher"
 
 INSPECTOR=${INSPECTOR:-"inspxe-cl"}
-ICC_COMPILE_FLAGS="-O0 -fopenmp -std=c99 -lm"
+ICC_COMPILE_FLAGS="-O0 -fopenmp -std=c99"
 
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 
@@ -225,10 +225,10 @@ for tool in "${TOOLS[@]}"; do
     if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $POLYFLAG"; fi
 
     case "$tool" in 
-      helgrind)   gcc $VALGRIND_COMPILE_FLAGS $additional_compile_flags $test -o $exname ;;
-      archer)     clang-archer $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname ;;
-      tsan)       clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname ;;
-      inspector)  icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname ;;
+      helgrind)   gcc $VALGRIND_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+      archer)     clang-archer $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+      tsan)       clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+      inspector)  icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
     esac
 
     THREAD_INDEX=0

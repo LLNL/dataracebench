@@ -47,7 +47,6 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 // Race condition due to anti-dependence
 // Happens on a loop offloaded to accelerators.
-#include <stdio.h>
 int main(int argc, char* argv[])
 {
   int i;
@@ -63,6 +62,5 @@ int main(int argc, char* argv[])
   for (i=0;i< len -1 ;i++)
     a[i]=a[i+1]+1;
 
-  printf ("a[500]=%d\n", a[500] );
   return 0;
 }

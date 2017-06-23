@@ -50,11 +50,11 @@ THE POSSIBILITY OF SUCH DAMAGE.
 #define M 100 
 #define K 100
             
-int i,j,k;  
 double a[N][M],b[M][K],c[N][K];
             
 int mmm()   
 {           
+  int i,j,k;
 #pragma omp parallel for private(j,k)
   for (i = 0; i < N; i++) 
     for (k = 0; k < K; k++) 

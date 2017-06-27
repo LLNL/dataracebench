@@ -18,24 +18,17 @@ which allows to provide a number of different parameters for the
 evaluation. The test harness is used by the evaluation script with
 some pre-defined values.
 
-## Overview of benchmarks
+## Microbenchmark property labels (P-Labels)
 
-Label | Meaning
-------|---------------------------------
-  Y1  | Unresolvable dependences
-  Y2  | Missing data sharing clauses
-  Y3  | Missing synchronization
-  Y4  | SIMD data races
-  Y5  | Accelerator data races
-  Y6  | Undefined behaviors
-  Y7  | Numerical kernel data races
-  N1  | Embarrassingly parallel
-  N2  | Use of data sharing clauses
-  N3  | Use of synchronization
-  N4  | Use of SIMD directives
-  N5  | Use of accelerator directives
-  N6  | Use of special language features
-  N7  | Numerical kernels
+P-Label | Meaning (microbenchmarks with data races)  || P-Label | Meaning (microbenchmarks without data races)
+------|-----------------------------------------------------------------------
+  Y1  | Unresolvable dependences          ||  N1  | Embarrassingly parallel
+  Y2  | Missing data sharing clauses      ||  N2  | Use of data sharing clauses
+  Y3  | Missing synchronization           ||  N3  | Use of synchronization
+  Y4  | SIMD data races                   ||  N4  | Use of SIMD directives
+  Y5  | Accelerator data races            ||  N5  | Use of accelerator directives
+  Y6  | Undefined behavior                ||  N6  | Use of special language features
+  Y7  | Numerical kernel data races       ||  N7  | Numerical kernels
 
 
 ## Microbenchmarks with known data races (some have a varying length version)
@@ -49,11 +42,11 @@ ID        | Microbenchmark                                |P-Label| Description 
 7         | indirectaccess3-orig-yes.c                    |Y7     | Overlapping index array elements when 60 or more threads are used            | LLNL App   
 8         | indirectaccess4-orig-yes.c                    |Y7     | Overlapping index array elements when 180 or more threads are used           | LLNL App   
 9&#124;10 | lastprivatemissing-(orig&#124;var)-yes.c      |Y2     | Data race due to a missing `lastprivate()` clause                            | AutoPar    
-11&#124;12| minusminus-(orig&#124;var)-yes.c              |Y3     | Unprotected `--` operation                                                   | AutoPar    
+11&#124;12| minusminus-(orig&#124;var)-yes.c              |Y3     | Unprotected decrement operation `--`                                         | AutoPar    
 13        | nowait-orig-yes.c                             |Y3     | Missing barrier due to a wrongfully used nowait                              | AutoPar    
 14&#124;15| outofbounds-(orig&#124;var)-yes.c             |Y6     | Out of bound access of the 2nd dimension of array                            | AutoPar    
 16&#124;17| outputdep-(orig&#124;var)-yes.c               |Y1     | Output dependence and true dependence within a loop                          | AutoPar    
-18&#124;19| plusplus-(orig&#124;var)-yes.c                |Y1     | `++` operation on array index variable                                       | AutoPar    
+18&#124;19| plusplus-(orig&#124;var)-yes.c                |Y1     | increment operation `++` on array index variable                             | AutoPar    
 20&#124;21| privatemissing-(orig&#124;var)-yes.c          |Y2     | Missing `private()` for a temp variable                                      | AutoPar    
 22&#124;23| reductionmissing-(orig&#124;var)-yes.c        |Y2     | Missing `reduction()` for a variable                                         | AutoPar    
 24        | sections1-orig-yes.c                          |Y3     | Unprotected data writes in parallel sections                                 | New        

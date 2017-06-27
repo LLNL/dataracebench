@@ -21,7 +21,7 @@ some pre-defined values.
 ## Microbenchmark property labels (P-Labels)
 
 P-Label | Meaning (microbenchmarks with data races)  | P-Label | Meaning (microbenchmarks without data races)
-------|-----------------------------------------------------------------------
+------|-----------------------------------|------|------------------------------
   Y1  | Unresolvable dependences          |  N1  | Embarrassingly parallel
   Y2  | Missing data sharing clauses      |  N2  | Use of data sharing clauses
   Y3  | Missing synchronization           |  N3  | Use of synchronization

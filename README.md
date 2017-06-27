@@ -20,15 +20,15 @@ some pre-defined values.
 
 ## Microbenchmark property labels (P-Labels)
 
-P-Label | Meaning (microbenchmarks with data races)  || P-Label | Meaning (microbenchmarks without data races)
+P-Label | Meaning (microbenchmarks with data races)  | P-Label | Meaning (microbenchmarks without data races)
 ------|-----------------------------------------------------------------------
-  Y1  | Unresolvable dependences          ||  N1  | Embarrassingly parallel
-  Y2  | Missing data sharing clauses      ||  N2  | Use of data sharing clauses
-  Y3  | Missing synchronization           ||  N3  | Use of synchronization
-  Y4  | SIMD data races                   ||  N4  | Use of SIMD directives
-  Y5  | Accelerator data races            ||  N5  | Use of accelerator directives
-  Y6  | Undefined behavior                ||  N6  | Use of special language features
-  Y7  | Numerical kernel data races       ||  N7  | Numerical kernels
+  Y1  | Unresolvable dependences          |  N1  | Embarrassingly parallel
+  Y2  | Missing data sharing clauses      |  N2  | Use of data sharing clauses
+  Y3  | Missing synchronization           |  N3  | Use of synchronization
+  Y4  | SIMD data races                   |  N4  | Use of SIMD directives
+  Y5  | Accelerator data races            |  N5  | Use of accelerator directives
+  Y6  | Undefined behavior                |  N6  | Use of special language features
+  Y7  | Numerical kernel data races       |  N7  | Numerical kernels
 
 
 ## Microbenchmarks with known data races (some have a varying length version)

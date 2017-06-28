@@ -64,10 +64,10 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
 fi
 
 if [[ "$OPTION" == "--small" ]]; then
-  ./test-harness.sh -t 3 -n 2 -d 32 -x helgrind
-  ./test-harness.sh -t 3 -n 2 -d 32 -x archer
-  ./test-harness.sh -t 3 -n 2 -d 32 -x tsan
-  ./test-harness.sh -t 3 -n 2 -d 32 -x inspector-max-resources
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -x helgrind
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -x archer
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -x tsan
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -x inspector-max-resources
 fi
 
 if [[ "$OPTION" == "--run" ]]; then

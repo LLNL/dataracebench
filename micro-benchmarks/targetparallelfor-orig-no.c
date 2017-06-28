@@ -46,7 +46,6 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 
 // correct use of omp target
-#include <stdio.h>
 int main(int argc, char* argv[])
 {
   int i;
@@ -62,6 +61,5 @@ int main(int argc, char* argv[])
   for (i=0;i< len -1 ;i++)
     a[i]=a[i]+1;
 
-  printf ("a[500]=%d\n", a[500] );
   return 0;
 }

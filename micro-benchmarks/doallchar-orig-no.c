@@ -50,10 +50,10 @@ THE POSSIBILITY OF SUCH DAMAGE.
 // Dynamic tools looking at 4-bytes elements may wrongfuly report race condition.
 //
 // Liao 2/7/2017
-int i; 
 char a[100];
 int main()
 {
+  int i;
 #pragma omp parallel for
   for (i=0;i<100;i++)
     a[i]=a[i]+1;

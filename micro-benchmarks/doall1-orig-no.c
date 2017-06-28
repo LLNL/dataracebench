@@ -46,9 +46,10 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 
 // one dimension array computation
-int i, a[100];
+int a[100];
 int main()
 {
+int i;
 #pragma omp parallel for
   for (i=0;i<100;i++)
     a[i]=a[i]+1;

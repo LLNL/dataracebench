@@ -73,8 +73,8 @@ ID| Microbenchmark                    |P-Label| Description                     
 46| doall2-orig-no.c                  |N1     | Classic DOAll loop operating on a two dimensional array                              | AutoPar     
 47| doallchar-orig-no.c               |N1     | Classic DOALL loop operating on a character array                                    | New        
 48| firstprivate-orig-no.c            |N2     | Example use of firstprivate                                                          | AutoPar    
-49| functionparameter-orig-no.c       |N6     | Arrays passed as function parameters                                                 | LLNL App   
-50| fprintf-orig-no.c                 |N6     | Use of `fprintf()`                                                                   | New        
+49| fprintf-orig-no.c                 |N6     | Use of `fprintf()`                                                                   | New        
+50| functionparameter-orig-no.c       |N6     | Arrays passed as function parameters                                                 | LLNL App   
 51| getthreadnum-orig-no.c            |N2     | single thread execution using `if (omp_get_thread_num()==0)`                         | New              
 52| indirectaccesssharebase-orig-no.c |N7     | Indirect array accesses using index arrays without overlapping                       | LLNL App   
 53| inneronly1-orig-no.c              |N1     | Two-level nested loops, inner level is parallelizable. True dependence on outer level| AutoPar    

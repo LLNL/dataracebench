@@ -1,3 +1,8 @@
 V1.0.0 2017-06-01 (initial public release)
        * 72 C micro benchmarks.
        * evaluation script
+V1.0.1 2017-08-03
+       * added variable initializations in benchmarks
+         reductionmissing-orig-yes.c and reductionmissing-var-yes.c
+       * added recording of full error messages in error log to
+         evaluation script.

@@ -47,7 +47,8 @@
 CSV_HEADER="tool,filename,haverace,threads,dataset,races,elapsed-time(seconds)"
 TESTS=($(grep -l main micro-benchmarks/*.c))
 OUTPUT_DIR="results"
-LOGFILE="$OUTPUT_DIR/drfs.log"
+LOG_DIR="results/log"
+LOGFILE="$LOG_DIR/dataracecheck.log"
 
 VALGRIND=${VALGRIND:-"valgrind"}
 VALGRIND_COMPILE_FLAGS="-g -std=c99 -fopenmp"
@@ -96,6 +97,7 @@ if [[ "$1" == "--help" ]]; then
 fi
 
 mkdir -p "$OUTPUT_DIR"
+mkdir -p "$LOG_DIR"
 
 TOOLS=()
 DATASET_SIZES=()
@@ -148,7 +150,7 @@ else
   echo "Iterations: ${ITERATIONS}";
 fi
 
-if [[ ! -e "$LOGFILE" ]]; then touch "$LOGFILE"; fi
+if [[ ! -e "$LOGFILE" ]]; then rm "$LOGFILE"; fi
 
 # Increase stack size - Fixes crashes in some analyses
 ULIMITS=$(ulimit -s)
@@ -162,7 +164,7 @@ ITER=1
 
 cleanup () {
   ulimit -s "$ULIMITS"
-  if [[ -z ${exname+x} && -e $exname ]]; then rm "$exname"; fi
+  if [[ -e $exname ]]; then rm "$exname"; fi
   echo "EXITING"
   echo "--------------------------" >> "$LOGFILE"
   echo "Unfinished tests:" >> "$LOGFILE"
@@ -221,7 +223,9 @@ for tool in "${TOOLS[@]}"; do
     if [[ "$test" =~ $VARLEN_PATTERN ]]; then SIZES=("${DATASET_SIZES[@]}"); else SIZES=(''); fi
 
     # Compile
-    exname="a.out"
+    exname="$(basename "$test").$tool.out"
+    logname="$(basename "$test").$tool.log"
+    if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
     if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $POLYFLAG"; fi
 
     case "$tool" in 
@@ -244,20 +248,23 @@ for tool in "${TOOLS[@]}"; do
             echo "$tool,\"$test\",$haverace,$thread,${size:-"N/A"},Error,N/A" >> "$file";
             echo "Seg fault found in $test with $thread threads and input size $size" >> "$LOGFILE";
         else
+          ITER_INDEX=1
           for ITER in $(seq 1 "$ITERATIONS"); do
+            echo -e "*****     Log $ITER_INDEX for $test with $thread threads and input size $size     *****" >> "$LOG_DIR/$logname"
             start=$(date +%s)
             case "$tool" in
               helgrind)
-                races=$($VALGRIND  --tool=helgrind "./$exname" $size 2>&1 | grep -ce 'Possible data race') ;;
+                races=$($VALGRIND  --tool=helgrind "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'Possible data race') ;;
               archer)
-                races=$("./$exname" $size 2>&1 | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
+                races=$("./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
               tsan)
-                races=$("./$exname" $size 2>&1 | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
+                races=$("./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
               inspector)
-                races=$($INSPECTOR $runtime_flags -- "./$exname" $size  2>&1 | grep 'Data race' | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/') ;;
+                races=$($INSPECTOR $runtime_flags -- "./$exname" $size  2>&1 | tee -a "$LOG_DIR/$logname" | grep 'Data race' | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/') ;;
             esac
             end=$(date +%s)
             echo "$tool,\"$test\",$haverace,$thread,${size:-"N/A"},${races:-0},$(( end - start ))" >> "$file"
+            ITER_INDEX=$((ITER_INDEX+1))
           done
         fi
         SIZE_INDEX=$((SIZE_INDEX+1))
@@ -265,7 +272,7 @@ for tool in "${TOOLS[@]}"; do
       THREAD_INDEX=$((THREAD_INDEX+1))
     done
     TEST_INDEX=$((TEST_INDEX+1))
-    if [[ -z ${exname+x} && -e $exname ]]; then rm "$exname"; fi
+    if [[ -e $exname ]]; then rm "$exname"; fi
   done
   TOOL_INDEX=$((TOOL_INDEX+1))
 done

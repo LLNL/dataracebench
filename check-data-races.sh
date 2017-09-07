@@ -74,9 +74,9 @@ if [[ "$OPTION" == "--run" ]]; then
     for test in $TESTS; do
         echo "------------------------------------------"
         echo "RUNNING: $test"
-        CFLAGS="-g -Wall -std=c99 -fopenmp -lm"
+        CFLAGS="-g -Wall -std=c99 -fopenmp"
         if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
-        gcc $CFLAGS "$test"
+        gcc $CFLAGS "$test" -lm
         ./a.out  > /dev/null
     done
     rm -f ./a.out

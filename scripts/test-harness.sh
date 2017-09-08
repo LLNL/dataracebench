@@ -237,6 +237,7 @@ for tool in "${TOOLS[@]}"; do
 
     THREAD_INDEX=0
     for thread in "${THREADLIST[@]}"; do
+      echo "Testing $test: with $thread threads"
       export OMP_NUM_THREADS=$thread 
       SIZE_INDEX=0
       for size in "${SIZES[@]}"; do

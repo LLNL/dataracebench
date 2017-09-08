@@ -6,3 +6,7 @@ V1.0.1 2017-08-03
          reductionmissing-orig-yes.c and reductionmissing-var-yes.c
        * added recording of full error messages in error log to
          evaluation script.
+V1.0.2 2017-09-07
+       * fixed Ubuntu 16 linker issue for option --run
+       * added status message while evaluation is performed
+       * improved time measurement output precision in test script

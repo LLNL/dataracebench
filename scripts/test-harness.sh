@@ -251,7 +251,7 @@ for tool in "${TOOLS[@]}"; do
           ITER_INDEX=1
           for ITER in $(seq 1 "$ITERATIONS"); do
             echo -e "*****     Log $ITER_INDEX for $test with $thread threads and input size $size     *****" >> "$LOG_DIR/$logname"
-            start=$(date +%s)
+            start=$(date +%s%6N)
             case "$tool" in
               helgrind)
                 races=$($VALGRIND  --tool=helgrind "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'Possible data race') ;;
@@ -262,8 +262,9 @@ for tool in "${TOOLS[@]}"; do
               inspector)
                 races=$($INSPECTOR $runtime_flags -- "./$exname" $size  2>&1 | tee -a "$LOG_DIR/$logname" | grep 'Data race' | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/') ;;
             esac
-            end=$(date +%s)
-            echo "$tool,\"$test\",$haverace,$thread,${size:-"N/A"},${races:-0},$(( end - start ))" >> "$file"
+            end=$(date +%s%6N)
+            elapsedtime=$(echo "scale=3; ($end-$start)/1000000"|bc)
+            echo "$tool,\"$test\",$haverace,$thread,${size:-"N/A"},${races:-0},$elapsedtime" >> "$file"
             ITER_INDEX=$((ITER_INDEX+1))
           done
         fi

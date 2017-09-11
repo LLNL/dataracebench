@@ -61,7 +61,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 39&#124;40| truedepsingleelement-(orig&#124;var)-yes.c    |Y1     | True data dependence due to a single array element                           | AutoPar    
 73        | doall2-orig-yes.c                             |Y2     | Missing `private()` for inner loop nest's loop index variable                | New        
 74        | flush-orig-yes.c                              |Y3     | Unprotected data writes in a function called within a parallel region        | New        
-75        | getthreadnum-orig-yes.c                       |Y1     | Working sharing within one branch of a `if` statement                        | New        
+75        | getthreadnum-orig-yes.c                       |Y1     | Work sharing within one branch of a `if` statement                           | New        
 
 
 ## Microbenchmarks without known data races

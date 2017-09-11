@@ -66,7 +66,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 
 ## Microbenchmarks without known data races
 
-ID| Microbenchmark                    |P-Label| Description                                                                          | Source
+ID| Microbenchmark                    |P-Label| Description                                                                          | Source     
 --|-----------------------------------|-------|--------------------------------------------------------------------------------------|------------
 41| 3mm-parallel-no.c                 |N2     | 3-step matrix-matrix multiplication, non-optimized version                           | Polyhedral 
 42| 3mm-tile-no.c                     |N2,N4  | 3-step matrix-matrix multiplication, with tiling and nested SIMD                     | Polyhedral 

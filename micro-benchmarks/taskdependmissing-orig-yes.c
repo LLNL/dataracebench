@@ -63,6 +63,5 @@ int main()
   }
 
   printf ("i=%d\n",i);
-//  assert (i==2); // this may fail.
   return 0;
 } 

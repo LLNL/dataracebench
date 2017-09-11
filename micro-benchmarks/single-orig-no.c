@@ -7,27 +7,21 @@ Markus Schordan, and Ian Karlin
 schordan1@llnl.gov, karlin1@llnl.gov)
 LLNL-CODE-732144
 All rights reserved.
-
 This file is part of DataRaceBench. For details, see
 https://github.com/LLNL/dataracebench. Please also see the LICENSE file
 for our additional BSD notice.
-
 Redistribution and use in source and binary forms, with
 or without modification, are permitted provided that the following
 conditions are met:
-
 * Redistributions of source code must retain the above copyright
   notice, this list of conditions and the disclaimer below.
-
 * Redistributions in binary form must reproduce the above copyright
   notice, this list of conditions and the disclaimer (as noted below)
   in the documentation and/or other materials provided with the
   distribution.
-
 * Neither the name of the LLNS/LLNL nor the names of its contributors
   may be used to endorse or promote products derived from this
   software without specific prior written permission.
-
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
 CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
 INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
@@ -44,28 +38,19 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-//a two level loop nest, with loop carried anti-dependence on the outer level.
+// A single directive is used to protect a write.
 #include <stdio.h>
 
-int main(int argc,char *argv[])
+int main()
 {
-  int i, j;
-  int len = 20; 
+  int count=0;
 
-  double a[20][20];
-
-  for (i=0; i< len; i++)
-    for (j=0; j<len; j++)
-      a[i][j] = 0.5; 
-
-#pragma omp parallel for private(j)
-  for (i = 0; i < len - 1; i += 1) {
-    for (j = 0; j < len ; j += 1) {
-      a[i][j] += a[i + 1][j];
-    }
+#pragma omp parallel shared(count) 
+  {
+#pragma omp single
+    count += 1;
   }
 
-  printf ("a[10][10]=%f\n", a[10][10]);
+  printf ("count= %d\n", count);
   return 0;
 }
-

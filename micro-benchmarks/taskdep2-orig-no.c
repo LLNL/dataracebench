@@ -44,28 +44,22 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-//a two level loop nest, with loop carried anti-dependence on the outer level.
-#include <stdio.h>
 
-int main(int argc,char *argv[])
+// two tasks with depend clause to ensure execution order, no data races.
+// i is shared for two tasks based on implicit data-sharing attribute rules.
+#include <assert.h> 
+int main()
 {
-  int i, j;
-  int len = 20; 
-
-  double a[20][20];
-
-  for (i=0; i< len; i++)
-    for (j=0; j<len; j++)
-      a[i][j] = 0.5; 
-
-#pragma omp parallel for private(j)
-  for (i = 0; i < len - 1; i += 1) {
-    for (j = 0; j < len ; j += 1) {
-      a[i][j] += a[i + 1][j];
-    }
+  int i=0;
+#pragma omp parallel
+#pragma omp single
+  {
+#pragma omp task depend (out:i)
+    i = 1;    
+#pragma omp task depend (out:i)
+    i = 2;    
   }
 
-  printf ("a[10][10]=%f\n", a[10][10]);
+  assert (i==2);
   return 0;
-}
-
+} 

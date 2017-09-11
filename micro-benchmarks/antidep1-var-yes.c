@@ -45,29 +45,24 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 
-// using variable-length array in C99
-// Avoid dynamic allocated arrays, which introduces pointers , bad for static analysis tools
+// Race condition due to anti-dependence
 #include <stdlib.h>
-int main(int argc,char *argv[])
-{
-  int i, j;
-  int len = 20; 
+int main(int argc, char* argv[])
+{   
+  int i;
+  int len = 1000;
 
   if (argc>1)
     len = atoi(argv[1]);
 
-  double a[len][len];
+  int a[len];
 
-  for (i=0; i< len; i++)
-    for (j=0; j<len; j++)
-      a[i][j] = 0.5; 
+  for (i=0; i<len; i++)
+    a[i]= i; 
 
-#pragma omp parallel for private(j)
-  for (i = 0; i < len - 1; i += 1) {
-    for (j = 0; j < len ; j += 1) {
-      a[i][j] += a[i + 1][j];
-    }
-  }
+#pragma omp parallel for
+  for (i=0;i< len -1 ;i++)
+    a[i]=a[i+1]+1;
+
   return 0;
-}
-
+} 

@@ -44,28 +44,22 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-//a two level loop nest, with loop carried anti-dependence on the outer level.
-#include <stdio.h>
 
-int main(int argc,char *argv[])
+// tasks with depend clauses to ensure execution order, no data races.
+#include <stdio.h> 
+int main()
 {
-  int i, j;
-  int len = 20; 
-
-  double a[20][20];
-
-  for (i=0; i< len; i++)
-    for (j=0; j<len; j++)
-      a[i][j] = 0.5; 
-
-#pragma omp parallel for private(j)
-  for (i = 0; i < len - 1; i += 1) {
-    for (j = 0; j < len ; j += 1) {
-      a[i][j] += a[i + 1][j];
-    }
+  int i=0;
+#pragma omp parallel
+#pragma omp single
+  {
+#pragma omp task depend (out:i)
+    i = 1;    
+#pragma omp task depend (in:i)
+    printf ("x=%d\n", i);
+#pragma omp task depend (in:i)
+    printf ("x=%d\n", i);
   }
 
-  printf ("a[10][10]=%f\n", a[10][10]);
   return 0;
-}
-
+} 

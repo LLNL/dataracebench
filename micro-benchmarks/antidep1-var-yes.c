@@ -62,7 +62,7 @@ int main(int argc,char *argv[])
     for (j=0; j<len; j++)
       a[i][j] = 0.5; 
 
-#pragma omp parallel for 
+#pragma omp parallel for private(j)
   for (i = 0; i < len - 1; i += 1) {
     for (j = 0; j < len ; j += 1) {
       a[i][j] += a[i + 1][j];

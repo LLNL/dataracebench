@@ -44,11 +44,16 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-//  loop carried output dependence
+// This x should be not lastprivate since it is live-in.
+// x is both live-in and live-out, and written, cannot be reduction.
+//
+// So, the loop cannot be parallelized.
+//
+// This pattern has two pair of dependencies:  
+// 1. loop carried output dependence
 //  x = .. : 
 //
-//  loop carried true dependence due to: 
+// 2. loop carried true dependence due to: 
 // .. = x;
 //  x = ..; 
 #include <stdio.h>

@@ -1,4 +1,4 @@
-# DataRaceBench 1.0.2
+# DataRaceBench 1.1.0
 
 DataRaceBench is a benchmark suite designed to systematically and
 quantitatively evaluate the effectiveness of data race detection
@@ -59,6 +59,9 @@ ID        | Microbenchmark                                |P-Label| Description 
 35&#124;36| truedepscalar-(orig&#124;var)-yes.c           |Y1     | True data dependence due to scalar                                           | AutoPar    
 37&#124;38| truedepseconddimension-(orig&#124;var)-yes.c  |Y1     | True data dependence on 2nd dimension of a 2-D array accesses                | AutoPar    
 39&#124;40| truedepsingleelement-(orig&#124;var)-yes.c    |Y1     | True data dependence due to a single array element                           | AutoPar    
+73        | doall2-orig-yes.c                             |Y2     | Missing `private()` for inner loop nest's loop index variable                | New        
+74        | flush-orig-yes.c                              |Y3     | Unprotected data writes in a function called within a parallel region        | New        
+75        | getthreadnum-orig-yes.c                       |Y1     | Working sharing within one branch of a `if` statement                        | New        
 
 
 ## Microbenchmarks without known data races
@@ -97,6 +100,10 @@ ID| Microbenchmark                    |P-Label| Description                     
 70| simd1-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of a loop                            | New        
 71| targetparallelfor-orig-no.c       |N1,N5  | data races in loops offloaded to accelerators                                        | New        
 72| taskdep1-orig-no.c                |N3     | OpenMP task with depend clauses to avoid data races                                  | New         
+76| flush-orig-no.c                   |N3     | OpenMP atomic directive to avoid data races                                          | New         
+77| single-orig-no.c                  |N2     | OpenMP single directive to avoid data races                                          | New         
+78| taskdep2-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
+79| taskdep3-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
 
 ## Authors
 

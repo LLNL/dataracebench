@@ -44,31 +44,16 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// This x should be not lastprivate since it is live-in
-// x is both live-in and live-out, and written, cannot be reduction
-//
-// So, the loop cannot be parallelized.
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(int argc, char* argv[])
+// Two-dimensional array computation:
+// missing private(j) for the 2nd level loop causes data races.
+int a[100][100];
+int main()
 {
-  int len=100; 
-
-  if (argc>1)
-    len = atoi(argv[1]);
-
-  int a[len];
-  int i,x=10;
-
-#pragma omp parallel for 
-  for (i=0;i<len;i++)
-  {
-    a[i] = x;
-    x=i;
-  }
-  printf("x=%d, a[0]=%d\n",x,a[0]);    
+  int i,j;
+#pragma omp parallel for
+  for (i=0;i<100;i++)
+    for (j=0;j<100;j++)
+      a[i][j]=a[i][j]+1;
   return 0;
-} 
+}
 

@@ -12,6 +12,7 @@ V1.0.2 2017-09-07
        * improved time measurement output precision in test script
 V1.1.0 2017-09-15
        * fixed file names of two benchmarks
-       * added a few more using omp flush, task depend, single, etc.
+       * added a few more benchmarks using omp flush, task depend, single, etc.
        * merged user-suggested fix for private(j) from jprotze to enforce 
          only singler-pair dependence per test when possible.
+       * refined the outofbounds benchmarks to only have valid wrap around memory accesses 

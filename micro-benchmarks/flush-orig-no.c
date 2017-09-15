@@ -43,16 +43,15 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-// flush does not introduce any synchronization. 
-// The data race will not generate wrong result though. 
+// This is extracted from the official flush example of OpenMP.
+// A possible fix to the data race is to privatize variable i. 
+// Once i is privatized, flush is no longer needed. 
 #include<stdio.h>
 #include<assert.h>
 
 void f1(int *q)
 {
   *q = 1;
-#pragma omp flush
 }
 
 int main()

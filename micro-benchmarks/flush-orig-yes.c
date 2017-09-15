@@ -44,8 +44,11 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// flush does not introduce any synchronization. 
-// The data race will not generate wrong result though. 
+// This is extracted from the official flush example of OpenMP
+// We add one critical section to make it a test with only one pair of data races. 
+// The remaining data race pair is between write to *q at line 57 and read from i at line 68
+//
+// The data race will not generate wrong result though. So the assertion always passes. 
 #include<stdio.h>
 #include<assert.h>
 

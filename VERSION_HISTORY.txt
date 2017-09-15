@@ -10,8 +10,8 @@ V1.0.2 2017-09-07
        * fixed Ubuntu 16 linker issue for option --run
        * added status message while evaluation is performed
        * improved time measurement output precision in test script
-V1.1.0 2017-09-11
+V1.1.0 2017-09-15
        * fixed file names of two benchmarks
-       * added a few more using flush, task depend, single, etc.
-       * merged suggested fix for private(j) from jprotze to enforce 
-         single pair dependences when possible.
+       * added a few more using omp flush, task depend, single, etc.
+       * merged user-suggested fix for private(j) from jprotze to enforce 
+         only singler-pair dependence per test when possible.

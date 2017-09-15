@@ -44,13 +44,13 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 // flush does not introduce any synchronization. 
-// omp atomic is used to protect shared memory accesses.
+// omp critical is used to protect shared memory accesses.
 #include<stdio.h>
 #include<assert.h>
 
 void f1(int *q)
 {
-#pragma omp atomic
+#pragma omp critical
   *q = 1;
 #pragma omp flush
 }

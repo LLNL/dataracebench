@@ -52,6 +52,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 void f1(int *q)
 {
   *q = 1;
+#pragma omp flush
 }
 
 int main()

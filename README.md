@@ -100,7 +100,7 @@ ID| Microbenchmark                    |P-Label| Description                     
 70| simd1-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of a loop                            | New        
 71| targetparallelfor-orig-no.c       |N1,N5  | data races in loops offloaded to accelerators                                        | New        
 72| taskdep1-orig-no.c                |N3     | OpenMP task with depend clauses to avoid data races                                  | New         
-76| flush-orig-no.c                   |N3     | OpenMP atomic directive to avoid data races                                          | New         
+76| flush-orig-no.c                   |N3     | OpenMP critical directive to avoid data races                                        | New         
 77| single-orig-no.c                  |N2     | OpenMP single directive to avoid data races                                          | New         
 78| taskdep2-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
 79| taskdep3-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         

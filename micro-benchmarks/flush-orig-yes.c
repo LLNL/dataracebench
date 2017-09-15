@@ -51,6 +51,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 void f1(int *q)
 {
+#pragma omp critical
   *q = 1;
 #pragma omp flush
 }
@@ -59,7 +60,7 @@ int main()
 { 
   int i=0, sum=0; 
   
-  #pragma omp parallel reduction(+:sum) num_threads(10)
+  #pragma omp parallel reduction(+:sum) num_threads(10) 
   {
      f1(&i);
      sum+= i; 

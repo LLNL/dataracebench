@@ -43,23 +43,22 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 // flush does not introduce any synchronization. 
-// omp atomic is used to protect shared memory accesses.
+// The data race will not generate wrong result though. 
 #include<stdio.h>
 #include<assert.h>
 
 void f1(int *q)
 {
-#pragma omp atomic
   *q = 1;
-#pragma omp flush
 }
 
 int main()
 { 
   int i=0, sum=0; 
   
-  #pragma omp parallel reduction(+:sum) num_threads(10)
+  #pragma omp parallel reduction(+:sum) num_threads(10) private(i)
   {
      f1(&i);
      sum+= i; 

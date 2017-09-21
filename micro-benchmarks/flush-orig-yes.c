@@ -44,9 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// This is extracted from the official flush example of OpenMP
+// This benchmark is extracted from flush_nolist.1c of OpenMP Application 
+// Programming Interface Examples Version 4.5.0 .
 // We add one critical section to make it a test with only one pair of data races. 
-// The remaining data race pair is between write to *q at line 57 and read from i at line 68
+// The remaining data race pair is between write to *q at line 59 and read from i at line 70.
 //
 // The data race will not generate wrong result though. So the assertion always passes. 
 #include<stdio.h>

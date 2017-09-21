@@ -11,8 +11,9 @@ V1.0.2 2017-09-07
        * added status message while evaluation is performed
        * improved time measurement output precision in test script
 V1.1.0 2017-09-15
-       * fixed file names of two benchmarks
-       * added a few more benchmarks using omp flush, task depend, single, etc.
+       * swapped file names of two benchmarks: antidep1-var-yes.c and antidep2-orig-yes.c
+       * added 7 additional micro-benchmarks using omp flush, task depend, single, etc., 
+         making it 79 microbenchmarks in total.
        * merged user-suggested fix for private(j) from jprotze to enforce 
-         only singler-pair dependence per test when possible.
+         only singler-pair dependence per test when possible (Thanks to jprotze ).
        * refined the outofbounds benchmarks to only have valid wrap around memory accesses 

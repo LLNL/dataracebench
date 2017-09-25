@@ -44,9 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 /* 
- * Outer loop has loop carried true dependence
+There is a loop-carried true dependence within the outer level loop.
+Data race pair: b[i][j]@66:7 vs. b[i-1][j-1]@66:15
  */
 #include <stdlib.h>
 #include <stdio.h>

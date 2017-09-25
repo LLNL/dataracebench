@@ -44,9 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-/* Only the outmost loop can be parallelized
- */
+/* 
+Only the outmost loop can be parallelized in this program.
+Data race pair: b[i][j]@65:7 vs. b[i][j-1]@65:15
+*/
 #include <stdlib.h>
 int main(int argc, char* argv[]) 
 {

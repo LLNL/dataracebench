@@ -44,12 +44,13 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+Classic i-k-j matrix multiplication
+*/
 
-// Classic i-k-j matrix multiplication
 #define N 100
 #define M 100 
 #define K 100
-            
 double a[N][M],b[M][K],c[N][K];
             
 int mmm()   

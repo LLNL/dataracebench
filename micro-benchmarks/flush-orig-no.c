@@ -43,13 +43,17 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-// This benchmark is extracted from flush_nolist.1c of OpenMP 
-// Application Programming Interface Examples Version 4.5.0 .
-// A possible fix to the data race is to privatize variable i. 
-// Once i is privatized, flush is no longer needed. 
+
+/*
+This benchmark is extracted from flush_nolist.1c of OpenMP
+Application Programming Interface Examples Version 4.5.0 .
+
+A possible fix to the data race is to privatize variable i.
+Once i is privatized, flush is no longer needed.
+*/
+
 #include<stdio.h>
 #include<assert.h>
-
 void f1(int *q)
 {
   *q = 1;
@@ -58,7 +62,6 @@ void f1(int *q)
 int main()
 { 
   int i=0, sum=0; 
-  
   #pragma omp parallel reduction(+:sum) num_threads(10) private(i)
   {
      f1(&i);

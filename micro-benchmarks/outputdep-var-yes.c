@@ -44,11 +44,14 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+The loop in this example cannot be parallelized.
 
-// This x should be not lastprivate since it is live-in
-// x is both live-in and live-out, and written, cannot be reduction
-//
-// So, the loop cannot be parallelized.
+Data race pairs: we allow two pairs to preserve the original code pattern.
+ 1. x@71:12 vs x@72:5
+ 2. x@72:5 vs x@72:5
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

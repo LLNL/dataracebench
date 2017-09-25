@@ -44,14 +44,17 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// race condition due to a[i]= .. -->  .. a[0]
+/*
+Data race pair: a[i]@63:5 vs a[0]@63:15
+*/
 #include <stdlib.h>
 int main (int argc, char* argv[])
 {
   int len=1000;
   int i; 
-  if (argc>1)   len = atoi(argv[1]);
+
+  if (argc>1)
+    len = atoi(argv[1]);
   int a[len];
   a[0] = 2;
 

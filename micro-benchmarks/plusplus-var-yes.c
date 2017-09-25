@@ -43,10 +43,14 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* 
+Race condition on outLen due to unprotected writes.
+Adding private (outLen) can avoid race condition. But it is wrong semantically.
 
-
-// race condition on outLen 
-// adding private (outLen) can avoid race condition. But it is wrong semantically.
+Data race pairs: we allow two pair to preserve the original code pattern.
+1. outLen@72:12 vs. outLen@72:12
+2. output[]@72:5 vs. output[]@72:5
+*/
 #include <stdlib.h>
 #include <stdio.h>
 int main(int argc, char* argv[])
@@ -60,10 +64,8 @@ int main(int argc, char* argv[])
 
   int input[inLen]; 
   int output[inLen];
-
   for (i=0; i<inLen; ++i) 
     input[i]=i; 
-
 
 #pragma omp parallel for
   for (i=0; i<inLen; ++i) {
@@ -71,6 +73,5 @@ int main(int argc, char* argv[])
   }  
 
   printf("output[0]=%d\n", output[0]);
-
   return 0;
 }

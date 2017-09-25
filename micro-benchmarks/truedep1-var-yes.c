@@ -44,8 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// This one has race condition due to true dependence
+/* 
+This program has data races due to true dependence within a loop.
+Data race pair: a[i+1]@68:5 vs a[i]@68:12
+*/
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -54,7 +56,8 @@ int main(int argc, char* argv[])
   int i;
   int len=100;
 
-  if (argc>1)   len = atoi(argv[1]);
+  if (argc>1)
+    len = atoi(argv[1]);
 
   int a[len];
   for (i=0;i<len;i++)

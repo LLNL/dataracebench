@@ -44,16 +44,17 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+restrict pointers: no aliasing
+Array initialization using assignments. 
 
-// restrict pointers: no aliasing
-// Array initialization using assignments. 
-//
-// C99 is needed to compile this code
-// e.g. gcc -std=c99 -c Stress-1.c
-//
+C99 is needed to compile this code
+e.g. gcc -std=c99 -c Stress-1.c
+*/
 #include <stdlib.h>
 typedef double real8;
-void StressCheckEpsFail(real8 * restrict newSxx, real8 * restrict newSyy, int length)
+
+void foo(real8 * restrict newSxx, real8 * restrict newSyy, int length)
 {
   int i;
 
@@ -70,7 +71,7 @@ int main()
   real8* newSxx = malloc (length* sizeof (real8));
   real8* newSyy = malloc (length* sizeof (real8));
 
-  StressCheckEpsFail (newSxx, newSyy, length);
+  foo(newSxx, newSyy, length);
 
   free (newSxx);
   free (newSyy);

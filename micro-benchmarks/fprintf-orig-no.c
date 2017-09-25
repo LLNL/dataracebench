@@ -44,9 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-//Is fprintf thread safea?
-//Even if it is thread safe, is there a data race?
+/*
+ Example use of fprintf
+*/
 #include <stdio.h>
 int main(int argc, char* argv[])
 {

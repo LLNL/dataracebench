@@ -44,8 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// Linear equation as array subscription
+/* 
+A linear expression is used as array subscription.
+Data race pair: a[2*i+1]@66:5 vs. a[i]@66:14
+*/
 #include <stdlib.h>
 int main(int argc, char* argv[])
 {

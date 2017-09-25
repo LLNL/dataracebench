@@ -44,25 +44,24 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/* 
+The outmost loop is parallelized.
+But the inner level loop has out of bound access for b[i][j] when j equals to 0.
+This will case memory access of a previous row's last element.
 
-/* The outmost loop is parallelized.
-   But the inner level loop has out of bound access for b[i][j]
-   when j==0. 
-   This will case memory access of a previous row's last element.
+For example, an array of 4x4: 
+    j=0 1 2 3
+ i=0  x x x x
+   1  x x x x
+   2  x x x x
+   3  x x x x
+  outer loop: i=2, 
+  inner loop: j=0
+  array element accessed b[i][j-1] becomes b[2][-1], which in turn is b[1][3]
+  due to linearized row-major storage of the 2-D array.
+  This causes loop-carried data dependence between i=2 and i=1.
 
-  For example, an array of 4x4: 
-      j=0 1 2 3
-   i=0  x x x x
-     1  x x x x
-     2  x x x x
-     3  x x x x
-     
-    outer loop: i=2, 
-    inner loop: j=0
-    array element accessed b[i][j-1] becomes b[2][-1], which in turn is b[1][3]
-    due to linearized row-major storage of the 2-D array.
-
-    This causes loop-carried data dependence between i=2 and i=1.
+Data race pair: b[i][j]@75 vs. b[i][j-1]@75.
 */
 #include <stdio.h>
 int main(int argc, char* argv[]) 

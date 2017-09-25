@@ -44,8 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-//Example with loop-carried data dependence at the outer level loop.
+/*
+Example with loop-carried data dependence at the outer level loop.
+The inner level loop can be parallelized.
+*/
 int main()
 {
   int i,j;

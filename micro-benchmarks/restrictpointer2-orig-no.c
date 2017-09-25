@@ -44,19 +44,17 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// A C99 restrict feature.
-// must use -std=c99 
+/*
+The restrict type qualifier is an indication to the compiler that,
+if the memory addressed by the restrict -qualified pointer is modified, no other pointer will access that same memory.
+If a particular chunk of memory is not modified, it can be aliased through more than one restricted pointer.
+A C99 restrict feature.
+For gcc, you must use -std=c99 to compile this program.
+*/
 
 #include <stdlib.h>
 #include <stdio.h>
-/*
 
-The restrict type qualifier is an indication to the compiler that,
- if the memory addressed by the restrict -qualified pointer is modified, no other pointer will access that same memory.
- If a particular chunk of memory is not modified, it can be aliased through more than one restricted pointer.
-
-*/
 void foo(int n, int * restrict  a, int * restrict b, int * restrict  c)
 {
   int i;

@@ -44,14 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-/* Only the outmost loop can be parallelized. 
+/* 
+Only the outmost loop can be parallelized. 
   
-   The inner loop has loop carried true data dependence.
-   However, the loop is not parallelized so no race condition.
-
-   Source: based on AutoPar's regression test.
- */
+*/
 int n=100, m=100;
 double b[100][100];
 

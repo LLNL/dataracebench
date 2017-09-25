@@ -43,21 +43,21 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
+/*
+This program is extracted from a real application at LLNL.
+Two pointers (xa1 and xa2) have a pair of values with a distance of 12.
+They are used as start base addresses for two 1-D arrays.
+Their index set has two indices with distance of 12: 999 +12 = 1011.
+So there is loop carried dependence.
 
+However, having loop carried dependence does not mean data races will always happen.
+The iterations with loop carried dependence must be scheduled to
+different threads in order for data races to happen.
 
-// two pointers have distance of 12
-// index set has two indices with distance of 12: 999 +12 = 1011
-// So there is loop carried dependence.
-//
-// However, having loop carried dependence does not mean data races.
-// The iterations with loop carried dependence must be scheduled to 
-// different threads. 
-//
-// In this example, we use schedule(static,1) to increase the chance that 
-// the dependent loop iterations will be scheduled to different threads.
-//
-// Liao, 12/20/2016
-
+In this example, we use schedule(static,1) to increase the chance that
+the dependent loop iterations will be scheduled to different threads.
+Data race pair: xa1[idx]@128:5 vs xa2[idx]@129:5
+*/
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -73,7 +73,7 @@ int indexSet[N] = {
 651, 653, 655, 657, 659, 661,
 859, 861, 863, 865, 867, 869,
 885, 887, 889, 891, 893, 895,
-911, 913, 915, 917, 919, 923, // change 921 to 923 = 911+12
+911, 913, 915, 917, 919, 923, // change original 921 to 923 = 911+12
 937, 939, 941, 943, 945, 947,
 
 963, 965, 967, 969, 971, 973,
@@ -102,8 +102,9 @@ int indexSet[N] = {
 
 int main (int argc, char* argv[])
 {
+  // max index value is 2013. +12 to obtain a valid xa2[idx] after xa1+12.
+  // +1 to ensure a reference like base[2015] is within the bound.
   double * base = (double*) malloc(sizeof(double)* (2013+12+1));
-
   if (base == 0)
   {
     printf ("Error in malloc(). Aborting ...\n");
@@ -111,7 +112,7 @@ int main (int argc, char* argv[])
   }
 
   double * xa1 = base;
-  double * xa3 = xa1 + 12;
+  double * xa2 = xa1 + 12;
   int i;
 
   // initialize segments touched by indexSet
@@ -119,16 +120,16 @@ int main (int argc, char* argv[])
   {
     base[i]=0.5*i;
   }
-
-#pragma omp parallel for schedule(static,1) // default static even scheduling may not trigger data race!
+// default static even scheduling may not trigger data race, using static,1 instead.
+#pragma omp parallel for schedule(static,1)
   for (i =0; i< N; ++i) 
   {
     int idx = indexSet[i];
     xa1[idx]+= 1.0 + i;
-    xa3[idx]+= 3.0 + i;
+    xa2[idx]+= 3.0 + i;
   }
 
-  printf("x1[999]=%f xa3[1285]=%f\n", xa1[999], xa3[1285]);
+  printf("x1[999]=%f xa2[1285]=%f\n", xa1[999], xa2[1285]);
   free (base);
   return  0;
 }

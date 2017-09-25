@@ -43,10 +43,11 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-// tmp should be put as private to avoid race condition
+/*
+tmp should be put as private to avoid race condition
+Data race pair: tmp@65 vs. tmp@66
+*/
 #include <stdlib.h>
-
 int main(int argc, char* argv[])
 {
   int i;
@@ -54,9 +55,7 @@ int main(int argc, char* argv[])
   int len=100;
   if (argc>1)
     len = atoi(argv[1]);
-
   int a[len];
-
   for (i=0;i<len;i++)
     a[i]=i;
 

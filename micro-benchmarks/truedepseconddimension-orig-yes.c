@@ -44,9 +44,11 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-/* Only the outmost loop can be parallelized
- */
+/* 
+Only the outmost loop can be parallelized in this program.
+The inner loop has true dependence.
+Data race pair: b[i][j]@63:7 vs. b[i][j-1]@63:15
+*/
 #include <stdlib.h>
 #include <stdio.h>
 double b[1000][1000];

@@ -43,10 +43,11 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-
-// This one has data races due to true dependence.
-// But data races happen at instruction level, not thread level. 
+/* 
+This one has data races due to true dependence.
+But data races happen at instruction level, not thread level. 
+Data race pair: a[i+1]@66:5 vs. a[i]@66:12
+*/
 #include <stdio.h>
 int main(int argc, char* argv[])
 {

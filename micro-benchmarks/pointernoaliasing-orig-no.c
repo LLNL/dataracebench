@@ -44,9 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-//! Compilers should figure out freshly allocated pointers do not alias to each other.
-//
+/*
+Freshly allocated pointers do not alias to each other.
+*/
 #include <stdlib.h>
 void setup(int N)
 {

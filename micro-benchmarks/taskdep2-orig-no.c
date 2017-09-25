@@ -44,9 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// two tasks with depend clause to ensure execution order, no data races.
-// i is shared for two tasks based on implicit data-sharing attribute rules.
+/*
+Two tasks with depend clause to ensure execution order, no data races.
+i is shared for two tasks based on implicit data-sharing attribute rules.
+*/
 #include <assert.h> 
 int main()
 {

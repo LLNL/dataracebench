@@ -44,8 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// correct use of omp target
+/*
+use of omp target
+*/
 int main(int argc, char* argv[])
 {
   int i;

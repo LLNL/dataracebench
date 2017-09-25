@@ -44,11 +44,13 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/* 
+The -- operation on numNodes2 is not protected, causing data race.
+Data race pair: numNodes2@74:7 vs numNodes2@74:7
+*/
 
-// The -- operation on numNodes2 is not protected, causing data race.
 #include <stdlib.h>  
 #include <stdio.h>
-
 int main(int argc, char* argv[])  
 {
   int i;

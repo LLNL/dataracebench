@@ -44,8 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// Test if the semantics of omp_get_thread_num() is correctly recognized.
+/*
+omp_get_thread_num() is used to ensure serial semantics.
+*/
 #include <omp.h>
 #include <stdio.h>
 

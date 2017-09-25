@@ -44,12 +44,13 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// This benchmark is extracted from flush_nolist.1c of OpenMP Application 
-// Programming Interface Examples Version 4.5.0 .
-// We add one critical section to make it a test with only one pair of data races. 
-// The remaining data race pair is between write to *q at line 59 and read from i at line 70.
-//
-// The data race will not generate wrong result though. So the assertion always passes. 
+/*
+This benchmark is extracted from flush_nolist.1c of OpenMP Application
+Programming Interface Examples Version 4.5.0 .
+We added one critical section to make it a test with only one pair of data races.
+The data race will not generate wrong result though. So the assertion always passes.
+Data race pair:  i@70:10 vs i@71:11
+*/
 #include<stdio.h>
 #include<assert.h>
 
@@ -67,7 +68,7 @@ int main()
   #pragma omp parallel reduction(+:sum) num_threads(10) 
   {
      f1(&i);
-     sum+= i; 
+     sum+=i;
   }
   assert (sum==10);
   printf("sum=%d\n", sum);

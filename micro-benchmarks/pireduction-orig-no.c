@@ -44,8 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+Classic PI calculation using reduction    
+*/
 
-// Classic PI calculation using reduction    
 #define num_steps 2000000000 
     
 int main(int argc, char** argv) 

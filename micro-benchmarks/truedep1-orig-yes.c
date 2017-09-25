@@ -44,8 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// This one has data race due to true dependence
+/* 
+This program has data races due to true dependence within the loop at 63.
+Data race pair: a[i+1]@64:5 vs. a[i]@64:12
+*/
 #include <stdlib.h>
 #include <stdio.h>
 int main(int argc, char* argv[])

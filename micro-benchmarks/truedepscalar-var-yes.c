@@ -44,10 +44,11 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// loop carried true dep between tmp =..  and ..= tmp.
+/*  
+Loop carried true dep between tmp =..  and ..= tmp.
+Data race pair: tmp@66:12 vs. tmp@67:5
+*/
 #include <stdlib.h>
-
 int main(int argc, char* argv[])
 { 
   int i; 
@@ -59,7 +60,6 @@ int main(int argc, char* argv[])
     len = atoi(argv[1]);
 
   int a[len];
-
 #pragma omp parallel for
   for (i=0;i<len;i++)
   { 

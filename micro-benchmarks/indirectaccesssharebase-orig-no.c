@@ -44,12 +44,13 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// This example is to mimic a memory access pattern extracted from an LLNL proxy app.
-// Two pointers have distance of 12.
-// index set has no two indices with distance of 12
-// So there is no loop carried dependence.
-// Liao, 12/13/2016
+/*
+This example is to mimic a memory access pattern extracted from an LLNL proxy app.
+Two pointers have distance of 12.
+They are used as base addresses of two arrays, indexed through an index set.
+The index set has no two indices with distance of 12.
+So there is no loop carried dependence.
+*/
 
 #include <assert.h>
 #include <stdio.h>
@@ -103,7 +104,7 @@ int main (int argc, char* argv[])
   }
 
   double * xa1 = base;
-  double * xa3 = base + 12;
+  double * xa2 = base + 12;
   int i;
 
   for (i =521; i<= 2025; ++i)
@@ -116,13 +117,13 @@ int main (int argc, char* argv[])
   {
     int idx = indexSet[i];
     xa1[idx]+= 1.0;
-    xa3[idx]+= 3.0;
+    xa2[idx]+= 3.0;
   }
 
-  // verify the results, no overlapping of xa1 vs. xa3, no addition happens to the same element twice
+  // verify the results, no overlapping of xa1 vs. xa2, no addition happens to the same element twice
   for (i =521; i<= 2025; ++i)
   {
-    //      printf ("%f  ", base[i]);
+    //printf ("%f  ", base[i]);
     assert (base[i]!=4.0);
   }
 

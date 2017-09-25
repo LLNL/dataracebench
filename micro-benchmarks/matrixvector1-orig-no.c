@@ -44,12 +44,12 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// Outer-level parallelization.
+/*
+Matrix-vector multiplication: outer-level loop parallelization
+*/
 #define N 100
 
 double a[N][N],v[N],v_out[N];
-
 int mv()
 {           
   int i,j;

@@ -45,8 +45,9 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 
-// use of firstprivate()
-
+/*
+Example use of firstprivate()
+*/
 void foo(int * a, int n, int g)
 {
   int i;

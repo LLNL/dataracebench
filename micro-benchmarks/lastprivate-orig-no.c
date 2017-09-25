@@ -44,16 +44,13 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+Using lastprivate() to resolve an output dependence.
 
-// Using lastprivate() to handle an output dependence.
-//
-// x: not live-in, yes live-out
-//    outer scope
-//    loop-carried output-dependence: x=... : accept values based on loop variable; or not. 
-//
-// Semantics of lastprivate (x)
-// causes the corresponding original list item to be updated after the end of the region.
-// The compiler/runtime copies the local value back to the shared one within the last iteration.
+Semantics of lastprivate (x):
+causes the corresponding original list item to be updated after the end of the region.
+The compiler/runtime copies the local value back to the shared one within the last iteration.
+*/
 #include <stdio.h>
 
 void foo()

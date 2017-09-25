@@ -44,8 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// race condition due to a[i]= .. -->  .. a[0]
+/*
+Data race pair: a[i]@62:5 vs a[0]@62:15
+*/
 #include <stdlib.h>
 #include <stdio.h>
 int main (int argc, char* argv[])
@@ -60,6 +61,6 @@ int main (int argc, char* argv[])
   for (i=0;i<len;i++)
     a[i]=a[i]+a[0];
 
- printf("a[500]=%d\n", a[500]);  
+  printf("a[500]=%d\n", a[500]);
   return 0;
 }

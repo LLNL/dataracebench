@@ -44,9 +44,11 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// using variable-length array in C99
-// Avoid dynamic allocated arrays, which introduces pointers , bad for static analysis tools
+/*
+Two nested loops with loop-carried anti-dependence on the outer level.
+This is a variable-length array version in C99.
+Data race pair: a[i][j]@70:7 and a[i+1][j]@70:18
+*/
 #include <stdlib.h>
 int main(int argc,char *argv[])
 {

@@ -44,8 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// one dimension array computation
+/*
+One dimension array computation with a vetorization directive
+*/
 int a[100], b[100], c[100];
 int main()
 {

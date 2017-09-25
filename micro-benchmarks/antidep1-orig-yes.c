@@ -44,7 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// Race condition due to anti-dependence
+/*
+A loop with loop-carried anti-dependence.
+Data race pair: a[i+1]@64:10 vs. a[i]@64:5
+*/
 #include <stdio.h>
 int main(int argc, char* argv[])
 {   

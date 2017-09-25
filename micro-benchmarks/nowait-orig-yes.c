@@ -44,17 +44,18 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+This example is extracted from a paper: 
+Ma etc. Symbolic Analysis of Concurrency Errors in OpenMP Programs, ICPP 2013
 
-// Some threads may finish the for loop early and execute errors = dt[9]+1
-// while another thread may still be simultaneously executing
-//  the for worksharing region by writing to d[9], 
-// which may cause a data race.
-//  This is a good test for dynamic tools since the data race does not always happen at runtime. 
-//
-// Liao, source paper: Ma Symbolic Analysis of Concurrency Errors in OpenMP Programs, ICPP 2013
+Some threads may finish the for loop early and execute errors = dt[9]+1
+while another thread may still be simultaneously executing
+the for worksharing region by writing to d[9], causing data races. 
+
+Data race pair: a[i]@72:7 and a[9]@75:13.
+*/
+
 #include <stdio.h>
-#include <assert.h>
-
 int main()
 {
   int i,error;
@@ -75,6 +76,5 @@ int main()
   }
 
   printf ("error = %d\n", error);
-//  assert (error==51); 
   return 0;
 }  

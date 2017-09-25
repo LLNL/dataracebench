@@ -44,12 +44,12 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+One dimension array computation
+with finer granularity than traditional 4 bytes.
 
-// one dimension array computation
-// with finer granularity than traditional 4 bytes.
-// Dynamic tools looking at 4-bytes elements may wrongfuly report race condition.
-//
-// Liao 2/7/2017
+Dynamic tools monitoring 4-bytes elements may wrongfuly report race condition.
+*/
 char a[100];
 int main()
 {

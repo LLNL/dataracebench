@@ -44,10 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// Matrix-vector multiplication, inner level parallelization.
+/*
+Matrix-vector multiplication: inner level parallelization.
+*/
 #define N 1000
-
 double a[N][N],v[N],v_out[N];
 
 void mv()
@@ -70,4 +70,3 @@ int main()
   mv();
   return 0;
 }
-

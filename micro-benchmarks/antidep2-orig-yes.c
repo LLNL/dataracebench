@@ -44,7 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-//a two level loop nest, with loop carried anti-dependence on the outer level.
+/*
+A two-level loop nest with loop carried anti-dependence on the outer level.
+Data race pair: a[i][j]@67:7 vs a[i+1][j]@67:18
+*/
 #include <stdio.h>
 
 int main(int argc,char *argv[])

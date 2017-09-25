@@ -44,8 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// Arrays passed as function parameters
+/* 
+Arrays passed as function parameters
+*/
 void foo1(double o1[], double c[], int len)
 { 
   int i ;

@@ -44,10 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 /* 
- * Outer loop has loop carried true dependence
- */
+The outer loop has a loop-carried true dependence.
+Data race pair: b[i][j]@69:7 vs. b[i-1][j-1]@69:15
+*/
 #include <stdlib.h>
 int main(int argc, char* argv[])
 {

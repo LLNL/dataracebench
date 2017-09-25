@@ -44,14 +44,15 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/* 
+Race condition due to anti-dependence within a loop offloaded to accelerators.
+Data race pair: a[i]@64:5 vs. a[i+1]@64:10
+*/
 
-// Race condition due to anti-dependence
-// Happens on a loop offloaded to accelerators.
 int main(int argc, char* argv[])
 {
   int i;
   int len = 1000;
-
   int a[1000];
 
   for (i=0; i<len; i++)

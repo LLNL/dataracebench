@@ -44,9 +44,9 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// using of private() clause 
-
+/*
+Use of private() clause
+*/
 #include <stdio.h>
 #include <math.h>
 
@@ -61,8 +61,8 @@ initialize ()
 {
   int i, j, xx, yy;
 
-  dx = 2.0 / (n - 1); // -->dx@112:2
-  dy = 2.0 / (m - 1);  //-->dy@113:2
+  dx = 2.0 / (n - 1);
+  dy = 2.0 / (m - 1);
 
   /* Initialize initial condition and RHS */
 #pragma omp parallel for private(i,j,xx,yy)

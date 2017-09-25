@@ -44,9 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+Two tasks with a lock synchronization to ensure execution order.
+*/
 
-// Two tasks with a lock synchronization to ensure execution order.
-//
 #include <omp.h>
 #include <assert.h> 
 int main()

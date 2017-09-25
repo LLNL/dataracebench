@@ -43,17 +43,11 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-
-// x: not live-in, yes live-out
-//    outer scope
-//    loop-carried output-dependence: x=... : accept values based on loop variable; or not. 
-//Solution: Can be parallelized using lastprivate(x)
-//
-// Semantics of lastprivate (x)
-// causes the corresponding original list item to be updated after the end of the region.
-// The compiler/runtime copies the local value back to the shared one within the last iteration.
-// Without lastprivate(x), there will be data race for x.
+/*
+This loop has loop-carried output-dependence due to x=... at line 59.
+The problem can be solved by using lastprivate(x).
+Data race pair: x@59 vs x@59
+*/
 #include <stdio.h>
 int main(int argc, char* argv[])
 {

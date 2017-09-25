@@ -44,10 +44,11 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// Two tasks without depend clause to protect data writes. 
-//
-// i is shared for two tasks based on implicit data-sharing attribute rules.
+/*
+Two tasks without depend clause to protect data writes. 
+i is shared for two tasks based on implicit data-sharing attribute rules.
+Data race pair: i@61:5 vs. i@63:5  
+*/
 #include <assert.h> 
 #include <stdio.h> 
 int main()

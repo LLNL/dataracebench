@@ -43,32 +43,31 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
+/*
+Two pointers have a distance of 12 (xa2 - xa1 = 12).
+They are used as base addresses for indirect array accesses using an index set (another array).
 
+The index set has two indices with distance of 12 :
+   indexSet[1]- indexSet[0] = 533 - 521 =  12
+So xa1[idx] and xa2[idx] may cause loop carried dependence for N=0 and N=3.
 
-// Two pointers have distance of 12 (p1 - p2 = 12).
-// They are used as base addresses for indirect array accesses using an index set (another array).
-//
-// An index set has two indices with distance of 12 :
-// indexSet[1]- indexSet[0] = 533 - 521 =  12
-// So there is loop carried dependence for N=0 and N=3.
-//
-// We use the default loop scheduling (static even) in OpenMP. 
-// It is possible that two dependent iterations will be scheduled 
-// within a same chunk to a same thread. So there is no runtime data races.
-//
-//  N is 180, two iteraions with N=0 and N= 1 have loop carried dependences.
-//  For static even scheduling, we must have at least 180 threads (180/180=1 iterations)
-//  so iteration 0 and 1 will be scheduled to two different threads.
-//
-// Liao, 3/29/2017
+We use the default loop scheduling (static even) in OpenMP.
+It is possible that two dependent iterations will be scheduled
+within a same chunk to a same thread. So there is no runtime data races.
 
+N is 180, two iteraions with N=0 and N= 1 have loop carried dependences.
+For static even scheduling, we must have at least 180 threads (180/180=1 iterations)
+so iteration 0 and 1 will be scheduled to two different threads.
+
+Data race pair: xa1[idx]@128:5 and xa2[idx]@129:5
+*/
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #define N 180
 int indexSet[N] = {
-521, 533, 525, 527, 529, 531, // change 533 to 521+12=533
+521, 533, 525, 527, 529, 531, // 521+12=533
 547, 549, 551, 553, 555, 557,
 573, 575, 577, 579, 581, 583,
 599, 601, 603, 605, 607, 609,
@@ -107,15 +106,13 @@ int indexSet[N] = {
 int main (int argc, char* argv[])
 {
   double * base = (double*) malloc(sizeof(double)* (2013+12+1));
-
   if (base == 0)
   {
     printf ("Error in malloc(). Aborting ...\n");
     return 1;  
   }
-
   double * xa1 = base;
-  double * xa3 = xa1 + 12;
+  double * xa2 = xa1 + 12;
   int i;
 
   // initialize segments touched by indexSet
@@ -129,9 +126,9 @@ int main (int argc, char* argv[])
   {
     int idx = indexSet[i];
     xa1[idx]+= 1.0;
-    xa3[idx]+= 3.0;
+    xa2[idx]+= 3.0;
   }
-  printf("x1[999]=%f xa3[1285]=%f\n", xa1[999], xa3[1285]);
+  printf("x1[999]=%f xa2[1285]=%f\n", xa1[999], xa2[1285]);
   free (base);
   return  0;
 }

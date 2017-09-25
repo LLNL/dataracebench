@@ -44,9 +44,10 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// Two tasks without synchronization to protect data write, causing data races.
-//
+/* 
+Two tasks without synchronization to protect data write, causing data races.
+Data race pair: i@58:5 vs. i@60:5
+*/
 #include <stdio.h> 
 int main()
 {

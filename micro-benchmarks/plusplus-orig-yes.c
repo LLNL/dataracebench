@@ -44,9 +44,14 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/* Data race on outLen due to ++ operation.
+Adding private (outLen) can avoid race condition. But it is wrong semantically.
+Data races on outLen also cause output[outLen++] to have data races.
 
-// Data race on outLen due to ++ operation.
-// Adding private (outLen) can avoid race condition. But it is wrong semantically.
+Data race pairs (we allow two pairs to preserve the original code pattern):
+1. outLen@72 vs. outLen@72
+2. output[]@72 vs. output[]@72
+*/
 #include <stdlib.h>
 #include <stdio.h>
 int input[1000]; 
@@ -58,7 +63,6 @@ int main()
   int inLen=1000 ; 
   int outLen = 0;
 
-
   for (i=0; i<inLen; ++i) 
     input[i]= i;  
 
@@ -67,7 +71,6 @@ int main()
   {
     output[outLen++] = input[i] ;
   }  
-
 
   printf("output[500]=%d\n",output[500]);
 

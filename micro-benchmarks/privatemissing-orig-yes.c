@@ -43,9 +43,10 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-
-// tmp should be put as private to avoid race condition
+/* 
+tmp should be annotated as private to avoid race condition.
+Data race pair: tmp@65:5 vs. tmp@66:12
+*/
 #include <stdlib.h>
 #include <stdio.h>
 int main(int argc, char* argv[])

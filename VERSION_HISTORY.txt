@@ -17,7 +17,7 @@ V1.1.0 2017-09-15
        * merged user-suggested fix for private(j) from jprotze to enforce 
          only singler-pair dependence per test when possible (Thanks to jprotze ).
        * refined the outofbounds benchmarks to only have valid wrap around memory accesses 
-V1.1.1 2017-09-25
+V1.1.1 2017-10-04
        * refined source code comments to be consistent: using C-style /* ... */
        * specified data race pairs in comments when applicable: using a format of
             var1@line_no:col_no vs. var2@line_no:col_no

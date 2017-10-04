@@ -47,7 +47,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 /*
 This loop has loop-carried output-dependence due to x=... at line 63.
 The problem can be solved by using lastprivate(x) .
-Data race pair: x@63:5 vs x@63:5
+Data race pair: x@63:5 vs. x@63:5
 */
 #include <stdio.h>
 #include <stdlib.h>

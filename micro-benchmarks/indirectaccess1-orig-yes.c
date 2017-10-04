@@ -56,7 +56,7 @@ different threads in order for data races to happen.
 
 In this example, we use schedule(static,1) to increase the chance that
 the dependent loop iterations will be scheduled to different threads.
-Data race pair: xa1[idx]@128:5 vs xa2[idx]@129:5
+Data race pair: xa1[idx]@128:5 vs. xa2[idx]@129:5
 */
 #include <assert.h>
 #include <stdio.h>

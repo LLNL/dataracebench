@@ -47,7 +47,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 /*
 Test if the semantics of omp_get_thread_num() is correctly recognized.
 Thread with id 0 writes numThreads while other threads read it, causing data races.
-Data race pair: numThreads@60 vs numThreads@64.
+Data race pair: numThreads@60 vs. numThreads@64.
 */
 #include <omp.h>
 #include <stdio.h>

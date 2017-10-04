@@ -55,8 +55,8 @@ This pattern has two pair of dependencies:
 .. = x;
  x = ..; 
 Data race pairs: we allow two pairs to preserve the original code pattern.
- 1. x@73:12 vs x@74:5 
- 2. x@74:5 vs x@74:5
+ 1. x@73:12 vs. x@74:5 
+ 2. x@74:5 vs. x@74:5
 */
 
 #include <stdio.h>

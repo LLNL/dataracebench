@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 The -- operation on numNodes2 is not protected, causing data race.
-Data race pair: numNodes2@74:7 vs numNodes2@74:7
+Data race pair: numNodes2@74:7 vs. numNodes2@74:7
 */
 
 #include <stdlib.h>  

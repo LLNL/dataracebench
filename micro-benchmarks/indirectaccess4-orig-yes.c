@@ -59,7 +59,7 @@ N is 180, two iteraions with N=0 and N= 1 have loop carried dependences.
 For static even scheduling, we must have at least 180 threads (180/180=1 iterations)
 so iteration 0 and 1 will be scheduled to two different threads.
 
-Data race pair: xa1[idx]@128:5 and xa2[idx]@129:5
+Data race pair: xa1[idx]@128:5 vs. xa2[idx]@129:5
 */
 #include <assert.h>
 #include <stdio.h>

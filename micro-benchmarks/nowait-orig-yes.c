@@ -52,7 +52,7 @@ Some threads may finish the for loop early and execute errors = dt[9]+1
 while another thread may still be simultaneously executing
 the for worksharing region by writing to d[9], causing data races. 
 
-Data race pair: a[i]@72:7 and a[9]@75:13.
+Data race pair: a[i]@72:7 vs. a[9]@75:13.
 */
 
 #include <stdio.h>

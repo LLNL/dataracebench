@@ -48,7 +48,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 This benchmark is extracted from flush_nolist.1c of OpenMP
 Application Programming Interface Examples Version 4.5.0 .
 
-A possible fix to the data race is to privatize variable i.
+We privatize variable i to fix data races in the original example.
 Once i is privatized, flush is no longer needed.
 */
 

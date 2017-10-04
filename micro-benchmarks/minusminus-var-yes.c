@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 The -- operation is not protected, causing race condition.
-Data race pair: numNodes2@75 vs numNodes2@75
+Data race pair: numNodes2@75 vs. numNodes2@75
 */
 #include <stdlib.h>  
 int main(int argc, char* argv[])  

@@ -150,7 +150,7 @@ else
   echo "Iterations: ${ITERATIONS}";
 fi
 
-if [[ ! -e "$LOGFILE" ]]; then rm "$LOGFILE"; fi
+if [[ -e "$LOGFILE" ]]; then rm "$LOGFILE"; fi
 
 # Increase stack size - Fixes crashes in some analyses
 ULIMITS=$(ulimit -s)

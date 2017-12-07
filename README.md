@@ -118,3 +118,11 @@ PolyOpt benchmark suite. For those benchmarks see the license file
 LICENSE.OSU.txt.
 
 `LLNL-CODE-732144`
+
+## How to cite DataRaceBench in a publication
+
+If you are referring to DataRaceBench in a publication, please cite the following paper:
+
+* Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, Ian Karlin.
+[DataRaceBench: A Benchmark Suite for Systematic Evaluation of Data Race Detection Tools (best paper finalist)](https://dl.acm.org/citation.cfm?doid=3126908.3126958).
+Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, SC 2017, pp. 11:1-11:14, ISBN 978-1-4503-5114-0, Denver, CO, USA, November 12-17, 2017.

@@ -62,7 +62,9 @@ ID        | Microbenchmark                                |P-Label| Description 
 73        | doall2-orig-yes.c                             |Y2     | Missing `private()` for inner loop nest's loop index variable                | New        
 74        | flush-orig-yes.c                              |Y2     | Reduction using a shared variable, extracted from an official OpenMP example | New        
 75        | getthreadnum-orig-yes.c                       |Y1     | Work sharing within one branch of a `if` statement                           | New        
-
+80        | func-arg-orig-yes.c                           |Y6     | Function arguments passed by reference, inheriting shared attribute          | New        
+82        | declared-in-func-orig-yes.c                   |Y6     | A variable declared within a function called by a parallel region            | New
+84        | threadprivatemissing-orig-yes.c               |Y2     | Missing threadprivate to avoid data races on a file scope variable           | New
 
 ## Microbenchmarks without known data races
 
@@ -104,7 +106,9 @@ ID| Microbenchmark                    |P-Label| Description                     
 77| single-orig-no.c                  |N2     | OpenMP single directive to avoid data races                                          | New         
 78| taskdep2-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
 79| taskdep3-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
-
+81| func-arg-orig-no.c                |N6     | Function arguments passed by value, private                                          | New        
+83| declared-in-func-orig-no.c        |N6     | A variable declared within a function called by a parallel region                    | New
+85| threadprivate-orig-no.c           |N2     | Use threadprivate to avoid data races on a file scope variable                       | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

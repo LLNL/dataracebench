@@ -65,8 +65,10 @@ ID        | Microbenchmark                                |P-Label| Description 
 80        | func-arg-orig-yes.c                           |Y6     | Function arguments passed by reference, inheriting shared attribute          | New        
 82        | declared-in-func-orig-yes.c                   |Y6     | A variable declared within a function called by a parallel region            | New
 84        | threadprivatemissing-orig-yes.c               |Y2     | Missing threadprivate to avoid data races on a file scope variable           | New
-86        | static-data-member-orig-yes.cpp               |Y2     | Missing threadprivate for a static member, not referenced in a construct     | New
-87        | static-data-member2-orig-yes.cpp              |Y2     | Missing threadprivate for a static member, referenced in a construct         | New
+86        | static-data-member-orig-yes.cpp               |Y2     | Missing threadprivate for a static member, not referenced within a construct | New
+87        | static-data-member2-orig-yes.cpp              |Y2     | Missing threadprivate for a static member, referenced within a construct     | New
+88        | dynamic-storage-origin-yes.c                  |Y2     | Data race for a dynamica storage variable, not referenced within a construct | New
+89        | dynamic-storage2-origin-yes.c                 |Y2     | Data race for a dynamica storage variable, referenced within a construct     | New
 
 ## Microbenchmarks without known data races
 

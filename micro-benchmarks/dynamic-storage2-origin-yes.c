@@ -46,35 +46,34 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /*
 For the case of a variable which is referenced within a construct:
-static data member should be shared, unless it is within a threadprivate directive.
+objects with dynamic storage duration should be shared.
+Putting it within a threadprivate directive may cause seg fault 
+since threadprivate copies are not allocated.
 
-Dependence pair: a.counter@72:6 vs. a.counter@72:6
+Dependence pair: *counter@73:7 vs. *counter@73:7
 */
 
-#include<iostream>
-#include<cassert>
-using namespace std;
+#include<stdio.h>
+#include<stdlib.h>
 
-class A {
-public:
-  static int counter; 
-  static int pcounter; 
-#pragma omp threadprivate(pcounter)
-};
-
-int A::counter=0; 
-int A::pcounter=0; 
-
-A a; 
+int* counter; 
+//#pragma omp threadprivate(counter)
 
 int main()
 { 
-  #pragma omp parallel 
+  counter = (int*) malloc(sizeof(int));
+  if (counter== NULL)
   {
-   a.counter++; 
-   a.pcounter++; 
+    fprintf(stderr, "malloc() failes\n");
+    exit(1);
   }
-  assert (A::pcounter == 1);
-  cout<<A::counter <<" "<< A::pcounter<<endl;
+  *counter = 0; 
+ #pragma omp parallel 
+  {
+    (*counter)++; 
+  }
+  printf("%d \n", *counter);
+  free (counter);
   return 0;   
 }
+

@@ -29,6 +29,7 @@ P-Label | Meaning (microbenchmarks with data races)  | P-Label | Meaning (microb
   Y5  | Accelerator data races            |  N5  | Use of accelerator directives
   Y6  | Undefined behavior                |  N6  | Use of special language features
   Y7  | Numerical kernel data races       |  N7  | Numerical kernels
+  Y8  | Others (e.g. special OpenMP rules)|  N8  | Others (e.g. special OpenMP rules)
 
 
 ## Microbenchmarks with known data races (some have a varying length version)
@@ -116,6 +117,8 @@ ID| Microbenchmark                    |P-Label| Description                     
 83| declared-in-func-orig-no.c        |N6     | A variable declared within a function called by a parallel region                    | New
 85| threadprivate-orig-no.c           |N2     | Use threadprivate to protect a file scope variable, not referenced within a construct| New
 91| threadprivate2-orig-no.c          |N2     | Use threadprivate to protect a file scope variable, referenced within a construct    | New
+93| doall2-collapse-orig-no.c         |N8     | Use collapse(n) to control the number of associated loops of omp for                 | New
+94| doall2-ordered-orig-no.c          |N8     | Use ordered(n) to control the number of associated loops of omp for                  | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

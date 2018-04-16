@@ -45,20 +45,24 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /* 
-Two-dimensional array computation:
-Only one loop is associated with the omp for construct. 
-The inner loop's loop iteration variable needs an explicit private() clause, 
-otherwise it will be shared by default. 
-*/
+Two-dimensional array computation: 
+ordered(2) is used to associate two loops with omp for.
+The corresponding loop iteration variables are private. 
 
+ordered(n) is an OpenMP 4.5 addition. 
+*/
 int a[100][100];
 int main()
 {
-  int i,j;
-#pragma omp parallel for private(j)
-  for (i=0;i<100;i++)
-    for (j=0;j<100;j++)
-      a[i][j]=a[i][j]+1;
+  int i, j;
+#pragma omp parallel for ordered(2)
+  for (i = 0; i < 100; i++)
+    for (j = 0; j < 100; j++)
+      {
+	a[i][j] = a[i][j] + 1;
+#pragma omp ordered
+	printf ("debug here\n");
+      }
   return 0;
 }
 

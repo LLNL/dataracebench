@@ -45,17 +45,15 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /* 
-Two-dimensional array computation:
-Only one loop is associated with the omp for construct. 
-The inner loop's loop iteration variable needs an explicit private() clause, 
-otherwise it will be shared by default. 
+Two-dimensional array computation: 
+collapse(2) is used to associate two loops with omp for. 
+The corresponding loop iteration variables are private. 
 */
-
 int a[100][100];
 int main()
 {
   int i,j;
-#pragma omp parallel for private(j)
+#pragma omp parallel for collapse(2)
   for (i=0;i<100;i++)
     for (j=0;j<100;j++)
       a[i][j]=a[i][j]+1;

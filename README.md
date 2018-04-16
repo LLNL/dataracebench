@@ -68,8 +68,8 @@ ID        | Microbenchmark                                |P-Label| Description 
 84        | threadprivatemissing-orig-yes.c               |Y2     | Missing threadprivate for a global var, not referenced within a construct    | New
 86        | static-data-member-orig-yes.cpp               |Y2     | Missing threadprivate for a static member, not referenced within a construct | New
 87        | static-data-member2-orig-yes.cpp              |Y2     | Missing threadprivate for a static member, referenced within a construct     | New
-88        | dynamic-storage-origin-yes.c                  |Y2     | Data race for a dynamica storage variable, not referenced within a construct | New
-89        | dynamic-storage2-origin-yes.c                 |Y2     | Data race for a dynamica storage variable, referenced within a construct     | New
+88        | dynamic-storage-orig-yes.c                    |Y2     | Data race for a dynamica storage variable, not referenced within a construct | New
+89        | dynamic-storage2-orig-yes.c                   |Y2     | Data race for a dynamica storage variable, referenced within a construct     | New
 90        | static-local-orig-yes.c                       |Y2     | Data race for a locally declared static variable                             | New
 92        | threadprivatemissing2-orig-yes.c              |Y2     | Missing threadprivate for a variable referenced within a construct           | New
 95        | doall2-taskloop-orig-yes.c                    |Y2     | Missing protection for inner loop's loop variable                            | New

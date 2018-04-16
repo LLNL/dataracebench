@@ -72,6 +72,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 89        | dynamic-storage2-origin-yes.c                 |Y2     | Data race for a dynamica storage variable, referenced within a construct     | New
 90        | static-local-orig-yes.c                       |Y2     | Data race for a locally declared static variable                             | New
 92        | threadprivatemissing2-orig-yes.c              |Y2     | Missing threadprivate for a variable referenced within a construct           | New
+95        | doall2-taskloop-orig-yes.c                    |Y2     | Missing protection for inner loop's loop variable                            | New
 
 ## Microbenchmarks without known data races
 
@@ -119,6 +120,7 @@ ID| Microbenchmark                    |P-Label| Description                     
 91| threadprivate2-orig-no.c          |N2     | Use threadprivate to protect a file scope variable, referenced within a construct    | New
 93| doall2-collapse-orig-no.c         |N8     | Use collapse(n) to control the number of associated loops of omp for                 | New
 94| doall2-ordered-orig-no.c          |N8     | Use ordered(n) to control the number of associated loops of omp for                  | New
+96| doall2-taskloop-collapse-orig-no.c|N8     | Use ordered(n) to control the number of associated loops of taskloop                 | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

@@ -44,22 +44,30 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 #include <stdio.h>
-/*
-Two-dimensional array computation using loops: missing private(j).
-References to j in the loop cause data races.
+/* 
+Two-dimensional array computation:
+Only one loop is associated with omp taskloop. 
+The inner loop's loop iteration variable will be shared if it is shared in the enclosing context.
 Data race pairs (we allow multiple ones to preserve the pattern):
-  Write_set = {j@61:10, j@61:20}
-  Read_set = {j@62:20, j@62:12, j61@:14, j61@:20}
+  Write_set = {j@67:14, j@67:30}
+  Read_set = {j@67:21, j@67:30, j@68:16}
   Any pair from Write_set vs. Write_set  and Write_set vs. Read_set is a data race pair.
+
 */
 int a[100][100];
 int main()
 {
-  int i,j;
-#pragma omp parallel for
-  for (i=0;i<100;i++)
-    for (j=0;j<100;j++)
-      a[i][j]=a[i][j]+1;
+  int i, j;
+#pragma omp parallel
+  {
+#pragma omp single
+    {
+#pragma omp taskloop
+      for (i = 0; i < 100; i++)
+        for (j = 0; j < 100; j++)
+          a[i][j]+=1; 
+    }
+  }
+  printf ("a[50][50]=%d\n", a[50][50]);
   return 0;
 }
-

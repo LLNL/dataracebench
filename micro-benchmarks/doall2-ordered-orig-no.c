@@ -49,8 +49,9 @@ Two-dimensional array computation:
 ordered(2) is used to associate two loops with omp for.
 The corresponding loop iteration variables are private. 
 
-ordered(n) is an OpenMP 4.5 addition. 
+ordered(n) is an OpenMP 4.5 addition. GCC 6.x or later is required.
 */
+#include <stdio.h>
 int a[100][100];
 int main()
 {

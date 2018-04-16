@@ -121,6 +121,7 @@ ID| Microbenchmark                    |P-Label| Description                     
 93| doall2-collapse-orig-no.c         |N8     | Use collapse(n) to control the number of associated loops of omp for                 | New
 94| doall2-ordered-orig-no.c          |N8     | Use ordered(n) to control the number of associated loops of omp for                  | New
 96| doall2-taskloop-collapse-orig-no.c|N8     | Use ordered(n) to control the number of associated loops of taskloop                 | New
+97| target-teams-distribute-orig-no.c |N8     | Predetermined attribute rule for loop variable associated with distribute            | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

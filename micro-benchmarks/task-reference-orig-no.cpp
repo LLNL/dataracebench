@@ -45,24 +45,47 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-Two tasks without depend clause to protect data writes. 
-i is shared for two tasks based on implicit data-sharing attribute rules.
-Data race pair: i@61:5 vs. i@63:5  
-*/
-#include <assert.h> 
-#include <stdio.h> 
+ * Cover the implicitly determined rule: In an orphaned task generating construct, 
+ * formal arguments passed by reference are firstprivate.
+ * This requires OpenMP 4.5 to work. 
+ * Earlier OpenMP does not allow a reference type for firstprivate. 
+ * */
+#include <stdio.h>
+
+#define MYLEN 100
+int a[MYLEN];
+
+void gen_task(int& i)
+{
+#pragma omp task
+  {
+    a[i]= i+1;
+  }
+}
+
 int main()
 {
   int i=0;
 #pragma omp parallel
-#pragma omp single
   {
-#pragma omp task
-    i = 1;    
-#pragma omp task
-    i = 2;    
+#pragma omp single
+    {
+      for (i=0; i<MYLEN; i++)
+      {
+        gen_task(i);
+      }
+    }
   }
-
-  printf ("i=%d\n",i);
+  
+  /* correctness checking */
+  for (i=0; i<MYLEN; i++)
+  {
+    //assert (a[i]==i+1);
+    if (a[i]!= i+1)
+    {
+      printf("warning: a[%d] = %d, not expected %d\n", i, a[i], i+1);
+    }
+  }
   return 0;
-} 
+}
+

@@ -76,54 +76,56 @@ ID        | Microbenchmark                                |P-Label| Description 
 
 ## Microbenchmarks without known data races
 
-ID| Microbenchmark                    |P-Label| Description                                                                          | Source     
---|-----------------------------------|-------|--------------------------------------------------------------------------------------|------------
-41| 3mm-parallel-no.c                 |N2     | 3-step matrix-matrix multiplication, non-optimized version                           | Polyhedral 
-42| 3mm-tile-no.c                     |N2,N4  | 3-step matrix-matrix multiplication, with tiling and nested SIMD                     | Polyhedral 
-43| adi-parallel-no.c                 |N2     | Alternating Direction Implicit solver, non-optimized version                         | Polyhedral  
-44| adi-tile-no.c                     |N2,N4  | Alternating Direction Implicit solver, with tiling and nested SIMD                   | Polyhedral  
-45| doall1-orig-no.c                  |N1     | Classic DOAll loop operating on a one dimensional array                              | AutoPar    
-46| doall2-orig-no.c                  |N1     | Classic DOAll loop operating on a two dimensional array                              | AutoPar     
-47| doallchar-orig-no.c               |N1     | Classic DOALL loop operating on a character array                                    | New        
-48| firstprivate-orig-no.c            |N2     | Example use of firstprivate                                                          | AutoPar    
-49| fprintf-orig-no.c                 |N6     | Use of `fprintf()`                                                                   | New        
-50| functionparameter-orig-no.c       |N6     | Arrays passed as function parameters                                                 | LLNL App   
-51| getthreadnum-orig-no.c            |N2     | single thread execution using `if (omp_get_thread_num()==0)`                         | New              
-52| indirectaccesssharebase-orig-no.c |N7     | Indirect array accesses using index arrays without overlapping                       | LLNL App   
-53| inneronly1-orig-no.c              |N1     | Two-level nested loops, inner level is parallelizable. True dependence on outer level| AutoPar    
-54| inneronly2-orig-no.c              |N1     | Two-level nested loops, inner level is parallelizable. Anti dependence on outer level| AutoPar    
-55| jacobi2d-parallel-no.c            |N7     | Jacobi with array copying, no reduction, non-optimized version                       | Polyhedral 
-56| jacobi2d-tile-no.c                |N4,N7  | Jacobi with array copying, no reduction, with tiling and nested SIMD                 | Polyhedral 
-57| jacobiinitialize-orig-no.c        |N7     | The array initialization parallel loop in Jacobi                                     | AutoPar    
-58| jacobikernel-orig-no.c            |N7     | Parallel Jacobi stencil computation kernel with array copying and reduction          | AutoPar    
-59| lastprivate-orig-no.c             |N2     | Example use of lastprivate                                                           | AutoPar    
-60| matrixmultiply-orig-no.c          |N7     | Classic i-k-j order matrix multiplication using OpenMP                               | AutoPar    
-61| matrixvector1-orig-no.c           |N7     | Matrix-vector multiplication parallelized at the outer level loop                    | AutoPar    
-62| matrixvector2-orig-no.c           |N7     | Matrix-vector multiplication parallelized at the inner level loop with reduction     | AutoPar    
-63| outeronly1-orig-no.c              |N2     | Two-level nested loops, outer level is parallelizable. True dependence on inner level| AutoPar    
-64| outeronly2-orig-no.c              |N2     | Two-level nested loops, outer level is parallelizable. Anti dependence on inner level| AutoPar    
-65| pireduction-orig-no.c             |N7     | PI calculation using reduction                                                       | AutoPar    
-66| pointernoaliasing-orig-no.c       |N6     | Pointers assigned by different malloc calls, without aliasing                        | LLNL App   
-67| restrictpointer1-orig-no.c        |N6     | C99 restrict pointers used for array initialization, no aliasing                     | LLNL App    
-68| restrictpointer2-orig-no.c        |N6     | C99 restrict pointers used for array computation, no aliasing                        | LLNL App   
-69| sectionslock1-orig-no.c           |N3     | OpenMP parallel sections with a lock to protect shared data writes                   | New        
-70| simd1-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of a loop                            | New        
-71| targetparallelfor-orig-no.c       |N1,N5  | No data races in loops offloaded to accelerators                                     | New        
-72| taskdep1-orig-no.c                |N3     | OpenMP task with depend clauses to avoid data races                                  | New         
-76| flush-orig-no.c                   |N2     | OpenMP private clause to avoid data races                                            | New         
-77| single-orig-no.c                  |N2     | OpenMP single directive to avoid data races                                          | New         
-78| taskdep2-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
-79| taskdep3-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
-81| func-arg-orig-no.c                |N6     | Function arguments passed by value, private                                          | New        
-83| declared-in-func-orig-no.c        |N6     | A variable declared within a function called by a parallel region                    | New
-85| threadprivate-orig-no.c           |N2     | Use threadprivate to protect a file scope variable, not referenced within a construct| New
-91| threadprivate2-orig-no.c          |N2     | Use threadprivate to protect a file scope variable, referenced within a construct    | New
-93| doall2-collapse-orig-no.c         |N8     | Use collapse(n) to control the number of associated loops of omp for                 | New
-94| doall2-ordered-orig-no.c          |N8     | Use ordered(n) to control the number of associated loops of omp for                  | New
-96| doall2-taskloop-collapse-orig-no.c|N8     | Use ordered(n) to control the number of associated loops of taskloop                 | New
-97| target-teams-distribute-orig-no.c |N8     | Predetermined attribute rule for loop variable associated with distribute            | New
-98| simd2-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of two nested loops                  | New        
-99| targetparallelfor2-orig-no.c      |N1,N5  | Loops offloaded to accelerators: array sections derived from pointer                 | New        
+ ID| Microbenchmark                    |P-Label| Description                                                                          | Source     
+ --|-----------------------------------|-------|--------------------------------------------------------------------------------------|------------
+ 41| 3mm-parallel-no.c                 |N2     | 3-step matrix-matrix multiplication, non-optimized version                           | Polyhedral 
+ 42| 3mm-tile-no.c                     |N2,N4  | 3-step matrix-matrix multiplication, with tiling and nested SIMD                     | Polyhedral 
+ 43| adi-parallel-no.c                 |N2     | Alternating Direction Implicit solver, non-optimized version                         | Polyhedral  
+ 44| adi-tile-no.c                     |N2,N4  | Alternating Direction Implicit solver, with tiling and nested SIMD                   | Polyhedral  
+ 45| doall1-orig-no.c                  |N1     | Classic DOAll loop operating on a one dimensional array                              | AutoPar    
+ 46| doall2-orig-no.c                  |N1     | Classic DOAll loop operating on a two dimensional array                              | AutoPar     
+ 47| doallchar-orig-no.c               |N1     | Classic DOALL loop operating on a character array                                    | New        
+ 48| firstprivate-orig-no.c            |N2     | Example use of firstprivate                                                          | AutoPar    
+ 49| fprintf-orig-no.c                 |N6     | Use of `fprintf()`                                                                   | New        
+ 50| functionparameter-orig-no.c       |N6     | Arrays passed as function parameters                                                 | LLNL App   
+ 51| getthreadnum-orig-no.c            |N2     | single thread execution using `if (omp_get_thread_num()==0)`                         | New              
+ 52| indirectaccesssharebase-orig-no.c |N7     | Indirect array accesses using index arrays without overlapping                       | LLNL App   
+ 53| inneronly1-orig-no.c              |N1     | Two-level nested loops, inner level is parallelizable. True dependence on outer level| AutoPar    
+ 54| inneronly2-orig-no.c              |N1     | Two-level nested loops, inner level is parallelizable. Anti dependence on outer level| AutoPar    
+ 55| jacobi2d-parallel-no.c            |N7     | Jacobi with array copying, no reduction, non-optimized version                       | Polyhedral 
+ 56| jacobi2d-tile-no.c                |N4,N7  | Jacobi with array copying, no reduction, with tiling and nested SIMD                 | Polyhedral 
+ 57| jacobiinitialize-orig-no.c        |N7     | The array initialization parallel loop in Jacobi                                     | AutoPar    
+ 58| jacobikernel-orig-no.c            |N7     | Parallel Jacobi stencil computation kernel with array copying and reduction          | AutoPar    
+ 59| lastprivate-orig-no.c             |N2     | Example use of lastprivate                                                           | AutoPar    
+ 60| matrixmultiply-orig-no.c          |N7     | Classic i-k-j order matrix multiplication using OpenMP                               | AutoPar    
+ 61| matrixvector1-orig-no.c           |N7     | Matrix-vector multiplication parallelized at the outer level loop                    | AutoPar    
+ 62| matrixvector2-orig-no.c           |N7     | Matrix-vector multiplication parallelized at the inner level loop with reduction     | AutoPar    
+ 63| outeronly1-orig-no.c              |N2     | Two-level nested loops, outer level is parallelizable. True dependence on inner level| AutoPar    
+ 64| outeronly2-orig-no.c              |N2     | Two-level nested loops, outer level is parallelizable. Anti dependence on inner level| AutoPar    
+ 65| pireduction-orig-no.c             |N7     | PI calculation using reduction                                                       | AutoPar    
+ 66| pointernoaliasing-orig-no.c       |N6     | Pointers assigned by different malloc calls, without aliasing                        | LLNL App   
+ 67| restrictpointer1-orig-no.c        |N6     | C99 restrict pointers used for array initialization, no aliasing                     | LLNL App    
+ 68| restrictpointer2-orig-no.c        |N6     | C99 restrict pointers used for array computation, no aliasing                        | LLNL App   
+ 69| sectionslock1-orig-no.c           |N3     | OpenMP parallel sections with a lock to protect shared data writes                   | New        
+ 70| simd1-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of a loop                            | New        
+ 71| targetparallelfor-orig-no.c       |N1,N5  | No data races in loops offloaded to accelerators                                     | New        
+ 72| taskdep1-orig-no.c                |N3     | OpenMP task with depend clauses to avoid data races                                  | New         
+ 76| flush-orig-no.c                   |N2     | OpenMP private clause to avoid data races                                            | New         
+ 77| single-orig-no.c                  |N2     | OpenMP single directive to avoid data races                                          | New         
+ 78| taskdep2-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
+ 79| taskdep3-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
+ 81| func-arg-orig-no.c                |N6     | Function arguments passed by value, private                                          | New        
+ 83| declared-in-func-orig-no.c        |N6     | A variable declared within a function called by a parallel region                    | New
+ 85| threadprivate-orig-no.c           |N2     | Use threadprivate to protect a file scope variable, not referenced within a construct| New
+ 91| threadprivate2-orig-no.c          |N2     | Use threadprivate to protect a file scope variable, referenced within a construct    | New
+ 93| doall2-collapse-orig-no.c         |N8     | Use collapse(n) to control the number of associated loops of omp for                 | New
+ 94| doall2-ordered-orig-no.c          |N8     | Use ordered(n) to control the number of associated loops of omp for                  | New
+ 96| doall2-taskloop-collapse-orig-no.c|N8     | Use ordered(n) to control the number of associated loops of taskloop                 | New
+ 97| target-teams-distribute-orig-no.c |N8     | Predetermined attribute rule for loop variable associated with distribute            | New
+ 98| simd2-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of two nested loops                  | New        
+ 99| targetparallelfor2-orig-no.c      |N1,N5  | Loops offloaded to accelerators: array sections derived from pointer                 | New        
+100| task-reference-orig-no.cpp        |N1     | OpenMP 4.5 feature: orphaned task generating construct using pass-by-reference       | New
+101| task-value-orig-no.cpp            |N1     | In a task generating construct, a variable without applicable rules is firstprivate  | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

@@ -53,19 +53,17 @@ Dependence pairs:
    tmp@73:5 vs. tmp@73:5
    tmp@73:5 vs. tmp@74:12
 */
-
 #include<stdio.h>
-#include<stdlib.h>
 
 int main(int argc, char* argv[])
 {
   int i;
   int len=100;
-  int a[100];
+  int a[len], b[len];
 
   for (i=0;i<len;i++)
-    a[i]=i;
-
+  {  a[i]=i; b[i]=i;} 
+/* static storage for a local variable */
 #pragma omp parallel 
   {
     static int tmp;
@@ -77,6 +75,19 @@ int main(int argc, char* argv[])
     }
   }
 
-  printf("a[50]=%d\n", a[50]);
+/* automatic storage for a local variable */
+#pragma omp parallel 
+  {
+    int tmp;
+#pragma omp for
+    for (i=0;i<len;i++)
+    {
+      tmp = b[i]+i;
+      b[i] = tmp;
+    }
+  }
+
+  printf("a[50]=%d b[50]=%d\n", a[50], b[50]);
+ 
   return 0;
 }

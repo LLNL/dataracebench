@@ -122,6 +122,7 @@ ID| Microbenchmark                    |P-Label| Description                     
 94| doall2-ordered-orig-no.c          |N8     | Use ordered(n) to control the number of associated loops of omp for                  | New
 96| doall2-taskloop-collapse-orig-no.c|N8     | Use ordered(n) to control the number of associated loops of taskloop                 | New
 97| target-teams-distribute-orig-no.c |N8     | Predetermined attribute rule for loop variable associated with distribute            | New
+98| simd2-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of two nested loops                  | New        
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

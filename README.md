@@ -108,7 +108,7 @@ ID| Microbenchmark                    |P-Label| Description                     
 68| restrictpointer2-orig-no.c        |N6     | C99 restrict pointers used for array computation, no aliasing                        | LLNL App   
 69| sectionslock1-orig-no.c           |N3     | OpenMP parallel sections with a lock to protect shared data writes                   | New        
 70| simd1-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of a loop                            | New        
-71| targetparallelfor-orig-no.c       |N1,N5  | data races in loops offloaded to accelerators                                        | New        
+71| targetparallelfor-orig-no.c       |N1,N5  | No data races in loops offloaded to accelerators                                     | New        
 72| taskdep1-orig-no.c                |N3     | OpenMP task with depend clauses to avoid data races                                  | New         
 76| flush-orig-no.c                   |N2     | OpenMP private clause to avoid data races                                            | New         
 77| single-orig-no.c                  |N2     | OpenMP single directive to avoid data races                                          | New         
@@ -123,6 +123,7 @@ ID| Microbenchmark                    |P-Label| Description                     
 96| doall2-taskloop-collapse-orig-no.c|N8     | Use ordered(n) to control the number of associated loops of taskloop                 | New
 97| target-teams-distribute-orig-no.c |N8     | Predetermined attribute rule for loop variable associated with distribute            | New
 98| simd2-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of two nested loops                  | New        
+99| targetparallelfor2-orig-no.c      |N1,N5  | Loops offloaded to accelerators: array sections derived from pointer                 | New        
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

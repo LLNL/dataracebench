@@ -57,11 +57,12 @@ int sum0=0, sum1=0;
 
 int main()
 {
+  int len=1000;
   int i, sum=0;
 #pragma omp parallel copyin(sum0)
   {
 #pragma omp for
-    for (i=1;i<=1000;i++)
+    for (i=0;i<len;i++)
     {
       sum0=sum0+i;
     }   
@@ -70,8 +71,8 @@ int main()
       sum= sum+sum0;
     } 
   }  
-/*  reference calculation */
-  for (i=1;i<=1000;i++)
+  /*  reference calculation */
+  for (i=0;i<len;i++)
   {
     sum1=sum1+i;
   }

@@ -58,7 +58,7 @@ int sum0=0, sum1=0;
 int main()
 {
   int i, sum=0;
-#pragma omp parallel
+#pragma omp parallel copyin(sum0)
   {
 #pragma omp for
     for (i=1;i<=1000;i++)

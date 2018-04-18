@@ -45,42 +45,24 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-A file-scope variable used within a function called by a parallel region.
-Use threadprivate to avoid data races.
+ *  threadprivate+copyprivate: no data races
 */
 #include <stdio.h>
-#include <assert.h>
+ 
+float x=0.0;
+int y=0;
+#pragma omp threadprivate(x,y)
 
-int sum0=0, sum1=0;
-#pragma omp threadprivate(sum0)
-
-void foo (int i)
+int main (int argc, char * argv[])
 {
-  sum0=sum0+i;
-}
-
-int main()
-{
-  int i, sum=0;
-#pragma omp parallel copyin(sum0)
+#pragma omp parallel
   {
-#pragma omp for
-    for (i=1;i<=1000;i++)
+#pragma omp single copyprivate(x,y)
     {
-       foo (i);
-    }   
-#pragma omp critical
-    {
-      sum= sum+sum0;
-    } 
-  }  
-/*  reference calculation */
-  for (i=1;i<=1000;i++)
-  {
-    sum1=sum1+i;
+      x=1.0;
+      y=1;
+    }
   }
-  printf("sum=%d; sum1=%d\n",sum,sum1);
-  assert(sum==sum1);
+  printf ("x=%f y=%d\n", x, y);
   return 0;
 }
-

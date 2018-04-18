@@ -45,17 +45,13 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-This example is extracted from a paper: 
+This example is based on one code snippet extracted from a paper: 
 Ma etc. Symbolic Analysis of Concurrency Errors in OpenMP Programs, ICPP 2013
 
-Some threads may finish the for loop early and execute errors = dt[9]+1
-while another thread may still be simultaneously executing
-the for worksharing region by writing to d[9], causing data races. 
-
-Data race pair: a[i]@72:7 vs. a[9]@75:13.
+Explicit barrier to counteract nowait
 */
-
 #include <stdio.h>
+#include <assert.h>
 int main()
 {
   int i,error;
@@ -71,10 +67,12 @@ int main()
     for(i = 0; i < len; i++)
       a[i] = b + a[i]*5;
 
+#pragma omp barrier
+
 #pragma omp single
     error = a[9] + 1;
   }
-
+  assert (error == 51);
   printf ("error = %d\n", error);
   return 0;
 }  

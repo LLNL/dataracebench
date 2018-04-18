@@ -71,6 +71,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 90        | static-local-orig-yes.c                       |Y2     | Data race for a locally declared static variable                             | New
 92        | threadprivatemissing2-orig-yes.c              |Y2     | Missing threadprivate for a variable referenced within a construct           | New
 95        | doall2-taskloop-orig-yes.c                    |Y2     | Missing protection for inner loop's loop variable                            | New
+106       | taskwaitmissing-orig-yes.c                    |Y3     | Missing taskwait to ensure correct order of calculations                     | New
 
 ## Microbenchmarks without known data races
 
@@ -126,6 +127,8 @@ ID        | Microbenchmark                                |P-Label| Description 
 101| task-value-orig-no.cpp            |N1     | In a task generating construct, a variable without applicable rules is firstprivate  | New
 102| copyprivate-orig-no.c             |N2     | threadprivate+copyprivate, a variable without applicable rules is firstprivate       | New
 103| master-orig-no.c                  |N3     | master directive to ensure only one thread will execute data accesses                | New
+104| nowait-barrier-orig-no.c          |N3     | Use barrier to ensure correct order of initialization and assignment phases          | New
+105| taskwait-orig-no.c                |N3     | Use taskwait to ensure correct order of calculations                                 | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

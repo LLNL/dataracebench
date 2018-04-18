@@ -45,36 +45,35 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-This example is extracted from a paper: 
-Ma etc. Symbolic Analysis of Concurrency Errors in OpenMP Programs, ICPP 2013
-
-Some threads may finish the for loop early and execute errors = dt[9]+1
-while another thread may still be simultaneously executing
-the for worksharing region by writing to d[9], causing data races. 
-
-Data race pair: a[i]@72:7 vs. a[9]@75:13.
-*/
-
+ * Classic Fibonacci calculation using task+taskwait. No data races.  
+ * */
 #include <stdio.h>
+int input = 30;
+int fib(unsigned long int n)
+{
+  if (n<2)
+    return n;
+  else
+  {
+    int i, j;
+#pragma omp task shared(i)
+    i=fib(n-1);
+#pragma omp task shared(j)
+    j=fib(n-2);
+#pragma omp taskwait
+    return i+j;
+  }
+}
 int main()
 {
-  int i,error;
-  int len = 1000;
-  int a[len], b=5;
-
-  for (i=0; i<len; i++)
-    a[i]= i;
- 
-#pragma omp parallel shared(b, error) 
+  int result = 0;
+#pragma omp parallel
   {
-#pragma omp for nowait
-    for(i = 0; i < len; i++)
-      a[i] = b + a[i]*5;
-
-#pragma omp single
-    error = a[9] + 1;
+   #pragma omp single
+    {
+      result = fib(input);
+    }
   }
-
-  printf ("error = %d\n", error);
+  printf ("Fib(%d)=%d\n", input, result);
   return 0;
-}  
+}

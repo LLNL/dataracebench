@@ -52,7 +52,7 @@ The variable should be private if it does not use static storage.
 
 void foo()
 {
-  int q; 
+  int q=0; 
   q += 1;
 }
 

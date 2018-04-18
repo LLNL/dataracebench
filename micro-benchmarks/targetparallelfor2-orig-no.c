@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
   int i;
   int len = 1000;
   double a[len], b[len];
-  for (int i=0; i<len; i++)
+  for (i=0; i<len; i++)
   {
     a[i]= ((double)i)/2.0;
     b[i]=0.0;

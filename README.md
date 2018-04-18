@@ -29,8 +29,6 @@ P-Label | Meaning (microbenchmarks with data races)  | P-Label | Meaning (microb
   Y5  | Accelerator data races            |  N5  | Use of accelerator directives
   Y6  | Undefined behavior                |  N6  | Use of special language features
   Y7  | Numerical kernel data races       |  N7  | Numerical kernels
-  Y8  | Others (e.g. special OpenMP rules)|  N8  | Others (e.g. special OpenMP rules)
-
 
 ## Microbenchmarks with known data races (some have a varying length version)
 
@@ -111,22 +109,23 @@ ID        | Microbenchmark                                |P-Label| Description 
  71| targetparallelfor-orig-no.c       |N1,N5  | No data races in loops offloaded to accelerators                                     | New        
  72| taskdep1-orig-no.c                |N3     | OpenMP task with depend clauses to avoid data races                                  | New         
  76| flush-orig-no.c                   |N2     | OpenMP private clause to avoid data races                                            | New         
- 77| single-orig-no.c                  |N8     | OpenMP single directive to avoid data races                                          | New         
+ 77| single-orig-no.c                  |N3     | OpenMP single directive to avoid data races                                          | New         
  78| taskdep2-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
  79| taskdep3-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
  81| func-arg-orig-no.c                |N6     | Function arguments passed by value, private                                          | New        
  83| declared-in-func-orig-no.c        |N6     | A variable declared within a function called by a parallel region                    | New
  85| threadprivate-orig-no.c           |N2     | Use threadprivate to protect a file scope variable, not referenced within a construct| New
  91| threadprivate2-orig-no.c          |N2     | Use threadprivate to protect a file scope variable, referenced within a construct    | New
- 93| doall2-collapse-orig-no.c         |N8     | Use collapse(n) to control the number of associated loops of omp for                 | New
- 94| doall2-ordered-orig-no.c          |N8     | Use ordered(n) to control the number of associated loops of omp for                  | New
- 96| doall2-taskloop-collapse-orig-no.c|N8     | Use ordered(n) to control the number of associated loops of taskloop                 | New
- 97| target-teams-distribute-orig-no.c |N8     | Predetermined attribute rule for loop variable associated with distribute            | New
- 98| simd2-orig-no.c                   |N1,N4  | OpenMP SIMD directive to indicate vectorization of two nested loops                  | New        
+ 93| doall2-collapse-orig-no.c         |N2     | Use collapse(n) to control the number of associated loops of omp for                 | New
+ 94| doall2-ordered-orig-no.c          |N2     | Use ordered(n) to control the number of associated loops of omp for                  | New
+ 96| doall2-taskloop-collapse-orig-no.c|N2     | Use ordered(n) to control the number of associated loops of taskloop                 | New
+ 97| target-teams-distribute-orig-no.c |N2     | Predetermined attribute rule for loop variable associated with distribute            | New
+ 98| simd2-orig-no.c                   |N1,N2  | OpenMP SIMD directive to indicate vectorization of two nested loops                  | New        
  99| targetparallelfor2-orig-no.c      |N1,N5  | Loops offloaded to accelerators: array sections derived from pointer                 | New        
 100| task-reference-orig-no.cpp        |N1     | OpenMP 4.5 feature: orphaned task generating construct using pass-by-reference       | New
 101| task-value-orig-no.cpp            |N1     | In a task generating construct, a variable without applicable rules is firstprivate  | New
-102| copyprivate-origin-no.c           |N2     | threadprivate+copyprivate, a variable without applicable rules is firstprivate  | New
+102| copyprivate-orig-no.c             |N2     | threadprivate+copyprivate, a variable without applicable rules is firstprivate       | New
+103| master-orig-no.c                  |N3     | master directive to ensure only one thread will execute data accesses                | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

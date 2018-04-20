@@ -43,27 +43,36 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
+
+/*
+ * Use taskgroup to synchronize two tasks: 
+ * */
 #include <stdio.h>
-/* 
-Two-dimensional array computation:
-Two loops are associated with omp taskloop due to collapse(2).
-Both loop index variables are private.
-taskloop requires OpenMP 4.5 compilers.
-*/
-int a[100][100];
+#include <assert.h>
+#include <unistd.h>
+
 int main()
 {
-  int i, j;
+  int result = 0;
 #pragma omp parallel
   {
 #pragma omp single
     {
-#pragma omp taskloop collapse(2)
-      for (i = 0; i < 100; i++)
-        for (j = 0; j < 100; j++)
-          a[i][j]+=1; 
+#pragma omp taskgroup
+      {
+#pragma omp task
+        {
+          sleep(3);
+          result = 1; 
+        }
+      }
+#pragma omp task
+      {
+        result = 2; 
+      }
     }
   }
-  printf ("a[50][50]=%d\n", a[50][50]);
+  printf ("result=%d\n", result);
+  assert (result==2);
   return 0;
 }

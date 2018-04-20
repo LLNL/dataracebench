@@ -44,26 +44,18 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 #include <stdio.h>
-/* 
-Two-dimensional array computation:
-Two loops are associated with omp taskloop due to collapse(2).
-Both loop index variables are private.
-taskloop requires OpenMP 4.5 compilers.
-*/
-int a[100][100];
-int main()
+/*
+ * Test if atomic can be recognized properly. No data races.
+ * */
+int main (void)
 {
-  int i, j;
-#pragma omp parallel
+  int a=0;
+#pragma omp parallel 
   {
-#pragma omp single
-    {
-#pragma omp taskloop collapse(2)
-      for (i = 0; i < 100; i++)
-        for (j = 0; j < 100; j++)
-          a[i][j]+=1; 
-    }
+#pragma omp atomic
+    a+=1;
   }
-  printf ("a[50][50]=%d\n", a[50][50]);
+  printf ("a=%d\n",a);
   return 0;
 }
+

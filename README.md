@@ -72,6 +72,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 92        | threadprivatemissing2-orig-yes.c              |Y2     | Missing threadprivate for a variable referenced within a construct           | New
 95        | doall2-taskloop-orig-yes.c                    |Y2     | Missing protection for inner loop's loop variable                            | New
 106       | taskwaitmissing-orig-yes.c                    |Y3     | Missing taskwait to ensure correct order of calculations                     | New
+109       | orderedmissing-orig-yes.c                     |Y3     | Missing the ordered clause, causing data races                               | New
 
 ## Microbenchmarks without known data races
 
@@ -128,7 +129,10 @@ ID        | Microbenchmark                                |P-Label| Description 
 102| copyprivate-orig-no.c             |N2     | threadprivate+copyprivate, a variable without applicable rules is firstprivate       | New
 103| master-orig-no.c                  |N3     | master directive to ensure only one thread will execute data accesses                | New
 104| nowait-barrier-orig-no.c          |N3     | Use barrier to ensure correct order of initialization and assignment phases          | New
-105| taskwait-orig-no.c                |N3     | Use taskwait to ensure correct order of calculations                                 | New
+105| taskwait-orig-no.c                |N3     | Use taskwait to ensure correct order of tasks                                        | New
+107| taskgroup-orig-no.c               |N3     | Use taskgroup to ensure correct order of tasks                                       | New
+108| atomic-orig-no.c                  |N3     | Use atomic to protect shared accesses to a variable                                  | New
+110| ordered-orig-no.c                 |N3     | Proper use of the ordered clause to avoid data races                                 | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

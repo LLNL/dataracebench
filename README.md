@@ -1,4 +1,4 @@
-# DataRaceBench 1.1.1
+# DataRaceBench 1.2.0
 
 DataRaceBench is a benchmark suite designed to systematically and
 quantitatively evaluate the effectiveness of data race detection
@@ -7,7 +7,7 @@ races. Parallelism is represented by OpenMP directives. OpenMP is a
 popular parallel programming model for multi-threaded applications.
 
 Note that if you are using gcc for compiling the microbenchmarks, at
-least version 4.9 is required to have support for all used OpenMP
+least version 6.x is required to have support for all used OpenMP 4.5
 directives.
 
 DataRaceBench also comes with an evaluation script

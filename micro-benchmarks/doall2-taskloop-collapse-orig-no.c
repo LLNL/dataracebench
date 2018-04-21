@@ -43,13 +43,17 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-#include <stdio.h>
 /* 
 Two-dimensional array computation:
 Two loops are associated with omp taskloop due to collapse(2).
 Both loop index variables are private.
 taskloop requires OpenMP 4.5 compilers.
 */
+#if (_OPENMP<201511)
+#error "OpenMP 4.5 compilers (e.g. GCC 6.x or later ) are needed to compile this test."
+#endif
+
+#include <stdio.h>
 int a[100][100];
 int main()
 {

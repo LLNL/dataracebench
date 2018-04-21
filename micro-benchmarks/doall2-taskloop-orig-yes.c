@@ -43,17 +43,19 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-#include <stdio.h>
 /* 
 Two-dimensional array computation:
 Only one loop is associated with omp taskloop. 
 The inner loop's loop iteration variable will be shared if it is shared in the enclosing context.
 Data race pairs (we allow multiple ones to preserve the pattern):
-  Write_set = {j@67:14, j@67:30}
-  Read_set = {j@67:21, j@67:30, j@68:16}
+  Write_set = {j@69:14, j@69:30}
+  Read_set = {j@69:21, j@69:30, j@70:16}
   Any pair from Write_set vs. Write_set  and Write_set vs. Read_set is a data race pair.
-
 */
+#if (_OPENMP<201511)
+#error "OpenMP 4.5 compilers (e.g. GCC 6.x or later ) are needed to compile this test."
+#endif
+#include <stdio.h>
 int a[100][100];
 int main()
 {

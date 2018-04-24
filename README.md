@@ -22,7 +22,7 @@ some pre-defined values.
 
 P-Label | Meaning (microbenchmarks with data races)  | P-Label | Meaning (microbenchmarks without data races)
 ------|-----------------------------------|------|------------------------------
-  Y1  | Unresolvable dependences          |  N1  | Embarrassingly parallel
+  Y1  | Unresolvable dependences          |  N1  | Embarrassingly parallel or single thread execution
   Y2  | Missing data sharing clauses      |  N2  | Use of data sharing clauses
   Y3  | Missing synchronization           |  N3  | Use of synchronization
   Y4  | SIMD data races                   |  N4  | Use of SIMD directives
@@ -111,7 +111,7 @@ ID        | Microbenchmark                                |P-Label| Description 
  71| targetparallelfor-orig-no.c       |N1,N5  | No data races in loops offloaded to accelerators                                     | New        
  72| taskdep1-orig-no.c                |N3     | OpenMP task with depend clauses to avoid data races                                  | New         
  76| flush-orig-no.c                   |N2     | OpenMP private clause to avoid data races                                            | New         
- 77| single-orig-no.c                  |N3     | OpenMP single directive to avoid data races                                          | New         
+ 77| single-orig-no.c                  |N1     | OpenMP single directive to use only one thread for execution                         | New
  78| taskdep2-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
  79| taskdep3-orig-no.c                |N3     | OpenMP task depend clause to avoid data races                                        | New         
  81| func-arg-orig-no.c                |N6     | Function arguments passed by value, private                                          | New        
@@ -127,7 +127,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 100| task-reference-orig-no.cpp        |N1     | OpenMP 4.5 feature: orphaned task generating construct using pass-by-reference       | New
 101| task-value-orig-no.cpp            |N1     | In a task generating construct, a variable without applicable rules is firstprivate  | New
 102| copyprivate-orig-no.c             |N2     | threadprivate+copyprivate, a variable without applicable rules is firstprivate       | New
-103| master-orig-no.c                  |N3     | master directive to ensure only one thread will execute data accesses                | New
+103| master-orig-no.c                  |N1     | master directive to ensure only one thread will execute data accesses                | New
 104| nowait-barrier-orig-no.c          |N3     | Use barrier to ensure correct order of initialization and assignment phases          | New
 105| taskwait-orig-no.c                |N3     | Use taskwait to ensure correct order of tasks                                        | New
 107| taskgroup-orig-no.c               |N3     | Use taskgroup to ensure correct order of tasks                                       | New

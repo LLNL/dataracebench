@@ -44,7 +44,7 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 #include <stdio.h>
-/*
+/* This is a program based on a test contributed by Yizi Gu@Rice Univ.
  * Classic Fibonacci calculation using task but missing taskwait. 
  * Data races pairs: i@61:5 vs i@65:12
  *                   j@63:5 vs j@65:14

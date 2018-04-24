@@ -45,7 +45,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 #include <assert.h> 
 #include <stdio.h>
-/*
+/* This is a program based on a test contributed by Yizi Gu@Rice Univ.
  * Proper user of ordered directive and clause, no data races
  * */
 int main()

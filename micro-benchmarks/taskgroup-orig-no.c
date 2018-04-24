@@ -44,7 +44,7 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*
+/* This is a program based on a test contributed by Yizi Gu@Rice Univ.
  * Use taskgroup to synchronize two tasks: 
  * */
 #include <stdio.h>

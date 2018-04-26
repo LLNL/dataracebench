@@ -75,6 +75,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 109       | orderedmissing-orig-yes.c                     |Y3     | Missing the ordered clause, causing data races                               | New
 111       | linearmissing-orig-yes.c                      |Y2     | Missing linear for a shared variable, causing data races                     | New               
 114       | if-orig-yes.c                                 |Y1     | True data dependence within a single level loop, with if() clause            | New
+115       | forsimd-orig-yes.c                            |Y1,Y4  | Both thread and instruction level data races due to omp loop simd            | New
 
 ## Microbenchmarks without known data races
 

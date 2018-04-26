@@ -73,6 +73,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 95        | doall2-taskloop-orig-yes.c                    |Y2     | Missing protection for inner loop's loop variable                            | New
 106       | taskwaitmissing-orig-yes.c                    |Y3     | Missing taskwait to ensure correct order of calculations                     | New
 109       | orderedmissing-orig-yes.c                     |Y3     | Missing the ordered clause, causing data races                               | New
+111       | linearmissing-orig-yes.c                      |Y2     | Missing linear for a shared variable, causing data races                     | New               
 
 ## Microbenchmarks without known data races
 
@@ -133,6 +134,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 107| taskgroup-orig-no.c               |N3     | Use taskgroup to ensure correct order of tasks                                       | New
 108| atomic-orig-no.c                  |N3     | Use atomic to protect shared accesses to a variable                                  | New
 110| ordered-orig-no.c                 |N3     | Proper use of the ordered clause to avoid data races                                 | New
+112| linear-orig-no.c                  |N2     | Use linear to privatize a variable                                                   | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

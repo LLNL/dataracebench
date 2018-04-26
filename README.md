@@ -135,6 +135,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 108| atomic-orig-no.c                  |N3     | Use atomic to protect shared accesses to a variable                                  | New
 110| ordered-orig-no.c                 |N3     | Proper use of the ordered clause to avoid data races                                 | New
 112| linear-orig-no.c                  |N2     | Use linear to privatize a variable                                                   | New
+113| default-orig-no.c                 |N1     | default(none) to enforce explicitly listing variables in data-sharing clauses        | New
 ## Authors
 
 DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.

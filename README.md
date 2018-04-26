@@ -76,6 +76,7 @@ ID        | Microbenchmark                                |P-Label| Description 
 111       | linearmissing-orig-yes.c                      |Y2     | Missing linear for a shared variable, causing data races                     | New               
 114       | if-orig-yes.c                                 |Y1     | True data dependence within a single level loop, with if() clause            | New
 115       | forsimd-orig-yes.c                            |Y1,Y4  | Both thread and instruction level data races due to omp loop simd            | New
+116       | target-teams-orig-yes.c                       |Y3     | Master threads of two teams do not have synchronization, causing data races  | New
 
 ## Microbenchmarks without known data races
 

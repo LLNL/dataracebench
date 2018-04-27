@@ -43,10 +43,13 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-#include <stdio.h>
 /*
-   loop using linear clause
+   omp for loop is allowed to use the linear clause, an OpenMP 4.5 addition.
 */
+#if (_OPENMP<201511)
+#error "OpenMP 4.5 compilers (e.g. GCC 6.x or later ) are needed to compile this test."
+#endif
+#include <stdio.h>
 int main()
 {
   int len=100;

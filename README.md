@@ -6,9 +6,13 @@ tools. It includes a set of microbenchmarks with and without data
 races. Parallelism is represented by OpenMP directives. OpenMP is a
 popular parallel programming model for multi-threaded applications.
 
-Note that if you are using gcc for compiling the microbenchmarks, at
-least version 6.x is required to have support for all used OpenMP 4.5
-directives.
+Note that some microbenchmarks use OpenMP 4.5 features. They include:
+  doall2-ordered-orig-no.c
+  doall2-taskloop-orig-yes.c, 
+  doall2-taskloop-collapse-orig-no.c, 
+  linear-orig-no.c, 
+  task-reference-orig-no.cpp 
+You need a recent OpenMP compiler (e.g. gcc 6.x or later) to compile them. 
 
 DataRaceBench also comes with an evaluation script
 (check-data-races.sh). The script can be used to evaluate the tools

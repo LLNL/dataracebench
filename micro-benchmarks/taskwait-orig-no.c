@@ -48,8 +48,9 @@ THE POSSIBILITY OF SUCH DAMAGE.
  * Classic Fibonacci calculation using task+taskwait. No data races.  
  * */
 #include <stdio.h>
-int input = 30;
-int fib(unsigned long int n)
+#include <assert.h>
+unsigned int input = 30;
+int fib(unsigned int n)
 {
   if (n<2)
     return n;
@@ -75,5 +76,6 @@ int main()
     }
   }
   printf ("Fib(%d)=%d\n", input, result);
+  assert (result==832040);
   return 0;
 }

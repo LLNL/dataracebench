@@ -49,8 +49,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
  * Data races pairs: i@61:5 vs i@65:12
  *                   j@63:5 vs j@65:14
  * */
-int input = 10;
-int fib(unsigned long int n)
+unsigned int input = 10;
+int fib(unsigned int n)
 {
   if (n<2)
     return n;

@@ -48,19 +48,25 @@ THE POSSIBILITY OF SUCH DAMAGE.
 tasks with depend clauses to ensure execution order, no data races.
 */
 #include <stdio.h> 
+#include <assert.h> 
+#include <unistd.h>
 int main()
 {
-  int i=0;
+  int i=0, j, k;
 #pragma omp parallel
 #pragma omp single
   {
 #pragma omp task depend (out:i)
-    i = 1;    
+    {
+      sleep(3);
+      i = 1;    
+    }
 #pragma omp task depend (in:i)
-    printf ("x=%d\n", i);
+    j =i; 
 #pragma omp task depend (in:i)
-    printf ("x=%d\n", i);
+    k =i; 
   }
-
+  printf ("j=%d k=%d\n", j, k);
+  assert (j==1 && k==1);
   return 0;
 } 

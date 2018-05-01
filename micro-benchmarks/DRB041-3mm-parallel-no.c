@@ -11,10 +11,10 @@
 #include <string.h>
 #include <math.h>
 /* Include polybench common header. */
-#include <polybench.h>
+#include "polybench/polybench.h"
 /* Include benchmark-specific header. */
 /* Default data type is double, default size is 4000. */
-#include "3mm.h"
+#include "polybench/3mm.h"
 /* Array initialization. */
 
 static void init_array(int ni,int nj,int nk,int nl,int nm,double A[128 + 0][128 + 0],double B[128 + 0][128 + 0],double C[128 + 0][128 + 0],double D[128 + 0][128 + 0])

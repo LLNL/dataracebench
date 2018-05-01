@@ -12,7 +12,7 @@ Note that some microbenchmarks use OpenMP 4.5 features. They include:
   doall2-taskloop-collapse-orig-no.c, 
   linear-orig-no.c, 
   task-reference-orig-no.cpp 
-You need a recent OpenMP compiler (e.g. gcc 6.x or later) to compile them. 
+You need a recent OpenMP 4.5 compiler (e.g. gcc 7.x or later) to compile/run them. 
 
 DataRaceBench also comes with an evaluation script
 (check-data-races.sh). The script can be used to evaluate the tools

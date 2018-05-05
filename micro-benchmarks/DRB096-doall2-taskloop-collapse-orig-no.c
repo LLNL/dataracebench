@@ -50,7 +50,7 @@ Both loop index variables are private.
 taskloop requires OpenMP 4.5 compilers.
 */
 #if (_OPENMP<201511)
-#error "OpenMP 4.5 compilers (e.g. GCC 6.x or later ) are needed to compile this test."
+#error "An OpenMP 4.5 compiler is needed to compile this test."
 #endif
 
 #include <stdio.h>

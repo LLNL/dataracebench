@@ -53,7 +53,7 @@ Data race pairs (we allow multiple ones to preserve the pattern):
   Any pair from Write_set vs. Write_set  and Write_set vs. Read_set is a data race pair.
 */
 #if (_OPENMP<201511)
-#error "OpenMP 4.5 compilers (e.g. GCC 6.x or later ) are needed to compile this test."
+#error "An OpenMP 4.5 compiler is needed to compile this test."
 #endif
 #include <stdio.h>
 int a[100][100];

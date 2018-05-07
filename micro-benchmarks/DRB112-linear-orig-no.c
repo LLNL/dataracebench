@@ -47,7 +47,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
    omp for loop is allowed to use the linear clause, an OpenMP 4.5 addition.
 */
 #if (_OPENMP<201511)
-#error "OpenMP 4.5 compilers (e.g. GCC 6.x or later ) are needed to compile this test."
+#error "An OpenMP 4.5 compiler is needed to compile this test."
 #endif
 #include <stdio.h>
 int main()

@@ -62,7 +62,15 @@ int fib(unsigned int n)
 #pragma omp task shared(j)
     j=fib(n-2);
 
-    return i+j;
+    int res= i+j; 
+/* We move the original taskwait to a location after i+j to 
+ * simulate the missing taskwait mistake.
+ * Directly removing the taskwait may cause a child task to write to i or j
+ * within the stack of a parent task which may already be gone, causing seg fault.
+ * This change is suggested by Joachim Protze @RWTH-Aachen. 
+ * */
+#pragma omp taskwait
+    return res;
   }
 }
 int main()
@@ -75,6 +83,6 @@ int main()
       result = fib(input);
     }
   }
-  printf ("Fib(%d)=%d\n", input, result);
+  printf ("Fib(%d)=%d (correct answer should be 55)\n", input, result);
   return 0;
 }

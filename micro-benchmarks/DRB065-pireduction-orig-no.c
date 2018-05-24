@@ -54,7 +54,7 @@ Classic PI calculation using reduction
 int main(int argc, char** argv)
 {
   double pi = 0.0;
-  int i;
+  long int i;
   double x, interval_width;
   interval_width = 1.0/(double)num_steps;
 

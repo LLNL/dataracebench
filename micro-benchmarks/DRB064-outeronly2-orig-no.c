@@ -47,7 +47,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 /* 
 Only the outmost loop can be parallelized. 
   
-The inner loop has loop carried anti data dependence.
+The inner loop has loop carried true data dependence.
 However, the loop is not parallelized so no race condition.
 */
 int n=100, m=100;

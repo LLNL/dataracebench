@@ -45,24 +45,23 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-Two tasks without depend clause to protect data writes. 
-i is shared for two tasks based on implicit data-sharing attribute rules.
-Data race pair: i@61:5 vs. i@63:5  
-*/
-#include <assert.h> 
-#include <stdio.h> 
-int main()
-{
-  int i=0;
-#pragma omp parallel
-#pragma omp single
-  {
-#pragma omp task shared(i) 
-    i = 1;    
-#pragma omp task shared(i)
-    i = 2;    
-  }
+A variable is declared inside a function called within a parallel region.
+The variable should be private if it does not use static storage.
 
-  printf ("i=%d\n",i);
-  return 0;
-} 
+*/
+
+void foo()
+{
+  int q=0; 
+  q += 1;
+}
+
+int main()
+{ 
+  #pragma omp parallel 
+  {
+     foo();
+  }
+  return 0;   
+}
+

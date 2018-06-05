@@ -45,22 +45,36 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-Two tasks with depend clause to ensure execution order, no data races.
-i is shared for two tasks based on implicit data-sharing attribute rules.
-*/
-#include <assert.h> 
-int main()
-{
-  int i=0;
-#pragma omp parallel
-#pragma omp single
-  {
-#pragma omp task depend (out:i)
-    i = 1;    
-#pragma omp task depend (out:i)
-    i = 2;    
-  }
+For the case of a variable which is referenced within a construct:
+static data member should be shared, unless it is within a threadprivate directive.
 
-  assert (i==2);
-  return 0;
-} 
+Dependence pair: a.counter@72:6 vs. a.counter@72:6
+*/
+
+#include<iostream>
+#include<cassert>
+using namespace std;
+
+class A {
+public:
+  static int counter; 
+  static int pcounter; 
+#pragma omp threadprivate(pcounter)
+};
+
+int A::counter=0; 
+int A::pcounter=0; 
+
+A a; 
+
+int main()
+{ 
+  #pragma omp parallel 
+  {
+   a.counter++; 
+   a.pcounter++; 
+  }
+  assert (A::pcounter == 1);
+  cout<<A::counter <<" "<< A::pcounter<<endl;
+  return 0;   
+}

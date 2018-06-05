@@ -45,22 +45,39 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-tasks with depend clauses to ensure execution order, no data races.
-*/
-#include <stdio.h> 
-int main()
-{
-  int i=0;
-#pragma omp parallel
-#pragma omp single
-  {
-#pragma omp task depend (out:i)
-    i = 1;    
-#pragma omp task depend (in:i)
-    printf ("x=%d\n", i);
-#pragma omp task depend (in:i)
-    printf ("x=%d\n", i);
-  }
+For the case of a variable which is not referenced within a construct:
+objects with dynamic storage duration should be shared.
+Putting it within a threadprivate directive may cause seg fault since
+ threadprivate copies are not allocated!
 
-  return 0;
-} 
+Dependence pair: *counter@63:6 vs. *counter@63:6
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int* counter; 
+
+void foo()
+{
+   (*counter)++; 
+}
+
+int main()
+{ 
+  counter = (int*) malloc(sizeof(int));
+  if (counter== NULL)
+  {
+    fprintf(stderr, "malloc() failes\n");
+    exit(1);
+  }
+  *counter = 0; 
+ #pragma omp parallel 
+  {
+     foo();
+  }
+  printf("%d \n", *counter);
+  free (counter);
+  return 0;   
+}
+

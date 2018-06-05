@@ -90,7 +90,7 @@ void polybench_flush_cache()
   int i;
   double tmp = 0.0;
 #ifdef _OPENMP
-#pragma omp parallel for
+#pragma omp parallel for reduction(+:tmp)
 #endif
   for (i = 0; i < cs; i++)
     tmp += flush[i];
@@ -381,14 +381,14 @@ static
 void *
 xmalloc (size_t num)
 {
-  void* new = NULL;
-  int ret = posix_memalign (&new, 32, num);
-  if (! new || ret)
+  void* nnew = NULL;
+  int ret = posix_memalign (&nnew, 32, num);
+  if (! nnew || ret)
     {
       fprintf (stderr, "[PolyBench] posix_memalign: cannot allocate memory");
       exit (1);
     }
-  return new;
+  return nnew;
 }
 
 

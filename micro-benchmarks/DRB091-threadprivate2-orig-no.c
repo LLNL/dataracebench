@@ -45,21 +45,39 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-Two-dimensional array computation using loops: missing private(j).
-References to j in the loop cause data races.
-Data race pairs (we allow multiple ones to preserve the pattern):
-  Write_set = {j@61:10, j@61:20}
-  Read_set = {j@62:20, j@62:12, j62@:14, j61@:20}
-  Any pair from Write_set vs. Write_set  and Write_set vs. Read_set is a data race pair.
+A file-scope variable used within a function called by a parallel region.
+Use threadprivate to avoid data races.
+This is the case for a variable referenced within a construct.
 */
-int a[100][100];
+#include <stdio.h>
+#include <assert.h>
+
+int sum0=0, sum1=0;
+#pragma omp threadprivate(sum0)
+
 int main()
 {
-  int i,j;
-#pragma omp parallel for
-  for (i=0;i<100;i++)
-    for (j=0;j<100;j++)
-      a[i][j]=a[i][j]+1;
+  int len=1000;
+  int i, sum=0;
+#pragma omp parallel copyin(sum0)
+  {
+#pragma omp for
+    for (i=0;i<len;i++)
+    {
+      sum0=sum0+i;
+    }   
+#pragma omp critical
+    {
+      sum= sum+sum0;
+    } 
+  }  
+  /*  reference calculation */
+  for (i=0;i<len;i++)
+  {
+    sum1=sum1+i;
+  }
+  printf("sum=%d; sum1=%d\n",sum,sum1);
+  assert(sum==sum1);
   return 0;
 }
 

@@ -43,18 +43,31 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-/* 
-Two-dimensional array computation
+#include <stdio.h>
+/*
+ *  loop missing the linear clause
+ *  Data race pair:  j@67:7 vs. j@68:5 
 */
-int a[100][100];
 int main()
 {
-  int i,j;
-#pragma omp parallel for private(j)
-  for (i=0;i<100;i++)
-    for (j=0;j<100;j++)
-      a[i][j]=a[i][j]+1;
+  int len=100;
+  double a[len], b[len], c[len];
+  int i,j=0;
+
+  for (i=0;i<len;i++)
+  {
+    a[i]=((double)i)/2.0; 
+    b[i]=((double)i)/3.0; 
+    c[i]=((double)i)/7.0; 
+  }
+
+#pragma omp parallel for 
+  for (i=0;i<len;i++)
+  {
+    c[j]+=a[i]*b[i];
+    j++;
+  }
+
+  printf ("c[50]=%f\n",c[50]);
   return 0;
 }
-

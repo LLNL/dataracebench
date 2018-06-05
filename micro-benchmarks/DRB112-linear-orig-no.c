@@ -43,38 +43,33 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 /*
-This example is extracted from a paper: 
-Ma etc. Symbolic Analysis of Concurrency Errors in OpenMP Programs, ICPP 2013
-
-Some threads may finish the for loop early and execute errors = dt[9]+1
-while another thread may still be simultaneously executing
-the for worksharing region by writing to d[9], causing data races. 
-
-Data race pair: a[i]@72:7 vs. a[9]@75:13.
+   omp for loop is allowed to use the linear clause, an OpenMP 4.5 addition.
 */
-
+#if (_OPENMP<201511)
+#error "An OpenMP 4.5 compiler is needed to compile this test."
+#endif
 #include <stdio.h>
 int main()
 {
-  int i,error;
-  int len = 1000;
-  int a[1000], b=5;
+  int len=100;
+  double a[len], b[len], c[len];
+  int i,j=0;
 
-  for (i=0; i<len; i++)
-    a[i]= i;
- 
-#pragma omp parallel shared(b, error) 
+  for (i=0;i<len;i++)
   {
-#pragma omp for nowait
-    for(i = 0; i < len; i++)
-      a[i] = b + a[i]*5;
-
-#pragma omp single
-    error = a[9] + 1;
+    a[i]=((double)i)/2.0; 
+    b[i]=((double)i)/3.0; 
+    c[i]=((double)i)/7.0; 
   }
 
-  printf ("error = %d\n", error);
+#pragma omp parallel for linear(j)
+  for (i=0;i<len;i++)
+  {
+    c[j]+=a[i]*b[i];
+    j++;
+  }
+
+  printf ("c[50]=%f\n",c[50]);
   return 0;
-}  
+}

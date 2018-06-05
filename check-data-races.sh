@@ -46,6 +46,7 @@
 
 OPTION=$1
 TESTS=$(grep -l main micro-benchmarks/*.c)
+CPPTESTS=$(grep -l main micro-benchmarks/*.cpp)
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 
 if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
@@ -55,6 +56,7 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo "--help     : this option"
     echo "--small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
     echo "--run      : compile and run all benchmarks with gcc (no evaluation)"
+    echo "--run-intel: compile and run all benchmarks with Intel compilers (no evaluation)"
     echo "--helgrind : compile and test all benchmarks with Helgrind"
     echo "--tsan     : compile and test all benchmarks with clang ThreadSanitizer"
     echo "--archer   : compile and test all benchmarks with Archer"
@@ -80,8 +82,42 @@ if [[ "$OPTION" == "--run" ]]; then
         ./a.out  > /dev/null
     done
     rm -f ./a.out
+# test for cpp files
+    for test in $CPPTESTS; do
+        echo "------------------------------------------"
+        echo "RUNNING: $test"
+        CFLAGS="-g -Wall -fopenmp"
+        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+        g++ $CFLAGS "$test" -lm
+        ./a.out  > /dev/null
+    done
+    rm -f ./a.out
     exit
 fi
+
+if [[ "$OPTION" == "--run-intel" ]]; then
+    for test in $TESTS; do
+        echo "------------------------------------------"
+        echo "RUNNING: $test"
+        CFLAGS="-g -Wall -std=c99 -fopenmp"
+        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+        icc $CFLAGS "$test" -lm
+        ./a.out  > /dev/null
+    done
+    rm -f ./a.out
+# test for cpp files
+    for test in $CPPTESTS; do
+        echo "------------------------------------------"
+        echo "RUNNING: $test"
+        CFLAGS="-g -Wall -fopenmp"
+        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+        icpc $CFLAGS "$test" -lm
+        ./a.out  > /dev/null
+    done
+    rm -f ./a.out
+    exit
+fi
+
 
 if [[ "$OPTION" == "--helgrind" ]]; then
     scripts/test-harness.sh -x helgrind

@@ -45,22 +45,24 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-use of omp target
+A variable is declared inside a function called within a parallel region.
+The variable should be shared if it uses static storage.
+
+Data race pair: q@57:3 vs. q@57:3 
 */
-int main(int argc, char* argv[])
+
+void foo()
 {
-  int i;
-  int len = 1000;
-
-  int a[1000];
-
-  for (i=0; i<len; i++)
-    a[i]= i;
-
-#pragma omp target
-#pragma omp parallel for
-  for (i=0;i< len -1 ;i++)
-    a[i]=a[i]+1;
-
-  return 0;
+  static int q; 
+  q += 1;
 }
+
+int main()
+{ 
+  #pragma omp parallel 
+  {
+     foo();
+  }
+  return 0;   
+}
+

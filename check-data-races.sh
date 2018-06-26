@@ -57,6 +57,7 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo "--small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
     echo "--run      : compile and run all benchmarks with gcc (no evaluation)"
     echo "--run-intel: compile and run all benchmarks with Intel compilers (no evaluation)"
+    echo "--run-rose : compile all benchmarks with ROSE (no execution, no evaluation). Need to set ROSE_INSTALL first."
     echo "--helgrind : compile and test all benchmarks with Helgrind"
     echo "--tsan     : compile and test all benchmarks with clang ThreadSanitizer"
     echo "--archer   : compile and test all benchmarks with Archer"
@@ -117,6 +118,26 @@ if [[ "$OPTION" == "--run-intel" ]]; then
     rm -f ./a.out
     exit
 fi
+
+if [[ "$OPTION" == "--run-rose" ]]; then
+    for test in $TESTS; do
+        echo "------------------------------------------"
+        echo "TESTING using rose: $test"
+        CFLAGS="-g -Wall -std=c99 -rose:openmp:ast_only"
+        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+        $ROSE_INSTALL/bin/identityTranslator -c $CFLAGS "$test" -lm
+    done
+# test for cpp files
+    for test in $CPPTESTS; do
+        echo "------------------------------------------"
+        echo "TESTING using rose: $test"
+        CFLAGS="-g -Wall -rose:openmp:ast_only"
+        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+        $ROSE_INSTALL/bin/identityTranslator -c $CFLAGS "$test" -lm
+    done
+    exit
+fi
+
 
 
 if [[ "$OPTION" == "--helgrind" ]]; then

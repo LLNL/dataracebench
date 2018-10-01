@@ -182,6 +182,6 @@ If you are referring to DataRaceBench in a publication, please cite the followin
 [DataRaceBench: A Benchmark Suite for Systematic Evaluation of Data Race Detection Tools (best paper finalist)](https://dl.acm.org/citation.cfm?doid=3126908.3126958).
 Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, SC 2017, pp. 11:1-11:14, ISBN 978-1-4503-5114-0, Denver, CO, USA, November 12-17, 2017.
 
-If you use DataRaceBench v.1.2.0 or later, please additionally cite the following paper discussing coverage analysis and improvements of the benchmarksuite:
+If you use DataRaceBench v.1.2.0 or later, please additionally cite the following paper discussing coverage analysis and improvements of the benchmark suite:
 
-* Chunhua Liao, Pei-Hung Lin, Markus Schordan and Ian Karlin, A Semantics-Driven Approach to Improving DataRaceBench's OpenMP Standard Coverage, IWOMP 2018: 14th International Workshop on OpenMP, Barcelona, Spain, September 26-28, 2018
+* Chunhua Liao, Pei-Hung Lin, Markus Schordan and Ian Karlin, [A Semantics-Driven Approach to Improving DataRaceBench's OpenMP Standard Coverage](https://www.springerprofessional.de/en/a-semantics-driven-approach-to-improving-dataracebench-s-openmp-/16134302), IWOMP 2018: 14th International Workshop on OpenMP, Barcelona, Spain, September 26-28, 2018

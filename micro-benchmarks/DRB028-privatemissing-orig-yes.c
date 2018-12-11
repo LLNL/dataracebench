@@ -45,7 +45,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 /* 
 tmp should be annotated as private to avoid race condition.
-Data race pair: tmp@65:5 vs. tmp@66:12
+Data race pairs: tmp@65:5 vs. tmp@66:12
+                 tmp@65:5 vs. tmp@65:5
 */
 #include <stdlib.h>
 #include <stdio.h>
@@ -55,7 +56,6 @@ int main(int argc, char* argv[])
   int tmp;
   int len=100;
   int a[100];
-
   for (i=0;i<len;i++)
     a[i]=i;
 

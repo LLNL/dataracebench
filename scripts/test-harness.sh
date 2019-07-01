@@ -45,7 +45,7 @@
 # THE POSSIBILITY OF SUCH DAMAGE.
 
 CSV_HEADER="tool,id,filename,haverace,threads,dataset,races,elapsed-time(seconds),used-mem(KBs),compile-return,runtime-return"
-TESTS=($(grep -l main micro-benchmarks/new/*.cpp micro-benchmarks/new/*.c))
+TESTS=($(grep -l main micro-benchmarks/*.cpp micro-benchmarks/*.c))
 OUTPUT_DIR="results"
 LOG_DIR="$OUTPUT_DIR/log"
 EXEC_DIR="$OUTPUT_DIR/exec"
@@ -68,6 +68,10 @@ INSPECTOR=${INSPECTOR:-"inspxe-cl"}
 ICC_COMPILE_FLAGS="-O0 -fopenmp -std=c99 -qopenmp-offload=host"
 ICPC_COMPILE_FLAGS="-O0 -fopenmp -qopenmp-offload=host"
 
+ROMP_ROOT="/g/g92/lin32/opt/romp"
+ROMP_COMPILE_FLAGS="-g -O0 -L${ROMP_ROOT}/pkgs-src/romp-lib/lib -L${ROMP_ROOT}/pkgs-src/gperftools/gperftools-install/lib -L${ROMP_ROOT}/pkgs-src/llvm-openmp/openmp/llvm-openmp-install/lib -fopenmp -fpermissive -ltcmalloc"
+DYNINST_CLIENT="/g/g92/lin32/opt/romp/pkgs-src/dyninst-client/omp_race_client"
+
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 
 VARLEN_PATTERN='[[:alnum:]]+-var-[[:alnum:]]+\.c'
@@ -81,7 +85,7 @@ usage () {
   echo
   echo "OPTIONS:"
   echo "  -x tool       : Add the specified tool to test set."
-  echo "                  Value can be one of: gnu, clang, intel, helgrind, tsan, archer, inspector, inspector-max-resources."
+  echo "                  Value can be one of: gnu, clang, intel, helgrind, tsan-clang, tsan-gcc, archer, inspector, inspector-max-resources, romp."
   echo "  -n iterations : Run each setting the specified number of iterations."
   echo "  -t threads    : Add the specified number of threads as a testcase."
   echo "  -d size       : Add a specific dataset size to the varlen test suite."
@@ -96,9 +100,11 @@ valid_tool_name () {
     intel) return 0 ;;
     helgrind) return 0 ;;
     archer) return 0 ;;
-    tsan) return 0 ;;
+    tsan-clang) return 0 ;;
+    tsan-gcc) return 0 ;;
     inspector) return 0 ;;
     inspector-max-resources) return 0 ;;
+    romp) return 0;;   
     *) return 1 ;;
   esac
 }
@@ -148,8 +154,8 @@ done
 
 # Set default values
 if [[ ! ${#TOOLS[@]} -gt 0 ]]; then
-  echo "Default tool set will be used: gnu, clang, intel helgrind, tsan, archer, inspector-max-resources."
-  TOOLS=( 'gnu' 'clang' 'intel' 'helgrind' 'tsan' 'archer' 'inspector-max-resources' )
+  echo "Default tool set will be used: gnu, clang, intel helgrind, tsan-clang, tsan-gcc, archer, inspector-max-resources."
+  TOOLS=( 'gnu' 'clang' 'intel' 'helgrind' 'tsan-clang' 'tsan-gcc' 'archer' 'inspector-max-resources' )
 else
   echo "Tools: ${TOOLS[*]}";
 fi
@@ -261,6 +267,7 @@ for tool in "${TOOLS[@]}"; do
  
     # Compile
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
+    rompcompile="$(basename "$test").$tool.compile"
     logname="$(basename "$test").$tool.log"
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
     if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $POLYFLAG"; fi
@@ -273,8 +280,12 @@ for tool in "${TOOLS[@]}"; do
         intel)      icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         helgrind)   g++ $VALGRIND_COMPILE_CPP_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer++ $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        tsan)       clang++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        tsan-clang) clang++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        tsan-gcc)   g++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         inspector)  icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        romp)       clang++ $ROMP_COMPILE_FLAGS $additional_compile_flags $test -o $rompcompile -lm; 
+                        $DYNINST_CLIENT $rompcompile;
+                        mv instrumented_app $exname;;
       esac
     else 
       case "$tool" in 
@@ -283,8 +294,12 @@ for tool in "${TOOLS[@]}"; do
         intel)      icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         helgrind)   gcc $VALGRIND_COMPILE_C_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        tsan)       clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        tsan-clang) clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        tsan-gcc)   gcc $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         inspector)  icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        romp)       clang $ROMP_COMPILE_FLAGS $additional_compile_flags $test -o $rompcompile -lm; 
+                        $DYNINST_CLIENT $rompcompile;
+                        mv instrumented_app $exname;;
       esac
     fi
     compilereturn=$?; 
@@ -323,15 +338,32 @@ for tool in "${TOOLS[@]}"; do
                 races="",
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               helgrind)
-                races=$($MEMCHECK -f "%M" -o "$MEMLOG" $VALGRIND  --tool=helgrind "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'Possible data race') ;;
+#                races=$($MEMCHECK -f "%M" -o "$MEMLOG" $VALGRIND  --tool=helgrind "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'Possible data race') ;;
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" $VALGRIND  --tool=helgrind "./$exname" $size &> tmp.log;
+                check_return_code $?;
+		echo "testname return $testreturn"
+                races=$(grep -ce 'Possible data race' tmp.log) 
+                cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               archer)
                 $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size &> tmp.log;
                 check_return_code $?;
 		echo "testname return $testreturn"
                 races=$(grep -ce 'WARNING: ThreadSanitizer: data race' tmp.log) 
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
-              tsan)
-                races=$($MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
+              tsan-clang)
+#                races=$($MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size &> tmp.log;
+                check_return_code $?;
+		echo "testname return $testreturn"
+                races=$(grep -ce 'WARNING: ThreadSanitizer: data race' tmp.log) 
+                cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
+              tsan-gcc)
+#                races=$($MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size &> tmp.log;
+                check_return_code $?;
+		echo "testname return $testreturn"
+                races=$(grep -ce 'WARNING: ThreadSanitizer: data race' tmp.log) 
+                cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               inspector)
 #                races=$($MEMCHECK -f "%M" -o "$MEMLOG" $INSPECTOR $runtime_flags -- "./$exname" $size  2>&1 | tee -a "$LOG_DIR/$logname" | grep 'Data race' | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/') ;;
 		$TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" $INSPECTOR $runtime_flags -- "./$exname" $size &> tmp.log;
@@ -339,6 +371,13 @@ for tool in "${TOOLS[@]}"; do
                 echo "testname return $testreturn";
                 races=$(grep 'Data race' tmp.log | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/');
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
+              romp)
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size &> tmp.log;
+                check_return_code $?;
+		echo "testname return $testreturn"
+                races=$(grep -ce 'race found!' tmp.log) 
+                cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
+                #races=$("./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'race found!') ;;
             esac
             end=$(date +%s%6N)
             elapsedtime=$(echo "scale=3; ($end-$start)/1000000"|bc)

@@ -22,6 +22,9 @@ which allows to provide a number of different parameters for the
 evaluation. The test harness is used by the evaluation script with
 some pre-defined values.
 
+## Latest tool evaluation results
+[Data race detection tool regression evaluation](https://github.com/LLNL/dataracebench/wiki/Regression-metrics)
+
 ## Microbenchmark property labels (P-Labels)
 
 P-Label | Meaning (microbenchmarks with data races)  | P-Label | Meaning (microbenchmarks without data races)

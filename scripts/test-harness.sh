@@ -68,9 +68,8 @@ INSPECTOR=${INSPECTOR:-"inspxe-cl"}
 ICC_COMPILE_FLAGS="-O0 -fopenmp -std=c99 -qopenmp-offload=host"
 ICPC_COMPILE_FLAGS="-O0 -fopenmp -qopenmp-offload=host"
 
-ROMP_ROOT="/g/g92/lin32/opt/romp"
-ROMP_COMPILE_FLAGS="-g -O0 -L${ROMP_ROOT}/pkgs-src/romp-lib/lib -L${ROMP_ROOT}/pkgs-src/gperftools/gperftools-install/lib -L${ROMP_ROOT}/pkgs-src/llvm-openmp/openmp/llvm-openmp-install/lib -fopenmp -fpermissive -ltcmalloc"
-DYNINST_CLIENT="/g/g92/lin32/opt/romp/pkgs-src/dyninst-client/omp_race_client"
+ROMP_CPP_COMPILE_FLAGS="-g -std=c++11 -fopenmp -lomp"
+ROMP_C_COMPILE_FLAGS="-g -fopenmp -lomp"
 
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 
@@ -267,7 +266,7 @@ for tool in "${TOOLS[@]}"; do
  
     # Compile
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
-    rompcompile="$(basename "$test").$tool.compile"
+    rompexec="$exname.inst"
     logname="$(basename "$test").$tool.log"
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
     if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $POLYFLAG"; fi
@@ -283,9 +282,9 @@ for tool in "${TOOLS[@]}"; do
         tsan-clang) clang++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   g++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         inspector)  icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        romp)       clang++ $ROMP_COMPILE_FLAGS $additional_compile_flags $test -o $rompcompile -lm; 
-                        $DYNINST_CLIENT $rompcompile;
-                        mv instrumented_app $exname;;
+        romp)       g++ $ROMP_CPP_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm;
+                    echo $exname
+                    InstrumentMain --program=$exname;
       esac
     else 
       case "$tool" in 
@@ -297,9 +296,9 @@ for tool in "${TOOLS[@]}"; do
         tsan-clang) clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   gcc $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         inspector)  icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        romp)       clang $ROMP_COMPILE_FLAGS $additional_compile_flags $test -o $rompcompile -lm; 
-                        $DYNINST_CLIENT $rompcompile;
-                        mv instrumented_app $exname;;
+        romp)       gcc $ROMP_C_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm;
+                    echo $exname
+                    InstrumentMain --program=$exname;
       esac
     fi
     compilereturn=$?; 
@@ -372,10 +371,10 @@ for tool in "${TOOLS[@]}"; do
                 races=$(grep 'Data race' tmp.log | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/');
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               romp)
-                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size &> tmp.log;
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" "./$rompexec" $size &> tmp.log;
                 check_return_code $?;
 		echo "testname return $testreturn"
-                races=$(grep -ce 'race found!' tmp.log) 
+                races=$(grep -ce 'data race found:' tmp.log) 
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
                 #races=$("./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'race found!') ;;
             esac

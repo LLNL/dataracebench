@@ -134,3 +134,7 @@ fi
 if [[ "$OPTION" == "--inspector" ]]; then
     scripts/test-harness.sh -x inspector-max-resources
 fi
+
+if [[ "$OPTION" == "--romp" ]]; then
+   scripts/test-harness.sh -x romp
+fi

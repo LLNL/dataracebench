@@ -22,6 +22,24 @@ which allows to provide a number of different parameters for the
 evaluation. The test harness is used by the evaluation script with
 some pre-defined values.
 
+## Quick Start
+
+```
+./check-data-races.sh 
+
+Usage: ./check-data-races.sh [--run] [--help]
+
+--help     : this option
+--small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector.
+--run      : compile and run all benchmarks with gcc (no evaluation)
+--run-intel: compile and run all benchmarks with Intel compilers (no evaluation)
+--helgrind : compile and test all benchmarks with Helgrind
+--tsan     : compile and test all benchmarks with clang ThreadSanitizer
+--archer   : compile and test all benchmarks with Archer
+--inspector: compile and test all benchmarks with Intel Inspector
+
+```
+
 ## Latest tool evaluation results
 [Data race detection tool regression evaluation](https://github.com/LLNL/dataracebench/wiki/Regression-metrics)
 

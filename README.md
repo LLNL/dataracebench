@@ -67,11 +67,11 @@ If you are referring to DataRaceBench in a publication, please cite the followin
 
 * Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, Ian Karlin.
 [DataRaceBench: A Benchmark Suite for Systematic Evaluation of Data Race Detection Tools (best paper finalist)](https://dl.acm.org/citation.cfm?doid=3126908.3126958).
-Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, SC 2017, pp. 11:1-11:14, ISBN 978-1-4503-5114-0, Denver, CO, USA, November 12-17, 2017.
+Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, SC 2017, pp. 11:1-11:14, ISBN 978-1-4503-5114-0, Denver, CO, USA, November 12-17, 2017. [pdf](https://github.com/LLNL/dataracebench/blob/master/docs/DataRaceBench-SC17.pdf)
 
 If you use DataRaceBench v.1.2.0 or later, please additionally cite the following paper discussing coverage analysis and improvements of the benchmark suite:
 
-* Chunhua Liao, Pei-Hung Lin, Markus Schordan and Ian Karlin, [A Semantics-Driven Approach to Improving DataRaceBench's OpenMP Standard Coverage](https://www.springerprofessional.de/en/a-semantics-driven-approach-to-improving-dataracebench-s-openmp-/16134302), IWOMP 2018: 14th International Workshop on OpenMP, Barcelona, Spain, September 26-28, 2018
+* Chunhua Liao, Pei-Hung Lin, Markus Schordan and Ian Karlin, [A Semantics-Driven Approach to Improving DataRaceBench's OpenMP Standard Coverage](https://www.springerprofessional.de/en/a-semantics-driven-approach-to-improving-dataracebench-s-openmp-/16134302), IWOMP 2018: 14th International Workshop on OpenMP, Barcelona, Spain, September 26-28, 2018, [pdf](https://github.com/LLNL/dataracebench/blob/master/docs/Semantics-DrivenImprovingCoverage-IWOMP2018.pdf)
 
 Other papers
 * Pei-Hung Lin, Chunhua Liao, Markus Schordan, Ian Karlin. [Runtime and Memory Evaluation of Data Race Detection Tools](https://link.springer.com/chapter/10.1007/978-3-030-03421-4_13). ISoLA (2) 2018: 179-196.

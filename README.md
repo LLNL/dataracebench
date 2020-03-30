@@ -75,5 +75,4 @@ If you use DataRaceBench v.1.2.0 or later, please additionally cite the followin
 
 Other papers
 * Pei-Hung Lin, Chunhua Liao, Markus Schordan, Ian Karlin. [Runtime and Memory Evaluation of Data Race Detection Tools](https://link.springer.com/chapter/10.1007/978-3-030-03421-4_13). ISoLA (2) 2018: 179-196.
-* Pei-Hung Lin, Chunhua Liao, Markus Schordan, Ian Karlin. Exploring Regression of Data Race Detection Tools Using DataRaceBench. To
-appear in Proceedings of the Third International Workshop on Software Correctness for HPC Applications (CORRECTNESS@SC 2019).
+* Pei-Hung Lin, Chunhua Liao, Markus Schordan, Ian Karlin. [Exploring Regression of Data Race Detection Tools Using DataRaceBench](https://ieeexplore.ieee.org/abstract/document/8951036). 2019 IEEE/ACM 3rd International Workshop on Software Correctness for HPC Applications (Correctness), Denver, CO, USA, 2019, pp. 11-18.

@@ -40,7 +40,7 @@ Usage: ./check-data-races.sh [--run] [--help]
 
 ```
 
-## Latest tool evaluation results
+## Latest Tool Evaluation Results
 [Data race detection tool regression evaluation](https://github.com/LLNL/dataracebench/wiki/Regression-metrics)
 
 ## List of Benchmarks
@@ -61,7 +61,7 @@ LICENSE.OSU.txt.
 
 `LLNL-CODE-732144`
 
-## How to cite DataRaceBench in a publication
+## How to Cite DataRaceBench in a Publication
 
 If you are referring to DataRaceBench in a publication, please cite the following paper:
 

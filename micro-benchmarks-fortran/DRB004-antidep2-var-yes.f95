@@ -1,3 +1,10 @@
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+!!! Copyright (c) 2017-20, Lawrence Livermore National Security, LLC
+!!! and DataRaceBench project contributors. See the DataRaceBench/COPYRIGHT file for details.
+!!!
+!!! SPDX-License-Identifier: (BSD-3-Clause)
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+
 !Two nested loops with loop-carried anti-dependence on the outer level.
 !This is a variable-length array version in F95.
 !Data race pair: a[i][j]@48:13 vs. a[i+1][j]@48:31

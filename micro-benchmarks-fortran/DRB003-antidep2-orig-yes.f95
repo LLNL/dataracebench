@@ -1,3 +1,10 @@
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+!!! Copyright (c) 2017-20, Lawrence Livermore National Security, LLC
+!!! and DataRaceBench project contributors. See the DataRaceBench/COPYRIGHT file for details.
+!!!
+!!! SPDX-License-Identifier: (BSD-3-Clause)
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+
 !A two-level loop nest with loop carried anti-dependence on the outer level.
 !Data race pair: a[i][j]@22:13 vs. a[i+1][j]@22:31
 

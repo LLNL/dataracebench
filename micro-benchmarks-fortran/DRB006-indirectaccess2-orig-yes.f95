@@ -1,3 +1,10 @@
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+!!! Copyright (c) 2017-20, Lawrence Livermore National Security, LLC
+!!! and DataRaceBench project contributors. See the DataRaceBench/COPYRIGHT file for details.
+!!!
+!!! SPDX-License-Identifier: (BSD-3-Clause)
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+
 !Two pointers have a distance of 12 (p1 - p2 = 12).
 !They are used as base addresses for indirect array accesses using an index set (another array).
 !
@@ -9,10 +16,10 @@
 !It is possible that two dependent iterations will be scheduled
 !within a same chunk to a same thread. So there is no runtime data races.
 !
-!When N is 180, two iteraions with N=0 and N= 5 have loop carried dependences.
+!When N is 180, two iterations with N=0 and N= 5 have loop carried dependences.
 !For static even scheduling, we must have at least 36 threads (180/36=5 iterations)
 !so iteration 0 and 5 will be scheduled to two different threads.
-!Data race pair: xa1[idx]@71:5 vs. xa2[idx]@73:5
+!Data race pair: base[idx]@80 vs. base[idx]@81
 
 
 module DRB006
@@ -29,14 +36,17 @@ program DRB006_indirectaccess2_orig_yes
     use DRB006
     implicit none
 
-    integer :: i, idx
-    real, pointer :: base, xa1, xa2
-    allocate(base)
-    allocate(xa1)
-    allocate(xa2)
+    integer :: i, idx1, idx2
+    integer, parameter :: dp = kind(1.0d0)
+    real(dp), dimension(:), pointer :: xa1, xa2
+    real(dp), dimension(2025), target :: base
 
-    xa1 = base
-    xa2 = base+12
+    allocate (xa1(2025))
+    allocate (xa2(2025))
+
+    xa1 => base(1:2025)
+    xa2 => base(1:2025)
+
     n=180
 
     indexSet = (/ 521, 523, 525, 527, 529, 531, 547, 549, &
@@ -60,20 +70,18 @@ program DRB006_indirectaccess2_orig_yes
     1987, 2003, 2005, 2007, 2009, 2011, 2013 /)
 
     do i = 521, 2025
-        base = base+i
-        base = 0.5*i
+        base(i) = 0.5*i
     end do
 
     !$omp parallel do
     do i = 1, n
-        idx = indexSet(i)
-        xa1 = xa1+idx
-        xa1 = xa1+1.0+i
-        xa2 = xa2+idx
-        xa2 = xa2+3.0+i
+        idx1 = indexSet(i)
+        idx2 = indexSet(i)+12
+        base(idx1) = base(idx1)+1.0
+        base(idx2) = base(idx2)+3.0
     end do
     !$omp end parallel do
 
-    print*,'xa1(999) =',xa1+999,' xa2(1285) =',xa2+1285
+    print*,'xa1(999) =',base(999),' xa2(1285) =',base(1285)
 
 end program

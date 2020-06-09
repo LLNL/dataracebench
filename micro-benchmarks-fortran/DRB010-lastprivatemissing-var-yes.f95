@@ -1,6 +1,13 @@
-!This loop has loop-carried output-dependence due to x=... at line 37.
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+!!! Copyright (c) 2017-20, Lawrence Livermore National Security, LLC
+!!! and DataRaceBench project contributors. See the DataRaceBench/COPYRIGHT file for details.
+!!!
+!!! SPDX-License-Identifier: (BSD-3-Clause)
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+
+!This loop has loop-carried output-dependence due to x=... at line 44.
 !The problem can be solved by using lastprivate(x) .
-!Data race pair: x@37:5 vs. x@37:5
+!Data race pair: x@44:9 vs. x@44:9
 
 program DRB010_lastprivatemissing_var_yes
     use omp_lib

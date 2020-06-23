@@ -22,6 +22,7 @@
 #include "polybench/adi.h"
 
       program adi
+      use omp_lib
       implicit none
 
       POLYBENCH_2D_ARRAY_DECL(x,DATA_TYPE,500, 500)

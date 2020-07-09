@@ -22,16 +22,16 @@ void foo(){
 	int x = 0, y = 2;
 	
 	#pragma omp task depend(inout: x) shared(x)
-	x++; // 1st child task
+	x++;                                                                  // 1st child task
 	
 	#pragma omp task depend(in: x) depend(inout: y) shared(x, y)
-	y -= x;		//2nd child task
+	y -= x;		                                                            //2nd child task
 
-	#pragma omp taskwait depend(in: x) // 1st taskwait
+	#pragma omp taskwait depend(in: x)                                    // 1st taskwait
 
 	printf("x=%d\n",x);
 	
-	#pragma omp taskwait		// 2nd taskwait
+	#pragma omp taskwait		                                              // 2nd taskwait
 		
 	printf("y=%d\n",y);
 }

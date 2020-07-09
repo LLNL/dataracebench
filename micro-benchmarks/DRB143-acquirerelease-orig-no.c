@@ -8,7 +8,7 @@
  */
 
 /* The explicit flush directive that provides at line:29 provides release semantics is needed
- * here to complete the synchronization. 
+ * here to complete the synchronization. No data race. 
  * */
 
 

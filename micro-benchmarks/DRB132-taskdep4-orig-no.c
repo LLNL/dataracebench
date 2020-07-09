@@ -12,7 +12,6 @@
  * */
 
 
-
 #include <stdio.h>
 #include <omp.h>
 
@@ -26,7 +25,7 @@ void foo(){
 	#pragma omp task shared(y)
 	y--; 																								// 2nd child task
 
-	#pragma omp taskwait depend(in: x) // 1st taskwait
+	#pragma omp taskwait depend(in: x)                  // 1st taskwait
 	
 	printf("x=%d\n",x);
 	

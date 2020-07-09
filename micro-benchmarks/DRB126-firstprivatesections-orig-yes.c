@@ -12,7 +12,7 @@
  * The section construct modifies the value of section_count which breaks the independence of the 
  * section constructs. If the same thread executes both the section one will print 1 and the other
  * will print 2. The order is undpecified. 
- * There is data race at line:29 and line:34. It may print 1 or 2. 
+ * There is data race at line:30 and line:35. It may print 1 or 2. 
  */
 
 #include <omp.h>

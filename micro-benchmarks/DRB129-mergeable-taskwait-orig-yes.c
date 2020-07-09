@@ -29,4 +29,5 @@ int main(){
 	#pragma omp taskwait
 	
 	printf("%d\n",x);
+	return 0;
 }

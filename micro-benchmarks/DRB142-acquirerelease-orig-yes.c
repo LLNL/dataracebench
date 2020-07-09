@@ -14,7 +14,7 @@
  * on a compatible construct (and vice-versa) that internally makes use of the same synchronization 
  * variable.
  *
- * Implicit flush msut be used after critical construct:line:33 and before line:34 to avoid data race. 
+ * Implicit flush msut be used after critical construct, after line:33 and before line:34 to avoid data race. 
  * */
 
 

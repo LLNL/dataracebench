@@ -7,11 +7,11 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 
-i/* 
+/* 
  * There is no completion restraint on the second child task. Hence, immediately after the first 
  * taskwait it is unsafe to access the y variable since the second child task may still be 
  * executing.
- * Data Race at Line:33
+ * Data Race at Line:28
 */
 
 #include <stdio.h>
@@ -27,7 +27,7 @@ void foo(){
 	#pragma omp task shared(y)
 	y--; 																								// 2nd child task
 
-	#pragma omp taskwait depend(in: x) // 1st taskwait
+	#pragma omp taskwait depend(in: x)                  // 1st taskwait
 	
 	printf("x=%d\n",x);
 	printf("y=%d\n",y);

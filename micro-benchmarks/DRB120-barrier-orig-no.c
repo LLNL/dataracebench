@@ -17,10 +17,10 @@ Barrier construct at line:27 ensures that there is no data race.
 
 int main(int argc, char* argv[])
 {
-    int var = 0;
+  int var = 0;
 
-    #pragma omp parallel shared(var)
-    {
+  #pragma omp parallel shared(var)
+  {
 		#pragma omp single
 		var++;
 
@@ -28,9 +28,9 @@ int main(int argc, char* argv[])
 
 		#pragma omp single
 		var++;
-    }
+  }
 
 	if(var != 2) printf("%d\n",var);
-    int error = (var != 2);
-    return error;
+  int error = (var != 2);
+  return error;
 }

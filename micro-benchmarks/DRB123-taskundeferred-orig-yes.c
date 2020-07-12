@@ -14,7 +14,7 @@ task region, for which execution cannot be resumed until execution of the struct
 that is associated with the generated task is completed. The use of a variable in an if
 clause expression of a task construct causes an implicit reference.
 
-This causes data race at line:33 due to if clause at line:31.
+Data Race pairs var@33:7 and var@33:7 due to if clause at 31:34.
 */
 
 #include <omp.h>

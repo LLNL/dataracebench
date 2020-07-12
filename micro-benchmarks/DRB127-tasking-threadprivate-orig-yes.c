@@ -8,10 +8,10 @@
  */
 
 /*
- * A task switch may occur at a task scheduling point. A single thread may execute both of the 
- * task regions that modify tp. The parts of these task regions in which tp is modified may be 
+ * A task switch may occur at a task scheduling point. A single thread may execute both of the
+ * task regions that modify tp. The parts of these task regions in which tp is modified may be
  * executed in any order so the resulting value of var can be either 1 or 2.
- * Data Race at line:34
+ * Data Race pair var@34:7 and var@34:7
  */
 
 
@@ -23,20 +23,19 @@ int tp;
 int var;
 
 int main(){
-	#pragma omp task
+  #pragma omp task
   {
-		#pragma omp task
-	  {
-		  tp = 1;
-			#pragma omp task
-			{
-			}
-			var = tp;
-		}
-		tp=2;
-	}
+    #pragma omp task
+    {
+      tp = 1;
+      #pragma omp task
+      {
+      }
+      var = tp;
+    }
+    tp=2;
+  }
 
-	if(var==2) printf("%d\n",var);
-	
-	return 0;
+  if(var==2) printf("%d\n",var);
+  return 0;
 }

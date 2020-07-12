@@ -21,16 +21,16 @@ int main(int argc, char* argv[])
 
   #pragma omp parallel shared(var)
   {
-		#pragma omp single
-		var++;
+    #pragma omp single
+    var++;
 
-		#pragma omp barrier
+    #pragma omp barrier
 
-		#pragma omp single
-		var++;
+    #pragma omp single
+    var++;
   }
 
-	if(var != 2) printf("%d\n",var);
+  if(var != 2) printf("%d\n",var);
   int error = (var != 2);
   return error;
 }

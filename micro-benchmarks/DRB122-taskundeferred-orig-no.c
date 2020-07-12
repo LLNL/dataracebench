@@ -9,7 +9,7 @@
 
 /*
 No data race. The data environment of the task is created according to the
-data-sharing attribute clauses, here at line:27 it is var. Hence, var is
+data-sharing attribute clauses, here at line 27 it is var. Hence, var is
 modified 10 times, resulting to the value 10.
 */
 

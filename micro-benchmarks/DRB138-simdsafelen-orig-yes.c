@@ -7,25 +7,24 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 
-/* The safelen(2) clause at line:24 guarantees that the vector code is safe for vectors up to 2 (inclusive).
- * In the loop, m can be 2 or more for the correct execution. If the value of m is less than 2, 
- * the behavior is undefined. Here, it is undefined at line:26, b[i] assignment.
+/* The safelen(2) clause at safelen(2)@24:20 guarantees that the vector code is safe for vectors
+ * up to 2 (inclusive). In the loop, m@25:12 can be 2 or more for the correct execution. If the
+ * value of m is less than 2, the behavior is undefined.
+ * Data Race Pair: b[i]@26:5 and b[i-m]@26:12.
  * */
-
 
 #include <stdio.h>
 #include <omp.h>
 
 int main(){
 
-	int i, m=1, n=4;
-	int b[4] = {};
-	
-	#pragma omp simd safelen(2)
-	for (i = m; i<n; i++)
-		b[i] = b[i-m] - 1.0f;
+  int i, m=1, n=4;
+  int b[4] = {};
 
+  #pragma omp simd safelen(2)
+  for (i = m; i<n; i++)
+    b[i] = b[i-m] - 1.0f;
 
-	printf("Expected: -1; Real: %d\n",b[3]);
-	return 0;
+  printf("Expected: -1; Real: %d\n",b[3]);
+  return 0;
 }

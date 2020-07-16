@@ -8,47 +8,37 @@
 */
 
 /*
-Nowait clause at line 30:58 will cause no implicit barrier after the tasks completion.
-Data Race Pairs, x[i]@36:9 and x[i]@36:20; x[i]@40:9 and x[i]@40:16
+Concurrent access of var@33:7 without acquiring locks causes atomicity violation. Data race present.
+Data Race Pairs, var@33:7 and var@33:7.
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <omp.h>
+#define N 100
 #define C 64
 
-float a;
-float x[C];
-float y[C];
-
 int main(){
+
+  int var[C];
+
   for(int i=0; i<C; i++){
-    a=5;
-    x[i]=0;
-    y[i]=3;
+    var[i]=0;
   }
 
-  #pragma omp target map(to:y[0:C],a) map(tofrom:x[0:C]) nowait device(0)
-  {
+  #pragma omp target map(tofrom:var[0:C]) device(0)
+  #pragma omp teams distribute parallel for
+  for (int i=0; i<N; i++){
+    #pragma omp simd
     for(int i=0; i<C; i++){
-      #pragma omp task depend(inout:x[i])
-      {
-        x[i] = a * x[i];
-      }
-      #pragma omp task depend(inout:x[i])
-      {
-        x[i] = x[i] + y[i];
-      }
+      var[i]++;
     }
   }
 
   for(int i=0; i<C; i++){
-    if(x[i]!=3){
-      printf("Data Race Detected\n");
-      return 0;
+    if(var[i]!=100){
+      printf("%d\n",var[i]);
     }
   }
 
-  #pragma omp taskwait
   return 0;
 }

@@ -27,7 +27,12 @@ void foo(){
   #pragma omp task depend(in: x) depend(inout: y) shared(x, y)
   y = y-x;                                                         //2nd child task
 
-  #pragma omp taskwait depend(in: x)                               // 1st taskwait
+#if _OPENMP < 201811
+  #pragma omp task depend(in: x) if(0)                // 1st taskwait
+  {}
+#else
+  #pragma omp taskwait depend(in: x)                  // 1st taskwait
+#endif
 
   printf("x=%d\n",x);
   printf("y=%d\n",y);

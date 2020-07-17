@@ -31,7 +31,7 @@ int main(){
     var++;
 
     #pragma omp critical(sublock)
-    var = var-2;
+    var -= 2;
   }
 
   printf("%d\n",var);

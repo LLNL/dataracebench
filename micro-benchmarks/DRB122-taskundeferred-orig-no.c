@@ -24,13 +24,12 @@ int main(int argc, char* argv[])
 
   #pragma omp parallel for shared(var) schedule(static,1)
   for (i = 0; i < 10; i++) {
-    #pragma omp task shared(var) if(1)
+    #pragma omp task shared(var) //if(1)
     {
       var++;
     }
   }
 
-  int error = (var != 10);
-  fprintf(stderr, "DONE %d \n",var);
-  return error;
+  printf("%d \n",var);
+  return 0;
 }

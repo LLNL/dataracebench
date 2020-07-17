@@ -10,7 +10,7 @@
 
 /* The assignment to a@25:7 is  not synchronized with the update of a@29:11 as a result of the
  * reduction computation in the for loop.
- * Data Race pair: a@29:7 and a@29:11
+ * Data Race pair: a@25:5 and a@27:33
  * */
 
 #include <stdio.h>

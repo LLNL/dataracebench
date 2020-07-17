@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
   int var = 0;
   int i;
 
-  #pragma omp parallel for shared(var) schedule(static,1)
+  #pragma omp parallel sections shared(var)
   for (i = 0; i < 10; i++) {
     #pragma omp task shared(var)
     {

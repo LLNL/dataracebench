@@ -8,13 +8,9 @@
 */
 
 /*
-When an if clause is present on a task construct, and the if clause expression evaluates to
-false, an undeferred task is generated, and the encountering thread must suspend the current
-task region, for which execution cannot be resumed until execution of the structured block
-that is associated with the generated task is completed. The use of a variable in an if
-clause expression of a task construct causes an implicit reference.
+A single thread will spawn all the tasks. Add if(0) to avoid the data race, undeferring the tasks.
 
-Data Race pairs var@33:7 and var@33:7 due to if clause at 31:34.
+Data Race pairs var@30:9 and var@30:9.
 */
 
 #include <omp.h>
@@ -26,15 +22,16 @@ int main(int argc, char* argv[])
   int var = 0;
   int i;
 
-  #pragma omp parallel for shared(var) schedule(static,1)
-  for (i = 0; i < 10; i++) {
-    #pragma omp task shared(var) if(0)
-    {
-      var++;
+  #pragma omp parallel sections
+  {
+    for (i = 0; i < 10; i++) {
+      #pragma omp task shared(var)
+      {
+        var++;
+      }
     }
   }
 
-  int error = (var != 10);
-  fprintf(stderr, "DONE %d \n",var);
-  return error;
+  if (var!=10) printf("%d\n",var);
+  return 0;
 }

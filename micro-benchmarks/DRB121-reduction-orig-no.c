@@ -23,9 +23,10 @@ int main(int argc, char* argv[])
   int sum1 = 0;
   int sum2 = 0;
 
+  res = omp_get_max_threads();
+
   #pragma omp parallel reduction(+: var)
   {
-    res = omp_get_num_threads();
     #pragma omp for schedule(static) reduction(+: sum1)
     for (i=0; i<5; i++)
     sum1+=i;
@@ -37,6 +38,6 @@ int main(int argc, char* argv[])
   }
 
   int error = (var != 20*res);
-  printf("%d %d\n",var,20*res);
+  if (error) printf("%d %d\n",var,20*res);
   return error;
 }

@@ -11,7 +11,7 @@
  * by x with the in dependence type in the depend clause of the second task. Generating task
  * at the first taskwait only waits for the first child task to complete. The second taskwait
  * guarantees completion of the second task before y is accessed. If we access y before the
- * second taskwait, there is a race condition at line 33. Data Race Pair, y@33:19 and y@33:19
+ * second taskwait, there is a race condition at line 34. Data Race Pair, y@34:19 and y@34:19
  * */
 
 
@@ -27,12 +27,13 @@ void foo(){
   #pragma omp task depend(in: x) depend(inout: y) shared(x, y)
   y = y-x;                                                         //2nd child task
 
-  #pragma omp taskwait depend(in: x)                               // 1st taskwait
+  #pragma omp task depend(in: x) if(0)                             // 1st taskwait
+  {}
 
   printf("x=%d\n",x);
   printf("y=%d\n",y);
 
-  #pragma omp taskwait		                                       // 2nd taskwait
+  #pragma omp taskwait		                                         // 2nd taskwait
 
 }
 
@@ -43,3 +44,4 @@ int main(){
 
   return 0;
 }
+

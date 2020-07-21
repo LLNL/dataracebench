@@ -5,25 +5,33 @@
 !!!
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
-*/
+ */
 
 /*
-At line 21, the teams distribute parallel for directive with the reduction clause will avoid
-intra-region data race. No data race pair.
+Concurrent access on same variable var@29 and var@32 leads to the race condition if two different
+locks are used. This is the reason here we have used the critical directive to ensure that addition
+and subtraction are not interleaved. No data race pairs.
 */
 
+#include <omp.h>
 #include <stdio.h>
+
 #define N 100
 
+int var = 0;
+
 int main(){
-  int var = 0;
 
   #pragma omp target map(tofrom:var) device(0)
-  #pragma omp teams distribute parallel for reduction(+:var)
-  for (int i=0; i<N; i++){
+  #pragma omp teams distribute parallel for
+  for(int i=0; i<N; i++){
+    #pragma omp atomic
     var++;
+
+    #pragma omp atomic
+    var = var - 2;
   }
 
-  printf("%d\n ",var);
+  printf("%d\n",var);
   return 0;
 }

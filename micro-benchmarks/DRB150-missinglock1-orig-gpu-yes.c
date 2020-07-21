@@ -8,27 +8,31 @@
  */
 
 /*
-The condition check at line 26:8 is critical and increment at line number 28 is atomic for the variable
-var@28:7. Therefore, there are no data race pairs.
+The distribute parallel for directive at line 27 will execute loop using multiple teams.
+The loop iterations are distributed across the teams in chunks in round robin fashion.
+The omp lock is only guaranteed for a contention group, i.e, within a team. Data Race Pair, var@30:5 and var@30:5.
 */
 
-#include <stdio.h>
-#include <omp.h>
-#define N 100
 
-int var = 0;
+#include <omp.h>
+#include <stdio.h>
 
 int main(){
+
+  omp_lock_t lck;
+  int var=0,i;
+  omp_init_lock(&lck);
+
   #pragma omp target map(tofrom:var) device(0)
   #pragma omp teams distribute parallel for
-  for (int i=0; i<N*2; i++){
-    #pragma omp critical
-    if(var<N){
-      #pragma omp atomic
-      var++;
-    }
+  for (int i=0; i<100; i++){
+    omp_set_lock(&lck);
+    var++;
+    omp_unset_lock(&lck);
   }
-  printf("%d\n ",var);
 
+  omp_destroy_lock(&lck);
+
+  printf("%d\n",var);
   return 0;
 }

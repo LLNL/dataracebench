@@ -5,34 +5,36 @@
 !!!
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
- */
-
-/*
-The distribute parallel for directive at line 27 will execute loop using multiple teams.
-The loop iterations are distributed across the teams in chunks in round robin fashion.
-The omp lock ensures that there is no data race pair.
 */
 
+/* 
+Reduction clause at line 27:39 will ensure there is no data race in var@31:7. No Dadta Race. 
+*/
 
-#include <omp.h>
 #include <stdio.h>
+#define N 20
+#define C 8
 
 int main(){
+  int var[C];
 
-  omp_lock_t lck;
-  int var=0,i;
-  omp_init_lock(&lck);
-
-  #pragma omp target map(tofrom:var) device(0)
-  #pragma omp teams distribute parallel for
-  for (int i=0; i<100; i++){
-    omp_set_lock(&lck);
-    var++;
-    omp_unset_lock(&lck);
+  for(int i=0; i<C; i++){
+    var[i] = 0;
   }
 
-  omp_destroy_lock(&lck);
+  #pragma omp target map(tofrom:var) device(0)
+  #pragma omp teams num_teams(1) thread_limit(1048) 
+  #pragma omp distribute parallel for reduction(+:var)
+  for (int i=0; i<N; i++){
+    #pragma omp simd
+    for(int i=0; i<C; i++){
+      var[i]++;
+    }
+  }
 
-  printf("%d\n",var);
+  for(int i=0; i<C; i++){
+    if(var[i]!=N) printf("%d\n ",var[i]);
+  }
+
   return 0;
 }

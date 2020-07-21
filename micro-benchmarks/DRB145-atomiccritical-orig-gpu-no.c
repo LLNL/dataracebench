@@ -5,30 +5,26 @@
 !!!
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
-*/
+ */
 
 /*
-Concurrent accessing var@27:5 may cause atomicity violation and inter region data race.
-Lock avoids this. No Data Race Pair.
+The increment operation at line@27:7 is team specific as each team work on their individual var.
+No Data Race Pair
 */
 
 #include <stdio.h>
 #include <omp.h>
+#define N 100
+
+int var = 0;
 
 int main(){
-  omp_lock_t lck;
-  int var = 0;
-  omp_init_lock(&lck);
-
   #pragma omp target map(tofrom:var) device(0)
-  #pragma omp teams distribute
-  for (int i=0; i<100; i++){
-    omp_set_lock(&lck);
-    var++;
-    omp_unset_lock(&lck);
+  #pragma omp teams distribute parallel for reduction(+:var)
+  for (int i=0; i<N; i++){
+      var++;
   }
 
-  omp_destroy_lock(&lck);
-  printf("%d\n ",var);
+  printf("%d\n",var);
   return 0;
 }

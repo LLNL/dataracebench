@@ -8,7 +8,7 @@
 */
 
 /*
-Concurrent access of var@35:7 enclosed in critical section ensures no atomicity violation. No data race present.
+Concurrent access of var@31:7 has no atomicity violation. No data race present.
 */
 
 #include <stdio.h>
@@ -17,23 +17,18 @@ Concurrent access of var@35:7 enclosed in critical section ensures no atomicity 
 #define C 64
 
 int main(){
-  omp_lock_t lck;
   int var[C];
-  omp_init_lock(&lck);
 
   for(int i=0; i<C; i++){
     var[i]=0;
   }
 
   #pragma omp target map(tofrom:var[0:C]) device(0)
-  #pragma omp teams distribute parallel for
+  #pragma omp teams distribute parallel for reduction(+:var) 
   for (int i=0; i<N; i++){
-    #pragma omp critical
     #pragma omp simd
     for(int i=0; i<C; i++){
-      omp_set_lock(&lck);
       var[i]++;
-      omp_unset_lock(&lck);
     }
   }
 

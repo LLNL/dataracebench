@@ -30,8 +30,6 @@ void foo(){
   #pragma omp task depend(in: x) if(0)                // 1st taskwait
   {}
 
-  #pragma omp taskwait depend(in: x)                  // 1st taskwait
-
   printf("x=%d\n",x);
   printf("y=%d\n",y);
   #pragma omp taskwait                                // 2nd taskwait

@@ -9,7 +9,7 @@
 !Application Programming Interface Examples Version 4.5.0 .
 !
 !We privatize variable i to fix data races in the original example.
-!Once i is privatized, flush is no longer needed.
+!Once i is privatized, flush is no longer needed. No data race pairs.
 
 module DRB076
     use omp_lib

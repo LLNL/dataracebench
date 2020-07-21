@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Classic i-k-j matrix multiplication
+!Classic i-k-j matrix multiplication. No data race pairs.
 
 
 program DRB060_matrixmultiply_orig_no

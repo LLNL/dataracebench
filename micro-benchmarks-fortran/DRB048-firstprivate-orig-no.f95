@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Example use of firstprivate()
+!Example use of firstprivate(). No data race pairs.
 
 module DRB048
     use omp_lib

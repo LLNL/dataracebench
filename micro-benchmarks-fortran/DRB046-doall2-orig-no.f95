@@ -8,7 +8,7 @@
 !Two-dimensional array computation:
 !Only one loop is associated with the omp for construct.
 !The inner loop's loop iteration variable needs an explicit private() clause,
-!otherwise it will be shared by default.
+!otherwise it will be shared by default. No data race pairs.
 
 program DRB046_doall2_orig_no
     use omp_lib

@@ -9,7 +9,7 @@
 !ordered(2) is used to associate two loops with omp for.
 !The corresponding loop iteration variables are private.
 !
-!ordered(n) is an OpenMP 4.5 addition.
+!ordered(n) is an OpenMP 4.5 addition. No data race pairs.
 
 
 module DRB094

@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Matrix-vector multiplication: outer-level loop parallelization
+!Matrix-vector multiplication: outer-level loop parallelization. No data race pairs.
 
 program DRB061_matrixvector1_orig_no
     use omp_lib

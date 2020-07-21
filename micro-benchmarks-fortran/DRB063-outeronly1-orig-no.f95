@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Only the outmost loop can be parallelized.
+!Only the outmost loop can be parallelized. No data race pairs.
 
 program DRB063_outeronly1_orig_no
     use omp_lib

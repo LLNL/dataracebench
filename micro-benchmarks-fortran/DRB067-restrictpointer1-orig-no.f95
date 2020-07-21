@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Array initialization using assignments.
+!Array initialization using assignments. No data race pairs.
 
 module DRB067
     use omp_lib

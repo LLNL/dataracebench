@@ -8,7 +8,7 @@
 !This example is based on one code snippet extracted from a paper:
 !Ma etc. Symbolic Analysis of Concurrency Errors in OpenMP Programs, ICPP 2013
 !
-!Explicit barrier to counteract nowait
+!Explicit barrier to counteract nowait. No data race pairs.
 
 
 program DRB104_nowait_barrier_orig_no

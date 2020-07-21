@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Example with loop-carried data dependence at the outer level loop.
-!The inner level loop can be parallelized.
+!The inner level loop can be parallelized. No data race pairs.
 
 program DRB054_inneronly2_orig_no
     use omp_lib

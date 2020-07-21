@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!omp_get_thread_num() is used to ensure serial semantics.
+!omp_get_thread_num() is used to ensure serial semantics. No data race pairs.
 
 program DRB051_getthreadnum_orig_no
     use omp_lib

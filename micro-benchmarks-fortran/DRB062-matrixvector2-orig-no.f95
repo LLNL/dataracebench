@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Matrix-vector multiplication: inner level parallelization.
+!Matrix-vector multiplication: inner level parallelization. No data race pairs.
 
 program DRB062_matrixvector2_orig_no
     use omp_lib

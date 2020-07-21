@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Two tasks with a lock synchronization to ensure execution order.
+!Two tasks with a lock synchronization to ensure execution order. No data race pairs.
 
 program DRB069_sectionslock1_orig_no
     use omp_lib

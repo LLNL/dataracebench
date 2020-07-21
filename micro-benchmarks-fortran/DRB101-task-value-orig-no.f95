@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 ! * Cover an implicitly determined rule: In a task generating construct,
-! * a variable without applicable rules is firstprivate.
+! * a variable without applicable rules is firstprivate. No data race pairs.
 
 
 module DRB101

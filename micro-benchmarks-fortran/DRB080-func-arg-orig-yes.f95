@@ -6,6 +6,8 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 ! argument pass-by-reference
+! its data-sharing attribute is the same as its actual argument's. i and q are shared.
+! Data race pair: q@15:5 vs. q@15:9
 
 subroutine f1(q)
     implicit none
@@ -25,6 +27,5 @@ program DRB080_func_arg_orig_yes
     call f1(i)
     !$omp end parallel
 
-    print 100, i
-    100 format ('i =',i3)
+    print*,"i = ",i
 end program

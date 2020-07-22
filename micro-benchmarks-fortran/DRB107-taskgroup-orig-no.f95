@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !* This is a program based on a test contributed by Yizi Gu@Rice Univ.
-!* Use taskgroup to synchronize two tasks:
+!* Use taskgroup to synchronize two tasks. No data race pairs.
 
 program DRB107_taskgroup_orig_no
     use omp_lib

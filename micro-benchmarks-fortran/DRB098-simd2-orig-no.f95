@@ -7,7 +7,7 @@
 
 !Two-dimension array computation with a vetorization directive
 !collapse(2) makes simd associate with 2 loops.
-!Loop iteration variables should be predetermined as lastprivate.
+!Loop iteration variables should be predetermined as lastprivate. No data race pairs.
 
 program DRB098_simd2_orig_no
     use omp_lib

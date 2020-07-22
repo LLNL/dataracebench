@@ -14,6 +14,8 @@
 !
 !*****************************************************************************
 
+!!No data race pairs.
+
 ! Include polybench common header.
 #include "polybench/fpolybench.h"
 

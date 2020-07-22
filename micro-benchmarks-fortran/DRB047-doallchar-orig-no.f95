@@ -7,7 +7,7 @@
 
 !One dimension array computation
 !with finer granularity than traditional 4 bytes.
-!Dynamic tools monitoring 4-bytes elements may wrongfuly report race condition.
+!Dynamic tools monitoring 4-bytes elements may wrongfuly report race condition. No data race pairs.
 
 program DRB047_doallchar_orig_no
     use omp_lib

@@ -9,6 +9,7 @@
 ! * formal arguments passed by reference are firstprivate.
 ! * This requires OpenMP 4.5 to work.
 ! * Earlier OpenMP does not allow a reference type for a variable within firstprivate().
+! * No data race pairs.
 
 
 module DRB100

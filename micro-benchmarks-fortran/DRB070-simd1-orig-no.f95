@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!One dimension array computation with a vectorization directive
+!One dimension array computation with a vectorization directive. No data race pairs.
 
 program DRB070_simd1_orig_no
     use omp_lib

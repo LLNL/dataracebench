@@ -7,7 +7,7 @@
 
 !A file-scope variable used within a function called by a parallel region.
 !Use threadprivate to avoid data races.
-!This is the case for a variable referenced within a construct.
+!This is the case for a variable referenced within a construct. No data race pairs.
 
 module DRB091
     implicit none

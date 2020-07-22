@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!use of omp target + teams + distribute + parallel for
+!use of omp target + teams + distribute + parallel for. No data race pairs.
 
 program DRB097_target_teams_distribute_orig_no
     use omp_lib

@@ -9,7 +9,7 @@
 !Two pointers have distance of 12.
 !They are used as base addresses of two arrays, indexed through an index set.
 !The index set has no two indices with distance of 12.
-!So there is no loop carried dependence.
+!So there is no loop carried dependence. No data race pairs.
 
 
 program DRB052_indirectaccesssharebase_orig_no

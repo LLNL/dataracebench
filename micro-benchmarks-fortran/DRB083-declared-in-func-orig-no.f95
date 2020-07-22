@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !A variable is declared inside a function called within a parallel region.
-!The variable should be private if it does not use static storage.
+!The variable should be private if it does not use static storage. No data race pairs.
 
 module DRB083
     use omp_lib

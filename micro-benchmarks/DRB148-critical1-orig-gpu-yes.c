@@ -8,9 +8,11 @@
  */
 
 /*
-Concurrent access on same variable var@29 and var@32 leads to the race condition if two different
-locks are used. This is the reason here we have used the critical directive to ensure that addition
-and subtraction are not interleaved. No data race pairs.
+This example is referred from DataRaceOnAccelerator : A Micro-benchmark Suite for Evaluating
+Correctness Tools Targeting Accelerators.
+Though we have used critical directive to ensure that addition and subtraction are not overlapped,
+due to different locks addlock@30:26 and sublock@33:26 interleave each others operation.
+Data Race pairs, var@31:5 and var@34:5
 */
 
 #include <omp.h>
@@ -25,13 +27,14 @@ int main(){
   #pragma omp target map(tofrom:var) device(0)
   #pragma omp teams distribute parallel for
   for(int i=0; i<N; i++){
-    #pragma omp critical
+    #pragma omp critical(addlock)
     var++;
 
-    #pragma omp critical
-    var = var - 2;
+    #pragma omp critical(sublock)
+    var -= 2;
   }
 
   printf("%d\n",var);
+
   return 0;
 }

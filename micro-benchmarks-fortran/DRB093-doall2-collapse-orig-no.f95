@@ -7,7 +7,7 @@
 
 !Two-dimensional array computation:
 !collapse(2) is used to associate two loops with omp for.
-!The corresponding loop iteration variables are private.
+!The corresponding loop iteration variables are private. No data race pairs.
 
 
 module DRB093

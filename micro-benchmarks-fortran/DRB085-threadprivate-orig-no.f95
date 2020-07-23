@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !A file-scope variable used within a function called by a parallel region.
-!Use threadprivate to avoid data races.
+!Use threadprivate to avoid data races. No data race pairs.
 
 module DRB085
     implicit none

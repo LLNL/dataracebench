@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!A master directive is used to protect memory accesses.
+!A master directive is used to protect memory accesses. No data race pairs.
 
 program DRB103_master_orig_no
     use omp_lib

@@ -7,7 +7,7 @@
 
 !Two-dimensional array computation:
 !default(none) to enforce explictly list all variables in data-sharing attribute clauses
-!default(shared) to cover another option.
+!default(shared) to cover another option. No data race pairs.
 
 
 program DRB113_default_orig_no

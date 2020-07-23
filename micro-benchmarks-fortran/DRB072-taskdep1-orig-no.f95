@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Two tasks with depend clause to ensure execution order:
-!i is shared for two tasks based on implicit data-sharing attribute rules.
+!i is shared for two tasks based on implicit data-sharing attribute rules. No data race pairs.
 
 program DRB072_taskdep1_orig_no
     use omp_lib

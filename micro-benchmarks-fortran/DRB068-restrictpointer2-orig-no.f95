@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!micro-bench equivalent to the restrict keyword in C-99
+!micro-bench equivalent to the restrict keyword in C-99 in F95. No data race pairs.
 
 module DRB068
     use omp_lib

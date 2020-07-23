@@ -8,7 +8,7 @@
 !Two-dimensional array computation:
 !Two loops are associated with omp taskloop due to collapse(2).
 !Both loop index variables are private.
-!taskloop requires OpenMP 4.5 compilers.
+!taskloop requires OpenMP 4.5 compilers. No data race pairs.
 
 module DRB096
     implicit none

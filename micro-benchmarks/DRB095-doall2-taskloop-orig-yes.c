@@ -48,8 +48,8 @@ Two-dimensional array computation:
 Only one loop is associated with omp taskloop. 
 The inner loop's loop iteration variable will be shared if it is shared in the enclosing context.
 Data race pairs (we allow multiple ones to preserve the pattern):
-  Write_set = {j@69:14, j@69:30}
-  Read_set = {j@69:21, j@69:30, j@70:16}
+  Write_set = {j@69:14, j@69:30, a[i][j]@70:11}
+  Read_set = {j@69:21, j@69:30, j@70:16, a[i][j]@70:11}
   Any pair from Write_set vs. Write_set  and Write_set vs. Read_set is a data race pair.
 */
 #if (_OPENMP<201511)

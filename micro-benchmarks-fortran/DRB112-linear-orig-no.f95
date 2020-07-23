@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!omp for loop is allowed to use the linear clause, an OpenMP 4.5 addition.
+!omp for loop is allowed to use the linear clause, an OpenMP 4.5 addition. No data race pairs.
 
 program DRB112_linear_orig_no
     use omp_lib

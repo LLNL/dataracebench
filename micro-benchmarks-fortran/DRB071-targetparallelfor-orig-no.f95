@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!use of omp target: len is not mapped. It should be firstprivate within target.
+!use of omp target: len is not mapped. It should be firstprivate within target. No data race pairs.
 
 program DRB071_targetparallelfor_orig_no
     use omp_lib

@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !A function argument passed by value should be private inside the function.
-!Variable i is read only.
+!Variable i is read only. No data race pairs.
 
 module global
     implicit none

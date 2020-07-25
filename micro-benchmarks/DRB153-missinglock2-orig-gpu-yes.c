@@ -8,8 +8,10 @@
 */
 
 /*
-Concurrent access of var@26:5 in an intra region. Missing Lock leads to intra region data race.
-Data Race pairs, var@26:5 and var@26:5.
+This kernel is referred from “DataRaceOnAccelerator A Micro-benchmark Suite for Evaluating
+Correctness Tools Targeting Accelerators” by Adrian Schmitz et al.
+Concurrent access of var@28:5 in an intra region. Missing Lock leads to intra region data race.
+Data Race pairs, var@28:5 and var@28:5.
 */
 
 #include <stdio.h>

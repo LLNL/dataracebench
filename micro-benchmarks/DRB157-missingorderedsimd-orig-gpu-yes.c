@@ -8,7 +8,7 @@
 */
 
 /*
-This kernel is referred from “DataRaceOnAccelerator A Micro-benchmark Suite for Evaluating
+This kernel is modifie version from “DataRaceOnAccelerator A Micro-benchmark Suite for Evaluating
 Correctness Tools Targeting Accelerators” by Adrian Schmitz et al.
 Due to distribute parallel for simd directive at line 31, there is a data race at line 33.
 Data Rae Pairs, var@33:5 and var@33:12
@@ -33,11 +33,7 @@ int main(){
     var[i]=var[i-C]+1;
   }
 
-  for(int i=C; i<N; i++){
-    if(var[i]!=i-C+1){
-      printf("%d\n",var[i]);
-    }
-  }
+  printf("%d\n",var[97]);
 
   return 0;
 }

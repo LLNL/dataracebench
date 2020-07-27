@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 */
 
-/*
+/*This example is referred from DRACC by Adrian Schmitz et al.
 Vector addition followed by multiplication involving the same var should have a barrier in between.
 omp distribute directive does not have implicit barrier. This will cause data race.
 Data Race Pair: b[i]@42:19 and b[i]@47:9

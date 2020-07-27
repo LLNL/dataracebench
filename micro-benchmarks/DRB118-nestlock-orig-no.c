@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 */
 
-/*
+/* This example is modified version of nestable_lock.1.c example, OpenMP 5.0 Application Programming Examples.
 A nested lock can be locked several times. It doesn't unlock until you have unset
 it as many times as the number of calls to omp_set_nest_lock.
 incr_b is called at line 47 and line 52. So, it needs a nest_lock for p->b@30:4.

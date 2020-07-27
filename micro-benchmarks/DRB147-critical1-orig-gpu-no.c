@@ -9,7 +9,7 @@
 
 /*
 Concurrent access on same variable var@29 and var@32 leads to the race condition if two different
-locks are used. This is the reason here we have used the critical directive to ensure that addition
+locks are used. This is the reason here we have used the atomic directive to ensure that addition
 and subtraction are not interleaved. No data race pairs.
 */
 
@@ -29,7 +29,7 @@ int main(){
     var++;
 
     #pragma omp atomic
-    var = var - 2;
+    var -= 2;
   }
 
   printf("%d\n",var);

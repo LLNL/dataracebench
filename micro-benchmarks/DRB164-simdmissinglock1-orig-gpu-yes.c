@@ -8,8 +8,10 @@
 */
 
 /*
-Concurrent access of var@33:7 without acquiring locks causes atomicity violation. Data race present.
-Data Race Pairs, var@33:7 and var@33:7.
+This kernel is referred from “DataRaceOnAccelerator A Micro-benchmark Suite for Evaluating
+Correctness Tools Targeting Accelerators” by Adrian Schmitz et al.
+Concurrent access of var@35:7 without acquiring locks causes atomicity violation. Data race present.
+Data Race Pairs, var@35:7 and var@35:7.
 */
 
 #include <stdio.h>
@@ -34,11 +36,7 @@ int main(){
     }
   }
 
-  for(int i=0; i<C; i++){
-    if(var[i]!=100){
-      printf("%d\n",var[i]);
-    }
-  }
+  printf("%d\n",var[63]);
 
   return 0;
 }

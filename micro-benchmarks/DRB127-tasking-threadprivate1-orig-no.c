@@ -7,11 +7,11 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 
-/*
+/* This example is referred from OpenMP Application Programming Interface 5.0, example tasking.7.c
  * A task switch may occur at a task scheduling point. A single thread may execute both of the
  * task regions that modify tp. The parts of these task regions in which tp is modified may be
  * executed in any order so the resulting value of var can be either 1 or 2.
- * Data Race pair var@34:7 and var@34:7
+ * There is a  Race pair var@34:7 and var@34:7 but no data race. 
  */
 
 

@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Reduction clause at line 23:34 will ensure there is no data race in var@27:13. No Dadta Race.
+!Reduction clause at line 23:34 will ensure there is no data race in var@27:13. No Data Race.
 
 program DRB162_nolocksimd_orig_gpu_no
     use omp_lib

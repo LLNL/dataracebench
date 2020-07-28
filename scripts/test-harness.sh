@@ -456,7 +456,7 @@ for tool in "${TOOLS[@]}"; do
     echo "$test has $testname and ID=$id"
 
     # Compile
-    linkname="$EXEC_DIR/$(basename "$test").o"
+    linkname="$EXEC_DIR/$testname.o"
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
     logname="$(basename "$test").$tool.log"
@@ -467,13 +467,13 @@ for tool in "${TOOLS[@]}"; do
       case "$tool" in 
         gnu)        gfortran -fopenmp -lomp $test -o $exname -lm ;;
         intel)      ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        tsan-clang) gfortran $FORTRAN_LINK_FLAGES $test;
+        tsan-clang) gfortran $FORTRAN_LINK_FLAGS $test -o $linkname;
 		    clang $FORTRAN_COMPILE_FLAGS $linkname -o $exname -lm;;
         tsan-gcc)   gfortran -fopenmp -fsanitize=thread  $test -o $exname -lm  ;;
         inspector)  ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         romp)       gfortran -fopenmp -lomp $test -o $exname -lm;
                     echo $exname
-                    InstrumentMain --program=$exname;
+                    InstrumentMain --program=$exname;;
       esac
     compilereturn=$?; 
     echo "compile return code: $compilereturn";

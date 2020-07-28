@@ -115,11 +115,11 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
 fi
 
 if [[ "$OPTION" == "--small" ]]; then
-  scripts/test-harness.sh -t 3 -n 2 -d 32 -x helgrind
-  scripts/test-harness.sh -t 3 -n 2 -d 32 -x archer
-  scripts/test-harness.sh -t 3 -n 2 -d 32 -x tsan-clang
-  scripts/test-harness.sh -t 3 -n 2 -d 32 -x inspector-max-resources
-  scripts/test-harness.sh -t 3 -n 2 -d 32 -x romp
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x helgrind
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x archer
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x tsan-clang
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x inspector-max-resources
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x romp
 fi
 
 if [[ "$OPTION" == "--run" ]]; then
@@ -225,23 +225,23 @@ fi
 
 
 if [[ "$OPTION" == "--helgrind" ]]; then
-    scripts/test-harness.sh -x helgrind
+    scripts/test-harness.sh -l $LANGUAGE -x helgrind
 fi
 
 if [[ "$OPTION" == "--archer" ]]; then
-    scripts/test-harness.sh -x archer
+    scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x archer
 fi
 
 if [[ "$OPTION" == "--tsan-clang" ]]; then
-    scripts/test-harness.sh -x tsan-clang
+    scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x tsan-clang
 fi
 
 if [[ "$OPTION" == "--tsan-gcc" ]]; then
-    scripts/test-harness.sh -x tsan-gcc
+    scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x tsan-gcc
 fi
 
 if [[ "$OPTION" == "--inspector" ]]; then
-    scripts/test-harness.sh -x inspector-max-resources
+    scripts/test-harness.sh -l $LANGUAGE -x inspector-max-resources
 fi
 
 if [[ "$OPTION" == "--romp" ]]; then

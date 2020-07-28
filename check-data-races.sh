@@ -45,11 +45,15 @@
 # THE POSSIBILITY OF SUCH DAMAGE.
 
 OPTION=$1
+DEF_LAN=$2
 TESTS=$(grep -l main micro-benchmarks/*.c)
 CPPTESTS=$(grep -l main micro-benchmarks/*.cpp)
+FORTRANTESTS=$(find micro-benchmarks-fortran -iregex ".*\.F[0-9]*" -o -iregex ".*\.for")
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 
-if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
+LANGUAGE="defult"
+
+help () {
     echo
     echo "Usage: $0 [--run] [--help]"
     echo
@@ -62,6 +66,50 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo "--tsan-gcc  : compile and test all benchmarks with gcc ThreadSanitizer"
     echo "--archer    : compile and test all benchmarks with Archer"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
+    echo "--romp      : compile and test all benchmarks with Romp"
+    echo
+}
+
+valid_language_name () {
+  case "$1" in
+    c/c++) return 0 ;;
+    C/C++) return 0 ;;
+    c) return 0 ;;
+    C) return 0 ;;
+    c++) return 0 ;;
+    C++) return 0 ;;
+    fortran) return 0 ;;
+    Fortran) return 0 ;;
+    FORTRAN) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+if [ -z "$DEF_LAN" ]; then
+	echo "use default test"
+fi
+
+if valid_language_name "$DEF_LAN"; then LANGUAGE="$DEF_LAN"
+        else 
+		echo "Invalid language name $DEF_LAN" && help && exit 1
+fi
+ 
+
+if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
+
+    echo
+    echo "Usage: $0 [--run] [--help]"
+    echo
+    echo "--help      : this option"
+    echo "--small     : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
+    echo "--run       : compile and run all benchmarks with gcc (no evaluation)"
+    echo "--run-intel : compile and run all benchmarks with Intel compilers (no evaluation)"
+    echo "--helgrind  : compile and test all benchmarks with Helgrind"
+    echo "--tsan-clang: compile and test all benchmarks with clang ThreadSanitizer"
+    echo "--tsan-gcc  : compile and test all benchmarks with gcc ThreadSanitizer"
+    echo "--archer    : compile and test all benchmarks with Archer"
+    echo "--inspector : compile and test all benchmarks with Intel Inspector"
+    echo "--romp      : compile and test all benchmarks with Romp"
     echo
     exit
 fi
@@ -71,28 +119,73 @@ if [[ "$OPTION" == "--small" ]]; then
   scripts/test-harness.sh -t 3 -n 2 -d 32 -x archer
   scripts/test-harness.sh -t 3 -n 2 -d 32 -x tsan-clang
   scripts/test-harness.sh -t 3 -n 2 -d 32 -x inspector-max-resources
+  scripts/test-harness.sh -t 3 -n 2 -d 32 -x romp
 fi
 
 if [[ "$OPTION" == "--run" ]]; then
-    for test in $TESTS; do
-        echo "------------------------------------------"
-        echo "RUNNING: $test"
-        CFLAGS="-g -Wall -std=c99 -fopenmp"
-        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
-        gcc $CFLAGS "$test" -lm
-        ./a.out  > /dev/null
-    done
-    rm -f ./a.out
+    if [[ "$LANGUAGE" == "c" || "$LANGUAGE" == "C" ]]; then
+    	for test in $TESTS; do
+            echo "------------------------------------------"
+            echo "RUNNING: $test"
+            CFLAGS="-g -Wall -std=c99 -fopenmp"
+            if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+            gcc $CFLAGS "$test" -lm
+            ./a.out  > /dev/null
+        done
+        rm -f ./a.out
 # test for cpp files
-    for test in $CPPTESTS; do
-        echo "------------------------------------------"
-        echo "RUNNING: $test"
-        CFLAGS="-g -Wall -fopenmp"
-        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
-        g++ $CFLAGS "$test" -lm
-        ./a.out  > /dev/null
-    done
-    rm -f ./a.out
+    elif [[ "$LANGUAGE" == "c++" || "$LANGUAGE" == "C++" ]]; then
+   	for test in $CPPTESTS; do
+            echo "------------------------------------------"
+            echo "RUNNING: $test"
+            CFLAGS="-g -Wall -fopenmp"
+            if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+            g++ $CFLAGS "$test" -lm
+            ./a.out  > /dev/null
+        done
+        rm -f ./a.out
+# test for fortran files
+    elif [[ "$LANGUAGE" == "fortran" || "$LANGUAGE" == "FORTRAN" ]]; then
+    	for test in $FORTRANTESTS; do
+	    echo "------------------------------------------"
+            echo "RUNNING: $test"
+            FFLAGS="-fopenmp"
+	    if grep -q 'PolyBench' "$test"; then FLAGS+=" $POLYFLAG"; fi
+            gfortran $FFLAGS "$test" -lm
+            ./a.out  > /dev/null
+         done
+         rm -f ./a.out
+         rm drb*
+    else 
+        for test in $TESTS; do
+            echo "------------------------------------------"
+            echo "RUNNING: $test"
+            CFLAGS="-g -Wall -std=c99 -fopenmp"
+            if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+            gcc $CFLAGS "$test" -lm
+            ./a.out  > /dev/null
+        done
+        rm -f ./a.out
+        for test in $CPPTESTS; do
+            echo "------------------------------------------"
+            echo "RUNNING: $test"
+            CFLAGS="-g -Wall -fopenmp"
+            if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+            g++ $CFLAGS "$test" -lm
+            ./a.out  > /dev/null
+        done
+        rm -f ./a.out
+        for test in $FORTRANTESTS; do
+            echo "------------------------------------------"
+            echo "RUNNING: $test"
+            FFLAGS="-fopenmp"
+            if grep -q 'PolyBench' "$test"; then FLAGS+=" $POLYFLAG"; fi
+            gfortran $FFLAGS "$test" -lm
+            ./a.out  > /dev/null
+         done
+         rm -f ./a.out
+         rm drb*
+    fi
     exit
 fi
 
@@ -116,6 +209,17 @@ if [[ "$OPTION" == "--run-intel" ]]; then
         ./a.out  > /dev/null
     done
     rm -f ./a.out
+# test for fortran files
+    for test in $FORTRANTESTS; do
+        echo "------------------------------------------"
+        echo "RUNNING: $test"
+        FFLAGS="-fopenmp"
+        if grep -q 'PolyBench' "$test"; then FLAGS+=" $POLYFLAG"; fi
+        ifort $FFLAGS "$test" -lm
+        ./a.out  > /dev/null
+    done
+    rm -f ./a.out
+    rm drb*
     exit
 fi
 
@@ -141,5 +245,6 @@ if [[ "$OPTION" == "--inspector" ]]; then
 fi
 
 if [[ "$OPTION" == "--romp" ]]; then
-   scripts/test-harness.sh -x romp
+   scripts/test-harness1.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x romp
 fi
+

@@ -470,7 +470,9 @@ for tool in "${TOOLS[@]}"; do
         tsan-clang) gfortran $FORTRAN_LINK_FLAGS $test -o $linkname;
 		    clang $FORTRAN_COMPILE_FLAGS $linkname -o $exname -lm;;
         tsan-gcc)   gfortran -fopenmp -fsanitize=thread  $test -o $exname -lm  ;;
-        inspector)  ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        archer)     gfortran $FORTRAN_LINK_FLAGS $test -o $linkname;
+	            clang-archer $FORTRAN_COMPILE_FLAGS $linkname -o $exname $ARCHER_COMPILE_FLAGS $additional_compile_flags  -lm;;
+      	inspector)  ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         romp)       gfortran -fopenmp -lomp $test -o $exname -lm;
                     echo $exname
                     InstrumentMain --program=$exname;;

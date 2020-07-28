@@ -10,7 +10,7 @@ Ubuntu 18.04
 sudo apt update
 sudo apt install docker.io
 ```
-or chech the guide in docker offical website.
+or check the guide in docker offical website.
 https://docs.docker.com/get-docker/
 
 ## Using Docker images
@@ -21,7 +21,7 @@ You can use docker images by directly pull from docker hub into your machine.
 
 All the docker images ready for use are uploaded to DockerHub.
 https://hub.docker.com/repository/docker/yshixyz/dataracebench
-The images contains all three tools (Intel Inspector need a valid license, we are not provid its images) and dataracebench. You may need update dataracebench to the laste github version. And They should be munted into the docker container. The detail instrucions is as following:
+The images contains all three tools (Intel Inspector need a valid license, we are not providing its image) and dataracebench. You may need update dataracebench to the latest github version. And they should be mounted into the docker container. The detail instrucions are as following:
 
 #### ThreadSanitizer
 ```bash

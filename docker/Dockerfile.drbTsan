@@ -1,0 +1,45 @@
+# pull base image
+
+FROM ubuntu:18.04
+
+# install gcc git fortran package later that only for test
+RUN groupadd -g 9999 drb && \
+    useradd -r -u 9999 -g drb -m -d /home/drb drb
+
+# Install packages.
+# Install packages.
+RUN apt-get update && \
+    apt-get install -y \
+        apt-utils \
+        dialog \
+        software-properties-common \
+        wget && \
+    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+    add-apt-repository -y 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main' && \
+    apt-get update && \
+    apt-get install -y \ 
+        bc \
+        build-essential \
+        clang-10 \
+        cmake \
+        curl \
+        gdb \
+        git \
+        python3-dev \
+        time \
+        vim && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/*
+
+# Setup environment.
+RUN ln -s /usr/bin/clang-10 /usr/bin/clang
+RUN ln -s /usr/bin/clang++-10 /usr/bin/clang++
+ENV CC /usr/bin/clang
+ENV CXX /usr/bin/clang++
+
+USER drb
+WORKDIR /home/drb
+
+RUN git clone https://github.com/LLNL/dataracebench.git
+
+

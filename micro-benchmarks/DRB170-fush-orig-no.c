@@ -70,7 +70,7 @@ int main(int argh, char* argv[])
 	}
     }
     if (i != iend) {
-	while (flag[i] == 1) {
+      while (flag[i] == 1) {
   #pragma omp flush(flag)
 	    ;
 	}

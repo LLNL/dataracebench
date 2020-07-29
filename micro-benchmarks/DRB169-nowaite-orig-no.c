@@ -1,9 +1,16 @@
+/*
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+!!! Copyright (c) 2017-20, Lawrence Livermore National Security, LLC
+!!! and DataRaceBench project contributors. See the DataRaceBench/COPYRIGHT file for details.
+!!!
+!!! SPDX-License-Identifier: (BSD-3-Clause)
+!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
+ */
+
 /**
  * CG.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 CG suit.
  * Tsan and Intel Inspector can not correctly analysis the nowaite, and report a false postive.
  */
-
-
 
 #include <stdio.h>
 #include <math.h>
@@ -36,9 +43,9 @@ int main(int argh, char* argv[]){
   {
     #pragma omp for nowait
       for (j = 1; j <= lastrow - firstrow + 1; j++) {
-      for (k = 1; k < lastcol-firstcol; k++) {
-              colidx[k] = colidx[k] - firstcol + 1;
-      }
+        for (k = 1; k < lastcol-firstcol; k++) {
+          colidx[k] = colidx[k] - firstcol + 1;
+        }
       }
   }
 

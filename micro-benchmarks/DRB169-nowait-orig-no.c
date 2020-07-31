@@ -15,9 +15,9 @@
 #include <stdio.h>
 #include <math.h>
 
-#define NA 1400
+#define NA     1400
 #define NONZER 7
-#define    NZ    NA*(NONZER+1)*(NONZER+1)+NA*(NONZER+2)
+#define NZ     NA*(NONZER+1)*(NONZER+1)+NA*(NONZER+2)
 
 static int colidx[NZ+1];
 static int firstrow;
@@ -26,7 +26,7 @@ static int firstcol;
 static int lastcol;
 
 int main(int argh, char* argv[]){
-  int i,j,k,it;
+  int i,j,k;
   firstrow = 1;
   lastrow  = NA;
   firstcol = 1;
@@ -49,5 +49,5 @@ int main(int argh, char* argv[]){
       }
   }
 
-
+  return 0;
 }

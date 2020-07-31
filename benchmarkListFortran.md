@@ -55,6 +55,7 @@ DRB037-truedepseconddimension-(orig&#124;var)-yes.f95	| Y1	| True data dependenc
 DRB038-truedepseconddimension-(orig&#124;var)-yes.f95	| Y1	| True data dependence on 2nd dimension of a 2-D array accesses															| New
 DRB039-truedepsingleelement-(orig&#124;var)-yes.f95		| Y1	| True data dependence due to a single array element																	| New
 DRB040-truedepsingleelement-(orig&#124;var)-yes.f95		| Y1	| True data dependence due to a single array element																	| New
+DRB047-doallchar-orig-yes.f95              | Y1, Y6	| write() is converting integer to string and reused again without resolved dependencies.			| New
 DRB073-doall2-orig-yes.f95							| Y2	| Missing private() for inner loop nest's loop index variable															| New
 DRB074-flush-orig-yes.f95							| Y2	| Reduction using a shared variable, extracted from an official OpenMP example											| New
 DRB075-getthreadnum-orig-yes.f95					| Y1	| Work sharing within one branch of a if statement																		| New
@@ -108,7 +109,6 @@ DRB043-adi-parallel-no.F95						| N2		| Alternating Direction Implicit solver, n
 DRB044-adi-tile-no.F95							| N2,N4		| Alternating Direction Implicit solver, with tiling and nested SIMD														| New
 DRB045-doall1-orig-no.f95						| N1		| Classic DOAll loop operating on a one dimensional array																	| New
 DRB046-doall2-orig-no.f95						| N1		| Classic DOAll loop operating on a two dimensional array																	| New
-DRB047-doallchar-orig-no.f95					| N1		| Classic DOALL loop operating on a character array																			| New
 DRB048-firstprivate-orig-no.f95					| N2		| Example use of firstprivate																								| New
 DRB049-fprintf-orig-no.f95						| N6		| Use of write()																											| New
 DRB050-functionparameter-orig-no.f95			| N6		| Arrays passed as function parameters																						| New

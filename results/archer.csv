@@ -1,9 +1,533 @@
 tool,id,filename,haverace,threads,dataset,races,elapsed-time(seconds),used-mem(KBs),compile-return,runtime-return
-archer,043,"DRB043-adi-parallel-no.F95",false,3,N/A,1,1.119,Command exited with non-zero status 66
-52584,0,0
-archer,043,"DRB043-adi-parallel-no.F95",false,3,N/A,1,1.122,Command exited with non-zero status 66
-52700,0,0
-archer,044,"DRB044-adi-tile-no.F95",false,3,N/A,1,1.183,Command exited with non-zero status 66
-52700,0,0
-archer,044,"DRB044-adi-tile-no.F95",false,3,N/A,1,1.198,Command exited with non-zero status 66
-52708,0,0
+archer,053,"DRB053-inneronly1-orig-no.f95",false,3,N/A,1,.624,Command exited with non-zero status 66
+20884,0,0
+archer,053,"DRB053-inneronly1-orig-no.f95",false,3,N/A,1,.617,Command exited with non-zero status 66
+20924,0,0
+archer,149,"DRB149-missingdata1-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,025,"DRB025-simdtruedep-var-yes.f95",true,3,32,0,.177,Command terminated by signal 11
+38892,0,11
+archer,025,"DRB025-simdtruedep-var-yes.f95",true,3,32,0,.173,Command terminated by signal 11
+38524,0,11
+archer,145,"DRB145-atomiccritical-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,061,"DRB061-matrixvector1-orig-no.f95",false,3,N/A,3,.643,Command exited with non-zero status 66
+21336,0,0
+archer,061,"DRB061-matrixvector1-orig-no.f95",false,3,N/A,3,.646,Command exited with non-zero status 66
+21368,0,0
+archer,156,"DRB156-missingordered-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,026,"DRB026-targetparallelfor-orig-yes.f95",true,3,N/A,,,,1,
+archer,029,"DRB029-truedep1-orig-yes.f95",true,3,N/A,3,.641,Command exited with non-zero status 66
+33092,0,0
+archer,029,"DRB029-truedep1-orig-yes.f95",true,3,N/A,3,.657,Command exited with non-zero status 66
+33020,0,0
+archer,134,"DRB134-taskdep5-orig-yes-omp45.f95",false,3,N/A,1,.617,Command exited with non-zero status 66
+21212,0,0
+archer,134,"DRB134-taskdep5-orig-yes-omp45.f95",false,3,N/A,1,.617,Command exited with non-zero status 66
+21008,0,0
+archer,153,"DRB153-missinglock2-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,092,"DRB092-threadprivatemissing2-orig-yes.f95",true,3,N/A,3,.623,Command exited with non-zero status 66
+21116,0,0
+archer,092,"DRB092-threadprivatemissing2-orig-yes.f95",true,3,N/A,3,.625,Command exited with non-zero status 66
+21200,0,0
+archer,048,"DRB048-firstprivate-orig-no.f95",false,3,N/A,1,.625,Command exited with non-zero status 66
+20992,0,0
+archer,048,"DRB048-firstprivate-orig-no.f95",false,3,N/A,1,.623,Command exited with non-zero status 66
+20836,0,0
+archer,067,"DRB067-restrictpointer1-orig-no.f95",false,3,N/A,1,.621,Command exited with non-zero status 66
+21312,0,0
+archer,067,"DRB067-restrictpointer1-orig-no.f95",false,3,N/A,1,.629,Command exited with non-zero status 66
+21172,0,0
+archer,047,"DRB047-doallchar-orig-no.f95",false,3,N/A,,,,1,
+archer,079,"DRB079-taskdep3-orig-no.f95",false,3,N/A,1,3.185,Command terminated by signal 11
+43688,0,11
+archer,079,"DRB079-taskdep3-orig-no.f95",false,3,N/A,1,3.191,Command terminated by signal 11
+43684,0,11
+archer,049,"DRB049-write-orig-no.f95",false,3,N/A,0,.182,Command terminated by signal 11
+38436,0,11
+archer,049,"DRB049-write-orig-no.f95",false,3,N/A,0,.180,Command terminated by signal 11
+38576,0,11
+archer,123,"DRB123-taskundeferred-orig-yes.f95",true,3,N/A,1,.649,Command exited with non-zero status 66
+32980,0,0
+archer,123,"DRB123-taskundeferred-orig-yes.f95",true,3,N/A,1,.641,Command exited with non-zero status 66
+33136,0,0
+archer,022,"DRB022-reductionmissing-var-yes.f95",true,3,32,0,.170,Command terminated by signal 11
+38912,0,11
+archer,022,"DRB022-reductionmissing-var-yes.f95",true,3,32,0,.172,Command terminated by signal 11
+38940,0,11
+archer,168,"DRB168-taskdep5-orig-yes-omp50.f95",false,3,N/A,,,,1,
+archer,036,"DRB036-truedepscalar-var-yes.f95",true,3,32,0,.178,Command terminated by signal 11
+38904,0,11
+archer,036,"DRB036-truedepscalar-var-yes.f95",true,3,32,0,.180,Command terminated by signal 11
+38516,0,11
+archer,088,"DRB088-dynamic-storage-orig-yes.f95",true,3,N/A,3,.624,Command exited with non-zero status 66
+20916,0,0
+archer,088,"DRB088-dynamic-storage-orig-yes.f95",true,3,N/A,3,.619,Command exited with non-zero status 66
+20812,0,0
+archer,033,"DRB033-truedeplinear-orig-yes.f95",true,3,N/A,3,.651,Command exited with non-zero status 66
+35664,0,0
+archer,033,"DRB033-truedeplinear-orig-yes.f95",true,3,N/A,3,.649,Command exited with non-zero status 66
+35720,0,0
+archer,130,"DRB130-mergeable-taskwait-orig-no.f95",false,3,N/A,0,.638,Command exited with non-zero status 66
+30932,0,0
+archer,130,"DRB130-mergeable-taskwait-orig-no.f95",false,3,N/A,0,.641,Command exited with non-zero status 66
+30836,0,0
+archer,102,"DRB102-copyprivate-orig-no.f95",false,3,N/A,1,.641,Command exited with non-zero status 66
+33196,0,0
+archer,102,"DRB102-copyprivate-orig-no.f95",false,3,N/A,1,.650,Command exited with non-zero status 66
+33176,0,0
+archer,151,"DRB151-missinglock3-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,027,"DRB027-taskdependmissing-orig-yes.f95",true,3,N/A,1,.642,Command exited with non-zero status 66
+33064,0,0
+archer,027,"DRB027-taskdependmissing-orig-yes.f95",true,3,N/A,1,.644,Command exited with non-zero status 66
+33112,0,0
+archer,083,"DRB083-declared-in-func-orig-no.f95",false,3,N/A,1,.622,Command exited with non-zero status 66
+20896,0,0
+archer,083,"DRB083-declared-in-func-orig-no.f95",false,3,N/A,1,.629,Command exited with non-zero status 66
+20884,0,0
+archer,017,"DRB017-outputdep-var-yes.f95",true,3,32,0,.172,Command terminated by signal 11
+38976,0,11
+archer,017,"DRB017-outputdep-var-yes.f95",true,3,32,0,.177,Command terminated by signal 11
+38764,0,11
+archer,039,"DRB039-truedepsingleelement-orig-yes.f95",true,3,N/A,3,.649,Command exited with non-zero status 66
+33116,0,0
+archer,039,"DRB039-truedepsingleelement-orig-yes.f95",true,3,N/A,3,.650,Command exited with non-zero status 66
+33112,0,0
+archer,138,"DRB138-simdsafelen-orig-yes.f95",true,3,N/A,0,.028,16152,0,0
+archer,138,"DRB138-simdsafelen-orig-yes.f95",true,3,N/A,0,.027,16152,0,0
+archer,072,"DRB072-taskdep1-orig-no.f95",false,3,N/A,1,.618,Command exited with non-zero status 66
+21036,0,0
+archer,072,"DRB072-taskdep1-orig-no.f95",false,3,N/A,1,.624,Command exited with non-zero status 66
+20976,0,0
+archer,109,"DRB109-orderedmissing-orig-yes.f95",true,3,N/A,3,.626,Command exited with non-zero status 66
+21056,0,0
+archer,109,"DRB109-orderedmissing-orig-yes.f95",true,3,N/A,3,.629,Command exited with non-zero status 66
+20936,0,0
+archer,062,"DRB062-matrixvector2-orig-no.f95",false,3,N/A,1,7.613,Command exited with non-zero status 66
+39320,0,0
+archer,062,"DRB062-matrixvector2-orig-no.f95",false,3,N/A,1,7.719,Command exited with non-zero status 66
+39276,0,0
+archer,012,"DRB012-minusminus-var-yes.f95",true,3,32,0,.181,Command terminated by signal 11
+38876,0,11
+archer,012,"DRB012-minusminus-var-yes.f95",true,3,32,0,.172,Command terminated by signal 11
+38848,0,11
+archer,129,"DRB129-mergeable-taskwait-orig-yes.f95",true,3,N/A,0,.641,Command exited with non-zero status 66
+30828,0,0
+archer,129,"DRB129-mergeable-taskwait-orig-yes.f95",true,3,N/A,0,.647,Command exited with non-zero status 66
+30816,0,0
+archer,090,"DRB090-static-local-orig-yes.f95",true,3,N/A,5,.779,Command terminated by signal 11
+43612,0,11
+archer,090,"DRB090-static-local-orig-yes.f95",true,3,N/A,5,.776,Command terminated by signal 11
+43548,0,11
+archer,011,"DRB011-minusminus-orig-yes.f95",true,3,N/A,3,.625,Command exited with non-zero status 66
+21084,0,0
+archer,011,"DRB011-minusminus-orig-yes.f95",true,3,N/A,3,.632,Command exited with non-zero status 66
+21064,0,0
+archer,146,"DRB146-atomicupdate-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,035,"DRB035-truedepscalar-orig-yes.f95",true,3,N/A,3,.646,Command exited with non-zero status 66
+33168,0,0
+archer,035,"DRB035-truedepscalar-orig-yes.f95",true,3,N/A,3,.649,Command exited with non-zero status 66
+33004,0,0
+archer,071,"DRB071-targetparallelfor-orig-no.f95",false,3,N/A,,,,1,
+archer,001,"DRB001-antidep1-orig-yes.f95",true,3,N/A,3,.646,Command exited with non-zero status 66
+33064,0,0
+archer,001,"DRB001-antidep1-orig-yes.f95",true,3,N/A,3,.665,Command exited with non-zero status 66
+33204,0,0
+archer,127,"DRB127-tasking-threadprivate1-orig-no.f95",false,3,N/A,0,.030,17324,0,0
+archer,127,"DRB127-tasking-threadprivate1-orig-no.f95",false,3,N/A,0,.029,17464,0,0
+archer,032,"DRB032-truedepfirstdimension-var-yes.f95",true,3,32,0,.176,Command terminated by signal 11
+38940,0,11
+archer,032,"DRB032-truedepfirstdimension-var-yes.f95",true,3,32,0,.175,Command terminated by signal 11
+38776,0,11
+archer,119,"DRB119-nestlock-orig-yes.f95",true,3,N/A,1,.618,Command exited with non-zero status 66
+20872,0,0
+archer,119,"DRB119-nestlock-orig-yes.f95",true,3,N/A,1,.622,Command exited with non-zero status 66
+20896,0,0
+archer,158,"DRB158-missingtaskbarrier-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,135,"DRB135-taskdep-mutexinoutset-orig-no-omp50.f95",false,3,N/A,,,,1,
+archer,143,"DRB143-acquirerelease-orig-no-omp50.f95",false,3,N/A,,,,1,
+archer,094,"DRB094-doall2-ordered-orig-no.f95",false,3,N/A,,,,1,
+archer,008,"DRB008-indirectaccess4-orig-yes.f95",true,3,N/A,4,.629,Command exited with non-zero status 66
+21340,0,0
+archer,008,"DRB008-indirectaccess4-orig-yes.f95",true,3,N/A,4,.637,Command exited with non-zero status 66
+21504,0,0
+archer,078,"DRB078-taskdep2-orig-no.f95",false,3,N/A,1,3.037,Command exited with non-zero status 66
+21068,0,0
+archer,078,"DRB078-taskdep2-orig-no.f95",false,3,N/A,1,3.036,Command exited with non-zero status 66
+21096,0,0
+archer,028,"DRB028-privatemissing-orig-yes.f95",true,3,N/A,3,.645,Command exited with non-zero status 66
+32940,0,0
+archer,028,"DRB028-privatemissing-orig-yes.f95",true,3,N/A,3,.647,Command exited with non-zero status 66
+32880,0,0
+archer,095,"DRB095-doall2-taskloop-orig-yes.f95",true,3,N/A,,,,1,
+archer,043,"DRB043-adi-parallel-no.F95",false,3,N/A,1,1.134,Command exited with non-zero status 66
+52780,0,0
+archer,043,"DRB043-adi-parallel-no.F95",false,3,N/A,1,1.121,Command exited with non-zero status 66
+52664,0,0
+archer,082,"DRB082-declared-in-func-orig-yes.f95",true,3,N/A,3,.626,Command exited with non-zero status 66
+20928,0,0
+archer,082,"DRB082-declared-in-func-orig-yes.f95",true,3,N/A,3,.627,Command exited with non-zero status 66
+20868,0,0
+archer,016,"DRB016-outputdep-orig-yes.f95",true,3,N/A,3,.625,Command exited with non-zero status 66
+21052,0,0
+archer,016,"DRB016-outputdep-orig-yes.f95",true,3,N/A,3,.623,Command exited with non-zero status 66
+21036,0,0
+archer,113,"DRB113-default-orig-no.f95",false,3,N/A,1,.619,Command exited with non-zero status 66
+22176,0,0
+archer,113,"DRB113-default-orig-no.f95",false,3,N/A,1,.625,Command exited with non-zero status 66
+22108,0,0
+archer,085,"DRB085-threadprivate-orig-no.f95",false,3,N/A,1,.615,Command exited with non-zero status 66
+21268,0,0
+archer,085,"DRB085-threadprivate-orig-no.f95",false,3,N/A,1,.626,Command exited with non-zero status 66
+21200,0,0
+archer,125,"DRB125-single-orig-no.f95",false,3,N/A,1,.620,Command exited with non-zero status 66
+20896,0,0
+archer,125,"DRB125-single-orig-no.f95",false,3,N/A,1,.622,Command exited with non-zero status 66
+20892,0,0
+archer,112,"DRB112-linear-orig-no.f95",false,3,N/A,1,.630,Command exited with non-zero status 66
+21132,0,0
+archer,112,"DRB112-linear-orig-no.f95",false,3,N/A,1,.628,Command exited with non-zero status 66
+21200,0,0
+archer,144,"DRB144-atomiccritical-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,161,"DRB161-nolocksimd-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,065,"DRB065-pireduction-orig-no.f95",false,3,N/A,1,150.212,Command exited with non-zero status 66
+33136,0,0
+archer,065,"DRB065-pireduction-orig-no.f95",false,3,N/A,1,150.870,Command exited with non-zero status 66
+33136,0,0
+archer,003,"DRB003-antidep2-orig-yes.f95",true,3,N/A,3,.633,Command exited with non-zero status 66
+21304,0,0
+archer,003,"DRB003-antidep2-orig-yes.f95",true,3,N/A,3,.634,Command exited with non-zero status 66
+21396,0,0
+archer,141,"DRB141-reduction-barrier-orig-no.f95",false,3,N/A,1,.628,Command exited with non-zero status 66
+21032,0,0
+archer,141,"DRB141-reduction-barrier-orig-no.f95",false,3,N/A,1,.627,Command exited with non-zero status 66
+21056,0,0
+archer,046,"DRB046-doall2-orig-no.f95",false,3,N/A,1,.622,Command exited with non-zero status 66
+21224,0,0
+archer,046,"DRB046-doall2-orig-no.f95",false,3,N/A,1,.628,Command exited with non-zero status 66
+21236,0,0
+archer,166,"DRB166-taskdep4-orig-no-omp50.f95",false,3,N/A,,,,1,
+archer,160,"DRB160-nobarrier-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,118,"DRB118-nestlock-orig-no.f95",false,3,N/A,1,.626,Command exited with non-zero status 66
+20892,0,0
+archer,118,"DRB118-nestlock-orig-no.f95",false,3,N/A,1,.621,Command exited with non-zero status 66
+21020,0,0
+archer,086,"DRB086-static-data-member-orig-yes.f95",true,3,N/A,3,.624,Command exited with non-zero status 66
+21088,0,0
+archer,086,"DRB086-static-data-member-orig-yes.f95",true,3,N/A,3,.627,Command exited with non-zero status 66
+20972,0,0
+archer,040,"DRB040-truedepsingleelement-var-yes.f95",true,3,32,0,.173,Command terminated by signal 11
+38900,0,11
+archer,040,"DRB040-truedepsingleelement-var-yes.f95",true,3,32,0,.175,Command terminated by signal 11
+38484,0,11
+archer,105,"DRB105-taskwait-orig-no.f95",false,3,N/A,1,2.403,Command exited with non-zero status 66
+37104,0,0
+archer,105,"DRB105-taskwait-orig-no.f95",false,3,N/A,1,2.954,Command exited with non-zero status 66
+36964,0,0
+archer,110,"DRB110-ordered-orig-no.f95",false,3,N/A,1,.621,Command exited with non-zero status 66
+21152,0,0
+archer,110,"DRB110-ordered-orig-no.f95",false,3,N/A,1,.621,Command exited with non-zero status 66
+21136,0,0
+archer,021,"DRB021-reductionmissing-orig-yes.f95",true,3,N/A,3,.641,Command exited with non-zero status 66
+21740,0,0
+archer,021,"DRB021-reductionmissing-orig-yes.f95",true,3,N/A,3,.649,Command exited with non-zero status 66
+21460,0,0
+archer,140,"DRB140-reduction-barrier-orig-yes.f95",true,3,N/A,2,.629,Command exited with non-zero status 66
+21196,0,0
+archer,140,"DRB140-reduction-barrier-orig-yes.f95",true,3,N/A,2,.623,Command exited with non-zero status 66
+20976,0,0
+archer,019,"DRB019-plusplus-var-yes.f95",true,3,32,0,.177,Command terminated by signal 11
+38872,0,11
+archer,019,"DRB019-plusplus-var-yes.f95",true,3,32,0,.176,Command terminated by signal 11
+38904,0,11
+archer,020,"DRB020-privatemissing-var-yes.f95",true,3,32,0,.177,Command terminated by signal 11
+38984,0,11
+archer,020,"DRB020-privatemissing-var-yes.f95",true,3,32,0,.178,Command terminated by signal 11
+38796,0,11
+archer,087,"DRB087-static-data-member2-orig-yes.f95",true,3,N/A,3,.626,Command exited with non-zero status 66
+20984,0,0
+archer,087,"DRB087-static-data-member2-orig-yes.f95",true,3,N/A,3,.620,Command exited with non-zero status 66
+21076,0,0
+archer,059,"DRB059-lastprivate-orig-no.f95",false,3,N/A,1,300.005,,0,124
+archer,059,"DRB059-lastprivate-orig-no.f95",false,3,N/A,1,300.006,,0,124
+archer,117,"DRB117-taskwait-waitonlychild-orig-yes.f95",true,3,N/A,0,.038,18720,0,0
+archer,117,"DRB117-taskwait-waitonlychild-orig-yes.f95",true,3,N/A,0,.036,18744,0,0
+archer,057,"DRB057-jacobiinitialize-orig-no.f95",false,3,N/A,1,.634,Command exited with non-zero status 66
+24692,0,0
+archer,057,"DRB057-jacobiinitialize-orig-no.f95",false,3,N/A,1,.626,Command exited with non-zero status 66
+24628,0,0
+archer,170,"DRB170-workshare-orig-no.f95",false,3,N/A,1,.621,Command exited with non-zero status 66
+20944,0,0
+archer,170,"DRB170-workshare-orig-no.f95",false,3,N/A,1,.626,Command exited with non-zero status 66
+20948,0,0
+archer,074,"DRB074-flush-orig-yes.f95",true,3,N/A,4,.634,Command exited with non-zero status 66
+25544,0,0
+archer,074,"DRB074-flush-orig-yes.f95",true,3,N/A,4,.642,Command exited with non-zero status 66
+25436,0,0
+archer,060,"DRB060-matrixmultiply-orig-no.f95",false,3,N/A,1,.724,Command exited with non-zero status 66
+22016,0,0
+archer,060,"DRB060-matrixmultiply-orig-no.f95",false,3,N/A,1,.670,Command exited with non-zero status 66
+21892,0,0
+archer,097,"DRB097-target-teams-distribute-orig-no.f95",false,3,N/A,,,,1,
+archer,099,"DRB099-targetparallelfor2-orig-no.f95",false,3,N/A,,,,1,
+archer,050,"DRB050-functionparameter-orig-no.f95",false,3,N/A,3,.629,Command exited with non-zero status 66
+21016,0,0
+archer,050,"DRB050-functionparameter-orig-no.f95",false,3,N/A,3,.626,Command exited with non-zero status 66
+20948,0,0
+archer,052,"DRB052-indirectaccesssharebase-orig-no.f95",false,3,N/A,4,.627,Command exited with non-zero status 66
+21264,0,0
+archer,052,"DRB052-indirectaccesssharebase-orig-no.f95",false,3,N/A,4,.636,Command exited with non-zero status 66
+21224,0,0
+archer,010,"DRB010-lastprivatemissing-var-yes.f95",true,3,32,0,.174,Command terminated by signal 11
+38700,0,11
+archer,010,"DRB010-lastprivatemissing-var-yes.f95",true,3,32,0,.178,Command terminated by signal 11
+38892,0,11
+archer,089,"DRB089-dynamic-storage2-orig-yes.f95",true,3,N/A,3,.624,Command exited with non-zero status 66
+20948,0,0
+archer,089,"DRB089-dynamic-storage2-orig-yes.f95",true,3,N/A,3,.629,Command exited with non-zero status 66
+21008,0,0
+archer,128,"DRB128-tasking-threadprivate2-orig-no.f95",false,3,N/A,0,.030,17528,0,0
+archer,128,"DRB128-tasking-threadprivate2-orig-no.f95",false,3,N/A,0,.031,17536,0,0
+archer,051,"DRB051-getthreadnum-orig-no.f95",false,3,N/A,1,.647,Command exited with non-zero status 66
+33032,0,0
+archer,051,"DRB051-getthreadnum-orig-no.f95",false,3,N/A,1,.641,Command exited with non-zero status 66
+32916,0,0
+archer,164,"DRB164-simdmissinglock1-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,015,"DRB015-outofbounds-var-yes.f95",true,3,32,0,.174,Command terminated by signal 11
+38944,0,11
+archer,015,"DRB015-outofbounds-var-yes.f95",true,3,32,0,.173,Command terminated by signal 11
+38864,0,11
+archer,096,"DRB096-doall2-taskloop-collapse-orig-no.f95",false,3,N/A,,,,1,
+archer,103,"DRB103-master-orig-no.f95",false,3,N/A,1,.771,Command terminated by signal 11
+43220,0,11
+archer,103,"DRB103-master-orig-no.f95",false,3,N/A,1,.767,Command terminated by signal 11
+43744,0,11
+archer,169,"DRB169-workshare-orig-yes.f95",true,3,N/A,1,.620,Command exited with non-zero status 66
+20772,0,0
+archer,169,"DRB169-workshare-orig-yes.f95",true,3,N/A,1,.621,Command exited with non-zero status 66
+20952,0,0
+archer,070,"DRB070-simd1-orig-no.f95",false,3,N/A,0,.028,15920,0,0
+archer,070,"DRB070-simd1-orig-no.f95",false,3,N/A,0,.027,16064,0,0
+archer,064,"DRB064-outeronly2-orig-no.f95",false,3,N/A,1,.623,Command exited with non-zero status 66
+21200,0,0
+archer,064,"DRB064-outeronly2-orig-no.f95",false,3,N/A,1,.629,Command exited with non-zero status 66
+21224,0,0
+archer,018,"DRB018-plusplus-orig-yes.f95",true,3,N/A,3,.646,Command exited with non-zero status 66
+33164,0,0
+archer,018,"DRB018-plusplus-orig-yes.f95",true,3,N/A,3,.657,Command exited with non-zero status 66
+33120,0,0
+archer,111,"DRB111-linearmissing-orig-yes.f95",true,3,N/A,3,.629,Command exited with non-zero status 66
+21224,0,0
+archer,111,"DRB111-linearmissing-orig-yes.f95",true,3,N/A,3,.624,Command exited with non-zero status 66
+21224,0,0
+archer,007,"DRB007-indirectaccess3-orig-yes.f95",true,3,N/A,4,.628,Command exited with non-zero status 66
+21336,0,0
+archer,007,"DRB007-indirectaccess3-orig-yes.f95",true,3,N/A,4,.634,Command exited with non-zero status 66
+21240,0,0
+archer,013,"DRB013-nowait-orig-yes.f95",true,3,N/A,5,.640,Command exited with non-zero status 66
+25372,0,0
+archer,013,"DRB013-nowait-orig-yes.f95",true,3,N/A,5,.646,Command exited with non-zero status 66
+25360,0,0
+archer,080,"DRB080-func-arg-orig-yes.f95",true,3,N/A,3,.628,Command exited with non-zero status 66
+20912,0,0
+archer,080,"DRB080-func-arg-orig-yes.f95",true,3,N/A,3,.625,Command exited with non-zero status 66
+21080,0,0
+archer,115,"DRB115-forsimd-orig-yes.f95",true,3,N/A,0,.028,16100,0,0
+archer,115,"DRB115-forsimd-orig-yes.f95",true,3,N/A,0,.027,16280,0,0
+archer,142,"DRB142-acquirerelease-orig-yes-omp50.f95",false,3,N/A,,,,1,
+archer,121,"DRB121-reduction-orig-no.f95",false,3,N/A,1,.657,Command exited with non-zero status 66
+33008,0,0
+archer,121,"DRB121-reduction-orig-no.f95",false,3,N/A,1,.641,Command exited with non-zero status 66
+33172,0,0
+archer,006,"DRB006-indirectaccess2-orig-yes.f95",true,3,N/A,4,.624,Command exited with non-zero status 66
+21424,0,0
+archer,006,"DRB006-indirectaccess2-orig-yes.f95",true,3,N/A,4,.624,Command exited with non-zero status 66
+21296,0,0
+archer,104,"DRB104-nowait-barrier-orig-no.f95",false,3,N/A,1,.641,Command exited with non-zero status 66
+33080,0,0
+archer,104,"DRB104-nowait-barrier-orig-no.f95",false,3,N/A,1,.642,Command exited with non-zero status 66
+32916,0,0
+archer,157,"DRB157-missingorderedsimd-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,122,"DRB122-taskundeferred-orig-no.f95",false,3,N/A,1,.642,Command exited with non-zero status 66
+33072,0,0
+archer,122,"DRB122-taskundeferred-orig-no.f95",false,3,N/A,1,.642,Command exited with non-zero status 66
+33088,0,0
+archer,154,"DRB154-missinglock3-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,031,"DRB031-truedepfirstdimension-orig-yes.f95",true,3,N/A,3,.879,Command terminated by signal 11
+70508,0,11
+archer,031,"DRB031-truedepfirstdimension-orig-yes.f95",true,3,N/A,3,.874,Command terminated by signal 11
+70336,0,11
+archer,152,"DRB152-missinglock2-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,009,"DRB009-lastprivatemissing-orig-yes.f95",true,3,N/A,3,.635,Command exited with non-zero status 66
+21092,0,0
+archer,009,"DRB009-lastprivatemissing-orig-yes.f95",true,3,N/A,3,.632,Command exited with non-zero status 66
+21028,0,0
+archer,116,"DRB116-target-teams-orig-yes.f95",true,3,N/A,,,,1,
+archer,136,"DRB136-taskdep-mutexinoutset-orig-yes.f95",true,3,N/A,1,.623,Command exited with non-zero status 66
+21012,0,0
+archer,136,"DRB136-taskdep-mutexinoutset-orig-yes.f95",true,3,N/A,1,.620,Command exited with non-zero status 66
+21008,0,0
+archer,114,"DRB114-if-orig-yes.f95",true,3,N/A,0,.030,17776,0,0
+archer,114,"DRB114-if-orig-yes.f95",true,3,N/A,3,.621,Command exited with non-zero status 66
+21376,0,0
+archer,024,"DRB024-simdtruedep-orig-yes.f95",true,3,N/A,0,.029,16156,0,0
+archer,024,"DRB024-simdtruedep-orig-yes.f95",true,3,N/A,0,.027,16208,0,0
+archer,139,"DRB139-worksharingcritical-orig-no.f95",false,3,N/A,1,.640,Command exited with non-zero status 66
+33164,0,0
+archer,139,"DRB139-worksharingcritical-orig-no.f95",false,3,N/A,1,.649,Command exited with non-zero status 66
+33052,0,0
+archer,126,"DRB126-firstprivatesections-orig-no.f95",false,3,N/A,0,.178,Command terminated by signal 11
+40296,0,11
+archer,126,"DRB126-firstprivatesections-orig-no.f95",false,3,N/A,0,.177,Command terminated by signal 11
+40332,0,11
+archer,133,"DRB133-taskdep5-orig-no-omp45.f95",false,3,N/A,1,.623,Command exited with non-zero status 66
+21192,0,0
+archer,133,"DRB133-taskdep5-orig-no-omp45.f95",false,3,N/A,1,.619,Command exited with non-zero status 66
+21272,0,0
+archer,081,"DRB081-func-arg-orig-no.f95",false,3,N/A,1,.622,Command exited with non-zero status 66
+20876,0,0
+archer,081,"DRB081-func-arg-orig-no.f95",false,3,N/A,1,.627,Command exited with non-zero status 66
+20904,0,0
+archer,107,"DRB107-taskgroup-orig-no.f95",false,3,N/A,1,3.056,Command exited with non-zero status 66
+33316,0,0
+archer,107,"DRB107-taskgroup-orig-no.f95",false,3,N/A,1,3.057,Command exited with non-zero status 66
+33172,0,0
+archer,093,"DRB093-doall2-collapse-orig-no.f95",false,3,N/A,1,.621,Command exited with non-zero status 66
+21140,0,0
+archer,093,"DRB093-doall2-collapse-orig-no.f95",false,3,N/A,1,.631,Command exited with non-zero status 66
+21248,0,0
+archer,023,"DRB023-sections1-orig-yes.f95",true,3,N/A,1,.646,Command exited with non-zero status 66
+33088,0,0
+archer,023,"DRB023-sections1-orig-yes.f95",true,3,N/A,1,.642,Command exited with non-zero status 66
+33024,0,0
+archer,068,"DRB068-restrictpointer2-orig-no.f95",false,3,N/A,1,.616,Command exited with non-zero status 66
+20984,0,0
+archer,068,"DRB068-restrictpointer2-orig-no.f95",false,3,N/A,1,.627,Command exited with non-zero status 66
+21008,0,0
+archer,155,"DRB155-missingordered-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,131,"DRB131-taskdep4-orig-yes-omp45.f95",false,3,N/A,1,.622,Command exited with non-zero status 66
+21008,0,0
+archer,131,"DRB131-taskdep4-orig-yes-omp45.f95",false,3,N/A,1,.627,Command exited with non-zero status 66
+21104,0,0
+archer,076,"DRB076-flush-orig-no.f95",false,3,N/A,3,.646,Command exited with non-zero status 66
+25448,0,0
+archer,076,"DRB076-flush-orig-no.f95",false,3,N/A,3,.641,Command exited with non-zero status 66
+25392,0,0
+archer,147,"DRB147-critical1-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,150,"DRB150-missinglock1-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,120,"DRB120-barrier-orig-no.f95",false,3,N/A,1,.657,Command exited with non-zero status 66
+32928,0,0
+archer,120,"DRB120-barrier-orig-no.f95",false,3,N/A,1,.651,Command exited with non-zero status 66
+33048,0,0
+archer,069,"DRB069-sectionslock1-orig-no.f95",false,3,N/A,1,.648,Command exited with non-zero status 66
+32972,0,0
+archer,069,"DRB069-sectionslock1-orig-no.f95",false,3,N/A,1,.640,Command exited with non-zero status 66
+33128,0,0
+archer,163,"DRB163-simdmissinglock1-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,167,"DRB167-taskdep5-orig-no-omp50.f95",false,3,N/A,,,,1,
+archer,038,"DRB038-truedepseconddimension-var-yes.f95",true,3,32,0,.173,Command terminated by signal 11
+38956,0,11
+archer,038,"DRB038-truedepseconddimension-var-yes.f95",true,3,32,0,.175,Command terminated by signal 11
+38924,0,11
+archer,058,"DRB058-jacobikernel-orig-no.f95",false,3,N/A,1,4.836,Command exited with non-zero status 66
+28968,0,0
+archer,058,"DRB058-jacobikernel-orig-no.f95",false,3,N/A,1,4.901,Command exited with non-zero status 66
+28960,0,0
+archer,045,"DRB045-doall1-orig-no.f95",false,3,N/A,1,.619,Command exited with non-zero status 66
+20916,0,0
+archer,045,"DRB045-doall1-orig-no.f95",false,3,N/A,1,.623,Command exited with non-zero status 66
+20780,0,0
+archer,165,"DRB165-taskdep4-orig-yes-omp50.f95",false,3,N/A,,,,1,
+archer,148,"DRB148-critical1-orig-gpu-yes.f95",true,3,N/A,,,,1,
+archer,101,"DRB101-task-value-orig-no.f95",false,3,N/A,1,.616,Command exited with non-zero status 66
+21224,0,0
+archer,101,"DRB101-task-value-orig-no.f95",false,3,N/A,1,.629,Command exited with non-zero status 66
+21224,0,0
+archer,037,"DRB037-truedepseconddimension-orig-yes.f95",true,3,N/A,3,.723,Command exited with non-zero status 66
+60056,0,0
+archer,037,"DRB037-truedepseconddimension-orig-yes.f95",true,3,N/A,3,.732,Command exited with non-zero status 66
+60048,0,0
+archer,044,"DRB044-adi-tile-no.F95",false,3,N/A,1,1.523,Command exited with non-zero status 66
+52756,0,0
+archer,044,"DRB044-adi-tile-no.F95",false,3,N/A,1,1.209,Command exited with non-zero status 66
+52652,0,0
+archer,034,"DRB034-truedeplinear-var-yes.f95",true,3,32,0,.174,Command terminated by signal 11
+39048,0,11
+archer,034,"DRB034-truedeplinear-var-yes.f95",true,3,32,0,.175,Command terminated by signal 11
+39084,0,11
+archer,005,"DRB005-indirectaccess1-orig-yes.f95",true,3,N/A,4,.630,Command exited with non-zero status 66
+21284,0,0
+archer,005,"DRB005-indirectaccess1-orig-yes.f95",true,3,N/A,4,.638,Command exited with non-zero status 66
+21424,0,0
+archer,159,"DRB159-nobarrier-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,098,"DRB098-simd2-orig-no.f95",false,3,N/A,0,.029,17672,0,0
+archer,098,"DRB098-simd2-orig-no.f95",false,3,N/A,0,.029,17740,0,0
+archer,124,"DRB124-master-orig-yes.f95",true,3,N/A,3,.620,Command exited with non-zero status 66
+20840,0,0
+archer,124,"DRB124-master-orig-yes.f95",true,3,N/A,3,.624,Command exited with non-zero status 66
+20860,0,0
+archer,054,"DRB054-inneronly2-orig-no.f95",false,3,N/A,1,.621,Command exited with non-zero status 66
+21456,0,0
+archer,054,"DRB054-inneronly2-orig-no.f95",false,3,N/A,1,.630,Command exited with non-zero status 66
+21340,0,0
+archer,002,"DRB002-antidep1-var-yes.f95",true,3,32,0,.172,Command terminated by signal 11
+39020,0,11
+archer,002,"DRB002-antidep1-var-yes.f95",true,3,32,0,.175,Command terminated by signal 11
+38944,0,11
+archer,073,"DRB073-doall2-orig-yes.f95",true,3,N/A,1,.626,Command exited with non-zero status 66
+21152,0,0
+archer,073,"DRB073-doall2-orig-yes.f95",true,3,N/A,1,.627,Command exited with non-zero status 66
+21284,0,0
+archer,063,"DRB063-outeronly1-orig-no.f95",false,3,N/A,1,.625,Command exited with non-zero status 66
+21268,0,0
+archer,063,"DRB063-outeronly1-orig-no.f95",false,3,N/A,1,.621,Command exited with non-zero status 66
+21136,0,0
+archer,030,"DRB030-truedep1-var-yes.f95",true,3,32,0,.175,Command terminated by signal 11
+38896,0,11
+archer,030,"DRB030-truedep1-var-yes.f95",true,3,32,0,.176,Command terminated by signal 11
+38976,0,11
+archer,100,"DRB100-task-reference-orig-no.f95",false,3,N/A,1,.622,Command exited with non-zero status 66
+21196,0,0
+archer,100,"DRB100-task-reference-orig-no.f95",false,3,N/A,1,.627,Command exited with non-zero status 66
+21216,0,0
+archer,077,"DRB077-single-orig-no.f95",false,3,N/A,1,.643,Command exited with non-zero status 66
+33000,0,0
+archer,077,"DRB077-single-orig-no.f95",false,3,N/A,1,.643,Command exited with non-zero status 66
+33000,0,0
+archer,137,"DRB137-simdsafelen-orig-no.f95",false,3,N/A,0,.029,16228,0,0
+archer,137,"DRB137-simdsafelen-orig-no.f95",false,3,N/A,0,.028,16060,0,0
+archer,106,"DRB106-taskwaitmissing-orig-yes.f95",true,3,N/A,7,2.330,Command exited with non-zero status 66
+25564,0,0
+archer,106,"DRB106-taskwaitmissing-orig-yes.f95",true,3,N/A,5,2.350,Command exited with non-zero status 66
+25612,0,0
+archer,162,"DRB162-nolocksimd-orig-gpu-no.f95",false,3,N/A,,,,1,
+archer,132,"DRB132-taskdep4-orig-no-omp45.f95",false,3,N/A,1,.626,Command exited with non-zero status 66
+21264,0,0
+archer,132,"DRB132-taskdep4-orig-no-omp45.f95",false,3,N/A,1,.715,Command exited with non-zero status 66
+20992,0,0
+archer,091,"DRB091-threadprivate2-orig-no.f95",false,3,N/A,1,.616,Command exited with non-zero status 66
+21184,0,0
+archer,091,"DRB091-threadprivate2-orig-no.f95",false,3,N/A,1,.626,Command exited with non-zero status 66
+21172,0,0
+archer,014,"DRB014-outofbounds-orig-yes.f95",true,3,N/A,0,.184,Command terminated by signal 11
+44108,0,11
+archer,014,"DRB014-outofbounds-orig-yes.f95",true,3,N/A,0,.185,Command terminated by signal 11
+44180,0,11
+archer,004,"DRB004-antidep2-var-yes.f95",true,3,32,0,.174,Command terminated by signal 11
+38952,0,11
+archer,004,"DRB004-antidep2-var-yes.f95",true,3,32,0,.177,Command terminated by signal 11
+38928,0,11
+archer,066,"DRB066-pointernoaliasing-orig-no.f95",false,3,N/A,1,.624,Command exited with non-zero status 66
+20952,0,0
+archer,066,"DRB066-pointernoaliasing-orig-no.f95",false,3,N/A,1,.628,Command exited with non-zero status 66
+21096,0,0
+archer,108,"DRB108-atomic-orig-no.f95",false,3,N/A,1,.654,Command exited with non-zero status 66
+32904,0,0
+archer,108,"DRB108-atomic-orig-no.f95",false,3,N/A,1,.648,Command exited with non-zero status 66
+33060,0,0
+archer,075,"DRB075-getthreadnum-orig-yes.f95",true,3,N/A,1,.652,Command exited with non-zero status 66
+21100,0,0
+archer,075,"DRB075-getthreadnum-orig-yes.f95",true,3,N/A,1,.627,Command exited with non-zero status 66
+21016,0,0
+archer,084,"DRB084-threadprivatemissing-orig-yes.f95",true,3,N/A,3,.622,Command exited with non-zero status 66
+21140,0,0
+archer,084,"DRB084-threadprivatemissing-orig-yes.f95",true,3,N/A,3,.627,Command exited with non-zero status 66
+21372,0,0

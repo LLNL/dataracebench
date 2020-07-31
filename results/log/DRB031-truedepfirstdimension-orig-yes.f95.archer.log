@@ -1,186 +1,186 @@
 *****     Log 1 for DRB031-truedepfirstdimension-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=13446)
+WARNING: ThreadSanitizer: data race (pid=19607)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x45c0ce)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x45c1de)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x441e93)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x441fa3)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f2b7)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f3c7)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-  Thread T1 (tid=13448, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=19609, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13446)
-  Write of size 4 at 0x7ffa42630a08 by thread T1:
-    #0 MAIN__._omp_fn.0 <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a813a)
+WARNING: ThreadSanitizer: data race (pid=19607)
+  Write of size 4 at 0x7f52cdb304d4 by main thread:
+    #0 MAIN__._omp_fn.0 <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a824a)
+    #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
+
+  Previous read of size 4 at 0x7f52cdb304d4 by thread T1:
+    [failed to restore the stack]
+
+  Location is heap block of size 4000000 at 0x7f52cdb2f000 allocated by main thread:
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f3c7)
+    #1 MAIN__ <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7c61)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
+
+  Thread T1 (tid=19609, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440e95)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a824a) in MAIN__._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=19607)
+  Write of size 4 at 0x7f52cdb30a08 by thread T1:
+    #0 MAIN__._omp_fn.0 <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a824a)
     #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Previous read of size 4 at 0x7ffa42630a08 by thread T2:
+  Previous read of size 4 at 0x7f52cdb30a08 by thread T2:
     [failed to restore the stack]
 
-  Location is heap block of size 4000000 at 0x7ffa4262f000 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f2b7)
-    #1 MAIN__ <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7b51)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+  Location is heap block of size 4000000 at 0x7f52cdb2f000 allocated by main thread:
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f3c7)
+    #1 MAIN__ <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7c61)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-  Thread T1 (tid=13448, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=19609, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-  Thread T2 (tid=13449, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440d85)
+  Thread T2 (tid=19610, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a813a) in MAIN__._omp_fn.0
-==================
-==================
-WARNING: ThreadSanitizer: data race (pid=13446)
-  Write of size 4 at 0x7ffa426304d4 by main thread:
-    #0 MAIN__._omp_fn.0 <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a813a)
-    #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
-
-  Previous read of size 4 at 0x7ffa426304d4 by thread T1:
-    [failed to restore the stack]
-
-  Location is heap block of size 4000000 at 0x7ffa4262f000 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f2b7)
-    #1 MAIN__ <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7b51)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
-
-  Thread T1 (tid=13448, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440d85)
-    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
-
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a813a) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a824a) in MAIN__._omp_fn.0
 ==================
 
 Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
 Backtrace for this error:
-#0  0x7ffa45d29aed in ???
-#1  0x7ffa45d28d25 in ???
-#2  0x4475a0 in CallUserSignalHandler
+#0  0x7f52d122eaed in ???
+#1  0x7f52d122dd25 in ???
+#2  0x4476b0 in CallUserSignalHandler
 	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1906
-#3  0x477e54 in rtl_generic_sighandler
+#3  0x477f64 in rtl_generic_sighandler
 	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1997
-#4  0x477e54 in rtl_sighandler
+#4  0x477f64 in rtl_sighandler
 	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:2018
-#5  0x7ffa4575f89f in ???
+#5  0x7f52d0c6489f in ???
 	at /build/glibc-2ORdQG/glibc-2.27/nptl/../sysdeps/unix/sysv/linux/x86_64/sigaction.c:0
-#6  0x7ffa45f5d860 in ???
-#7  0x7ffa45f6e5e7 in ???
-#8  0x4a7e3e in ???
-#9  0x4a7f1e in ???
-#10  0x7ffa44aa8b96 in ???
-#11  0x41b459 in ???
+#6  0x7f52d1462860 in ???
+#7  0x7f52d14735e7 in ???
+#8  0x4a7f4e in ???
+#9  0x4a802e in ???
+#10  0x7f52cffadb96 in ???
+#11  0x41b569 in ???
 #12  0xffffffffffffffff in ???
 *****     Log 2 for DRB031-truedepfirstdimension-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=13461)
+WARNING: ThreadSanitizer: data race (pid=19622)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x45c0ce)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x45c1de)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x441e93)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x441fa3)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f2b7)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f3c7)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-  Thread T1 (tid=13463, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=19624, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13461)
-  Write of size 4 at 0x7f46f2330a08 by thread T1:
-    #0 MAIN__._omp_fn.0 <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a813a)
+WARNING: ThreadSanitizer: data race (pid=19622)
+  Write of size 4 at 0x7fd3eb530a08 by thread T1:
+    #0 MAIN__._omp_fn.0 <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a824a)
     #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Previous read of size 4 at 0x7f46f2330a08 by thread T2:
+  Previous read of size 4 at 0x7fd3eb530a08 by thread T2:
     [failed to restore the stack]
 
-  Location is heap block of size 4000000 at 0x7f46f232f000 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f2b7)
-    #1 MAIN__ <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7b51)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+  Location is heap block of size 4000000 at 0x7fd3eb52f000 allocated by main thread:
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f3c7)
+    #1 MAIN__ <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7c61)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-  Thread T1 (tid=13463, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=19624, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-  Thread T2 (tid=13464, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440d85)
+  Thread T2 (tid=19625, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a813a) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a824a) in MAIN__._omp_fn.0
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13461)
-  Write of size 4 at 0x7f46f23304d4 by main thread:
-    #0 MAIN__._omp_fn.0 <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a813a)
+WARNING: ThreadSanitizer: data race (pid=19622)
+  Write of size 4 at 0x7fd3eb5304d4 by main thread:
+    #0 MAIN__._omp_fn.0 <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a824a)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-  Previous read of size 4 at 0x7f46f23304d4 by thread T1:
+  Previous read of size 4 at 0x7fd3eb5304d4 by thread T1:
     [failed to restore the stack]
 
-  Location is heap block of size 4000000 at 0x7f46f232f000 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f2b7)
-    #1 MAIN__ <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7b51)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+  Location is heap block of size 4000000 at 0x7fd3eb52f000 allocated by main thread:
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x43f3c7)
+    #1 MAIN__ <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7c61)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-  Thread T1 (tid=13463, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=19624, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a7f1e)
+    #2 main <null> (DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a802e)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a813a) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB031-truedepfirstdimension-orig-yes.f95.archer.out+0x4a824a) in MAIN__._omp_fn.0
 ==================
 
 Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
 Backtrace for this error:
-#0  0x7f46f5a53aed in ???
-#1  0x7f46f5a52d25 in ???
-#2  0x4475a0 in CallUserSignalHandler
+#0  0x7fd3eec9caed in ???
+#1  0x7fd3eec9bd25 in ???
+#2  0x4476b0 in CallUserSignalHandler
 	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1906
-#3  0x477e54 in rtl_generic_sighandler
+#3  0x477f64 in rtl_generic_sighandler
 	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1997
-#4  0x477e54 in rtl_sighandler
+#4  0x477f64 in rtl_sighandler
 	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:2018
-#5  0x7f46f548989f in ???
+#5  0x7fd3ee6d289f in ???
 	at /build/glibc-2ORdQG/glibc-2.27/nptl/../sysdeps/unix/sysv/linux/x86_64/sigaction.c:0
-#6  0x7f46f5c87860 in ???
-#7  0x7f46f5c985e7 in ???
-#8  0x4a7e3e in ???
-#9  0x4a7f1e in ???
-#10  0x7f46f47d2b96 in ???
-#11  0x41b459 in ???
+#6  0x7fd3eeed0860 in ???
+#7  0x7fd3eeee15e7 in ???
+#8  0x4a7f4e in ???
+#9  0x4a802e in ???
+#10  0x7fd3eda1bb96 in ???
+#11  0x41b569 in ???
 #12  0xffffffffffffffff in ???

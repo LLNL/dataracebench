@@ -1,6 +1,6 @@
 *****     Log 1 for DRB043-adi-parallel-no.F95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=15544)
+WARNING: ThreadSanitizer: data race (pid=17395)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
     #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB043-adi-parallel-no.F95.archer.out+0x45c23e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
@@ -17,7 +17,7 @@ WARNING: ThreadSanitizer: data race (pid=15544)
     #2 MAIN__ <null> (DRB043-adi-parallel-no.F95.archer.out+0x4a83cb)
     #3 main <null> (DRB043-adi-parallel-no.F95.archer.out+0x4a8cc0)
 
-  Thread T1 (tid=15546, running) created by main thread at:
+  Thread T1 (tid=17397, running) created by main thread at:
     #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB043-adi-parallel-no.F95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
     #2 MAIN__ <null> (DRB043-adi-parallel-no.F95.archer.out+0x4a83cb)
@@ -28,7 +28,7 @@ SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in
 ThreadSanitizer: reported 1 warnings
 *****     Log 2 for DRB043-adi-parallel-no.F95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=15559)
+WARNING: ThreadSanitizer: data race (pid=17410)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
     #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB043-adi-parallel-no.F95.archer.out+0x45c23e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
@@ -45,7 +45,7 @@ WARNING: ThreadSanitizer: data race (pid=15559)
     #2 MAIN__ <null> (DRB043-adi-parallel-no.F95.archer.out+0x4a83cb)
     #3 main <null> (DRB043-adi-parallel-no.F95.archer.out+0x4a8cc0)
 
-  Thread T1 (tid=15561, running) created by main thread at:
+  Thread T1 (tid=17412, running) created by main thread at:
     #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB043-adi-parallel-no.F95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
     #2 MAIN__ <null> (DRB043-adi-parallel-no.F95.archer.out+0x4a83cb)

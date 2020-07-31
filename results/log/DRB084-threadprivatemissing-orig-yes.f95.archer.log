@@ -1,148 +1,148 @@
 *****     Log 1 for DRB084-threadprivatemissing-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=15378)
+WARNING: ThreadSanitizer: data race (pid=21586)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x45c11e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x45c23e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x441ee3)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x442003)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x43f307)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x43f427)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-  Thread T1 (tid=15380, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440dd5)
+  Thread T1 (tid=21588, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=15378)
-  Read of size 8 at 0x0000014b0950 by main thread:
-    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a23)
-    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7d27)
+WARNING: ThreadSanitizer: data race (pid=21586)
+  Read of size 8 at 0x0000014b1950 by main thread:
+    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b43)
+    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7e47)
     #2 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #3 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #3 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-  Previous write of size 8 at 0x0000014b0950 by thread T2:
-    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a39)
-    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7d27)
+  Previous write of size 8 at 0x0000014b1950 by thread T2:
+    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b59)
+    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7e47)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Location is global '__drb084_MOD_sum0' of size 8 at 0x0000014b0950 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x0000014b0950)
+  Location is global '__drb084_MOD_sum0' of size 8 at 0x0000014b1950 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x0000014b1950)
 
-  Thread T2 (tid=15381, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440dd5)
+  Thread T2 (tid=21589, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a23) in __drb084_MOD_foo
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b43) in __drb084_MOD_foo
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=15378)
-  Read of size 8 at 0x0000014b0950 by thread T1:
-    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a23)
-    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7d27)
+WARNING: ThreadSanitizer: data race (pid=21586)
+  Read of size 8 at 0x0000014b1950 by thread T1:
+    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b43)
+    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7e47)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Previous write of size 8 at 0x0000014b0950 by thread T2:
-    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a39)
-    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7d27)
+  Previous write of size 8 at 0x0000014b1950 by thread T2:
+    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b59)
+    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7e47)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Location is global '__drb084_MOD_sum0' of size 8 at 0x0000014b0950 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x0000014b0950)
+  Location is global '__drb084_MOD_sum0' of size 8 at 0x0000014b1950 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x0000014b1950)
 
-  Thread T1 (tid=15380, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440dd5)
+  Thread T1 (tid=21588, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-  Thread T2 (tid=15381, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440dd5)
+  Thread T2 (tid=21589, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a23) in __drb084_MOD_foo
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b43) in __drb084_MOD_foo
 ==================
- sum =               1368468 sum1 =               501501
+ sum =               1382631 sum1 =               501501
 ThreadSanitizer: reported 3 warnings
 *****     Log 2 for DRB084-threadprivatemissing-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=15393)
+WARNING: ThreadSanitizer: data race (pid=21601)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x45c11e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x45c23e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x441ee3)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x442003)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x43f307)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x43f427)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-  Thread T1 (tid=15395, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440dd5)
+  Thread T1 (tid=21603, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=15393)
-  Read of size 8 at 0x0000014b0950 by main thread:
-    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a23)
-    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7d27)
+WARNING: ThreadSanitizer: data race (pid=21601)
+  Read of size 8 at 0x0000014b1950 by main thread:
+    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b43)
+    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7e47)
     #2 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #3 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #3 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-  Previous write of size 8 at 0x0000014b0950 by thread T2:
-    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a39)
-    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7d27)
+  Previous write of size 8 at 0x0000014b1950 by thread T2:
+    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b59)
+    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7e47)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Location is global '__drb084_MOD_sum0' of size 8 at 0x0000014b0950 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x0000014b0950)
+  Location is global '__drb084_MOD_sum0' of size 8 at 0x0000014b1950 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x0000014b1950)
 
-  Thread T2 (tid=15396, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440dd5)
+  Thread T2 (tid=21604, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a23) in __drb084_MOD_foo
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b43) in __drb084_MOD_foo
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=15393)
-  Read of size 8 at 0x0000014b0950 by thread T1:
-    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a23)
-    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7d27)
+WARNING: ThreadSanitizer: data race (pid=21601)
+  Read of size 8 at 0x0000014b1950 by thread T1:
+    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b43)
+    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7e47)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Previous write of size 8 at 0x0000014b0950 by thread T2:
-    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a39)
-    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7d27)
+  Previous write of size 8 at 0x0000014b1950 by thread T2:
+    #0 __drb084_MOD_foo <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b59)
+    #1 MAIN__._omp_fn.0 <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7e47)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Location is global '__drb084_MOD_sum0' of size 8 at 0x0000014b0950 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x0000014b0950)
+  Location is global '__drb084_MOD_sum0' of size 8 at 0x0000014b1950 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x0000014b1950)
 
-  Thread T1 (tid=15395, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440dd5)
+  Thread T1 (tid=21603, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-  Thread T2 (tid=15396, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440dd5)
+  Thread T2 (tid=21604, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x440ef5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7c8f)
+    #2 main <null> (DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7daf)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7a23) in __drb084_MOD_foo
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB084-threadprivatemissing-orig-yes.f95.archer.out+0x4a7b43) in __drb084_MOD_foo
 ==================
- sum =               1375407 sum1 =               501501
+ sum =               1361589 sum1 =               501501
 ThreadSanitizer: reported 3 warnings

@@ -1,24 +1,24 @@
 *****     Log 1 for DRB065-pireduction-orig-no.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=11610)
+WARNING: ThreadSanitizer: data race (pid=17730)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB065-pireduction-orig-no.f95.archer.out+0x45c06e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB065-pireduction-orig-no.f95.archer.out+0x45c17e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB065-pireduction-orig-no.f95.archer.out+0x441e33)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB065-pireduction-orig-no.f95.archer.out+0x441f43)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB065-pireduction-orig-no.f95.archer.out+0x43f257)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB065-pireduction-orig-no.f95.archer.out+0x43f367)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
-  Thread T1 (tid=11612, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB065-pireduction-orig-no.f95.archer.out+0x440d25)
+  Thread T1 (tid=17732, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB065-pireduction-orig-no.f95.archer.out+0x440e35)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
@@ -28,34 +28,34 @@ Fortran runtime error: Missing initial left parenthesis in format
 ^
 
 Error termination. Backtrace:
-#0  0x7f40a8df6aed in ???
-#1  0x7f40a8df7605 in ???
-#2  0x7f40a8df82ab in ???
-#3  0x7f40a902a5f1 in ???
-#4  0x7f40a902a82a in ???
-#5  0x7f40a903b5e7 in ???
-#6  0x4a7b47 in ???
-#7  0x4a7bc4 in ???
-#8  0x7f40a7b75b96 in ???
-#9  0x41b3f9 in ???
+#0  0x7f27e4954aed in ???
+#1  0x7f27e4955605 in ???
+#2  0x7f27e49562ab in ???
+#3  0x7f27e4b885f1 in ???
+#4  0x7f27e4b8882a in ???
+#5  0x7f27e4b995e7 in ???
+#6  0x4a7c57 in ???
+#7  0x4a7cd4 in ???
+#8  0x7f27e36d3b96 in ???
+#9  0x41b509 in ???
 #10  0xffffffffffffffff in ???
 ==================
-WARNING: ThreadSanitizer: destroy of a locked mutex (pid=11610)
-    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB065-pireduction-orig-no.f95.archer.out+0x441fbe)
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=17730)
+    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB065-pireduction-orig-no.f95.archer.out+0x4420ce)
     #1 <null> <null> (libgfortran.so.5+0x266762)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
   and:
-    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB065-pireduction-orig-no.f95.archer.out+0x4420fe)
+    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB065-pireduction-orig-no.f95.archer.out+0x44220e)
     #1 <null> <null> (libgfortran.so.5+0x265b81)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
   Location is heap block of size 752 at 0x7b5800000300 allocated by main thread:
-    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB065-pireduction-orig-no.f95.archer.out+0x43f47a)
+    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB065-pireduction-orig-no.f95.archer.out+0x43f58a)
     #1 <null> <null> (libgfortran.so.5+0x1f082)
 
   Mutex M6 (0x7b58000003e0) created at:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB065-pireduction-orig-no.f95.archer.out+0x45c06e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB065-pireduction-orig-no.f95.archer.out+0x45c17e)
     #1 <null> <null> (libgfortran.so.5+0x265a59)
 
 SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/libgfortran.so.5+0x266762) 
@@ -63,25 +63,25 @@ SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/l
 ThreadSanitizer: reported 2 warnings
 *****     Log 2 for DRB065-pireduction-orig-no.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=11625)
+WARNING: ThreadSanitizer: data race (pid=17745)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB065-pireduction-orig-no.f95.archer.out+0x45c06e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB065-pireduction-orig-no.f95.archer.out+0x45c17e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB065-pireduction-orig-no.f95.archer.out+0x441e33)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB065-pireduction-orig-no.f95.archer.out+0x441f43)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB065-pireduction-orig-no.f95.archer.out+0x43f257)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB065-pireduction-orig-no.f95.archer.out+0x43f367)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
-  Thread T1 (tid=11627, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB065-pireduction-orig-no.f95.archer.out+0x440d25)
+  Thread T1 (tid=17747, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB065-pireduction-orig-no.f95.archer.out+0x440e35)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
@@ -91,34 +91,34 @@ Fortran runtime error: Missing initial left parenthesis in format
 ^
 
 Error termination. Backtrace:
-#0  0x7fd209e47aed in ???
-#1  0x7fd209e48605 in ???
-#2  0x7fd209e492ab in ???
-#3  0x7fd20a07b5f1 in ???
-#4  0x7fd20a07b82a in ???
-#5  0x7fd20a08c5e7 in ???
-#6  0x4a7b47 in ???
-#7  0x4a7bc4 in ???
-#8  0x7fd208bc6b96 in ???
-#9  0x41b3f9 in ???
+#0  0x7f7a1c0acaed in ???
+#1  0x7f7a1c0ad605 in ???
+#2  0x7f7a1c0ae2ab in ???
+#3  0x7f7a1c2e05f1 in ???
+#4  0x7f7a1c2e082a in ???
+#5  0x7f7a1c2f15e7 in ???
+#6  0x4a7c57 in ???
+#7  0x4a7cd4 in ???
+#8  0x7f7a1ae2bb96 in ???
+#9  0x41b509 in ???
 #10  0xffffffffffffffff in ???
 ==================
-WARNING: ThreadSanitizer: destroy of a locked mutex (pid=11625)
-    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB065-pireduction-orig-no.f95.archer.out+0x441fbe)
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=17745)
+    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB065-pireduction-orig-no.f95.archer.out+0x4420ce)
     #1 <null> <null> (libgfortran.so.5+0x266762)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
   and:
-    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB065-pireduction-orig-no.f95.archer.out+0x4420fe)
+    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB065-pireduction-orig-no.f95.archer.out+0x44220e)
     #1 <null> <null> (libgfortran.so.5+0x265b81)
-    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7bc4)
+    #2 main <null> (DRB065-pireduction-orig-no.f95.archer.out+0x4a7cd4)
 
   Location is heap block of size 752 at 0x7b5800000300 allocated by main thread:
-    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB065-pireduction-orig-no.f95.archer.out+0x43f47a)
+    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB065-pireduction-orig-no.f95.archer.out+0x43f58a)
     #1 <null> <null> (libgfortran.so.5+0x1f082)
 
   Mutex M6 (0x7b58000003e0) created at:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB065-pireduction-orig-no.f95.archer.out+0x45c06e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB065-pireduction-orig-no.f95.archer.out+0x45c17e)
     #1 <null> <null> (libgfortran.so.5+0x265a59)
 
 SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/libgfortran.so.5+0x266762) 

@@ -1,266 +1,266 @@
 *****     Log 1 for DRB013-nowait-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=13118)
+WARNING: ThreadSanitizer: data race (pid=19272)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB013-nowait-orig-yes.f95.archer.out+0x45c1de)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB013-nowait-orig-yes.f95.archer.out+0x45c2ee)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB013-nowait-orig-yes.f95.archer.out+0x441fa3)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB013-nowait-orig-yes.f95.archer.out+0x4420b3)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f3c7)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f4d7)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T1 (tid=13120, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T1 (tid=19274, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13118)
+WARNING: ThreadSanitizer: data race (pid=19272)
   Read of size 4 at 0x7b8000001000 by main thread:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a80cf)
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81df)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #3 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #3 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
   Previous write of size 4 at 0x7b8000001000 by thread T2:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a8142)
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a8252)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is heap block of size 4000 at 0x7b8000001000 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f3c7)
-    #1 MAIN__ <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7c08)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f4d7)
+    #1 MAIN__ <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7d18)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T2 (tid=13121, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T2 (tid=19275, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a80cf) in MAIN__._omp_fn.1
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a81df) in MAIN__._omp_fn.1
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13118)
+WARNING: ThreadSanitizer: data race (pid=19272)
   Read of size 4 at 0x7b8000001000 by thread T1:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a80cf)
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81df)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Previous write of size 4 at 0x7b8000001000 by thread T2:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a8142)
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a8252)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is heap block of size 4000 at 0x7b8000001000 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f3c7)
-    #1 MAIN__ <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7c08)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f4d7)
+    #1 MAIN__ <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7d18)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T1 (tid=13120, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T1 (tid=19274, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T2 (tid=13121, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T2 (tid=19275, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a80cf) in MAIN__._omp_fn.1
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a81df) in MAIN__._omp_fn.1
 ==================
 LLVMSymbolizer: error reading file: No such file or directory
 ==================
-WARNING: ThreadSanitizer: data race (pid=13118)
-  Write of size 4 at 0x7ffd6bb5771c by main thread:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef)
+WARNING: ThreadSanitizer: data race (pid=19272)
+  Write of size 4 at 0x7ffd343002cc by main thread:
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #3 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #3 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Previous write of size 4 at 0x7ffd6bb5771c by thread T2:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef)
+  Previous write of size 4 at 0x7ffd343002cc by thread T2:
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7ffd6bb38000 ([stack]+0x00000001f71c)
+  Location is global '??' at 0x7ffd342e1000 ([stack]+0x00000001f2cc)
 
-  Thread T2 (tid=13121, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T2 (tid=19275, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef) in MAIN__._omp_fn.1
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff) in MAIN__._omp_fn.1
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13118)
-  Write of size 4 at 0x7ffd6bb5771c by thread T1:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef)
+WARNING: ThreadSanitizer: data race (pid=19272)
+  Write of size 4 at 0x7ffd343002cc by thread T1:
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Previous write of size 4 at 0x7ffd6bb5771c by thread T2:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef)
+  Previous write of size 4 at 0x7ffd343002cc by thread T2:
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7ffd6bb38000 ([stack]+0x00000001f71c)
+  Location is global '??' at 0x7ffd342e1000 ([stack]+0x00000001f2cc)
 
-  Thread T1 (tid=13120, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T1 (tid=19274, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T2 (tid=13121, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T2 (tid=19275, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef) in MAIN__._omp_fn.1
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff) in MAIN__._omp_fn.1
 ==================
  error =        1406
 ThreadSanitizer: reported 5 warnings
 *****     Log 2 for DRB013-nowait-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=13133)
+WARNING: ThreadSanitizer: data race (pid=19287)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB013-nowait-orig-yes.f95.archer.out+0x45c1de)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB013-nowait-orig-yes.f95.archer.out+0x45c2ee)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB013-nowait-orig-yes.f95.archer.out+0x441fa3)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB013-nowait-orig-yes.f95.archer.out+0x4420b3)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f3c7)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f4d7)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T1 (tid=13135, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T1 (tid=19289, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13133)
+WARNING: ThreadSanitizer: data race (pid=19287)
   Read of size 4 at 0x7b8000001000 by main thread:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a80cf)
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81df)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #3 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #3 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
   Previous write of size 4 at 0x7b8000001000 by thread T2:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a8142)
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a8252)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is heap block of size 4000 at 0x7b8000001000 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f3c7)
-    #1 MAIN__ <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7c08)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f4d7)
+    #1 MAIN__ <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7d18)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T2 (tid=13136, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T2 (tid=19290, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a80cf) in MAIN__._omp_fn.1
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a81df) in MAIN__._omp_fn.1
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13133)
+WARNING: ThreadSanitizer: data race (pid=19287)
   Read of size 4 at 0x7b8000001000 by thread T1:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a80cf)
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81df)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Previous write of size 4 at 0x7b8000001000 by thread T2:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a8142)
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a8252)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is heap block of size 4000 at 0x7b8000001000 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f3c7)
-    #1 MAIN__ <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7c08)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB013-nowait-orig-yes.f95.archer.out+0x43f4d7)
+    #1 MAIN__ <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7d18)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T1 (tid=13135, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T1 (tid=19289, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T2 (tid=13136, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T2 (tid=19290, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a80cf) in MAIN__._omp_fn.1
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a81df) in MAIN__._omp_fn.1
 ==================
 LLVMSymbolizer: error reading file: No such file or directory
 ==================
-WARNING: ThreadSanitizer: data race (pid=13133)
-  Write of size 4 at 0x7ffea3c52c5c by main thread:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef)
+WARNING: ThreadSanitizer: data race (pid=19287)
+  Write of size 4 at 0x7ffdab99681c by main thread:
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #3 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #3 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Previous write of size 4 at 0x7ffea3c52c5c by thread T2:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef)
+  Previous write of size 4 at 0x7ffdab99681c by thread T2:
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7ffea3c34000 ([stack]+0x00000001ec5c)
+  Location is global '??' at 0x7ffdab977000 ([stack]+0x00000001f81c)
 
-  Thread T2 (tid=13136, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T2 (tid=19290, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef) in MAIN__._omp_fn.1
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff) in MAIN__._omp_fn.1
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=13133)
-  Write of size 4 at 0x7ffea3c52c5c by thread T1:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef)
+WARNING: ThreadSanitizer: data race (pid=19287)
+  Write of size 4 at 0x7ffdab99681c by thread T1:
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Previous write of size 4 at 0x7ffea3c52c5c by thread T2:
-    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef)
+  Previous write of size 4 at 0x7ffdab99681c by thread T2:
+    #0 MAIN__._omp_fn.1 <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7ffea3c34000 ([stack]+0x00000001ec5c)
+  Location is global '??' at 0x7ffdab977000 ([stack]+0x00000001f81c)
 
-  Thread T1 (tid=13135, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T1 (tid=19289, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-  Thread T2 (tid=13136, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440e95)
+  Thread T2 (tid=19290, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB013-nowait-orig-yes.f95.archer.out+0x440fa5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7ecc)
+    #2 main <null> (DRB013-nowait-orig-yes.f95.archer.out+0x4a7fdc)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a81ef) in MAIN__._omp_fn.1
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB013-nowait-orig-yes.f95.archer.out+0x4a82ff) in MAIN__._omp_fn.1
 ==================
  error =        1406
 ThreadSanitizer: reported 5 warnings

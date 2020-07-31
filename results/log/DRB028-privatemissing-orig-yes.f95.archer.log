@@ -1,75 +1,75 @@
 *****     Log 1 for DRB028-privatemissing-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=11228)
+WARNING: ThreadSanitizer: data race (pid=17340)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x45c0ce)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x45c1ee)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x441e93)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x441fb3)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB028-privatemissing-orig-yes.f95.archer.out+0x43f2b7)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB028-privatemissing-orig-yes.f95.archer.out+0x43f3d7)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-  Thread T1 (tid=11230, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=17342, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440ea5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 LLVMSymbolizer: error reading file: No such file or directory
 ==================
-WARNING: ThreadSanitizer: data race (pid=11228)
-  Write of size 4 at 0x7ffda2db1808 by main thread:
-    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3)
+WARNING: ThreadSanitizer: data race (pid=17340)
+  Write of size 4 at 0x7ffe7b8ca5a8 by main thread:
+    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-  Previous write of size 4 at 0x7ffda2db1808 by thread T2:
-    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3)
+  Previous write of size 4 at 0x7ffe7b8ca5a8 by thread T2:
+    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3)
     #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7ffda2d92000 ([stack]+0x00000001f808)
+  Location is global '??' at 0x7ffe7b8ab000 ([stack]+0x00000001f5a8)
 
-  Thread T2 (tid=11231, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440d85)
+  Thread T2 (tid=17343, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440ea5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3) in MAIN__._omp_fn.0
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=11228)
-  Write of size 4 at 0x7ffda2db1808 by thread T1:
-    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3)
+WARNING: ThreadSanitizer: data race (pid=17340)
+  Write of size 4 at 0x7ffe7b8ca5a8 by thread T1:
+    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3)
     #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Previous write of size 4 at 0x7ffda2db1808 by thread T2:
-    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3)
+  Previous write of size 4 at 0x7ffe7b8ca5a8 by thread T2:
+    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3)
     #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7ffda2d92000 ([stack]+0x00000001f808)
+  Location is global '??' at 0x7ffe7b8ab000 ([stack]+0x00000001f5a8)
 
-  Thread T1 (tid=11230, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=17342, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440ea5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-  Thread T2 (tid=11231, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440d85)
+  Thread T2 (tid=17343, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440ea5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3) in MAIN__._omp_fn.0
 ==================
 At line 33 of file micro-benchmarks-fortran/DRB028-privatemissing-orig-yes.f95 (unit = 6, file = 'stdout')
 Fortran runtime error: Missing initial left parenthesis in format
@@ -77,34 +77,34 @@ Fortran runtime error: Missing initial left parenthesis in format
 ^
 
 Error termination. Backtrace:
-#0  0x7f5415d97aed in ???
-#1  0x7f5415d98605 in ???
-#2  0x7f5415d992ab in ???
-#3  0x7f5415fcb5f1 in ???
-#4  0x7f5415fcb82a in ???
-#5  0x7f5415fdc5e7 in ???
-#6  0x4a7d0a in ???
-#7  0x4a7db7 in ???
-#8  0x7f5414b16b96 in ???
-#9  0x41b459 in ???
+#0  0x7f42d5921aed in ???
+#1  0x7f42d5922605 in ???
+#2  0x7f42d59232ab in ???
+#3  0x7f42d5b555f1 in ???
+#4  0x7f42d5b5582a in ???
+#5  0x7f42d5b665e7 in ???
+#6  0x4a7e2a in ???
+#7  0x4a7ed7 in ???
+#8  0x7f42d46a0b96 in ???
+#9  0x41b579 in ???
 #10  0xffffffffffffffff in ???
 ==================
-WARNING: ThreadSanitizer: destroy of a locked mutex (pid=11228)
-    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x44201e)
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=17340)
+    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x44213e)
     #1 <null> <null> (libgfortran.so.5+0x266762)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
   and:
-    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x44215e)
+    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x44227e)
     #1 <null> <null> (libgfortran.so.5+0x265b81)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
   Location is heap block of size 752 at 0x7b5800000300 allocated by main thread:
-    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB028-privatemissing-orig-yes.f95.archer.out+0x43f4da)
+    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB028-privatemissing-orig-yes.f95.archer.out+0x43f5fa)
     #1 <null> <null> (libgfortran.so.5+0x1f082)
 
   Mutex M6 (0x7b58000003e0) created at:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x45c0ce)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x45c1ee)
     #1 <null> <null> (libgfortran.so.5+0x265a59)
 
 SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/libgfortran.so.5+0x266762) 
@@ -112,76 +112,76 @@ SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/l
 ThreadSanitizer: reported 4 warnings
 *****     Log 2 for DRB028-privatemissing-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=11243)
+WARNING: ThreadSanitizer: data race (pid=17355)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x45c0ce)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x45c1ee)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x441e93)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x441fb3)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB028-privatemissing-orig-yes.f95.archer.out+0x43f2b7)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB028-privatemissing-orig-yes.f95.archer.out+0x43f3d7)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-  Thread T1 (tid=11245, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=17357, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440ea5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 LLVMSymbolizer: error reading file: No such file or directory
 ==================
-WARNING: ThreadSanitizer: data race (pid=11243)
-  Write of size 4 at 0x7fff5108d0a8 by main thread:
-    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3)
+WARNING: ThreadSanitizer: data race (pid=17355)
+  Write of size 4 at 0x7ffdccdb57a8 by main thread:
+    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-  Previous write of size 4 at 0x7fff5108d0a8 by thread T2:
-    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3)
+  Previous write of size 4 at 0x7ffdccdb57a8 by thread T2:
+    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3)
     #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7fff5106e000 ([stack]+0x00000001f0a8)
+  Location is global '??' at 0x7ffdccd96000 ([stack]+0x00000001f7a8)
 
-  Thread T2 (tid=11246, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440d85)
+  Thread T2 (tid=17358, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440ea5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3) in MAIN__._omp_fn.0
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=11243)
-  Write of size 4 at 0x7fff5108d0a8 by thread T1:
-    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3)
+WARNING: ThreadSanitizer: data race (pid=17355)
+  Write of size 4 at 0x7ffdccdb57a8 by thread T1:
+    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3)
     #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
-  Previous write of size 4 at 0x7fff5108d0a8 by thread T2:
-    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3)
+  Previous write of size 4 at 0x7ffdccdb57a8 by thread T2:
+    #0 MAIN__._omp_fn.0 <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3)
     #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7fff5106e000 ([stack]+0x00000001f0a8)
+  Location is global '??' at 0x7ffdccd96000 ([stack]+0x00000001f7a8)
 
-  Thread T1 (tid=11245, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=17357, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440ea5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-  Thread T2 (tid=11246, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440d85)
+  Thread T2 (tid=17358, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x440ea5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ec3) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7fe3) in MAIN__._omp_fn.0
 ==================
 At line 33 of file micro-benchmarks-fortran/DRB028-privatemissing-orig-yes.f95 (unit = 6, file = 'stdout')
 Fortran runtime error: Missing initial left parenthesis in format
@@ -189,34 +189,34 @@ Fortran runtime error: Missing initial left parenthesis in format
 ^
 
 Error termination. Backtrace:
-#0  0x7fe35d954aed in ???
-#1  0x7fe35d955605 in ???
-#2  0x7fe35d9562ab in ???
-#3  0x7fe35db885f1 in ???
-#4  0x7fe35db8882a in ???
-#5  0x7fe35db995e7 in ???
-#6  0x4a7d0a in ???
-#7  0x4a7db7 in ???
-#8  0x7fe35c6d3b96 in ???
-#9  0x41b459 in ???
+#0  0x7f2152f1daed in ???
+#1  0x7f2152f1e605 in ???
+#2  0x7f2152f1f2ab in ???
+#3  0x7f21531515f1 in ???
+#4  0x7f215315182a in ???
+#5  0x7f21531625e7 in ???
+#6  0x4a7e2a in ???
+#7  0x4a7ed7 in ???
+#8  0x7f2151c9cb96 in ???
+#9  0x41b579 in ???
 #10  0xffffffffffffffff in ???
 ==================
-WARNING: ThreadSanitizer: destroy of a locked mutex (pid=11243)
-    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x44201e)
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=17355)
+    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x44213e)
     #1 <null> <null> (libgfortran.so.5+0x266762)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
   and:
-    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x44215e)
+    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x44227e)
     #1 <null> <null> (libgfortran.so.5+0x265b81)
-    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7db7)
+    #2 main <null> (DRB028-privatemissing-orig-yes.f95.archer.out+0x4a7ed7)
 
   Location is heap block of size 752 at 0x7b5800000300 allocated by main thread:
-    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB028-privatemissing-orig-yes.f95.archer.out+0x43f4da)
+    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB028-privatemissing-orig-yes.f95.archer.out+0x43f5fa)
     #1 <null> <null> (libgfortran.so.5+0x1f082)
 
   Mutex M6 (0x7b58000003e0) created at:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x45c0ce)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB028-privatemissing-orig-yes.f95.archer.out+0x45c1ee)
     #1 <null> <null> (libgfortran.so.5+0x265a59)
 
 SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/libgfortran.so.5+0x266762) 

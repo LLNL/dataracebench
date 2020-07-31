@@ -1,100 +1,100 @@
 *****     Log 1 for DRB140-reduction-barrier-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=12060)
+WARNING: ThreadSanitizer: data race (pid=18190)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x45c0ce)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x45c1de)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x441e93)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x441fa3)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x43f2b7)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x43f3c7)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
-  Thread T1 (tid=12062, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=18192, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 LLVMSymbolizer: error reading file: No such file or directory
 ==================
-WARNING: ThreadSanitizer: data race (pid=12060)
-  Write of size 4 at 0x7ffdd65a000c by main thread:
-    #0 MAIN__._omp_fn.0 <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7c64)
+WARNING: ThreadSanitizer: data race (pid=18190)
+  Write of size 4 at 0x7fffe513adfc by main thread:
+    #0 MAIN__._omp_fn.0 <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7d74)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
-  Previous atomic write of size 4 at 0x7ffdd65a000c by thread T2:
-    #0 __tsan_atomic32_fetch_add /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interface_atomic.cc:616:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x487150)
-    #1 MAIN__._omp_fn.0 <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b37)
+  Previous atomic write of size 4 at 0x7fffe513adfc by thread T2:
+    #0 __tsan_atomic32_fetch_add /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interface_atomic.cc:616:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x487260)
+    #1 MAIN__._omp_fn.0 <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7c47)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7ffdd6580000 ([stack]+0x00000002000c)
+  Location is global '??' at 0x7fffe511b000 ([stack]+0x00000001fdfc)
 
-  Thread T2 (tid=12063, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x440d85)
+  Thread T2 (tid=18193, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7c64) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7d74) in MAIN__._omp_fn.0
 ==================
  Sum is           10
 ThreadSanitizer: reported 2 warnings
 *****     Log 2 for DRB140-reduction-barrier-orig-yes.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=12075)
+WARNING: ThreadSanitizer: data race (pid=18205)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x45c0ce)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x45c1de)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x441e93)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x441fa3)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x43f2b7)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x43f3c7)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
-  Thread T1 (tid=12077, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x440d85)
+  Thread T1 (tid=18207, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 LLVMSymbolizer: error reading file: No such file or directory
 ==================
-WARNING: ThreadSanitizer: data race (pid=12075)
-  Write of size 4 at 0x7ffc5a16db1c by main thread:
-    #0 MAIN__._omp_fn.0 <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7c64)
+WARNING: ThreadSanitizer: data race (pid=18205)
+  Write of size 4 at 0x7ffcd024927c by main thread:
+    #0 MAIN__._omp_fn.0 <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7d74)
     #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
-  Previous atomic write of size 4 at 0x7ffc5a16db1c by thread T2:
-    #0 __tsan_atomic32_fetch_add /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interface_atomic.cc:616:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x487150)
-    #1 MAIN__._omp_fn.0 <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b37)
+  Previous atomic write of size 4 at 0x7ffcd024927c by thread T2:
+    #0 __tsan_atomic32_fetch_add /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interface_atomic.cc:616:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x487260)
+    #1 MAIN__._omp_fn.0 <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7c47)
     #2 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
 
   Location is stack of main thread.
 
-  Location is global '??' at 0x7ffc5a14e000 ([stack]+0x00000001fb1c)
+  Location is global '??' at 0x7ffcd0229000 ([stack]+0x00000002027c)
 
-  Thread T2 (tid=12078, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x440d85)
+  Thread T2 (tid=18208, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x440e95)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7a3a)
+    #2 main <null> (DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7b4a)
 
-SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7c64) in MAIN__._omp_fn.0
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB140-reduction-barrier-orig-yes.f95.archer.out+0x4a7d74) in MAIN__._omp_fn.0
 ==================
  Sum is           10
 ThreadSanitizer: reported 2 warnings

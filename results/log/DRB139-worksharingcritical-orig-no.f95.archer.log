@@ -1,24 +1,24 @@
 *****     Log 1 for DRB139-worksharingcritical-orig-no.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=13670)
+WARNING: ThreadSanitizer: data race (pid=19840)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x45c17e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x45c33e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x441f43)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x442103)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x43f367)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x43f527)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
-  Thread T1 (tid=13672, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x440e35)
+  Thread T1 (tid=19842, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x440ff5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
@@ -28,34 +28,34 @@ Fortran runtime error: Missing initial left parenthesis in format
 ^
 
 Error termination. Backtrace:
-#0  0x7fa4cf46daed in ???
-#1  0x7fa4cf46e605 in ???
-#2  0x7fa4cf46f2ab in ???
-#3  0x7fa4cf6a15f1 in ???
-#4  0x7fa4cf6a182a in ???
-#5  0x7fa4cf6b25e7 in ???
-#6  0x4a7b6d in ???
-#7  0x4a7be2 in ???
-#8  0x7fa4ce1ecb96 in ???
-#9  0x41b509 in ???
+#0  0x7f8d276cfaed in ???
+#1  0x7f8d276d0605 in ???
+#2  0x7f8d276d12ab in ???
+#3  0x7f8d279035f1 in ???
+#4  0x7f8d2790382a in ???
+#5  0x7f8d279145e7 in ???
+#6  0x4a7d2d in ???
+#7  0x4a7da2 in ???
+#8  0x7f8d2644eb96 in ???
+#9  0x41b6c9 in ???
 #10  0xffffffffffffffff in ???
 ==================
-WARNING: ThreadSanitizer: destroy of a locked mutex (pid=13670)
-    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4420ce)
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=19840)
+    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x44228e)
     #1 <null> <null> (libgfortran.so.5+0x266762)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
   and:
-    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x44220e)
+    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4423ce)
     #1 <null> <null> (libgfortran.so.5+0x265b81)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
   Location is heap block of size 752 at 0x7b5800000300 allocated by main thread:
-    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x43f58a)
+    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x43f74a)
     #1 <null> <null> (libgfortran.so.5+0x1f082)
 
   Mutex M6 (0x7b58000003e0) created at:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x45c17e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x45c33e)
     #1 <null> <null> (libgfortran.so.5+0x265a59)
 
 SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/libgfortran.so.5+0x266762) 
@@ -63,25 +63,25 @@ SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/l
 ThreadSanitizer: reported 2 warnings
 *****     Log 2 for DRB139-worksharingcritical-orig-no.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=13685)
+WARNING: ThreadSanitizer: data race (pid=19855)
   Atomic read of size 1 at 0x7b6800000b40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x45c17e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x45c33e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
   Previous write of size 1 at 0x7b6800000b40 by thread T1:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x441f43)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x442103)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x43f367)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x43f527)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
-  Thread T1 (tid=13687, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x440e35)
+  Thread T1 (tid=19857, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x440ff5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
@@ -91,34 +91,34 @@ Fortran runtime error: Missing initial left parenthesis in format
 ^
 
 Error termination. Backtrace:
-#0  0x7f3c4e570aed in ???
-#1  0x7f3c4e571605 in ???
-#2  0x7f3c4e5722ab in ???
-#3  0x7f3c4e7a45f1 in ???
-#4  0x7f3c4e7a482a in ???
-#5  0x7f3c4e7b55e7 in ???
-#6  0x4a7b6d in ???
-#7  0x4a7be2 in ???
-#8  0x7f3c4d2efb96 in ???
-#9  0x41b509 in ???
+#0  0x7fd7046edaed in ???
+#1  0x7fd7046ee605 in ???
+#2  0x7fd7046ef2ab in ???
+#3  0x7fd7049215f1 in ???
+#4  0x7fd70492182a in ???
+#5  0x7fd7049325e7 in ???
+#6  0x4a7d2d in ???
+#7  0x4a7da2 in ???
+#8  0x7fd70346cb96 in ???
+#9  0x41b6c9 in ???
 #10  0xffffffffffffffff in ???
 ==================
-WARNING: ThreadSanitizer: destroy of a locked mutex (pid=13685)
-    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4420ce)
+WARNING: ThreadSanitizer: destroy of a locked mutex (pid=19855)
+    #0 pthread_mutex_destroy /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1228:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x44228e)
     #1 <null> <null> (libgfortran.so.5+0x266762)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
   and:
-    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x44220e)
+    #0 pthread_mutex_trylock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1237:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4423ce)
     #1 <null> <null> (libgfortran.so.5+0x265b81)
-    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7be2)
+    #2 main <null> (DRB139-worksharingcritical-orig-no.f95.archer.out+0x4a7da2)
 
   Location is heap block of size 752 at 0x7b5800000300 allocated by main thread:
-    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x43f58a)
+    #0 calloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:683:5 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x43f74a)
     #1 <null> <null> (libgfortran.so.5+0x1f082)
 
   Mutex M6 (0x7b58000003e0) created at:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x45c17e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB139-worksharingcritical-orig-no.f95.archer.out+0x45c33e)
     #1 <null> <null> (libgfortran.so.5+0x265a59)
 
 SUMMARY: ThreadSanitizer: destroy of a locked mutex (/usr/lib/x86_64-linux-gnu/libgfortran.so.5+0x266762) 

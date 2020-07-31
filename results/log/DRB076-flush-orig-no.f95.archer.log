@@ -1,157 +1,157 @@
 *****     Log 1 for DRB076-flush-orig-no.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=14068)
+WARNING: ThreadSanitizer: data race (pid=20247)
   Atomic read of size 1 at 0x7b6800005f40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45bf7e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45c13e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
   Previous write of size 1 at 0x7b6800005f40 by thread T8:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441d43)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441f03)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800005a00 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f167)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f327)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T8 (tid=14077, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T8 (tid=20256, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=14068)
+WARNING: ThreadSanitizer: data race (pid=20247)
   Atomic read of size 1 at 0x7b6800006b40 by thread T8:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45bf7e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45c13e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
 
   Previous write of size 1 at 0x7b6800006b40 by thread T9:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441d43)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441f03)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800006600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f167)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f327)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T8 (tid=14077, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T8 (tid=20256, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T9 (tid=14078, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T9 (tid=20257, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=14068)
+WARNING: ThreadSanitizer: data race (pid=20247)
   Atomic read of size 1 at 0x7b6800005340 by thread T4:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45bf7e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45c13e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
 
   Previous write of size 1 at 0x7b6800005340 by thread T7:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441d43)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441f03)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800004e00 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f167)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f327)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T4 (tid=14073, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T4 (tid=20252, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T7 (tid=14076, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T7 (tid=20255, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ThreadSanitizer: reported 3 warnings
 *****     Log 2 for DRB076-flush-orig-no.f95 with 3 threads and input size      *****
 ==================
-WARNING: ThreadSanitizer: data race (pid=14090)
+WARNING: ThreadSanitizer: data race (pid=20269)
   Atomic read of size 1 at 0x7b6800005f40 by main thread:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45bf7e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45c13e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
   Previous write of size 1 at 0x7b6800005f40 by thread T8:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441d43)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441f03)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800005a00 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f167)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f327)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T8 (tid=14099, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T8 (tid=20278, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=14090)
+WARNING: ThreadSanitizer: data race (pid=20269)
   Atomic read of size 1 at 0x7b6800006b40 by thread T8:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45bf7e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45c13e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
 
   Previous write of size 1 at 0x7b6800006b40 by thread T9:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441d43)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441f03)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800006600 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f167)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f327)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T8 (tid=14099, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T8 (tid=20278, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T9 (tid=14100, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T9 (tid=20279, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================
 ==================
-WARNING: ThreadSanitizer: data race (pid=14090)
+WARNING: ThreadSanitizer: data race (pid=20269)
   Atomic read of size 1 at 0x7b6800005340 by thread T4:
-    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45bf7e)
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB076-flush-orig-no.f95.archer.out+0x45c13e)
     #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
 
   Previous write of size 1 at 0x7b6800005340 by thread T7:
-    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441d43)
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB076-flush-orig-no.f95.archer.out+0x441f03)
     #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
 
   Location is heap block of size 1504 at 0x7b6800004e00 allocated by main thread:
-    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f167)
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB076-flush-orig-no.f95.archer.out+0x43f327)
     #1 ___kmp_allocate <null> (libomp.so+0x1c097)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T4 (tid=14095, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T4 (tid=20274, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
-  Thread T7 (tid=14098, running) created by main thread at:
-    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440c35)
+  Thread T7 (tid=20277, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB076-flush-orig-no.f95.archer.out+0x440df5)
     #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
-    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7a4b)
+    #2 main <null> (DRB076-flush-orig-no.f95.archer.out+0x4a7c0b)
 
 SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
 ==================

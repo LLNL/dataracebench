@@ -73,11 +73,11 @@ ICPC_COMPILE_FLAGS="-O0 -fopenmp -qopenmp-offload=host"
 ROMP_CPP_COMPILE_FLAGS="-g -std=c++11 -fopenmp -lomp"
 ROMP_C_COMPILE_FLAGS="-g -fopenmp -lomp"
 
-FORTRAN_LINK_FLAGS="-fopenmp -c -fsanitize=thread"
+FORTRAN_LINK_FLAGS="-ffree-line-length-none -fopenmp -c -fsanitize=thread"
 FORTRAN_COMPILE_FLAGS="-fopenmp -fsanitize=thread -lgfortran"
 
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
-
+FPOLYFLAG="-Imicro-benchmarks-fortran micro-benchmarks-fortran/utilities/fpolybench.o"
 VARLEN_PATTERN='[[:alnum:]]+-var-[[:alnum:]]+\.c'
 RACES_PATTERN='[[:alnum:]]+-[[:alnum:]]+-yes\.c'
 CPP_PATTERN='[[:alnum:]]+\.cpp'
@@ -461,16 +461,16 @@ for tool in "${TOOLS[@]}"; do
     rompexec="$exname.inst"
     logname="$(basename "$test").$tool.log"
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
-    if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $POLYFLAG"; fi
+    if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $FPOLYFLAG"; fi
 
       echo "testing Fortran code:$test"
       case "$tool" in 
-        gnu)        gfortran -fopenmp -lomp $test -o $exname -lm ;;
+        gnu)        gfortran -fopenmp -lomp $additional_compile_flags $test -o $exname -lm ;;
         intel)      ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        tsan-clang) gfortran $FORTRAN_LINK_FLAGS $test -o $linkname;
+        tsan-clang) gfortran $FORTRAN_LINK_FLAGS $additional_compile_flags $test -o $linkname;
 		    clang $FORTRAN_COMPILE_FLAGS $linkname -o $exname -lm;;
-        tsan-gcc)   gfortran -fopenmp -fsanitize=thread  $test -o $exname -lm  ;;
-        archer)     gfortran $FORTRAN_LINK_FLAGS $test -o $linkname;
+        tsan-gcc)   gfortran -fopenmp -fsanitize=thread $additional_compile_flags  $test -o $exname -lm  ;;
+        archer)     gfortran $FORTRAN_LINK_FLAGS $additional_compile_flags $test -o $linkname;
 	            clang-archer $FORTRAN_COMPILE_FLAGS $linkname -o $exname $ARCHER_COMPILE_FLAGS $additional_compile_flags  -lm;;
       	inspector)  ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         romp)       gfortran -fopenmp -lomp $test -o $exname -lm;

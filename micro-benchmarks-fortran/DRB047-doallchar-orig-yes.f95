@@ -7,20 +7,22 @@
 
 !One dimension array computation
 !with finer granularity than traditional 4 bytes.
-!Dynamic tools monitoring 4-bytes elements may wrongfuly report race condition. No data race pairs.
+!There is a data race pair, a(i)@25:9 and a(i)@24:32.
 
-program DRB047_doallchar_orig_no
+program DRB047_doallchar_orig_yes
     use omp_lib
     implicit none
 
     character(len=100), dimension(:), allocatable :: a
+    character(50) :: str
     integer :: i
 
     allocate (a(100))
 
     !$omp parallel do
     do i = 1, 100
-        a(i) = 1 !Error: Cannot convert INTEGER(4) to CHARACTER(1) at (1) //check on this w/ Leo
+        write( str, '(i10)' )  i
+        a(i) = str
     end do
     !$omp end parallel do
 

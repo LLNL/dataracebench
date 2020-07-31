@@ -1,0 +1,971 @@
+*****     Log 1 for DRB106-taskwaitmissing-orig-yes.f95 with 3 threads and input size      *****
+==================
+WARNING: ThreadSanitizer: data race (pid=15024)
+  Atomic read of size 1 at 0x7b6800000b40 by main thread:
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x45c0be)
+    #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Previous write of size 1 at 0x7b6800000b40 by thread T1:
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x441e83)
+    #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
+
+  Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x43f2a7)
+    #1 ___kmp_allocate <null> (libomp.so+0x1c097)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Thread T1 (tid=15026, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15024)
+  Write of size 4 at 0x7f1831fb96ac by main thread:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #21 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Previous read of size 4 at 0x7f1831fb96ac by thread T1:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #22 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #23 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #24 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #25 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #26 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #27 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #28 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #29 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #30 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #31 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #32 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #33 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #34 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #35 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #36 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #37 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of thread T1.
+
+  Thread T1 (tid=15026, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15024)
+  Write of size 4 at 0x7f1831bb7dbc by main thread:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #15 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Previous read of size 4 at 0x7f1831bb7dbc by thread T2:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #22 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #23 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #24 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #25 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #26 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #27 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #28 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #29 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #30 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #31 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #32 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #33 MAIN__._omp_fn.4 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7f1d)
+    #34 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of thread T2.
+
+  Thread T2 (tid=15027, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15024)
+  Write of size 4 at 0x7f1831bb901c by thread T1:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #21 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #22 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #23 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #24 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #25 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #26 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #27 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #28 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #29 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #30 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #31 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #32 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7f1831bb901c by thread T2:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 MAIN__._omp_fn.4 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7f1d)
+    #22 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of thread T2.
+
+  Thread T1 (tid=15026, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Thread T2 (tid=15027, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: data race (pid=15024)
+  Write of size 4 at 0x7fffeb53f5ac by thread T1:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #21 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #22 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #23 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #24 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7fffeb53f5ac by main thread:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #22 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #23 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #24 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #25 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #26 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #27 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #28 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #29 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #30 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7fffeb522000 ([stack]+0x00000001d5ac)
+
+  Thread T1 (tid=15026, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15024)
+  Write of size 4 at 0x7fffeb5401ec by thread T1:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #21 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #22 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #23 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #24 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #25 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #26 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #27 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #28 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #29 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #30 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7fffeb5401ec by main thread:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #22 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7fffeb522000 ([stack]+0x00000001e1ec)
+
+  Thread T1 (tid=15026, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15024)
+  Write of size 4 at 0x7f1831bba27c by thread T1:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7f1831bba27c by thread T2:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 MAIN__._omp_fn.4 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7f1d)
+    #10 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of thread T2.
+
+  Thread T1 (tid=15026, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Thread T2 (tid=15027, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+ Fib for           30  =   915594432
+ThreadSanitizer: reported 7 warnings
+*****     Log 2 for DRB106-taskwaitmissing-orig-yes.f95 with 3 threads and input size      *****
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Atomic read of size 1 at 0x7b6800000b40 by main thread:
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x45c0be)
+    #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Previous write of size 1 at 0x7b6800000b40 by thread T1:
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x441e83)
+    #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
+
+  Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x43f2a7)
+    #1 ___kmp_allocate <null> (libomp.so+0x1c097)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Thread T1 (tid=15041, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Write of size 4 at 0x7fb0939b83dc by thread T1:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #21 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #22 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #23 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #24 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #25 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #26 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #27 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #28 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7fb0939b83dc by thread T2:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #22 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #23 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #24 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #25 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #26 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #27 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #28 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #29 MAIN__._omp_fn.4 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7f1d)
+    #30 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of thread T2.
+
+  Thread T1 (tid=15041, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Thread T2 (tid=15042, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Write of size 4 at 0x7ffc6d19587c by thread T1:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #21 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #22 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #23 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #24 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #25 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #26 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #27 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #28 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #29 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #30 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #31 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #32 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #33 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #34 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #35 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #36 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7ffc6d19587c by main thread:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #22 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc6d179000 ([stack]+0x00000001c87c)
+
+  Thread T1 (tid=15041, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Write of size 4 at 0x7ffc6d1970fc by thread T1:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7ffc6d1970fc by main thread:
+    [failed to restore the stack]
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc6d179000 ([stack]+0x00000001e0fc)
+
+  Thread T1 (tid=15041, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Write of size 4 at 0x7fb093dbac1c by main thread:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #21 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #22 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #23 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #24 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #25 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #26 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #27 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #28 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #29 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Previous read of size 4 at 0x7fb093dbac1c by thread T1:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #22 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #23 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of thread T1.
+
+  Thread T1 (tid=15041, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Write of size 4 at 0x7ffc6d194f4c by thread T2:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #21 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #22 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #23 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #24 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #25 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #26 MAIN__._omp_fn.4 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7f1d)
+    #27 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7ffc6d194f4c by main thread:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #22 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #23 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #24 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #25 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #26 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #27 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #28 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc6d179000 ([stack]+0x00000001bf4c)
+
+  Thread T2 (tid=15042, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Write of size 4 at 0x7fb093dba90c by thread T2:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 MAIN__._omp_fn.4 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7f1d)
+    #19 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7fb093dba90c by thread T1:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #22 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #23 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #24 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #25 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of thread T1.
+
+  Thread T2 (tid=15042, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Thread T1 (tid=15041, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Write of size 4 at 0x7fb093dbb85c by main thread:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #11 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #12 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #13 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #14 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #15 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #16 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #17 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #18 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #19 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #20 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #21 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #22 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #23 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #24 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #25 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #26 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #27 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #28 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #29 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #30 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #31 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #32 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #33 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Previous read of size 4 at 0x7fb093dbb85c by thread T1:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of thread T1.
+
+  Thread T1 (tid=15041, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=15039)
+  Write of size 4 at 0x7ffc6d19556c by thread T2:
+    #0 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06)
+    #1 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #2 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #3 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #4 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #5 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #6 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #7 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #8 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #9 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #10 MAIN__._omp_fn.4 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7f1d)
+    #11 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous read of size 4 at 0x7ffc6d19556c by main thread:
+    #0 __drb106_MOD_fib <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7aba)
+    #1 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #2 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #3 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #4 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #5 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #6 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #7 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #8 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #9 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #10 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #11 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #12 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #13 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #14 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #15 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #16 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #17 __drb106_MOD_fib._omp_fn.2 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7e23)
+    #18 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #19 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #20 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #21 __drb106_MOD_fib._omp_fn.0 <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7cfb)
+    #22 __kmp_invoke_task(int, kmp_task*, kmp_taskdata*) <null> (libomp.so+0x4cea0)
+    #23 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #24 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffc6d179000 ([stack]+0x00000001c56c)
+
+  Thread T2 (tid=15042, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x440d75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 main <null> (DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7c7e)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB106-taskwaitmissing-orig-yes.f95.archer.out+0x4a7d06) in __drb106_MOD_fib._omp_fn.0
+==================
+ Fib for           30  = -1736503976
+ThreadSanitizer: reported 9 warnings

@@ -460,6 +460,7 @@ for tool in "${TOOLS[@]}"; do
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
     logname="$(basename "$test").$tool.log"
+    linklib="micro-benchmarks-fortran/utilities/fpolybench.o"
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
     if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $FPOLYFLAG"; fi
 
@@ -468,12 +469,12 @@ for tool in "${TOOLS[@]}"; do
         gnu)        gfortran -fopenmp -lomp $additional_compile_flags $test -o $exname -lm ;;
         intel)      ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-clang) gfortran $FORTRAN_LINK_FLAGS $additional_compile_flags $test -o $linkname;
-		    clang $FORTRAN_COMPILE_FLAGS $linkname -o $exname -lm;;
+		    clang $FORTRAN_COMPILE_FLAGS $linkname $linklib -o $exname -lm;;
         tsan-gcc)   gfortran -fopenmp -fsanitize=thread $additional_compile_flags  $test -o $exname -lm  ;;
         archer)     gfortran $FORTRAN_LINK_FLAGS $additional_compile_flags $test -o $linkname;
-	            clang-archer $FORTRAN_COMPILE_FLAGS $linkname -o $exname $ARCHER_COMPILE_FLAGS $additional_compile_flags  -lm;;
+	            clang-archer $FORTRAN_COMPILE_FLAGS $linkname $linklib -o $exname $ARCHER_COMPILE_FLAGS -lm;;
       	inspector)  ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        romp)       gfortran -fopenmp -lomp $test -o $exname -lm;
+        romp)       gfortran -fopenmp -lomp -ffree-line-length-none $additional_compile_flags $test -o $exname -lm;
                     echo $exname
                     InstrumentMain --program=$exname;;
       esac

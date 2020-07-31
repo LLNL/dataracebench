@@ -1,0 +1,162 @@
+*****     Log 1 for DRB061-matrixvector1-orig-no.f95 with 3 threads and input size      *****
+==================
+WARNING: ThreadSanitizer: data race (pid=9696)
+  Atomic read of size 1 at 0x7b6800000b40 by main thread:
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x45bfbe)
+    #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+  Previous write of size 1 at 0x7b6800000b40 by thread T1:
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x441d83)
+    #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
+
+  Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB061-matrixvector1-orig-no.f95.archer.out+0x43f1a7)
+    #1 ___kmp_allocate <null> (libomp.so+0x1c097)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+  Thread T1 (tid=9698, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x440c75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
+==================
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: data race (pid=9696)
+  Read of size 4 at 0x7fffc4c687bc by main thread:
+    #0 foo.3497._omp_fn.0 <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a840b)
+    #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+  Previous write of size 4 at 0x7fffc4c687bc by thread T2:
+    #0 foo.3497._omp_fn.0 <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8431)
+    #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7fffc4c4a000 ([stack]+0x00000001e7bc)
+
+  Thread T2 (tid=9699, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x440c75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB061-matrixvector1-orig-no.f95.archer.out+0x4a840b) in foo.3497._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=9696)
+  Read of size 4 at 0x7fffc4c687bc by thread T1:
+    #0 foo.3497._omp_fn.0 <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a840b)
+    #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous write of size 4 at 0x7fffc4c687bc by thread T2:
+    #0 foo.3497._omp_fn.0 <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8431)
+    #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7fffc4c4a000 ([stack]+0x00000001e7bc)
+
+  Thread T1 (tid=9698, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x440c75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+  Thread T2 (tid=9699, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x440c75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB061-matrixvector1-orig-no.f95.archer.out+0x4a840b) in foo.3497._omp_fn.0
+==================
+ThreadSanitizer: reported 3 warnings
+*****     Log 2 for DRB061-matrixvector1-orig-no.f95 with 3 threads and input size      *****
+==================
+WARNING: ThreadSanitizer: data race (pid=9711)
+  Atomic read of size 1 at 0x7b6800000b40 by main thread:
+    #0 pthread_mutex_lock /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:3914:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x45bfbe)
+    #1 __kmp_resume_64 <null> (libomp.so+0x7dd64)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+  Previous write of size 1 at 0x7b6800000b40 by thread T1:
+    #0 pthread_mutex_init /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1211:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x441d83)
+    #1 __kmp_suspend_initialize_thread(kmp_info*) <null> (libomp.so+0x7f265)
+
+  Location is heap block of size 1504 at 0x7b6800000600 allocated by main thread:
+    #0 malloc /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:666:5 (DRB061-matrixvector1-orig-no.f95.archer.out+0x43f1a7)
+    #1 ___kmp_allocate <null> (libomp.so+0x1c097)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+  Thread T1 (tid=9713, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x440c75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+SUMMARY: ThreadSanitizer: data race (/opt/llvm_install/lib/libomp.so+0x7dd64) in __kmp_resume_64
+==================
+LLVMSymbolizer: error reading file: No such file or directory
+==================
+WARNING: ThreadSanitizer: data race (pid=9711)
+  Read of size 4 at 0x7ffccfdef50c by main thread:
+    #0 foo.3497._omp_fn.0 <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a840b)
+    #1 __kmp_api_GOMP_parallel <null> (libomp.so+0x829de)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+  Previous write of size 4 at 0x7ffccfdef50c by thread T2:
+    #0 foo.3497._omp_fn.0 <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8431)
+    #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffccfdd0000 ([stack]+0x00000001f50c)
+
+  Thread T2 (tid=9714, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x440c75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB061-matrixvector1-orig-no.f95.archer.out+0x4a840b) in foo.3497._omp_fn.0
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=9711)
+  Read of size 4 at 0x7ffccfdef50c by thread T1:
+    #0 foo.3497._omp_fn.0 <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a840b)
+    #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Previous write of size 4 at 0x7ffccfdef50c by thread T2:
+    #0 foo.3497._omp_fn.0 <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8431)
+    #1 __kmp_GOMP_microtask_wrapper(int*, int*, void (*)(void*), void*) <null> (libomp.so+0x7fd72)
+
+  Location is stack of main thread.
+
+  Location is global '??' at 0x7ffccfdd0000 ([stack]+0x00000001f50c)
+
+  Thread T1 (tid=9713, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x440c75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+  Thread T2 (tid=9714, running) created by main thread at:
+    #0 pthread_create /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:992:3 (DRB061-matrixvector1-orig-no.f95.archer.out+0x440c75)
+    #1 __kmp_create_worker <null> (libomp.so+0x7bc0d)
+    #2 MAIN__ <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a8125)
+    #3 main <null> (DRB061-matrixvector1-orig-no.f95.archer.out+0x4a816f)
+
+SUMMARY: ThreadSanitizer: data race (/home/drb/dataracebench/results/exec/DRB061-matrixvector1-orig-no.f95.archer.out+0x4a840b) in foo.3497._omp_fn.0
+==================
+ThreadSanitizer: reported 3 warnings

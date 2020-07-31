@@ -14,8 +14,10 @@ trueNegative = 0
 falseNegative = 0
 compilertrue = 0
 compilererror = 0
+compilertimeout = 0
 runtimeerror = 0
 runtimetrue = 0
+runtimeout = 0
 positive = 0
 negative = 0
 for item in content:
@@ -48,18 +50,24 @@ for i in range(1,len(truth)):
 		compilertrue += 1
 	elif compiler[i] == '1':
 		compilererror += 1
+        elif compiler[i] == '11':
+                compilertimeout += 1
 	else:
 		print("there are some errors in your data.")
 	if runtime[i] == '0':
 		runtimetrue += 1
-	elif compiler[i] == '1':
+	elif runtime[i] == '1':
 		runtimeerror += 1
+        elif runtime[i] == '11':
+                runtimeout += 1
 	else:
 		print("there are some errors in your data.")
 print("total test case is ", len(compiler)-1)
 print("compiler segmentation fault is ", compilererror)
 print("runtime segmentation fault is ", runtimeerror)
-print("tools fail rate is ", compilertrue/(compilertrue+ compilererror))
+print("compiler time out is ", compilertimeout)
+print("runtime time out is ", runtimeout)
+print("tools fail rate is ", compilertrue/(compilertrue+ compilererror+compilertimeout))
 print("false positive is ", falsePositive)
 print("true positive is ", truePositive)
 print("true negative is ", trueNegative)

@@ -1,0 +1,54 @@
+*****     Log 1 for DRB004-antidep2-var-yes.f95 with 3 threads and input size 32     *****
+
+Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+Backtrace for this error:
+#0  0x7fa8777e7aed in ???
+#1  0x7fa8777e6d25 in ???
+#2  0x447820 in CallUserSignalHandler
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1906
+#3  0x4780d4 in rtl_generic_sighandler
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1997
+#4  0x4780d4 in rtl_sighandler
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:2018
+#5  0x7fa87721d89f in ???
+	at /build/glibc-2ORdQG/glibc-2.27/nptl/../sysdeps/unix/sysv/linux/x86_64/sigaction.c:0
+#6  0x423d90 in ???
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/sanitizer_common/sanitizer_libc.cc:221
+#7  0x448870 in __interceptor_strndup
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:368
+#8  0x7fa8777e7228 in ???
+#9  0x7fa877a1b737 in ???
+#10  0x7fa877a2c5e7 in ???
+#11  0x4a81fa in ???
+#12  0x4a8907 in ???
+#13  0x7fa876566b96 in ???
+#14  0x41b6d9 in ???
+#15  0xffffffffffffffff in ???
+*****     Log 2 for DRB004-antidep2-var-yes.f95 with 3 threads and input size 32     *****
+
+Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+Backtrace for this error:
+#0  0x7f7ca01ecaed in ???
+#1  0x7f7ca01ebd25 in ???
+#2  0x447820 in CallUserSignalHandler
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1906
+#3  0x4780d4 in rtl_generic_sighandler
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:1997
+#4  0x4780d4 in rtl_sighandler
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:2018
+#5  0x7f7c9fc2289f in ???
+	at /build/glibc-2ORdQG/glibc-2.27/nptl/../sysdeps/unix/sysv/linux/x86_64/sigaction.c:0
+#6  0x423d90 in ???
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/sanitizer_common/sanitizer_libc.cc:221
+#7  0x448870 in __interceptor_strndup
+	at /opt/ArcherBuild/llvm_src/projects/compiler-rt/lib/tsan/../sanitizer_common/sanitizer_common_interceptors.inc:368
+#8  0x7f7ca01ec228 in ???
+#9  0x7f7ca0420737 in ???
+#10  0x7f7ca04315e7 in ???
+#11  0x4a81fa in ???
+#12  0x4a8907 in ???
+#13  0x7f7c9ef6bb96 in ???
+#14  0x41b6d9 in ???
+#15  0xffffffffffffffff in ???

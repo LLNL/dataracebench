@@ -1,0 +1,9 @@
+tool,id,filename,haverace,threads,dataset,races,elapsed-time(seconds),used-mem(KBs),compile-return,runtime-return
+archer,043,"DRB043-adi-parallel-no.F95",false,3,N/A,1,1.119,Command exited with non-zero status 66
+52584,0,0
+archer,043,"DRB043-adi-parallel-no.F95",false,3,N/A,1,1.122,Command exited with non-zero status 66
+52700,0,0
+archer,044,"DRB044-adi-tile-no.F95",false,3,N/A,1,1.183,Command exited with non-zero status 66
+52700,0,0
+archer,044,"DRB044-adi-tile-no.F95",false,3,N/A,1,1.198,Command exited with non-zero status 66
+52708,0,0

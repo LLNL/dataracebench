@@ -24,7 +24,7 @@ static bool flag[ISIZ/2*2+1];
 int main(int argh, char* argv[])
 {
   int i,j,k,m,ist,iend,jst,jend,nx,ny,nz,iglob,xi,jglob,eta,zeta;
-  double tmp,omega;
+  double omega;
   double v[ISIZ][ISIZ/2*2+1][ISIZ/2*2+1][5];
   omega = OMEGA_DEFAULT;
   nx = ISIZ;
@@ -36,7 +36,6 @@ int main(int argh, char* argv[])
   jend = ny -2;
   
 /* inintal value */
-
   for (i = 0; i < nx; i++) {
     iglob = i;
     xi = ( (double)(iglob) ) / ( nx - 1 );
@@ -46,16 +45,30 @@ int main(int argh, char* argv[])
       for (k = 0; k < nz; k++) {
         zeta = ( (double)(k) ) / ( nz - 1 );
         for (m = 0; m < 5; m++) {
-          v[i][j][k][m] = xi + eta +  zeta
+            v[i][j][k][m] = xi + eta +  zeta;
         }
       }
     }
   }
-  for(k = 1; k <= nz - 2; k++){
+    #pragma omp parallel private(k)
+    {
+    for(k = 1; k <= nz - 2; k++){
 
-  
     #pragma omp for nowait schedule(static)
     for (i = ist; i <= iend; i++) {
+      for (j = jst; j <= jend; j++) {
+        for (m = 0; m < 5; m++) {
+      v[i][j][k][m] = v[i][j][k][m]
+        - omega * (  v[i][j][k-1][0]
+                 + v[i][j][k-1][1]
+                 + v[i][j][k-1][2]
+                 + v[i][j][k-1][3]
+                 + v[i][j][k-1][4]  );
+        }
+      }
+    }
+#pragma omp for nowait schedule(static)
+      for (i = ist; i <= iend; i++) {
 
     #if defined(_OPENMP)      
       if (i != ist) {
@@ -71,7 +84,7 @@ int main(int argh, char* argv[])
         }
       }
     #endif /* _OPENMP */
-
+        
     for (j = jst; j<= jend; j++) {
       for (m = 0; m < 5; m++) {
         v[i][j][k][m] = v[i][j][k][m]
@@ -93,5 +106,6 @@ int main(int argh, char* argv[])
     #endif /* _OPENMP */    
     }
   }
+ }
   return 0;
 }

@@ -8,8 +8,7 @@
  */
 /**
  * IS.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 IS suit.
- * Intel Inspector can not correctly analyze the master, and report a false postive.
- * Tsan can not correctly analyze the barrier, and report a false postive.
+ * Intel Inspector can not correctly analyze the master, and report a false positive.
 */
 
 #include <stdio.h>

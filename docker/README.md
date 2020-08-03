@@ -81,7 +81,7 @@ sudo docker exec -it drb_tsan bash
 ### Run scripts
 
 #### set enviorments
-When entering a container, you need set the enviorment for ROMP and Inter Insepctor.
+When entering a container, you need set the enviorment for ROMP and Intel Insepctor.
 For using ROMP, you need run following code to set the enviorment:
 ```bash
 source /home/drb/modules/init/bash
@@ -95,7 +95,7 @@ export ROMP_PATH=/home/drb/spack/Modules/packages/linux-ubuntu18.04-haswell/gcc-
 export PATH=/home/drb/spack/Modules/packages/linux-ubuntu18.04-haswell/gcc-7.4.0/romp-master-i4tglb74pfvppyxbq42iljsrcxmexnrv/bin:$PATH
 ```
 
-For Interl Inspector, you need run following code to set the enviorment:
+For Intel Inspector, you need run following code to set the enviorment:
 ```bash
 source /opt/intel/parallel_studio_xe_2020.0.088/bin/psxevars.sh
 export PATH=/opt/intel/bin:$PATH

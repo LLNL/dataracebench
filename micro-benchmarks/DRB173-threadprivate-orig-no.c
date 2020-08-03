@@ -7,17 +7,15 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * EP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 EP suit.
- * Intel Inspector can not correctly analyze the threadprivate, and report a false postive.
+ * EP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0's EP.
+ * Intel Inspector can not correctly recognize threadprivate, and report a false postive.
 */
-
 #include <stdio.h>
 
 static double x[20];
 #pragma omp threadprivate(x)
 
-
-int main(int argh, char* argv[]){
+int main(int argc, char* argv[]){
   int i,m,n;
   double j,k;
   int p[12][12][12];
@@ -28,6 +26,6 @@ int main(int argh, char* argv[]){
         j = x[0];
         k = i +0.05;
     }
-
+  printf ("%i %k\n", j, k);  
   return 0;
 }

@@ -13,7 +13,7 @@
 
 #include <stdio.h>
 
-int main(int argh, char* argv[]){
+int main(int argc, char* argv[]){
   int i,j;
   int q[10], qq[10];
   
@@ -26,6 +26,8 @@ int main(int argh, char* argv[]){
                 qq[j] = q[i];
         }
         #pragma omp barrier /*Tsan*/
-        for (j=0; j<10;j++) qq[j] = 0;
+        for (j=0; j<10;j++) 
+          qq[j] = 0;
     }
+  return 0;
 }

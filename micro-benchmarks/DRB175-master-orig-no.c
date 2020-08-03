@@ -7,13 +7,13 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * IS.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 IS suit.
- * Intel Inspector can not correctly analyze the master, and report a false positive.
+ * IS.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0's IS.
+ * Intel Inspector can not correctly analyze the master directive and report a false positive.
 */
 
 #include <stdio.h>
 
-int main(int argh, char* argv[]){
+int main(int argc, char* argv[]){
   int i,j;
   int q[10], qq[10];
   

@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * SP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 SP suit.
+ * SP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0's SP.
  * Tsan can not correctly analyze the barrier, and report a false positive.
 */
 

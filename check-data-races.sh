@@ -229,22 +229,22 @@ if [[ "$OPTION" == "--helgrind" ]]; then
 fi
 
 if [[ "$OPTION" == "--archer" ]]; then
-    scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x archer
+    scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x archer
 fi
 
 if [[ "$OPTION" == "--tsan-clang" ]]; then
-    scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x tsan-clang
+    scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x tsan-clang
 fi
 
 if [[ "$OPTION" == "--tsan-gcc" ]]; then
-    scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x tsan-gcc
+    scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x tsan-gcc
 fi
 
 if [[ "$OPTION" == "--inspector" ]]; then
-    scripts/test-harness.sh -l $LANGUAGE -x inspector-max-resources
+    scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x inspector-max-resources
 fi
 
 if [[ "$OPTION" == "--romp" ]]; then
-   scripts/test-harness1.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x romp
+   scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x romp
 fi
 

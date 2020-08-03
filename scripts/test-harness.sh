@@ -460,9 +460,9 @@ for tool in "${TOOLS[@]}"; do
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
     logname="$(basename "$test").$tool.log"
-    linklib="micro-benchmarks-fortran/utilities/fpolybench.o"
+    linklib=" "
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
-    if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $FPOLYFLAG"; fi
+    if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $FPOLYFLAG";gcc -c micro-benchmarks-fortran/utilities/fpolybench.c -o micro-benchmarks-fortran/utilities/fpolybench.o ; linklib+="micro-benchmarks-fortran/utilities/fpolybench.o"; fi
 
       echo "testing Fortran code:$test"
       case "$tool" in 

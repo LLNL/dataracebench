@@ -25,15 +25,15 @@ The images contains all three tools (Intel Inspector need a valid license, we ar
 
 #### ThreadSanitizer
 ```bash
-sudo docker push yshixyz/dataracebench:Tsan
+sudo docker pull yshixyz/dataracebench:Tsan
 ```
 #### Archer
 ```bash
-sudo docker push yshixyz/dataracebench:archer
+sudo docker pull yshixyz/dataracebench:archer
 ```
 #### ROMP
 ```bash
-sudo docker push yshixyz/dataracebench:test
+sudo docker pull yshixyz/dataracebench:test
 ```
 #### Intel Inspector
 A valid license is required to install and use Intel Inspector.
@@ -77,6 +77,38 @@ sudo docker rm drb_Tsan
 After creating a container, run the following command to enter it for debugging or something else.
 ```bash
 sudo docker exec -it drb_tsan bash
+```
+### Run scripts
+
+#### set enviorments
+When entering a container, you need set the enviorment for ROMP and Intel Insepctor.
+For using ROMP, you need run following code to set the enviorment:
+```bash
+source /home/drb/modules/init/bash
+module use /home/drb/spack/Modules/modules/linux-ubuntu18.04-haswell
+module load gcc-7.4.0-gcc-7.5.0-moe6s7c
+module load llvm-openmp-romp-mod-gcc-7.4.0-cs7qzdu
+module load glog-0.3.5-gcc-7.4.0-gqqsqah
+module load dyninst-10.1.2-gcc-7.4.0-ohvswfl
+export DYNINSTAPI_RT_LIB=/home/drb/spack/Modules/packages/linux-ubuntu18.04-haswell/gcc-7.4.0/dyninst-10.1.2-ohvswflc5hmntqwldkswrmwexnb56hzm/lib/libdyninstAPI_RT.so
+export ROMP_PATH=/home/drb/spack/Modules/packages/linux-ubuntu18.04-haswell/gcc-7.4.0/romp-master-i4tglb74pfvppyxbq42iljsrcxmexnrv/lib/libromp.so
+export PATH=/home/drb/spack/Modules/packages/linux-ubuntu18.04-haswell/gcc-7.4.0/romp-master-i4tglb74pfvppyxbq42iljsrcxmexnrv/bin:$PATH
+```
+
+For Intel Inspector, you need run following code to set the enviorment:
+```bash
+source /opt/intel/parallel_studio_xe_2020.0.088/bin/psxevars.sh
+export PATH=/opt/intel/bin:$PATH
+```
+
+The location of file and the harsh name which created by spark, may be different. You should check the the file name and their location in your docker container.
+
+#### test with tool
+
+
+```bash
+cd dataracebench
+./check-data-race.sh --toolname language (./check-data-race.sh --romp fortran)
 ```
 
 ## Build Docker images

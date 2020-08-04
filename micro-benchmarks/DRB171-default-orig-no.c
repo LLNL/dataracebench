@@ -7,8 +7,8 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * MG.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 MG suit.
- * Tsan and Intel Inspector can not correctly analyze and report a false postive.
+ * MG.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 MG.
+ * Tsan and Intel Inspector report a false postive.
 */
 
 #include <stdio.h>

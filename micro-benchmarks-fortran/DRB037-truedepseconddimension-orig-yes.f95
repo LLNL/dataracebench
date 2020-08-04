@@ -33,4 +33,6 @@ program DRB037_truedepseconddimension_orig_yes
 
     print 100, b(500,500)
     100 format ('b(500,500) =', F20.6)
+
+    deallocate(b)
 end program

@@ -40,5 +40,5 @@ program DRB021_reductionmissing_orig_yes
     !$omp end parallel do
 
     print*,"sum =", getSum
-
+    deallocate(u)
 end program

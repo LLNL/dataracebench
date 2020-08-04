@@ -16,15 +16,17 @@ program DRB052_indirectaccesssharebase_orig_no
     use omp_lib
     implicit none
 
-    integer, dimension(180) :: indexSet
+    integer, dimension(:), allocatable :: indexSet
     integer, parameter :: dp = kind(1.0d0)
     real(dp), dimension(:), pointer :: xa1, xa2
-    real(dp), dimension(2025), target :: base
+    real(dp), dimension(:), allocatable, target :: base
     integer :: N = 180
     integer:: i, idx1,idx2
 
     allocate (xa1(2025))
     allocate (xa2(2025))
+    allocate (base(2025))
+     allocate (indexSet(180))
     xa1 => base(1:2025)
     xa2 => base(1:2025)
 
@@ -66,4 +68,7 @@ program DRB052_indirectaccesssharebase_orig_no
             print*,'i= ',i,' base =',base(i)
         end if
     end do
+
+    deallocate(base,indexSet)
+    nullify(xa1,xa2)
 end program

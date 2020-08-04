@@ -54,4 +54,5 @@ program DRB034_truedeplinear_var_yes
     end do
     !$omp end parallel do
 
+    deallocate(args,a)
 end program

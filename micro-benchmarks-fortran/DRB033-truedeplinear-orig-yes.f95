@@ -31,4 +31,5 @@ program DRB033_truedeplinear_orig_yes
     print 100, a(1002)
     100 format ('a(1002) =',i3)
 
+    deallocate(a)
 end program

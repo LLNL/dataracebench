@@ -54,4 +54,6 @@ program DRB017_outputdep_var_yes
 
     print 100, x, a(0)
     100 format ("x=",i3,2x,"a(0)=",i3)
+
+    deallocate(args,a)
 end program

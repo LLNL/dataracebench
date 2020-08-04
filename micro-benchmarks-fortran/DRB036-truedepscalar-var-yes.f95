@@ -50,4 +50,5 @@ program DRB036_truedepscalar_var_yes
     end do
     !$omp end parallel do
 
+    deallocate(args,a)
 end program

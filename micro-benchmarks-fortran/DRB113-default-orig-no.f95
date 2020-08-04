@@ -40,4 +40,6 @@ program DRB113_default_orig_no
     !$omp end parallel do
 
     print*,a(50,50),b(50,50)
+
+    deallocate(a,b)
 end program

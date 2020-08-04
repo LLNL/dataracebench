@@ -53,4 +53,5 @@ program DRB040_truedepsingleelement_var_yes
     print 100, a(0)
     100 format ('a(0) =',i3)
 
+    deallocate(args,a)
 end program

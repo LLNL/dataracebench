@@ -39,4 +39,5 @@ program DRB117_taskwait_waitonlychild_orig_yes
 
     print*,'sum =',sum
 
+    deallocate(a,psum)
 end program

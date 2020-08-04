@@ -43,4 +43,6 @@ program DRB149_missingdata1_orig_gpu_no
             print*, c(i)
         end if
     end do
+
+    deallocate(a,b,c)
 end program

@@ -36,6 +36,8 @@ program DRB112_linear_orig_no
     end do
     !$omp end parallel do
 
-    print*,'c(50) =',c(50)
+    !print*,'c(50) =',c(50)
 
+    if(allocated(a))deallocate(a)
+    if(allocated(b))deallocate(b)
 end program

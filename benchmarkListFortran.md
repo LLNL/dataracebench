@@ -86,7 +86,7 @@ DRB136-taskdep-mutexinoutset-orig-yes.f95			| Y1,Y6	| Missing mutexinoutset depe
 DRB138-simdsafelen-orig-yes.f95						| Y6	| Parameter for safelen() clause having a value lesser than required for a defined execution. 							| New
 DRB140-reduction-barrier-orig-yes.f95				| Y3	| Asynchronous update by master directive and usage in reduction clause. 												| New
 DRB142-acquirerelease-orig-yes-omp50.f95			| Y3	| Missing implicit flush after critical construct.																		| New
-DRB144-atomiccritical-orig-gpu-yes.f95				| Y5,Y3	| Asynchronous update of a variable across teams due to improper critical and atomic construct usage. 					| New
+DRB144-critical-missingreduction-orig-gpu-yes.f95				| Y5,Y3	| Asynchronous update of a variable across teams due to improper critical and atomic construct usage. 					| New
 DRB148-critical1-orig-gpu-yes.f95					| Y5,Y3	| Due to different locks, addition and subtraction interleave. 															| New
 DRB150-missinglock1-orig-gpu-yes.f95				| Y5,Y3	| distribute parallel do directive executes across teams. omp_set_lock() ensures synchronization only within a team. 	| New
 DRB151-missinglock3-orig-gpu-yes.f95				| Y5,Y3	| Missing synchronization in teams distribute parallel do construct among a team of threads. 							| New

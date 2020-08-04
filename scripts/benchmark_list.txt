@@ -141,7 +141,7 @@ DRB140-reduction-barrier-orig-yes.c	Y3	Asynchronous update by master directive a
 DRB141-reduction-barrier-orig-no.c	N3	Addition of explicit barrier to ensure completion of initialization of a variable before encountering a parallel region.	New
 DRB142-acquirerelease-orig-yes.c	Y3	Missing implicit flush after critical construct.	New
 DRB143-acquirerelease-orig-no.c	N3	Use of flush after critical construct to avoid data race.	New
-DRB144-atomiccritical-orig-gpu-yes.c	Y5, Y3	Asynchronous update of a variable across teams due to improper critical and atomic construct usage. 	DRACC
+DRB144-critical-missingreduction-orig-gpu-yes.c	Y5, Y3	Asynchronous update of a variable across teams due to improper critical and atomic construct usage. 	New
 DRB145-atomiccritical-orig-gpu-no.c	N5, N2	Use of reduction construct to synchronize across teams. 	New
 DRB146-atomicupdate-orig-gpu-no.c	N5, N3, N1	Use of atomic update construct to have synchronization across teams. 	New
 DRB147-critical1-orig-gpu-no.c	N5, N1	To have synchronization across distribute parallel loop across teams, usage of atomic construct.	New

@@ -19,7 +19,7 @@
 !When N is 180, two iterations with N=0 and N= 5 have loop carried dependences.
 !For static even scheduling, we must have at least 36 threads (180/36=5 iterations)
 !so iteration 0 and 5 will be scheduled to two different threads.
-!Data race pair: base[idx]@80 vs. base[idx]@81
+!Data race pair: base[idx]@80:9 vs. base[idx]@81:9
 
 
 module DRB006
@@ -38,7 +38,7 @@ program DRB006_indirectaccess2_orig_yes
 
     integer :: i, idx1, idx2
     integer, parameter :: dp = kind(1.0d0)
-    real(dp), dimension(:), pointer :: xa1, xa2
+    real(dp), dimension(:), pointer :: xa1=>NULL(), xa2=>NULL()
     real(dp), dimension(2025), target :: base
 
     allocate (xa1(2025))
@@ -83,5 +83,6 @@ program DRB006_indirectaccess2_orig_yes
     !$omp end parallel do
 
     print*,'xa1(999) =',base(999),' xa2(1285) =',base(1285)
-
+  
+    nullify(xa1,xa2)
 end program

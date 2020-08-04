@@ -54,4 +54,6 @@ program DRB038_truedepseconddimension_var_yes
     end do
 !    print 100, b(5,5)
 !    100 format ('b(5,5) =', F20.6)
+
+    deallocate(args,b)
 end program

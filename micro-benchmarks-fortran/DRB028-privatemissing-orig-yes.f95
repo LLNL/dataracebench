@@ -32,4 +32,6 @@ program DRB028_privatemissing_orig_yes
 
     print 100, a(50)
     100 format ('a(50)=',i3)
+
+    deallocate(a)
 end program

@@ -14,7 +14,7 @@ contains
     subroutine foo(n, a, b, c, d)
         integer, value :: n
         integer :: i
-        integer, dimension(:), pointer :: a, b, c, d
+        integer, dimension(:), pointer, intent(out) :: a, b, c, d
 
         allocate (a(n))
         allocate (b(n))
@@ -35,6 +35,8 @@ contains
         if (a(500) /= 1000) then
             print*,a(500)
         end if
+
+        nullify(a,b,c,d)
     end subroutine
 end module
 
@@ -44,7 +46,7 @@ program DRB068_restrictpointer2_orig_no
     implicit none
 
     integer :: n = 1000
-    integer, dimension(:), pointer :: a, b, c, d
+    integer, dimension(:), pointer :: a=>null(), b=>null(), c=>null(), d=>null()
 
     allocate (a(n))
     allocate (b(n))
@@ -52,4 +54,10 @@ program DRB068_restrictpointer2_orig_no
     allocate (d(n))
 
     call foo(n,a,b,c,d)
+
+    if(associated(a))nullify(a)
+    if(associated(b))nullify(b)
+    if(associated(c))nullify(c)
+    if(associated(d))nullify(d)
+
 end program

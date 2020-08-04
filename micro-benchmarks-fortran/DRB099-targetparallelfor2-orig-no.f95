@@ -14,8 +14,8 @@ module DRB099
 REAL FUNCTION foo(a,b,N)
     use omp_lib
     implicit none
-	INTEGER :: N, i
-	integer, parameter :: dp = kind(1.0d0)
+  INTEGER :: N, i
+  integer, parameter :: dp = kind(1.0d0)
     real(dp), dimension(:), allocatable :: a,b
 
     !$omp target map(to:a(1:N)) map(from:b(1:N))
@@ -25,7 +25,8 @@ REAL FUNCTION foo(a,b,N)
     end do
     !$omp end parallel do
     !$omp end target
-	RETURN
+
+  RETURN
 END FUNCTION foo
 end module
 
@@ -35,7 +36,7 @@ program DRB099_targetparallelfor2_orig_no
     implicit none
 
     integer :: i, len
-	integer, parameter :: dp = kind(1.0d0)
+  integer, parameter :: dp = kind(1.0d0)
     real(dp), dimension(:), allocatable :: a,b
     real :: x
 
@@ -51,4 +52,6 @@ program DRB099_targetparallelfor2_orig_no
 
     x=foo(a,b,len)
     print*,'b(50) =',b(50)
+  
+    deallocate(a,b)
 end program

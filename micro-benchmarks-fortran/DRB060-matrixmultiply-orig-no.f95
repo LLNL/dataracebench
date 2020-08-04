@@ -34,4 +34,5 @@ program DRB060_matrixmultiply_orig_no
     end do
     !$omp end parallel do
 
+    deallocate(a,b,c)
 end program

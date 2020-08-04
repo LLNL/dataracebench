@@ -12,7 +12,7 @@
 !while another thread may still be simultaneously executing
 !the for worksharing region by writing to d[9], causing data races.
 !
-!Data race pair: a[i]@41 vs. a[10]@37
+!Data race pair: a[i]@41:21 vs. a[10]@37:!7
 
 program DRB013_nowait_orig_yes
     use omp_lib
@@ -44,4 +44,6 @@ program DRB013_nowait_orig_yes
     !$omp end parallel
 
     print*,"error =",error
+
+    deallocate(a)
 end program

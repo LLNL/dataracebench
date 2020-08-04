@@ -16,10 +16,12 @@ contains
         integer :: i
         integer, parameter :: dp = kind(1.0d0)
         real(dp),dimension(:), pointer :: m_pdv_sum, m_nvol
-        real(dp),dimension(N), target :: tar1, tar2
+        real(dp),dimension(:), allocatable, target :: tar1, tar2
 
         allocate (m_pdv_sum(N))
         allocate (m_nvol(N))
+        allocate (tar1(N))
+        allocate (tar2(N))
 
         m_pdv_sum => tar1
         m_nvol => tar2
@@ -32,6 +34,9 @@ contains
         !$omp end parallel do
 
         !print*,tar1(N),tar2(N)
+        if (associated(m_pdv_sum)) nullify(m_pdv_sum)
+        if (associated(m_nvol)) nullify(m_nvol)
+        deallocate(tar1,tar2)
     end subroutine
 end module
 
@@ -44,4 +49,5 @@ program DRB066_pointernoaliasing_orig_no
     N = 1000
 
     call setup(N)
+
 end program

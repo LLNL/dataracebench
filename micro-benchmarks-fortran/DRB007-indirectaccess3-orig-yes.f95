@@ -39,7 +39,7 @@ program DRB007_indirectaccess3_orig_yes
 
     integer :: i, idx1, idx2
     integer, parameter :: dp = kind(1.0d0)
-    real(dp), dimension(:), pointer :: xa1, xa2
+    real(dp), dimension(:), pointer :: xa1=>NULL(), xa2=>NULL()
     real(dp), dimension(2025), target :: base
 
     allocate (xa1(2025))
@@ -85,4 +85,5 @@ program DRB007_indirectaccess3_orig_yes
 
     print*,'xa1(999) =',base(999),' xa2(1285) =',base(1285)
 
+    nullify(xa1,xa2)
 end program

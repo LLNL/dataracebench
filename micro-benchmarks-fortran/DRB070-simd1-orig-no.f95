@@ -23,4 +23,6 @@ program DRB070_simd1_orig_no
         a(i) = b(i) + c(i)
     end do
     !$omp end simd
+
+    deallocate(a,b,c)
 end program

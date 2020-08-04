@@ -52,4 +52,7 @@ program DRB090_static_local_orig_yes
 
     print 100, a(50), b(50)
     100 format (i3,3x,i3)
+
+    deallocate(a,b)
+
 end program

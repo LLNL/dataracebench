@@ -69,4 +69,6 @@ program DRB015_outofbounds_var_yes
     end do
     !$omp end parallel do
     print*,"b(50,50)=",b(50,50)
+
+    deallocate(args,b)
 end program

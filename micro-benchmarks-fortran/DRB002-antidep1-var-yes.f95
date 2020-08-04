@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !A loop with loop-carried anti-dependence.
-!Data race pair: a[i+1]@42:9 vs. a[i]@42:16
+!Data race pair: a[i+1]@49:9 vs. a[i]@49:16
 
 program DRB002_antidep1_var_yes
     use omp_lib
@@ -49,5 +49,8 @@ program DRB002_antidep1_var_yes
         a(i) = a(i+1)+1
     end do
     !$omp end parallel do
+
+    deallocate(a)
+    deallocate(args)
 
 end program

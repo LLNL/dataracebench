@@ -41,4 +41,6 @@ program DRB104_nowait_barrier_orig_no
 
     print 100, error
     100 format ('error =',3i8)
+
+    deallocate(a)
 end program

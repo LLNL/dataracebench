@@ -35,4 +35,6 @@ program DRB024_simdtruedep_orig_yes
     do i = 1, len
         write(6,*) 'Values for i and a(i) are:', i, a(i)
     end do
+
+    deallocate(a,b)
 end program

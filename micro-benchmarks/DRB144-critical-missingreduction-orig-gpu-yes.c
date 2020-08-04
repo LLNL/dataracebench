@@ -7,9 +7,9 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 
-/*This example is referred from DRACC by Adrian Schmitz et al.
-The condition check at line 26:8 is critical and increment at line number 28 is atomic for the variable
-var@28:7. Therefore, there is a possible Data Race pair var@26:8 and var@26:8.
+/*
+The increment at line number 26 is critical for the variable
+var@26:5. Therefore, there is a possible Data Race pair var@26:5 and var@26:5.
 */
 
 #include <stdio.h>
@@ -21,13 +21,11 @@ int var = 0;
 int main(){
   #pragma omp target map(tofrom:var) device(0)
   #pragma omp teams distribute parallel for
-  for (int i=0; i<N*2; i++){
+  for(int i=0; i<N*2; i++){
     #pragma omp critical
-    if(var<N){
-      #pragma omp atomic
-      var++;
-    }
+    var++;
   }
+
   printf("%d\n ",var);
 
   return 0;

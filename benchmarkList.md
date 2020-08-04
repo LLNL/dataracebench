@@ -85,7 +85,7 @@ DRB136-taskdep-mutexinoutset-orig-yes.c				|Y1,Y6	| Missing mutexinoutset depend
 DRB138-simdsafelen-orig-yes.c						|Y6	    | Parameter for safelen() clause having a value lesser than required for a defined execution. 							| New
 DRB140-reduction-barrier-orig-yes.c					|Y3	    | Asynchronous update by master directive and usage in reduction clause. 												| New
 DRB142-acquirerelease-orig-yes.c					|Y3	    | Missing implicit flush after critical construct.																		| New
-DRB144-atomiccritical-orig-gpu-yes.c				|Y5, Y3	| Asynchronous update of a variable across teams due to improper critical and atomic construct usage. 					| DRACC
+DRB144-critical-missingreduction-orig-gpu-yes.c				|Y5, Y3	| Asynchronous update of a variable across teams due to improper critical and atomic construct usage. 					| New
 DRB148-critical1-orig-gpu-yes.c						|Y5, Y3	| Due to different locks, addition and subtraction interleave. 															| DRACC
 DRB150-missinglock1-orig-gpu-yes.c					|Y5, Y3	| distribute parallel for directive executes across teams. omp_set_lock() ensures synchronization only within a team. 	| DRACC
 DRB151-missinglock3-orig-gpu-yes.c					|Y5, Y3	| Missing synchronization in teams distribute parallel for construct among a team of threads. 							| DRACC

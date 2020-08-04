@@ -32,6 +32,10 @@ contains
         !$omp end parallel do
 
         print*,tar1(len),tar2(len)
+        
+        if(associated(newSxx))nullify(newSxx)
+        if(associated(newSyy))nullify(newSyy)
+
     end subroutine
 end module
 program DRB067_restrictpointer1_orig_no
@@ -48,4 +52,6 @@ program DRB067_restrictpointer1_orig_no
 
     call foo(newSxx, newSyy, len)
 
+    if(associated(newSxx))nullify(newSxx)
+    if(associated(newSyy))nullify(newSyy)
 end program

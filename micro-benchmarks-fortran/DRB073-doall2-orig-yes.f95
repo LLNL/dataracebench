@@ -31,4 +31,6 @@ program DRB073_doall2_orig_yes
     end do
     !$omp end parallel do
 
+
+    deallocate(a)
 end program

@@ -55,4 +55,5 @@ program DRB030_truedep1_var_yes
     print 100, a(50)
     100 format ('a(50)=',i3)
 
+    deallocate(args,a)
 end program

@@ -27,4 +27,5 @@ program DRB071_targetparallelfor_orig_no
     end do
     !$omp end target
 
+    deallocate(a)
 end program

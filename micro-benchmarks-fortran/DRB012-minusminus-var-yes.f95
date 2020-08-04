@@ -62,4 +62,6 @@ program DRB012_minusminus_var_yes
     !$omp end parallel do
 
     print*,"numNodes2 =", numNodes2
+
+    deallocate(args,x)
 end program

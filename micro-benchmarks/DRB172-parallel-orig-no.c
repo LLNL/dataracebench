@@ -7,14 +7,14 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * BT.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 bt suit.
+ * BT.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 bt.
  * Tsan and Intel Inspector can not correctly analyze the nested parallel for, and report a false positive.
 */
 
 #include <stdio.h>
 
 
-int main(int argh, char* argv[]){
+int main(int argc, char* argv[]){
   int i,j,k,m;
   int nthreads = 1;
   double u[12][12][12][5];

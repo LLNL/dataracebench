@@ -7,27 +7,27 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * SP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0's SP.
- * Tsan can not correctly analyze the barrier, and report a false positive.
+ * SP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 SP suit.
+ * Tool                  Race       Read lin    Write line   Read line   Write line
+ * Tsan                   Y           31:34       28:18       31:14         28:18
+ * Intel Inspector        Y             28         24          31            31
+ * Romp                   SF
+ * Archer                 Y           31:34       31:34
 */
 
 #include <stdio.h>
 
-int main(int argc, char* argv[]){
+int main(){
   int i,j;
-  int q[10], qq[10];
+  int q[10];
   
   #pragma omp parallel private(i)
     for( i=0; i<10; i++){
-       #pragma omp master /*intel*/
+       #pragma omp master
         {
             q[i] = i;
-            for (j=0; j<10;j++)
-                qq[j] = q[i];
         }
-        #pragma omp barrier /*Tsan*/
-        for (j=0; j<10;j++) 
-          qq[j] = 0;
+        #pragma omp barrier
+        for (j=0; j<10;j++) q[j] = 0;
     }
-  return 0;
 }

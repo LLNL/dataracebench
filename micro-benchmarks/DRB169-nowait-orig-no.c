@@ -9,50 +9,34 @@
 
 /**
  * CG.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 CG suit.
- * Tsan and Intel Inspector can not correctly analyze the nowait, and report a false postive.
+ * Tool                  Race       Read line           Write line
+ * Tsan                    Y            37:23                37:21
+ * Intel Inspector         Y            37                   37
+ * Romp                    Y            37:21                37:29
+ * Archer                  Y            37:23                37:21
  */
 
 #include <stdio.h>
 #include <math.h>
 
-#define NA     1400
-#define NONZER 7
-#define NZ     NA*(NONZER+1)*(NONZER+1)+NA*(NONZER+2)
+static int colidx[100];
 
-static int colidx[NZ+1];
-static double x[NA+2+1];
-static int firstrow;
-static int lastrow;
-static int firstcol;
-static int lastcol;
-
-int main(int argh, char* argv[]){
+int main(){
   int i,j,k;
-  firstrow = 1;
-  lastrow  = NA;
-  firstcol = 1;
-  lastcol  = NA;
-
 
   /*initial collide */
-
-  for(i=0; i<NZ; i++){
+  for(i=0; i<100; i++){
     colidx[i] = 1;
   }
 
-  #pragma omp parallel default(shared) private(i,j,k)
+  #pragma omp parallel default(shared) private(j,k)
   {
     #pragma omp for nowait
-      for (j = 1; j <= lastrow - firstrow + 1; j++) {
-        for (k = 1; k < lastcol-firstcol; k++) {
-          colidx[k] = colidx[k] - firstcol + 1;
+      for (j = 1; j <= 100 ; j++) {
+        for (k = 1; k < 99; k++) {
+          colidx[k] = colidx[k] - 9;
         }
       }
-    #pragma omp for nowait
-      for (i = 1; i <= NA+1; i++) {
-	  x[i] = 1.0;
-      }
   }
-
   return 0;
 }

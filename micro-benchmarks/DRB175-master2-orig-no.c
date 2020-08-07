@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * IS.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 IS suit.
+ * IS.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 IS.
  * Tool                  Race       Read line     Write line      Read line       Write line
  * Tsan                    N
  * Intel Inspector         Y            30            24             28               24

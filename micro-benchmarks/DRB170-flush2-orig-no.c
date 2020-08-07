@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * LU.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 LU suit.
+ * LU.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 LU.
  * Tool                  Race       Read line    Write line   Read line   Write line    R line   W line
  * Tsan                    Y            72:32         51:18       64:14        64:14    65:16   65:16
  * Intel Inspector         Y            51            72          72           71       64        64

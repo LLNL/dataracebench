@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * BT.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 bt suit.
+ * BT.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 bt.
  * Tool                  Race       Read line           Write line      Read line      Write line   Read line   Write line
  * Tsan                   Y            44:16                44:16         46:31           46:31
  * Intel Inspector        Y             44                   44             46             46          46           43

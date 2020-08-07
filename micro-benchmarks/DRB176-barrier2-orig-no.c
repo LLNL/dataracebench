@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * SP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 SP suit.
+ * SP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 SP.
  * Tool                  Race       Read lin    Write line   Read line   Write line
  * Tsan                   Y           31:34       28:18       31:14         28:18
  * Intel Inspector        Y             28         24          31            31

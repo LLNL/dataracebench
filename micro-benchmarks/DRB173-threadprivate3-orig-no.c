@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * EP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 EP suit.
+ * EP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 EP.
  * Tool                  Race       Read line           Write line
  * Tsan                    N
  * Intel Inspector         Y          29                     29

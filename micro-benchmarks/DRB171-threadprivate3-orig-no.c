@@ -5,27 +5,35 @@
 !!!
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
- */
-/**
- * EP.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0's EP.
- * Intel Inspector can not correctly recognize threadprivate, and report a false postive.
 */
+
+/* This kernel imitates the nature of a program from the NAS Parallel Benchmarks 3.0 MG suit.
+ * There is no data race pairs, example of a threadprivate var and update by TID==0 only.
+ */
+
+#include <omp.h>
 #include <stdio.h>
 
 static double x[20];
 #pragma omp threadprivate(x)
 
-int main(int argc, char* argv[]){
-  int i,m,n;
+int main(){
+  int i;
   double j,k;
-  int p[12][12][12];
 
-  #pragma omp parallel for default(shared) private(i,j,k,m,n)
-    for (i = 0; i < 20; i++){
-        x[i] = -1.0e99;
-        j = x[0];
-        k = i +0.05;
+  #pragma omp parallel for default(shared)
+  for (i = 0; i < 20; i++){
+    x[i] = -1.0;
+    if(omp_get_thread_num()==0){
+      j = x[0];
     }
-  printf ("%i %k\n", j, k);  
+    if(omp_get_thread_num()==0){
+      k = i+0.05;
+    }
+  }
+
+  printf ("%f %f\n", j, k);
+
   return 0;
 }
+

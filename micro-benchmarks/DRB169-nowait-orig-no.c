@@ -8,7 +8,7 @@
  */
 
 /**
- * CG.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 CG suit.
+ * CG.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 CG.
  * Tool                  Race       Read line           Write line
  * Tsan                    Y            37:23                37:21
  * Intel Inspector         Y            37                   37

@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * MG.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 MG suit.
+ * MG.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 MG.
  * Tool                  Race       Read line    Write line   Read line    Write line  Read line   Write line
  * Tsan                   Y            37:16        37:16        39:16       39:16
  * Intel Inspector        Y             37           33           39          33          37          37

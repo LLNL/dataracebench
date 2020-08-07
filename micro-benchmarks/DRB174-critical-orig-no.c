@@ -7,7 +7,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
  */
 /**
- * FT.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 FT suit.
+ * FT.C: This file is part of kernel of the NAS Parallel Benchmarks 3.0 FT.
  * Tool                  Race       Read line      Write line      Read line     Write line   Read line    Write line
  * Tsan                    Y          34:14           34:14          34:1           26:10
  * Intel Inspector         Y           24              25             3              31          34             34

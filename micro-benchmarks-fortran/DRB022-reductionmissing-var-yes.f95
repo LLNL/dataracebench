@@ -64,4 +64,6 @@ program DRB022_reductionmissing_var_yes
 
     print*,"sum =", getSum
 
+
+    deallocate(args,u)
 end program

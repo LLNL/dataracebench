@@ -31,4 +31,6 @@ program DRB115_forsimd_orig_yes
     end do
 
     print*,'a(50) =',a(50)
+
+    deallocate(a,b)
 end program

@@ -63,4 +63,7 @@ program DRB019_plusplus_var_yes
 
     print 100, output(0)
     100 format ("output(0)=",i3)
+
+
+    deallocate(input,output,args)
 end program

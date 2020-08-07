@@ -46,4 +46,5 @@ program DRB010_lastprivatemissing_var_yes
     !$omp end parallel do
     write(*,*) 'x =', x
 
+    deallocate(args)
 end program

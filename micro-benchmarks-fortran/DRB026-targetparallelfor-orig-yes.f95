@@ -35,4 +35,5 @@ program DRB026_targetparallelfor_orig_yes
         write(6,*) 'Values for i and a(i) are:', i, a(i)
     end do
 
+    deallocate(a)
 end program

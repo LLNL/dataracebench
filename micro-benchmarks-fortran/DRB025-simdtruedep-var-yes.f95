@@ -7,7 +7,7 @@
 
 !This one has race condition due to true dependence.
 !But data races happen at instruction level, not thread level.
-!Data race pair: a[i+1]@48 vs. a[i]@48
+!Data race pair: a[i+1]@55:18 vs. a[i]@55:9
 
 program DRB025_simdtruedep_var_yes
     use omp_lib
@@ -58,5 +58,7 @@ program DRB025_simdtruedep_var_yes
     do i = 1, len
         write(6,*) 'Values for i and a(i) are:', i, a(i)
     end do
+
+    deallocate(args,a,b)
 
 end program

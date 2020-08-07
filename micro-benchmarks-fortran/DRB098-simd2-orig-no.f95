@@ -39,4 +39,6 @@ program DRB098_simd2_orig_no
     !$omp end simd
 
     print*,'c(50,50) =',c(50,50)
+
+    deallocate(a,b,c)
 end program

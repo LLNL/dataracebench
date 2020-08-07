@@ -45,7 +45,9 @@ Usage: ./check-data-races.sh [--run] [--help]
 
 ## List of Benchmarks
 
-[Benchmark labels and lists](https://github.com/LLNL/dataracebench/blob/master/benchmarkList.md)
+[Benchmark labels and lists - C/C++](https://github.com/LLNL/dataracebench/blob/master/benchmarkList.md)
+
+[Benchmark labels and lists - Fortran](https://github.com/LLNL/dataracebench/blob/master/benchmarkListFortran.md)
 
 ## Authors
 

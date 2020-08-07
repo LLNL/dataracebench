@@ -31,4 +31,6 @@ program DRB116_target_teams_orig_yes
     !$omp end target
 
     print*,'a(50)=',a(50)
+
+    deallocate(a)
 end program

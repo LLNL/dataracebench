@@ -28,4 +28,5 @@ program DRB039_truedepsingleelement_orig_yes
     print 100, a(500)
     100 format ('a(500) =',i3)
 
+    deallocate(a)
 end program

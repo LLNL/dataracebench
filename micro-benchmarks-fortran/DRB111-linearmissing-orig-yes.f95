@@ -40,4 +40,7 @@ program DRB111_linearmissing_orig_yes
 
     print*,'c(50) =',c(50)
 
+    if(allocated(a))deallocate(a)
+    if(allocated(b))deallocate(b)
+   
 end program

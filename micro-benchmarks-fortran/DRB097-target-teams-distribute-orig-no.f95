@@ -50,4 +50,6 @@ program DRB097_target_teams_distribute_orig_no
     !$omp end parallel do
 
     print*,'sum =',int(sum),'; sum2 =',int(sum2)
+
+    deallocate(a,b)
 end program

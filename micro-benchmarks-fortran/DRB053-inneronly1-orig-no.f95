@@ -31,4 +31,6 @@ program DRB053_inneronly1_orig_no
         end do
     !$omp end parallel do
     end do
+
+    deallocate(a)
 end program

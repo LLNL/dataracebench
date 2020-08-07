@@ -61,4 +61,6 @@ program DRB032_truedepfirstdimension_var_yes
     print 100, b(500,500)
     100 format ('b(500,500) =',F10.6)
 
+
+    deallocate(args,b)
 end program

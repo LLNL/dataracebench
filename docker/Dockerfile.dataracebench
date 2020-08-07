@@ -1,0 +1,12 @@
+# pull base image
+
+FROM ubuntu:18.04
+
+# install gcc git fortran package later that only for test
+RUN groupadd -g 9999 drb && \
+    useradd -r -u 9999 -g drb -m -d /home/drb drb
+
+RUN apt-get update
+
+USER drb
+WORKDIR /home/drb

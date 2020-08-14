@@ -51,7 +51,7 @@ OUTPUT_DIR="results"
 LOG_DIR="$OUTPUT_DIR/log"
 EXEC_DIR="$OUTPUT_DIR/exec"
 LOGFILE="$LOG_DIR/dataracecheck.log"
-LANGUAGE="defult"
+LANGUAGE="default"
 
 
 MEMCHECK=${MEMCHECK:-"/usr/bin/time"}
@@ -175,7 +175,7 @@ while getopts "n:t:x:d:s:l:c:" opt; do
         else echo "Invalid language name ${OPTARG}" && help && exit 1;
         fi ;;
     c)  if [[ ${OPTARG} -eq 1 ]]; then
-            if [[ "$LANGUAGE" == "c" ]]; then
+            if [[ "$LANGUAGE" == "c" || "$LANGUAGE" == "C" || "$LANGUAGE" == "c++" || "$LANGUAGE" == "C++" ]]; then
                 TEST=($(cat list.def));
                 for tests in "${TEST[@]}"; do
                          CTEST+=("micro-benchmarks/$tests")

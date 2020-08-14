@@ -154,7 +154,7 @@ THREADLIST=()
 ITERATIONS=0
 TIMEOUTMIN="5"
 # Parse options
-while getopts "n:t:x:d:s:l:" opt; do
+while getopts "n:t:x:d:s:l:c:" opt; do
   case $opt in
     x)  if valid_tool_name "${OPTARG}"; then TOOLS+=(${OPTARG});
         else echo "Invalid tool name ${OPTARG}" && usage && exit 1
@@ -174,6 +174,22 @@ while getopts "n:t:x:d:s:l:" opt; do
     l)  if valid_language_name "${OPTARG}"; then LANGUAGE=${OPTARG};
         else echo "Invalid language name ${OPTARG}" && help && exit 1;
         fi ;;
+    c)  if [[ ${OPTARG} -eq 1 ]]; then
+            if [[ "$LANGUAGE" == "c" ]]; then
+                TEST=($(cat list.def));
+                for tests in "${TEST[@]}"; do
+                         CTEST+=("micro-benchmarks/$tests")
+                 done
+                 TESTS=("${CTEST[@]}")
+            else
+                 TEST=($(cat list.def));
+                 for tests in "${TEST[@]}"; do
+                         CTEST+=("micro-benchmarks-fortran/$tests")
+                 done
+
+                 FORTRANTESTS=("${CTEST[@]}")
+            fi
+        fi;;
   esac
 done
 

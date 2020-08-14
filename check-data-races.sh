@@ -55,7 +55,7 @@ LANGUAGE="defult"
 
 help () {
     echo
-    echo "Usage: $0 [--run] [--help]"
+    echo "Usage: $0 [--run] [--help] language"
     echo
     echo "--help      : this option"
     echo "--small     : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
@@ -67,6 +67,7 @@ help () {
     echo "--archer    : compile and test all benchmarks with Archer"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
+    echo "--customize : compile and test customized test list and tools"
     echo
 }
 
@@ -110,6 +111,7 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo "--archer    : compile and test all benchmarks with Archer"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
+    echo "--customize : compile and test customized test list and tools"
     echo
     exit
 fi
@@ -248,3 +250,9 @@ if [[ "$OPTION" == "--romp" ]]; then
    scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x romp
 fi
 
+if [[ "$OPTION" == "--customize" ]]; then
+        TO=($(cat tool.def))
+        for rtool in "${TO[@]}"; do
+                scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -c 1 -x $rtool;
+        done
+fi

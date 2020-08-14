@@ -1,0 +1,6 @@
+DRB014-outofbounds-orig-yes.f95
+DRB015-outofbounds-var-yes.f95
+DRB050-functionparameter-orig-no.f95
+DRB073-doall2-orig-yes.f95
+DRB095-doall2-taskloop-orig-yes.f95
+DRB115-forsimd-orig-yes.f95

@@ -51,7 +51,7 @@ CPPTESTS=$(grep -l main micro-benchmarks/*.cpp)
 FORTRANTESTS=$(find micro-benchmarks-fortran -iregex ".*\.F[0-9]*" -o -iregex ".*\.for")
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 FPOLYFLAG="-Imicro-benchmarks-fortran micro-benchmarks-fortran/utilities/fpolybench.o"
-LANGUAGE="defult"
+LANGUAGE="default"
 
 help () {
     echo

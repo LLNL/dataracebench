@@ -41,7 +41,7 @@ Usage: ./check-data-races.sh [--run] [--help]
 ```
 
 ## Latest Tool Evaluation Results
-[Data race detection tool regression evaluation](https://github.com/LLNL/dataracebench/wiki/Regression-metrics)
+[Data race detection tool dashboard](https://github.com/LLNL/dataracebench/wiki/Tool-Evaluation-Dashboard)
 
 ## List of Benchmarks
 

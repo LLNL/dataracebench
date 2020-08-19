@@ -75,7 +75,7 @@ ROMP_C_COMPILE_FLAGS="-g -fopenmp -lomp"
 
 FORTRAN_LINK_FLAGS="-ffree-line-length-none -fopenmp -c -fsanitize=thread"
 FORTRAN_COMPILE_FLAGS="-fopenmp -fsanitize=thread -lgfortran"
-
+IFORT_FORTRAN_FLAGS="-free -qopenmp -qopenmp-offload=host -Tf"
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 FPOLYFLAG="-Imicro-benchmarks-fortran micro-benchmarks-fortran/utilities/fpolybench.o"
 VARLEN_PATTERN='[[:alnum:]]+-var-[[:alnum:]]+\.c'
@@ -97,6 +97,8 @@ usage () {
   echo "  -t threads    : Add the specified number of threads as a testcase."
   echo "  -d size       : Add a specific dataset size to the varlen test suite."
   echo "  -s minutes    : Add a specific timeout minutes."
+  echo "  -l language   : Add a specific language test"
+  echo "  -c customized : Add a customized test list"
   echo
 }
 
@@ -483,13 +485,13 @@ for tool in "${TOOLS[@]}"; do
       echo "testing Fortran code:$test"
       case "$tool" in 
         gnu)        gfortran -fopenmp -lomp $additional_compile_flags $test -o $exname -lm ;;
-        intel)      ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        intel)      ifort $IFORT_FORTRAN_FLAGS  $test -o $exname -lm ;;
         tsan-clang) gfortran $FORTRAN_LINK_FLAGS $additional_compile_flags $test -o $linkname;
 		    clang $FORTRAN_COMPILE_FLAGS $linkname $linklib -o $exname -lm;;
         tsan-gcc)   gfortran -fopenmp -fsanitize=thread $additional_compile_flags  $test -o $exname -lm  ;;
         archer)     gfortran $FORTRAN_LINK_FLAGS $additional_compile_flags $test -o $linkname;
 	            clang-archer $FORTRAN_COMPILE_FLAGS $linkname $linklib -o $exname $ARCHER_COMPILE_FLAGS -lm;;
-      	inspector)  ifort $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        inspector)  ifort $IFORT_FORTRAN_FLAGS  $test -o $exname -lm ;;
         romp)       gfortran -fopenmp -lomp -ffree-line-length-none $additional_compile_flags $test -o $exname -lm;
                     echo $exname
                     InstrumentMain --program=$exname;;
@@ -591,5 +593,8 @@ fi
 for tool in "${TOOLS[@]}"; do
 	python3 ./metric.py $OUTPUT_DIR/$tool.csv
 done
-rm *.mod
+[ ! -f *.mod ] || rm *.mod
+[ ! -d r*ti3 ] || rm -rf r*ti3
+[ ! -f micro-benchmarks-fortran/utilities/fpolybench.o ] || rm micro-benchmarks-fortran/utilities/fpolybench.o
+[ ! -f micro-benchmarks/utilities/polybench.o ] || rm micro-benchmarks/utilities/polybench.o
 ulimit -s "$ULIMITS"

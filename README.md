@@ -40,6 +40,8 @@ Usage: ./check-data-races.sh [--run] [--help]
 
 ```
 
+More information: [User Guide](https://github.com/LLNL/dataracebench/wiki/User-Guide)
+
 ## Latest Tool Evaluation Results
 [Data race detection tool dashboard](https://github.com/LLNL/dataracebench/wiki/Tool-Evaluation-Dashboard)
 

@@ -25,9 +25,9 @@ some pre-defined values.
 ## Quick Start
 
 ```
-./check-data-races.sh 
+./check-data-races.sh
 
-Usage: ./check-data-races.sh [--run] [--help]
+Usage: ./check-data-races.sh [--run] [--help] language option(C/C++/Fortran)
 
 --help     : this option
 --small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector.
@@ -37,7 +37,7 @@ Usage: ./check-data-races.sh [--run] [--help]
 --tsan     : compile and test all benchmarks with clang ThreadSanitizer
 --archer   : compile and test all benchmarks with Archer
 --inspector: compile and test all benchmarks with Intel Inspector
-
+--customize : compile and test customized test list and tools
 ```
 
 More information: [User Guide](https://github.com/LLNL/dataracebench/wiki/User-Guide)

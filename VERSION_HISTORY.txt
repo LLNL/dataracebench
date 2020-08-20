@@ -21,3 +21,17 @@ V1.1.1 2017-10-04
        * refined source code comments to be consistent: using C-style /* ... */
        * specified data race pairs in comments when applicable: using a format of
             var1@line_no:col_no vs. var2@line_no:col_no
+V1.2.0 2018-06-05
+       * Increased the test coverage of OpenMP directives and clauses(up to OpenMP 4.5 ), including threadprivate, collapse, taskloop, teams, distribute, atomic, flush, depend, critical, barrier, taskwait, taskgroup, copyin and copyprivate, linear, if, etc.
+       * Increased the coverage of data-sharing attribute rules defined in OpenMP 4.5, including rules related to function arguments, static and dynamic storage duration, variables which are not referenced in a construct, mapped array sections, and clauses (collapse and order) associating multiple for loops, etc.
+       * Renamed all microbenchmarks to be DRBxxx-namewhere xxx is the 3-digit benchmark ID number.
+       * Added a few tests related to taskwait, taskgroup and ordered. They are contributed by the Rice University.
+       * Improved the test scripts to support C++ code, better report testing errors.
+       * Miscellaneous fixes to typos.
+V1.3.0 2020-08-19
+       * We have added equivalent Fortran versions for existing C/C++ benchmark programs.
+       * Additional benchmark programs are added to cover some of the latest OpenMP 5.0 language features.
+       * We have collected new kernels representing new patterns from literature and other benchmarks (e.g., NAS Parallel Benchmark).
+       * In order to reduce duplicated benchmark programs, we explore a simple distance-based code similarity analysis, combining both static and dynamic features of OpenMP loops.
+       * The test process has been improved to allow users to select customized subsets of benchmarks to evaluate their tools. We also dockerize tools to streamline the entire benchmarking process to quickly generate a dashboard showing the state-of-the-art.
+       * Using the enhanced DataRaceBench, we re-evaluate several available data race detection tools and generate more comprehensive results showing their strengths and limitations.

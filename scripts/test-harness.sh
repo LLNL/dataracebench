@@ -591,7 +591,7 @@ for tool in "${TOOLS[@]}"; do
 done
 fi
 for tool in "${TOOLS[@]}"; do
-	python3 ./metric.py $OUTPUT_DIR/$tool.csv
+	python3 scripts/metric.py $OUTPUT_DIR/$tool.csv
 done
 [ ! -f *.mod ] || rm *.mod
 [ ! -d r*ti3 ] || rm -rf r*ti3

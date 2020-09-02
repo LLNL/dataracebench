@@ -76,7 +76,7 @@ for i in range(len(Ntruth)):
 		compilertrue += 1
 		if runtime[i] == '0':
 			runtimetrue += 1
-			if truth[i] == 'TRUE':
+			if truth[i].upper() == 'TRUE':
 				positive += 1 
 				if races[i] == '0':
 					falseNegative += 1

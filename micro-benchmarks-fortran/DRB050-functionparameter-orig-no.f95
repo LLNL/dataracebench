@@ -20,7 +20,7 @@ contains
         real(dp) :: volnew_o8
         integer :: len, i
 
-        !$omp parallel do
+        !$omp parallel do private(volnew_o8)
         do i = 1, len
             volnew_o8 = 0.5*c(i)
             o1(i) = volnew_o8

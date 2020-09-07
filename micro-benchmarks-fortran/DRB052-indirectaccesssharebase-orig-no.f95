@@ -26,7 +26,7 @@ program DRB052_indirectaccesssharebase_orig_no
     allocate (xa1(2025))
     allocate (xa2(2025))
     allocate (base(2025))
-     allocate (indexSet(180))
+    allocate (indexSet(180))
     xa1 => base(1:2025)
     xa2 => base(1:2025)
 
@@ -54,7 +54,7 @@ program DRB052_indirectaccesssharebase_orig_no
         base(i) = 0.0
     end do
 
-    !$omp parallel do
+    !$omp parallel do private(idx1,idx2)
     do i = 1, N
         idx1 = indexSet(i)
         idx2 = indexSet(i)+12

@@ -54,7 +54,7 @@ program DRB052_indirectaccesssharebase_orig_no
         base(i) = 0.0
     end do
 
-    !$omp parallel do
+    !$omp parallel do private(idx1,idx2)
     do i = 1, N
         idx1 = indexSet(i)
         idx2 = indexSet(i)+12

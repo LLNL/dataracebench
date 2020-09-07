@@ -1,4 +1,4 @@
-# DataRaceBench 1.2.0
+# DataRaceBench 1.3.0
 
 DataRaceBench is a benchmark suite designed to systematically and
 quantitatively evaluate the effectiveness of data race detection
@@ -25,9 +25,9 @@ some pre-defined values.
 ## Quick Start
 
 ```
-./check-data-races.sh 
+./check-data-races.sh
 
-Usage: ./check-data-races.sh [--run] [--help]
+Usage: ./check-data-races.sh [--run] [--help] language option(C/C++/Fortran)
 
 --help     : this option
 --small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector.
@@ -37,11 +37,13 @@ Usage: ./check-data-races.sh [--run] [--help]
 --tsan     : compile and test all benchmarks with clang ThreadSanitizer
 --archer   : compile and test all benchmarks with Archer
 --inspector: compile and test all benchmarks with Intel Inspector
-
+--customize : compile and test customized test list and tools
 ```
 
+More information: [User Guide](https://github.com/LLNL/dataracebench/wiki/User-Guide)
+
 ## Latest Tool Evaluation Results
-[Data race detection tool regression evaluation](https://github.com/LLNL/dataracebench/wiki/Regression-metrics)
+[Data race detection tool dashboard](https://github.com/LLNL/dataracebench/wiki/Tool-Evaluation-Dashboard)
 
 ## List of Benchmarks
 

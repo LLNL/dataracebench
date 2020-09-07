@@ -80,12 +80,12 @@ DRB119-nestlock-orig-yes.f95						| Y3	| Missing omp_set_nest_lock() on a functi
 DRB123-taskundeferred-orig-yes.f95					| Y6	| A single thread spawning multiple tasks due to missing if(0)															| New
 DRB124-master-orig-yes.f95							| Y3	| Master construct does not have an implicit barrier. 																	| New
 DRB129-mergeable-taskwait-orig-yes.f95				| Y2	| Created task will access different instances of a variable depending on the mergeable status. Missing shared clause. 	| New
-DRB131-taskdep4-orig-yes-omp45.f95					| Y3	| Accessing a variable before the completion of the operation. Missing taskwait. 										| New
-DRB134-taskdep5-orig-yes-omp45.f95					| Y1	| Operation depends on two variables, but the depend clause is mentioned only for one variable. 						| New
+DRB131-taskdep4-orig-omp45-yes.f95					| Y3	| Accessing a variable before the completion of the operation. Missing taskwait. 										| New
+DRB134-taskdep5-orig-omp45-yes.f95					| Y1	| Operation depends on two variables, but the depend clause is mentioned only for one variable. 						| New
 DRB136-taskdep-mutexinoutset-orig-yes.f95			| Y1,Y6	| Missing mutexinoutset dependence type on a variable. Undefined execution order. 										| OpenMP Official Examples
 DRB138-simdsafelen-orig-yes.f95						| Y6	| Parameter for safelen() clause having a value lesser than required for a defined execution. 							| New
 DRB140-reduction-barrier-orig-yes.f95				| Y3	| Asynchronous update by master directive and usage in reduction clause. 												| New
-DRB142-acquirerelease-orig-yes-omp50.f95			| Y3	| Missing implicit flush after critical construct.																		| New
+DRB142-acquirerelease-orig-omp50-yes.f95			| Y3	| Missing implicit flush after critical construct.																		| New
 DRB144-critical-missingreduction-orig-gpu-yes.f95				| Y5,Y3	| Asynchronous update of a variable across teams due to improper critical and atomic construct usage. 					| New
 DRB148-critical1-orig-gpu-yes.f95					| Y5,Y3	| Due to different locks, addition and subtraction interleave. 															| New
 DRB150-missinglock1-orig-gpu-yes.f95				| Y5,Y3	| distribute parallel do directive executes across teams. omp_set_lock() ensures synchronization only within a team. 	| New
@@ -96,8 +96,8 @@ DRB157-missingorderedsimd-orig-gpu-yes.f95			| Y5,Y4	| Missing synchronization o
 DRB160-nobarrier-orig-gpu-yes.f95					| Y5,Y3	| Missing implicit barrier due to distribute directive. 																| New
 DRB161-nolocksimd-orig-gpu-yes.f95					| Y5,Y3	| Concurrent access on a counter with no lock with simd—atomicity Violation.											| New
 DRB164-simdmissinglock1-orig-gpu-yes.f95			| Y5,Y3	| Concurrent access on a counter with no lock with simd across teams. Inter-region data race							| New
-DRB165-taskdep4-orig-yes-omp50.f95					| Y3	| Missing taskwait. Accessing a variable before task completion. 														| OpenMP Official Examples
-DRB168-taskdep5-orig-yes-omp50.f95					| Y1	| OpenMP depend clause for only one variable in a bivariate equation. 													| OpenMP Official Examples
+DRB165-taskdep4-orig-omp50-yes.f95					| Y3	| Missing taskwait. Accessing a variable before task completion. 														| OpenMP Official Examples
+DRB168-taskdep5-orig-omp50-yes.f95					| Y1	| OpenMP depend clause for only one variable in a bivariate equation. 													| OpenMP Official Examples
 DRB169-workshare-orig-yes.f95						| Y3	| nowait clause nullifying the workshare directive's implicit barrier. 													| New
 
 
@@ -166,13 +166,13 @@ DRB126-firstprivatesections-orig-no.f95			| N1		| Use of firstprivate and omp_se
 DRB127-tasking-threadprivate1-orig-no.f95		| N1		| Order execution is undefined. There is a race condition but no data race. 												| New
 DRB128-tasking-threadprivate2-orig-no.f95		| N1		| Restricting update to a threadprivate variable. 																			| New
 DRB130-mergeable-taskwait-orig-no.f95			| N2		| Use of mergeable construct on a shared variable ensures that the outcome does not depend on task's merged status. 		| New
-DRB132-taskdep4-orig-no-omp45.f95				| N3, N1	| Accessing a variable safely after taskwait directive, two variables. OpenMP 4.5 compliant. 								| New
-DRB133-taskdep5-orig-no-omp45.f95				| N3		| Accessing a variable safely after taskwait directive, single variable. OpenMP 4.5 compliant. 								| New
-DRB135-taskdep-mutexinoutset-orig-no-omp50.f95	| N1		| Use of mutexinoutset in depend clause to avoid data race. 																| OpenMP Official Example
+DRB132-taskdep4-orig-omp45-no.f95				| N3, N1	| Accessing a variable safely after taskwait directive, two variables. OpenMP 4.5 compliant. 								| New
+DRB133-taskdep5-orig-omp45-no.f95				| N3		| Accessing a variable safely after taskwait directive, single variable. OpenMP 4.5 compliant. 								| New
+DRB135-taskdep-mutexinoutset-orig-omp50-no.f95	| N1		| Use of mutexinoutset in depend clause to avoid data race. 																| OpenMP Official Example
 DRB137-simdsafelen-orig-no.f95					| N1		| Use of safelen construct to avoid udnefined behavior. 																	| New
 DRB139-worksharingcritical-orig-no.f95			| N1		| Use of single directive inside a nested parallel region within a critical construct. 										| New
 DRB141-reduction-barrier-orig-no.f95			| N3		| Addition of explicit barrier to ensure completion of initialization of a variable before encountering a parallel region.	| New
-DRB143-acquirerelease-orig-no-omp50.f95			| N3		| Use of flush after critical construct to avoid data race.																	| New
+DRB143-acquirerelease-orig-omp50-no.f95			| N3		| Use of flush after critical construct to avoid data race.																	| New
 DRB145-atomiccritical-orig-gpu-no.f95			| N5, N2	| Use of reduction construct to synchronize across teams. 																	| New
 DRB146-atomicupdate-orig-gpu-no.f95				| N5, N3, N1| Use of atomic update construct to have synchronization across teams. 														| New
 DRB147-critical1-orig-gpu-no.f95				| N5, N1	| To have synchronization across distribute parallel loop across teams, usage of atomic construct.							| New
@@ -184,6 +184,6 @@ DRB158-missingtaskbarrier-orig-gpu-no.f95		| N5, N1	| Use of depend clause to en
 DRB159-nobarrier-orig-gpu-no.f95				| N5, N3	| Vector addition and multiplication employing the same variable should have a barrier in between.							| New
 DRB162-nolocksimd-orig-gpu-no.f95				| N5, N4	| Use reduction clause to avoid concurrent access on a variable due to exceeding permitted threads usage per warp limit.	| New
 DRB163-simdmissinglock1-orig-gpu-no.f95			| N5, N4	| SIMD directive indicates vectorization of a loop on the accelerator; usage of reduction to ensure no data race. 			| New
-DRB166-taskdep4-orig-no-omp50.f95				| N1		| Use of takwait to avoid data race due to access before decrement operation. OpenMP 5.0 compliant. 						| OpenMP Official Example
-DRB167-taskdep5-orig-no-omp50.f95				| N1		| Dependency on two variables but defined only on one. Use of taskwait ensures no data race. OpenMP5.0 compliant. 			| OpenMP Official Example
+DRB166-taskdep4-orig-omp50-no.f95				| N1		| Use of takwait to avoid data race due to access before decrement operation. OpenMP 5.0 compliant. 						| OpenMP Official Example
+DRB167-taskdep5-orig-omp50-no.f95				| N1		| Dependency on two variables but defined only on one. Use of taskwait ensures no data race. OpenMP5.0 compliant. 			| OpenMP Official Example
 DRB170-workshare-orig-no.f95					| N3		| Workshare construct has an implicit barrier.																				| New

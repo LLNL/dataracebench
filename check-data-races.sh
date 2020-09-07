@@ -51,11 +51,11 @@ CPPTESTS=$(grep -l main micro-benchmarks/*.cpp)
 FORTRANTESTS=$(find micro-benchmarks-fortran -iregex ".*\.F[0-9]*" -o -iregex ".*\.for")
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 FPOLYFLAG="-Imicro-benchmarks-fortran micro-benchmarks-fortran/utilities/fpolybench.o"
-LANGUAGE="defult"
+LANGUAGE="default"
 
 help () {
     echo
-    echo "Usage: $0 [--run] [--help]"
+    echo "Usage: $0 [--run] [--help] language"
     echo
     echo "--help      : this option"
     echo "--small     : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
@@ -67,6 +67,7 @@ help () {
     echo "--archer    : compile and test all benchmarks with Archer"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
+    echo "--customize : compile and test customized test list and tools"
     echo
 }
 
@@ -100,6 +101,7 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo
     echo "Usage: $0 [--run] [--help]"
     echo
+<<<<<<< HEAD
     echo "--help      : this option"
     echo "--small     : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
     echo "--run       : compile and run all benchmarks with gcc (no evaluation)"
@@ -110,6 +112,18 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo "--archer    : compile and test all benchmarks with Archer"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
+    echo "--customize : compile and test customized test list and tools"
+=======
+    echo "--help     : this option"
+    echo "--small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
+    echo "--run      : compile and run all benchmarks with gcc (no evaluation)"
+    echo "--run-intel: compile and run all benchmarks with Intel compilers (no evaluation)"
+    echo "--run-rose : compile all benchmarks with ROSE (no execution, no evaluation). Need to set ROSE_INSTALL first."
+    echo "--helgrind : compile and test all benchmarks with Helgrind"
+    echo "--tsan     : compile and test all benchmarks with clang ThreadSanitizer"
+    echo "--archer   : compile and test all benchmarks with Archer"
+    echo "--inspector: compile and test all benchmarks with Intel Inspector"
+>>>>>>> 4b89f278046f66d2e79c3fba989078fe9e7759aa
     echo
     exit
 fi
@@ -223,6 +237,26 @@ if [[ "$OPTION" == "--run-intel" ]]; then
     exit
 fi
 
+if [[ "$OPTION" == "--run-rose" ]]; then
+    for test in $TESTS; do
+        echo "------------------------------------------"
+        echo "TESTING using rose: $test"
+        CFLAGS="-g -Wall -std=c99 -rose:openmp:ast_only"
+        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+        $ROSE_INSTALL/bin/identityTranslator -c $CFLAGS "$test" -lm
+    done
+# test for cpp files
+    for test in $CPPTESTS; do
+        echo "------------------------------------------"
+        echo "TESTING using rose: $test"
+        CFLAGS="-g -Wall -rose:openmp:ast_only"
+        if grep -q 'PolyBench' "$test"; then CFLAGS+=" $POLYFLAG"; fi
+        $ROSE_INSTALL/bin/identityTranslator -c $CFLAGS "$test" -lm
+    done
+    exit
+fi
+
+
 
 if [[ "$OPTION" == "--helgrind" ]]; then
     scripts/test-harness.sh -l $LANGUAGE -x helgrind
@@ -248,3 +282,9 @@ if [[ "$OPTION" == "--romp" ]]; then
    scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x romp
 fi
 
+if [[ "$OPTION" == "--customize" ]]; then
+        TO=($(cat tool.def))
+        for rtool in "${TO[@]}"; do
+                scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -c 1 -x $rtool;
+        done
+fi

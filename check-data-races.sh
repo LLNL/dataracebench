@@ -101,7 +101,6 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo
     echo "Usage: $0 [--run] [--help]"
     echo
-<<<<<<< HEAD
     echo "--help      : this option"
     echo "--small     : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
     echo "--run       : compile and run all benchmarks with gcc (no evaluation)"
@@ -113,17 +112,6 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
     echo "--customize : compile and test customized test list and tools"
-=======
-    echo "--help     : this option"
-    echo "--small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
-    echo "--run      : compile and run all benchmarks with gcc (no evaluation)"
-    echo "--run-intel: compile and run all benchmarks with Intel compilers (no evaluation)"
-    echo "--run-rose : compile all benchmarks with ROSE (no execution, no evaluation). Need to set ROSE_INSTALL first."
-    echo "--helgrind : compile and test all benchmarks with Helgrind"
-    echo "--tsan     : compile and test all benchmarks with clang ThreadSanitizer"
-    echo "--archer   : compile and test all benchmarks with Archer"
-    echo "--inspector: compile and test all benchmarks with Intel Inspector"
->>>>>>> 4b89f278046f66d2e79c3fba989078fe9e7759aa
     echo
     exit
 fi

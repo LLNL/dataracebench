@@ -26,7 +26,7 @@ program DRB052_indirectaccesssharebase_orig_no
     allocate (xa1(2025))
     allocate (xa2(2025))
     allocate (base(2025))
-     allocate (indexSet(180))
+    allocate (indexSet(180))
     xa1 => base(1:2025)
     xa2 => base(1:2025)
 

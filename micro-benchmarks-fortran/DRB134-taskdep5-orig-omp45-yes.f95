@@ -30,7 +30,7 @@ contains
         x = x+1                                 !!1st Child Task
         !$omp end task
 
-        !$omp task shared(y)
+        !$omp task depend(in: x) depend(inout: y) shared(x, y)
         y = y-x                                 !!2nd child task
         !$omp end task
 

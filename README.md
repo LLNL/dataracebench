@@ -53,7 +53,7 @@ More information: [User Guide](https://github.com/LLNL/dataracebench/wiki/User-G
 
 ## Authors
 
-DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Joshua Asplund, Markus Schordan, and Ian Karlin.
+DataRaceBench was created by Chunhua Liao, Pei-Hung Lin, Gaurav Verma, Yaying Shi, Joshua Asplund, Markus Schordan, and Ian Karlin.
 
 ## Release
 

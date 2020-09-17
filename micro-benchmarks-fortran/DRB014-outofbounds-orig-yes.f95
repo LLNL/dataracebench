@@ -19,7 +19,7 @@
 !  inner loop: j=2
 !  array element accessed b[i][j-1] becomes b[0][1], which in turn is b[4][1]
 !  due to linearized column-major storage of the 2-D array.
-!  This causes loop-carried data dependence between i=1 and i=2.
+!  This causes loop-carried data dependence between i=1 and i=4.
 !
 !Data race pair: b[i][j]@41 vs. b[i-1][j]@41.
 

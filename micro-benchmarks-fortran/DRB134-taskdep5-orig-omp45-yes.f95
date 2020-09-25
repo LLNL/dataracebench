@@ -8,7 +8,7 @@
 !There is no completion restraint on the second child task. Hence, immediately after the first
 !taskwait it is unsafe to access the y variable since the second child task may still be
 !executing.
-!Data Race at y@41:23 and y@41:23
+!Data Race at y@34:2 and y@41:23
 
 program DRB134_taskdep4_orig_yes_omp_45
     use omp_lib

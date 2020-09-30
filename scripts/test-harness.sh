@@ -109,6 +109,7 @@ valid_tool_name () {
     intel) return 0 ;;
     helgrind) return 0 ;;
     archer) return 0 ;;
+    coderrect) return 0 ;;
     tsan-clang) return 0 ;;
     tsan-gcc) return 0 ;;
     inspector) return 0 ;;
@@ -326,6 +327,7 @@ for tool in "${TOOLS[@]}"; do
         intel)      icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         helgrind)   g++ $VALGRIND_COMPILE_CPP_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer++ $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        coderrect)  coderrect -XbcOnly clang++ -fopenmp -fopenmp-version=45 -g $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1 ;;
         tsan-clang) clang++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   g++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         inspector)  icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
@@ -340,6 +342,7 @@ for tool in "${TOOLS[@]}"; do
         intel)      icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         helgrind)   gcc $VALGRIND_COMPILE_C_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        coderrect)  coderrect -XbcOnly clang -fopenmp -fopenmp-version=45 -g $additional_compile_flags $test -o $exname -lm  > /dev/null 2>&1 ;;
         tsan-clang) clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   gcc $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         inspector)  icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
@@ -358,8 +361,8 @@ for tool in "${TOOLS[@]}"; do
       SIZE_INDEX=0
       for size in "${SIZES[@]}"; do
         # Sanity check
-        if [[ ! -e "$exname" ]]; then
-          echo "$tool,$id,\"$testname\",$haverace,$thread,${size:-"N/A"},,,,$compilereturn," >> "$file";
+        if [[ ! -e "$exname" || $compilereturn -ne 0 ]]; then
+          echo "$tool,$id,\"$testname\",$haverace,$thread,${size:-"N/A"},0,0,0,$compilereturn,0" >> "$file";
           echo "Executable for $testname with $thread threads and input size $size is not available" >> "$LOGFILE";
         elif { "./$exname $size"; } 2>&1 | grep -Eq 'Segmentation fault'; then
             echo "$tool,$id,\"$testname\",$haverace,$thread,${size:-"N/A"},,,,$compilereturn," >> "$file";
@@ -395,6 +398,16 @@ for tool in "${TOOLS[@]}"; do
                 check_return_code $?;
 		echo "testname return $testreturn"
                 races=$(grep -ce 'WARNING: ThreadSanitizer: data race' tmp.log) 
+                cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
+              coderrect)
+                ccc="clang"
+                if [[ "$test" =~ $CPP_PATTERN ]]; then
+                  ccc="clang++"
+                fi
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" coderrect -XenableProgress=false -t $ccc -fopenmp -fopenmp-version=45 $additional_compile_flags $test -o $exname -lm &> tmp.log;
+                check_return_code $?;
+		echo "testname return $testreturn"
+                races=$(grep -ce 'Found a data race' tmp.log)
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               tsan-clang)
 #                races=$($MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
@@ -491,6 +504,8 @@ for tool in "${TOOLS[@]}"; do
         tsan-gcc)   gfortran -fopenmp -fsanitize=thread $additional_compile_flags  $test -o $exname -lm  ;;
         archer)     gfortran $FORTRAN_LINK_FLAGS $additional_compile_flags $test -o $linkname;
 	            clang-archer $FORTRAN_COMPILE_FLAGS $linkname $linklib -o $exname $ARCHER_COMPILE_FLAGS -lm;;
+        coderrect)  coderrect -XbcOnly gfortran -fopenmp $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1;
+                    ls .coderrect/build/$exname.bc ;; # make $? to be 1 if coderrect could not compile the fortran case
         inspector)  ifort $IFORT_FORTRAN_FLAGS  $test -o $exname -lm ;;
         romp)       gfortran -fopenmp -lomp -ffree-line-length-none $additional_compile_flags $test -o $exname -lm;
                     echo $exname
@@ -506,8 +521,8 @@ for tool in "${TOOLS[@]}"; do
       SIZE_INDEX=0
       for size in "${SIZES[@]}"; do
         # Sanity check
-        if [[ ! -e "$exname" ]]; then
-          echo "$tool,$id,\"$testname\",$haverace,$thread,${size:-"N/A"},,,,$compilereturn," >> "$file";
+        if [[ ! -e "$exname" || $compilereturn -ne 0 ]]; then
+          echo "$tool,$id,\"$testname\",$haverace,$thread,${size:-"N/A"},0,0,0,$compilereturn,0" >> "$file";
           echo "Executable for $testname with $thread threads and input size $size is not available" >> "$LOGFILE";
         elif { "./$exname $size"; } 2>&1 | grep -Eq 'Segmentation fault'; then
             echo "$tool,$id,\"$testname\",$haverace,$thread,${size:-"N/A"},,,,$compilereturn," >> "$file";
@@ -543,6 +558,12 @@ for tool in "${TOOLS[@]}"; do
                 check_return_code $?;
 		echo "testname return $testreturn"
                 races=$(grep -ce 'WARNING: ThreadSanitizer: data race' tmp.log) 
+                cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
+              coderrect)
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" coderrect -XenableProgress=false -t gfortran -fopenmp $additional_compile_flags $test -o $exname -lm &> tmp.log;
+                check_return_code $?;
+		echo "testname return $testreturn"
+                races=$(grep -ce 'Found a data race' tmp.log)
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               tsan-clang)
 #                races=$($MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;

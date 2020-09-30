@@ -65,6 +65,7 @@ help () {
     echo "--tsan-clang: compile and test all benchmarks with clang ThreadSanitizer"
     echo "--tsan-gcc  : compile and test all benchmarks with gcc ThreadSanitizer"
     echo "--archer    : compile and test all benchmarks with Archer"
+    echo "--coderrect : compile and test all benchmarks with Coderrect Scanner"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
     echo "--customize : compile and test customized test list and tools"
@@ -109,6 +110,7 @@ if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
     echo "--tsan-clang: compile and test all benchmarks with clang ThreadSanitizer"
     echo "--tsan-gcc  : compile and test all benchmarks with gcc ThreadSanitizer"
     echo "--archer    : compile and test all benchmarks with Archer"
+    echo "--coderrect : compile and test all benchmarks with Coderrect Scanner"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
     echo "--customize : compile and test customized test list and tools"
@@ -119,6 +121,7 @@ fi
 if [[ "$OPTION" == "--small" ]]; then
   scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x helgrind
   scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x archer
+  scripts/test-harness.sh -t 3 -n 1 -d 32 -l $LANGUAGE -x coderrect
   scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x tsan-clang
   scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x inspector-max-resources
   scripts/test-harness.sh -t 3 -n 2 -d 32 -l $LANGUAGE -x romp
@@ -252,6 +255,10 @@ fi
 
 if [[ "$OPTION" == "--archer" ]]; then
     scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x archer
+fi
+
+if [[ "$OPTION" == "--coderrect" ]]; then
+    scripts/test-harness.sh -t 8 -n 1 -d 32 -l $LANGUAGE -x coderrect
 fi
 
 if [[ "$OPTION" == "--tsan-clang" ]]; then

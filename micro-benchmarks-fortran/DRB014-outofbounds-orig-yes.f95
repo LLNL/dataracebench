@@ -15,8 +15,8 @@
 !   2  x x x x
 !   3  x x x x
 !   4  x x x x
-!  outer loop: i=1,
-!  inner loop: j=3
+!  inner loop: i=1,
+!  outer loop: j=3
 !  array element accessed b[i-1][j] becomes b[0][3], which in turn is b[4][2]
 !  due to linearized column-major storage of the 2-D array.
 !  This causes loop-carried data dependence between j=2 and j=3.

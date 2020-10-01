@@ -16,6 +16,7 @@ As a benchmark suite, DataRaceBench is provided as a Dockerized Service. The ima
 1. ThreadSanitizer, version 10.0, and compiler support for Clang/LLVM 10.0
 2. Archer, release version release_60, and compiler support for Clang/LLVM 6.0
 3. ROMP, version 20ac93c, and compiler support for GCC/gfortran 7.4.0.
+4. Coderrect Scanner, version 0.8.0, and compiler support for Clang/LLVM 9.0
 
 We have used Intel Inspector, version 2020(build 603904), and compiler support for Intel Compiler 19.1.0.166 and the latest version of DRB, (https://github.com/LLNL/dataracebench.git bf219c401aeefe6e3dc32dafed0278a7417486ee).
 
@@ -28,12 +29,14 @@ Follow the below steps to use the DataRaceBench:
 * ThreadSanitizer: sudo docker pull yshixyz/dataracebench:Tsan
 * Archer: sudo docker pull yshixyz/dataracebench:archer
 * ROMP: sudo docker pull yshixyz/dataracebench:romp
+* Coderrect Scanner: see the coderrect [Quick Start](https://coderrect.com/documentation/quick-start/) page
 * Intel Inspector: A valid license is required to install and use Intel Inspector.
 
-After downloading the docker image, a user needs to create containers for all the four tools.
+After downloading the docker image, a user needs to create containers for all the five tools.
 * Archer: docker run -it --name drb\_archer yshixyz/dataracebench:archer
 * ThreadSanitizer: sudo docker run -it --name drb\_tsan yshixyz/dataracebench:Tsan
 * ROMP: sudo docker run -it --name drb\_romp yshixyz/dataracebench:romp
+* Coderrect Scanner: Assume user have built their own image - sudo docker run -it --name drb\_coderrect bash
 * Intel Inspector: Assume user have built their own Intel image - sudo docker run -it --name drb\_intel bash
 
 DRB is automated with the provided scripts which are covered in the next section.
@@ -47,7 +50,7 @@ Once the above setup is completed, one can start and enter the respective docker
 * docker stop drb\_romp; sudo docker exec -it -u root drb\_romp bash
 * docker rm drb\_intel; sudo docker exec -it -u root drb\_intel bash
 
-DataRaceBench’s execution script, check-data-races.sh, has builtin support for all the four tools. Once we enter a container, we need to set the environment for ROMP and Intel Inspector. To use ROMP, we need to run the following commands to set the context:
+DataRaceBench’s execution script, check-data-races.sh, has builtin support for all the five tools. Once we enter a container, we need to set the environment for ROMP and Intel Inspector. To use ROMP, we need to run the following commands to set the context:
 
 **_Environment setup - ROMP_**
 ```

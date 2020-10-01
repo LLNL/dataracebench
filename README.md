@@ -27,16 +27,19 @@ some pre-defined values.
 ```
 ./check-data-races.sh
 
-Usage: ./check-data-races.sh [--run] [--help] language option(C/C++/Fortran)
+Usage: ./check-data-races.sh [--run] [--help] language
 
---help     : this option
---small    : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector.
---run      : compile and run all benchmarks with gcc (no evaluation)
---run-intel: compile and run all benchmarks with Intel compilers (no evaluation)
---helgrind : compile and test all benchmarks with Helgrind
---tsan     : compile and test all benchmarks with clang ThreadSanitizer
---archer   : compile and test all benchmarks with Archer
---inspector: compile and test all benchmarks with Intel Inspector
+--help      : this option
+--small     : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector.
+--run       : compile and run all benchmarks with gcc (no evaluation)
+--run-intel : compile and run all benchmarks with Intel compilers (no evaluation)
+--helgrind  : compile and test all benchmarks with Helgrind
+--tsan-clang: compile and test all benchmarks with clang ThreadSanitizer
+--tsan-gcc  : compile and test all benchmarks with gcc ThreadSanitizer
+--archer    : compile and test all benchmarks with Archer
+--coderrect : compile and test all benchmarks with Coderrect Scanner
+--inspector : compile and test all benchmarks with Intel Inspector
+--romp      : compile and test all benchmarks with Romp
 --customize : compile and test customized test list and tools
 ```
 

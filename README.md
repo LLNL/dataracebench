@@ -40,7 +40,7 @@ Usage: ./check-data-races.sh [--run] [--help] language option(C/C++/Fortran)
 --customize : compile and test customized test list and tools
 ```
 
-More information: [User Guide](https://github.com/LLNL/dataracebench/wiki/User-Guide)
+More information: [User Guide](https://github.com/LLNL/dataracebench/blob/master/user_guide.md)
 
 ## Latest Tool Evaluation Results
 [Data race detection tool dashboard](https://github.com/LLNL/dataracebench/wiki/Tool-Evaluation-Dashboard)

@@ -61,7 +61,7 @@ program DRB015_outofbounds_var_yes
 
     allocate (b(n,m))
 
-    !$omp parallel do private(j)
+    !$omp parallel do private(i)
     do j = 2, n
         do i = 1, m
             b(i,j) = b(i-1,j)

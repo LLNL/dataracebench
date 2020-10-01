@@ -6,8 +6,8 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !The outmost loop is be parallelized.
-!But the inner level loop has out of bound access for b[i][j] when j equals to 0.
-!This will case memory access of a previous row's last element.
+!But the inner level loop has out of bound access for b[i][j] when i equals to 1.
+!This will case memory access of a previous column's last element.
 !
 !For example, an array of 4x4:
 !    j=1 2 3 4
@@ -15,14 +15,14 @@
 !   2  x x x x
 !   3  x x x x
 !   4  x x x x
-!  outer loop: i=1,
-!  inner loop: j=2
-!  array element accessed b[i][j-1] becomes b[0][1], which in turn is b[4][1]
+!  outer loop: j=3,
+!  inner loop: i=1
+!  array element accessed b[i-1][j] becomes b[0][3], which in turn is b[4][2]
 !  due to linearized column-major storage of the 2-D array.
-!  This causes loop-carried data dependence between i=1 and i=4.
+!  This causes loop-carried data dependence between j=2 and j=3.
 !
 !
-!Data race pair: b[i][j]@67 vs. b[i][j-1]@67
+!Data race pair: b[i][j]@67 vs. b[i-1][j]@67
 
 
 program DRB015_outofbounds_var_yes

@@ -42,7 +42,7 @@ DRB043-adi-parallel-no.F95	N2	Alternating Direction Implicit solver, non-optimiz
 DRB044-adi-tile-no.F95	N2,N4	Alternating Direction Implicit solver, with tiling and nested SIMD	New
 DRB045-doall1-orig-no.f95	N1	Classic DOAll loop operating on a one dimensional array	New
 DRB046-doall2-orig-no.f95	N1	Classic DOAll loop operating on a two dimensional array	New
-DRB047-doallchar-orig-yes.f95	Y1,Y6	write() is converting integer to string and reused again without resolved dependencies.	New
+DRB047-doallchar-orig-yes.f95 N1,N3   Classic DOAll loop operating on a character array 	New
 DRB048-firstprivate-orig-no.f95	N2	Example use of firstprivate	New
 DRB049-fprintf-orig-no.f95	N6	Use of write()	New
 DRB050-functionparameter-orig-no.f95	N6	Arrays passed as function parameters	New

@@ -7,9 +7,9 @@
 
 !One dimension array computation
 !with finer granularity than traditional 4 bytes.
-!There is a data race pair, a(i)@25:9 and a(i)@24:32.
+!There is no data race pair.
 
-program DRB047_doallchar_orig_yes
+program DRB047_doallchar_orig_no
     use omp_lib
     implicit none
 
@@ -19,7 +19,7 @@ program DRB047_doallchar_orig_yes
 
     allocate (a(100))
 
-    !$omp parallel do
+    !$omp parallel do private(str)
     do i = 1, 100
         write( str, '(i10)' )  i
         a(i) = str

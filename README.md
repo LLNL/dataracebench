@@ -11,10 +11,10 @@ You may need a recent OpenMP compiler to compile them.
 
 DataRaceBench also comes with an evaluation script
 (check-data-races.sh). The script can be used to evaluate the tools
-Helgrind, Archer, Thread Sanitizer, and Intel Inspector. In addition a
-parameterized test harness (scripts/test-harness.sh) is available
-which allows to provide a number of different parameters for the
-evaluation. The test harness is used by the evaluation script with
+Helgrind, Archer, Thread Sanitizer, Intel Inspector, and Coderrect Scanner. 
+In addition a parameterized test harness (scripts/test-harness.sh) is 
+available which allows to provide a number of different parameters for 
+the evaluation. The test harness is used by the evaluation script with
 some pre-defined values.
 
 ## Quick Start

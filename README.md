@@ -72,7 +72,7 @@ If you are referring to DataRaceBench in a publication, please cite the followin
 Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, SC 2017, pp. 11:1-11:14, ISBN 978-1-4503-5114-0, Denver, CO, USA, November 12-17, 2017. [pdf](https://github.com/LLNL/dataracebench/blob/master/docs/DataRaceBench-SC17.pdf)
 
 If you use DataRaceBench v.1.3.0 or later, please additionally cite the following paper:
-* Gaurav Verma, Yaying Shi, Chunhua Liao, Barbara Chapman, and Yonghong Yan, Enhancing DataRaceBench for Evaluating DataRace Detection Tools, International Workshop on Software Correctness for HPC Applications (Correctness) SC20, 2020 [pdf](https://github.com/LLNL/dataracebench/blob/master/docs/EnhancingDataRaceBench_SC_Correctness_2020.pdf)
+* Gaurav Verma, Yaying Shi, Chunhua Liao, Barbara Chapman, and Yonghong Yan, [Enhancing DataRaceBench for Evaluating DataRace Detection Tools](https://ieeexplore.ieee.org/document/9296942), International Workshop on Software Correctness for HPC Applications (Correctness) SC20, 2020 [pdf](https://github.com/LLNL/dataracebench/blob/master/docs/EnhancingDataRaceBench_SC_Correctness_2020.pdf)
 
 Other papers
 * Pei-Hung Lin, Chunhua Liao, Markus Schordan, Ian Karlin. [Exploring Regression of Data Race Detection Tools Using DataRaceBench](https://ieeexplore.ieee.org/abstract/document/8951036). 2019 IEEE/ACM 3rd International Workshop on Software Correctness for HPC Applications (Correctness), Denver, CO, USA, 2019, pp. 11-18. [pdf](https://github.com/LLNL/dataracebench/blob/master/docs/ExploringRegressionOfDataRaceDetectionTools-SC19.pdf), [Presentation](https://github.com/LLNL/dataracebench/blob/master/docs/2019-11-18-RegressionOfDataRaceTools-SC19.pdf)

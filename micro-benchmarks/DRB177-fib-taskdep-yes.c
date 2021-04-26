@@ -11,7 +11,7 @@ for details.
 /* 
  * Fibonacci code with data race (possible to scale problem size by providing
  * size argument).
- * Data Race Pair, i@25:5 and i@29:7
+ * Data Race Pair, i@25:5:W vs. i@29:7:R
  * */
 
 #include <stdio.h>

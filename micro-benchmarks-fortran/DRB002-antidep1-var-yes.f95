@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !A loop with loop-carried anti-dependence.
-!Data race pair: a[i+1]@49:9 vs. a[i]@49:16
+!Data race pair: a[i+1]@49:9:W vs. a[i]@49:16:R
 
 program DRB002_antidep1_var_yes
     use omp_lib

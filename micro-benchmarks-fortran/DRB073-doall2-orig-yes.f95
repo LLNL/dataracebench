@@ -8,8 +8,8 @@
 !Two-dimensional array computation using loops: missing private(j).
 !References to j in the loop cause data races.
 !Data race pairs (we allow multiple ones to preserve the pattern):
-!  Write_set = {j@28, j@28:implicit step function +1}
-!  Read_set = {j@29:17, j@29:26, j@28:12, j28@:22 (implicit step by +1)}
+!  Write_set = {j@28:12} (implicit step by +1)
+!  Read_set = {j@29:17, j@29:26, j@28:12} (implicit step by +1)
 !  Any pair from Write_set vs. Write_set  and Write_set vs. Read_set is a data race pair.
 
 

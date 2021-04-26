@@ -9,8 +9,8 @@
 !Adding private (outLen) can avoid race condition. But it is wrong semantically.
 !
 !Data race pairs: we allow two pair to preserve the original code pattern.
-!1. outLen@60 vs. outLen@60
-!2. output[]@59 vs. output[]@59
+!1. outLen@60:9:W vs. outLen@60:9:W
+!2. output[]@59:9:W vs. output[]@59:9:W
 
 
 program DRB019_plusplus_var_yes

@@ -13,7 +13,7 @@
 !variable.
 !
 !Implicit flush must be used after critical construct to avoid data race.
-!Data Race pair: x@30:13 and x@30:13
+!Data Race pair: x@30:13:W vs. x@30:13:W
 
 program DRB142_acquirerelease_orig_yes
     use omp_lib

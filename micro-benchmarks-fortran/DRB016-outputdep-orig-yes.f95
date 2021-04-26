@@ -15,8 +15,8 @@
 !.. = x;
 ! x = ..;
 !Data race pairs: we allow two pairs to preserve the original code pattern.
-! 1. x@48 vs. x@49
-! 2. x@49 vs. x@49
+! 1. x@48:16:R vs. x@49:9:W
+! 2. x@49:9:W vs. x@49:9:W
 
 
 module globalArray

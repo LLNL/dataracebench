@@ -7,7 +7,7 @@
 
 !Vector addition followed by multiplication involving the same var should have a barrier in between.
 !omp distribute directive does not have implicit barrier. This will cause data race.
-!Data Race Pair: b[i]@36:23 and b[i]@42:13
+!Data Race Pair: b[i]@36:23:R vs. b[i]@42:13:W
 
 module DRB160
     integer :: a, i, j, k, val

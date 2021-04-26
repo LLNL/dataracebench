@@ -7,7 +7,7 @@
 
 !Though we have used critical directive to ensure that additions across teams are not overlapped.
 !Critical only synchronizes within a team. There is a data race pair.
-!Data Race pairs, var@24:9 and var@24:15
+!Data Race pairs, var@24:9:W vs. var@24:15:R
 
 
 program DRB148_critical1_orig_gpu_yes

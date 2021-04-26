@@ -10,7 +10,7 @@
 !Putting it within a threadprivate directive may cause seg fault since
 ! threadprivate copies are not allocated!
 !
-!Dependence pair: *counter@22:9 vs. *counter@22:19
+!Dependence pair: *counter@22:9:W vs. *counter@22:9:W
 
 
 module DRB088

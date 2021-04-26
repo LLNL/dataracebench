@@ -21,7 +21,7 @@
 !  due to linearized column-major storage of the 2-D array.
 !  This causes loop-carried data dependence between j=2 and j=3.
 !
-!Data race pair: b[i][j]@41 vs. b[i-1][j]@41.
+!Data race pair: b[i][j]@41:13:W vs. b[i-1][j]@41:22:R
 
 program DRB014_outofbounds_orig_yes
     use omp_lib

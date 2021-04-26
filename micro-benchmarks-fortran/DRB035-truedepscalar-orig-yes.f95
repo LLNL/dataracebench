@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Loop carried true dep between tmp =..  and ..= tmp.
-!Data race pair: tmp@24:9 vs. tmp@25:15
+!Data race pair: tmp@24:9:W vs. tmp@25:15:R
 
 program DRB035_truedepscalar_orig_yes
     use omp_lib

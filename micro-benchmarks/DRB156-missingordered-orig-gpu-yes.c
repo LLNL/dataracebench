@@ -8,7 +8,7 @@
 */
 
 /*This example is referred from DRACC by Adrian Schmitz et al.
-Missing ordered directive causes data race pairs var@28:5 and var28:13.
+Missing ordered directive causes data race pairs var@28:5:W vs. var@28:13:R
 */
 
 #include <stdio.h>

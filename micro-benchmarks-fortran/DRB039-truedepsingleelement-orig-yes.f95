@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Data race pair: a[i]@24:9 vs. a[0]@24:16
+!Data race pair: a[i]@24:9:W vs. a[0]@24:16:R
 
 program DRB039_truedepsingleelement_orig_yes
     use omp_lib

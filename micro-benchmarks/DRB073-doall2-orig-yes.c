@@ -49,7 +49,7 @@ Two-dimensional array computation using loops: missing private(j).
 References to j in the loop cause data races.
 Data race pairs (we allow multiple ones to preserve the pattern):
   Write_set = {j@61:10, j@61:20}
-  Read_set = {j@62:20, j@62:12, j61@:14, j61@:20}
+  Read_set = {j@62:20, j@62:12, j@61:14, j@61:20}
   Any pair from Write_set vs. Write_set  and Write_set vs. Read_set is a data race pair.
 */
 int a[100][100];

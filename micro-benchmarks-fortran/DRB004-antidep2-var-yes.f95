@@ -7,7 +7,7 @@
 
 !Two nested loops with loop-carried anti-dependence on the outer level.
 !This is a variable-length array version in F95.
-!Data race pair: a[i][j]@55:13 vs. a[i+1][j]@55:31
+!Data race pair: a[i][j]@55:13:W vs. a[i+1][j]@55:31:R
 
 program DRB004_antidep2_var_yes
     use omp_lib

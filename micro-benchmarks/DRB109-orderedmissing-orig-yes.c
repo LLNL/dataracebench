@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdio.h>
 /* This is a program based on a test contributed by Yizi Gu@Rice Univ.
  * Missing the ordered clause
- * Data race pair: x@56:5 vs. x@56:5
+ * Data race pair: x@56:5:W vs. x@56:5:W
  * */
 int main()
 {

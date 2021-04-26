@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Concurrent access of var@30:13 without acquiring locks causes atomicity violation. Data race present.
-!Data Race Pairs, var@30:13 and var@30:22.
+!Data Race Pairs, var@30:13:W vs. var@30:22:R
 
 module DRB163
     integer :: var(16)

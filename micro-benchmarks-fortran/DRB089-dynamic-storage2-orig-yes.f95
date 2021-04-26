@@ -10,7 +10,7 @@
 !Putting it within a threadprivate directive may cause seg fault
 !since threadprivate copies are not allocated.
 !
-!Dependence pair: *counter@25:5 vs. *counter@25:15
+!Dependence pair: *counter@25:5:W vs. *counter@25:5:W
 
 program DRB088_dynamic_storage_orig_yes
     use omp_lib

@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Due to the missing mutexinoutset dependence type on c, these tasks will execute in any
-!order leading to the data race at line 35. Data Race Pair, d@35:9 and d@35:9 
+!order leading to the data race at line 35. Data Race Pair, d@35:9:W vs. d@35:9:W
 
 program DRB135_taskdep_mutexinoutset_orig_no_omp50
     use omp_lib

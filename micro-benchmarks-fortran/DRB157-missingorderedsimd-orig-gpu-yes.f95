@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Due to distribute parallel for simd directive at line 23, there is a data race at line 25.
-!Data Rae Pairs, var@25:9 and var@25:15
+!Data Rae Pairs, var@25:9:W vs. var@25:15:R
 
 program DRB157_missingorderedsimd_orig_gpu_yes
     use omp_lib

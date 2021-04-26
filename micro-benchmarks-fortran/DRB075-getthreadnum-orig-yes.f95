@@ -7,7 +7,7 @@
 
 !Test if the semantics of omp_get_thread_num() is correctly recognized.
 !Thread with id 0 writes numThreads while other threads read it, causing data races.
-!Data race pair: numThreads@22 vs. numThreads@24.
+!Data race pair: numThreads@22:9:W vs. numThreads@24:31:R
 
 
 program DRB075_getthreadnum_orig_yes

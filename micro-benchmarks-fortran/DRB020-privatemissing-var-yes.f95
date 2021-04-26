@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !tmp should be put as private to avoid race condition
-!Data race pair: tmp@51 vs. tmp@52
+!Data race pair: tmp@51:9:W vs. tmp@52:16:R
 
 program DRB020_privatemissing_var_yes
     use omp_lib

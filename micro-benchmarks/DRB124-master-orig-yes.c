@@ -15,7 +15,7 @@ Description: Race on variable init. The variable is written by the
 master thread and concurrently read by the others.
 
 Solution: master construct at line 31:17 does not have an implicit barrier better
-use single. Data Race Pair, init@33:7 and init@36:13.
+use single. Data Race Pair, init@33:7:W vs. init@36:13:R
 */
 
 #include <stdio.h>

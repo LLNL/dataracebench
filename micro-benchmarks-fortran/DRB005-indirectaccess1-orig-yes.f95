@@ -17,7 +17,7 @@
 !
 !In this example, we use schedule(static,1) to increase the chance that
 !the dependent loop iterations will be scheduled to different threads.
-!Data race pair: base[idx1]@78:5 vs. base[idx2]@79:5
+!Data race pair: base[idx1]@78:5:W vs. base[idx2]@79:5:W
 
 
 module DRB005

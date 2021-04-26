@@ -7,7 +7,7 @@
 
 !This example is from DRACC by Adrian Schmitz et al.
 !Concurrent access on a counter with no lock with simd. Atomicity Violation. Intra Region.
-!Data Race Pairs: var@29:13 and var@29:22.
+!Data Race Pairs: var@29:13:W vs. var@29:13:W
 
 program DRB161_nolocksimd_orig_gpu_yes
     use omp_lib

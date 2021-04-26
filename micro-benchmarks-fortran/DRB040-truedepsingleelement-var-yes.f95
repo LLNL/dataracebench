@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Data race pair: a[i]@49:9 vs. a[0]@49:16
+!Data race pair: a[i]@49:9:W vs. a[0]@49:16:R
 
 
 program DRB040_truedepsingleelement_var_yes

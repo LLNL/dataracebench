@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !The thread encountering the taskwait directive at line 22 only waits for its child task
-!(line 14-21) to complete. It does not wait for its descendant tasks (line 16-19). Data Race pairs, sum@36:13 and sum@36:13.
+!(line 14-21) to complete. It does not wait for its descendant tasks (line 16-19). Data Race pairs, sum@36:13:W vs. sum@36:13:W
 
 program DRB117_taskwait_waitonlychild_orig_yes
     use omp_lib

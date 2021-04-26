@@ -7,7 +7,7 @@
 
 !This loop has loop-carried output-dependence due to x=... at line 44.
 !The problem can be solved by using lastprivate(x) .
-!Data race pair: x@44:9 vs. x@44:9
+!Data race pair: x@44:9:W vs. x@44:9:W
 
 program DRB010_lastprivatemissing_var_yes
     use omp_lib

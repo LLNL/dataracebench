@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Two tasks without synchronization to protect data write, causing data races.
-!Data race pair: i@20 vs. i@22
+!Data race pair: i@20:5:W vs. i@22:5:W
 
 program DRB023_sections1_orig_yes
     use omp_lib

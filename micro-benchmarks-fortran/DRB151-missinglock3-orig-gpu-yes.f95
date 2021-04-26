@@ -7,7 +7,7 @@
 
 !The distribute parallel do directive at line 19 will execute loop using multiple teams.
 !The loop iterations are distributed across the teams in chunks in round robin fashion.
-!The missing lock enclosing var@21 leads to data race. Data Race Pairs, var@21:9 and var@21:15.
+!The missing lock enclosing var@21 leads to data race. Data Race Pairs, var@21:9:W vs. var@21:9:W
 
 program DRB151_missinglock3_orig_gpu_yes
     use omp_lib

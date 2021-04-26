@@ -49,8 +49,8 @@ Adding private (outLen) can avoid race condition. But it is wrong semantically.
 Data races on outLen also cause output[outLen++] to have data races.
 
 Data race pairs (we allow two pairs to preserve the original code pattern):
-1. outLen@72 vs. outLen@72
-2. output[]@72 vs. output[]@72
+1. outLen@72:12:W vs. outLen@72:12:W
+2. output[]@72:5:W vs. output[]@72:5:W
 */
 #include <stdlib.h>
 #include <stdio.h>

@@ -7,7 +7,7 @@
 
 !This is a program based on a test contributed by Yizi Gu@Rice Univ.
 ! * Missing the ordered clause
-! * Data race pair: x@21:9 vs. x@21:13
+! * Data race pair: x@21:9:W vs. x@21:9:W
 
 
 program DRB109_orderedmissing_orig_yes

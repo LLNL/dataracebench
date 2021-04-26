@@ -8,8 +8,8 @@
 !The loop in this example cannot be parallelized.
 !
 !Data race pairs: we allow two pairs to preserve the original code pattern.
-! 1. x@50 vs. x@51
-! 2. x@51 vs. x@51
+! 1. x@50:16:R vs. x@51:9:W
+! 2. x@51:9:W vs. x@51:9:W
 
 program DRB017_outputdep_var_yes
     use omp_lib

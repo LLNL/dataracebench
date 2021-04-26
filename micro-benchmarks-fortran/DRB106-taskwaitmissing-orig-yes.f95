@@ -7,8 +7,8 @@
 
 !* This is a program based on a test contributed by Yizi Gu@Rice Univ.
 ! * Classic Fibonacci calculation using task but missing taskwait.
-! * Data races pairs: i@29:13 vs i@34:17
-! *                   j@32:13 vs j@34:19
+! * Data races pairs: i@29:13:W vs. i@34:17:R
+! *                   j@32:13:W vs. j@34:19:R
 
 !check on the unsgined part
 

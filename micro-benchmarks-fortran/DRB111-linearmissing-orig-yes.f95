@@ -6,7 +6,8 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 ! *  loop missing the linear clause
-! *  Data race pair:  j@36 vs. j@37
+! *  Data race pair:  j@37:11:R vs. j@38:9:W
+! *                   j@37:18:R vs. j@38:9:W
 
 
 program DRB111_linearmissing_orig_yes

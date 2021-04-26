@@ -5,7 +5,7 @@
 !!! SPDX-License-Identifier: (BSD-3-Clause)
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
-!Missing ordered directive causes data race pairs var@24:9 and var24:18.
+!Missing ordered directive causes data race pairs var@24:9:W vs. var@24:18:R
 
 program DRB156_missingordered_orig_gpu_yes
     use omp_lib

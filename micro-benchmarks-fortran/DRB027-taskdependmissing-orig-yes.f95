@@ -7,7 +7,7 @@
 
 !Two tasks without depend clause to protect data writes.
 !i is shared for two tasks based on implicit data-sharing attribute rules.
-!Data race pair: i@22 vs. i@25
+!Data race pair: i@22:5:W vs. i@25:5:W
 
 program DRB027_taskdependmissing_orig_yes
     use omp_lib

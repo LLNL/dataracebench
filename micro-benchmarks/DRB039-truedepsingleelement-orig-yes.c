@@ -45,7 +45,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-Data race pair: a[i]@62:5 vs. a[0]@62:15
+Data race pair: a[i]@62:5:W vs. a[0]@62:15:R
 */
 #include <stdlib.h>
 #include <stdio.h>

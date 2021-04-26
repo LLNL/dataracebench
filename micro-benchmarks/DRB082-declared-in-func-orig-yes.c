@@ -48,7 +48,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 A variable is declared inside a function called within a parallel region.
 The variable should be shared if it uses static storage.
 
-Data race pair: q@57:3 vs. q@57:3 
+Data race pair: q@57:3:W vs. q@57:3:W 
 */
 
 void foo()

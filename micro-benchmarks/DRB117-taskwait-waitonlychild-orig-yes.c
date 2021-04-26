@@ -11,7 +11,7 @@
 The thread encountering the taskwait directive at line 46 only waits for
 its child task (line 37-44) to complete. It does not wait for its
 descendant tasks (line 39-42).
-Data Race Pairs, sum@47:7 and sum@47:7.
+Data Race Pairs, sum@47:7:W vs. sum@47:7:W
 */
 
 #include <stdio.h>

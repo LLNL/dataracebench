@@ -7,7 +7,7 @@
 
 !The safelen(2) clause safelen(2)@22:16 guarantees that the vector code is safe for vectors up to 2 (inclusive).
 !In the loop, m can be 2 or more for the correct execution. If the value of m is less than 2,
-!the behavior is undefined. Data Race Pair: b[i]@24:9 and b[i-m]@24:16.
+!the behavior is undefined. Data Race Pair: b[i]@24:9:W vs. b[i-m]@24:16:R
 
 program DRB137_simdsafelen_orig_no
     use omp_lib

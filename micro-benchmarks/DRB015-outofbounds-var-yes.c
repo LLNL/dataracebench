@@ -62,7 +62,7 @@ For example, an array of 4x4:
   due to linearized row-major storage of the 2-D array.
 
 This causes loop-carried data dependence between i=2 and i=1.
-Data race pair: b[i][j]@80:7 vs. b[i][j-1]@80:15
+Data race pair: b[i][j]@80:7:W vs. b[i][j-1]@80:15:R
 */
 #include <stdlib.h>
 int main(int argc, char* argv[]) 

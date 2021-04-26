@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /*
 A loop with loop-carried anti-dependence.
-Data race pair: a[i+1]@64:10 vs. a[i]@64:5
+Data race pair: a[i+1]@64:10:R vs. a[i]@64:5:W
 */
 #include <stdio.h>
 int main(int argc, char* argv[])

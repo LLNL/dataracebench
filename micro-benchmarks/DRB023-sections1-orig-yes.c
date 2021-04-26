@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 Two tasks without synchronization to protect data write, causing data races.
-Data race pair: i@58:5 vs. i@60:5
+Data race pair: i@58:5:W vs. i@60:5:W
 */
 #include <stdio.h> 
 int main()

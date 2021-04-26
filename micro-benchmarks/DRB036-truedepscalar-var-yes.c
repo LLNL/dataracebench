@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /*  
 Loop carried true dep between tmp =..  and ..= tmp.
-Data race pair: tmp@66:12 vs. tmp@67:5
+Data race pair: tmp@66:12:R vs. tmp@67:5:W
 */
 #include <stdlib.h>
 int main(int argc, char* argv[])

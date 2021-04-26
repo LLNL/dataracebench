@@ -7,7 +7,7 @@
 
 ! argument pass-by-reference
 ! its data-sharing attribute is the same as its actual argument's. i and q are shared.
-! Data race pair: q@15:5 vs. q@15:9
+! Data race pair: q@15:5:W vs. q@15:5:W
 
 subroutine f1(q)
     implicit none

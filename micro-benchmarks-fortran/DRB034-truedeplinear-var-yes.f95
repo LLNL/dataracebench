@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !A linear expression is used as array subscription.
-!Data race pair: a[2*i+1]@53:9 vs. a[i]@53:18
+!Data race pair: a[2*i+1]@53:9:W vs. a[i]@53:18:R
 
 program DRB034_truedeplinear_var_yes
     use omp_lib

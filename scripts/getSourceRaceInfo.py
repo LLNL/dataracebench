@@ -46,26 +46,29 @@ def genRaceInfoJsonFile(inputfile, outputdir):
 #
 
 	for i in range(0,len(content)):
-		x = re.search("(?:\*)*[a-zA-Z]\S*(?:\[.*\])*\@\d+\:\d+\s+.+\s+(?:\*)*[a-zA-Z]\S*(?:\[.*\])*\@\d+\:\d+",content[i],flags=re.IGNORECASE)
+		x = re.search("(?:\*)*[a-zA-Z]\S*(?:\[.*\])*\@\d+\:\d+\:[R,W]\s+(vs\.)+\s+(?:\*)*[a-zA-Z]\S*(?:\[.*\])*\@\d+\:\d+\:[R,W]",content[i],flags=re.IGNORECASE)
 		if(x):
 			js = {}
 			match = x.group()
 			js["microbenchmark"] = filename
 			#print(match)
-			pair = re.findall("(?:\*)*[a-zA-Z]\S*(?:\[.*\])*\@\d+\:\d+", match)
+			pair = re.findall("(?:\*)*[a-zA-Z]\S*(?:\[.*\])*\@\d+\:\d+\:[R,W]", match)
 			#print(i,pair)
 			p1 = pair[0]
 			p2 = pair[1]
+			#print(p1)
 			i1 = res = re.split('\@|\:', p1)
 			i2 = res = re.split('\@|\:', p2)
 			#print("left", i1)
 			#print("right", i2)
-			js["write_dataname"] = i1[0]
-			js["write_line"] = i1[1]
-			js["write_column"] = i1[2]
-			js["read_dataname"] = i2[0]
-			js["read_line"] = i2[1]
-			js["read_column"] = i2[2]
+			js["ref1_dataname"] = i1[0]
+			js["ref1_line"] = i1[1]
+			js["ref1_column"] = i1[2]
+			js["ref1_type"] = i1[3]
+			js["ref2_dataname"] = i2[0]
+			js["ref2_line"] = i2[1]
+			js["ref2_column"] = i2[2]
+			js["ref2_type"] = i2[3]
 			jsAry.append(js)
 #
 #  case 2: use write set and read set
@@ -94,12 +97,14 @@ def genRaceInfoJsonFile(inputfile, outputdir):
 			rinfo = res = re.split('\@|\:', r)
 			winfo = res = re.split('\@|\:', w)
 			js["microbenchmark"] = filename
-			js["write_dataname"] = winfo[0]
-			js["write_line"] = winfo[1]
-			js["write_column"] = winfo[2]
-			js["read_dataname"] = rinfo[0]
-			js["read_line"] = rinfo[1]
-			js["read_column"] = rinfo[2]
+			js["ref1_dataname"] = winfo[0]
+			js["ref1_line"] = winfo[1]
+			js["ref1_column"] = winfo[2]
+			js["ref1_type"] = "W"
+			js["ref2_dataname"] = rinfo[0]
+			js["ref2_line"] = rinfo[1]
+			js["ref2_column"] = rinfo[2]
+			js["ref2_type"] = "R"
 			jsAry.append(js)
 
 	
@@ -107,6 +112,9 @@ def genRaceInfoJsonFile(inputfile, outputdir):
 		print(filename + " should have race but found no race encoding in source code!")
 	elif ((not haveRace) and len(jsAry) != 0):
 		print(filename + " should have no race but found race encoding in source code!")
+		# No race pair should be reported.  Remove it from output but print out for debugging
+		print(jsAry)
+		jsAry={}
 	js = {}
 	for i in range(len(jsAry)):
 		js[i] = jsAry[i]

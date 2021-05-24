@@ -9,7 +9,7 @@
 !it as many times as the number of calls to omp_set_nest_lock.
 !incr_b is called at line 53 and line 58. So, it needs a nest_lock enclosing line 35
 !Missing nest_lock will lead to race condition at line:35.
-!Data Race Pairs, p%b@35:5 and p%b@35:5.
+!Data Race Pairs, p%b@35:5:W vs. p%b@35:5:W
 
 module DRB118
     use OMP_LIB, ONLY: OMP_NEST_LOCK_KIND

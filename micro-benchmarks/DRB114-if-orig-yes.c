@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 When if() evalutes to true, this program has data races due to true dependence within the loop at 65.
-Data race pair: a[i+1]@66:5 vs. a[i]@66:12
+Data race pair: a[i+1]@66:5:W vs. a[i]@66:12:R
 */
 #include <stdlib.h>
 #include <stdio.h>

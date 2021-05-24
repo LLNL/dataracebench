@@ -20,7 +20,7 @@
 !For static even scheduling, we must have at least 180 threads (180/180=1 iterations)
 !so iteration 0 and 1 will be scheduled to two different threads.
 !
-!Data race pair: xa1[idx]@81 vs. xa2[idx]@82
+!Data race pair: xa1[idx]@81:9:W vs. xa2[idx]@82:9:W
 
 
 module DRB008

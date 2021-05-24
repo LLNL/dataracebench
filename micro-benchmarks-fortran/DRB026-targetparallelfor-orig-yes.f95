@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Race condition due to anti-dependence within a loop offloaded to accelerators.
-!Data race pair: a[i]@29 vs. a[i+1]@29
+!Data race pair: a[i]@29:13:W vs. a[i+1]@29:20:R
 
 program DRB026_targetparallelfor_orig_yes
     use omp_lib

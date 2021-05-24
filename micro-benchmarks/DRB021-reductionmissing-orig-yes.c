@@ -47,8 +47,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 A kernel with two level parallelizable loop with reduction:
 if reduction(+:sum) is missing, there is race condition.
 Data race pairs: we allow multiple pairs to preserve the pattern.
-  sum@70:7 vs. sum@70:7 
-  sum@70:7 vs. sum@70:13
+  sum@70:7:W vs. sum@70:7:W
+  sum@70:7:W vs. sum@70:13:R
 */
 #include <stdio.h>
 int main(int argc, char* argv[])

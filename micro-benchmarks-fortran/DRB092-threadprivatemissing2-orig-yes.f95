@@ -9,8 +9,8 @@
 !No threadprivate is used to avoid data races.
 !This is the case for a variable referenced within a construct.
 !
-!Data race pairs  sum0@34:13 vs. sum0@34:20
-!                 sum0@34:13 vs. sum0@34:13
+!Data race pairs  sum0@34:13:W vs. sum0@34:20:R
+!                 sum0@34:13:W vs. sum0@34:13:W
 
 
 module DRB092

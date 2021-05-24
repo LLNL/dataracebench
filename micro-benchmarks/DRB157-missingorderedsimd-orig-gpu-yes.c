@@ -11,7 +11,7 @@
 This kernel is modifie version from “DataRaceOnAccelerator A Micro-benchmark Suite for Evaluating
 Correctness Tools Targeting Accelerators” by Adrian Schmitz et al.
 Due to distribute parallel for simd directive at line 31, there is a data race at line 33.
-Data Rae Pairs, var@33:5 and var@33:12
+Data Rae Pairs, var@33:5:W vs. var@33:12:R
 .*/
 
 #include <stdio.h>

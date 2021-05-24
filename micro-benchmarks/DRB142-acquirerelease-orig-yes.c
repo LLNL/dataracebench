@@ -15,7 +15,7 @@
  * variable.
  *
  * Implicit flush must be used after critical construct, after line:34 and before line:35 to avoid data race.
- * Data Race pair: x@34:9 and x@34:9
+ * Data Race pair: x@34:9:W vs. x@34:9:W
  * */
 
 

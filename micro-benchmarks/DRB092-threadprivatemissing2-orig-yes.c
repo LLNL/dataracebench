@@ -49,8 +49,8 @@ A file-scope variable used within a function called by a parallel region.
 No threadprivate is used to avoid data races.
 This is the case for a variable referenced within a construct. 
 
-Data race pairs  sum0@68:7 vs. sum0@68:12
-                 sum0@68:7 vs. sum0@68:7
+Data race pairs  sum0@68:7:W vs. sum0@68:12:R
+                 sum0@68:7:W vs. sum0@68:7:W
 */
 #include <stdio.h>
 #include <assert.h>

@@ -47,7 +47,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 /*
 Two nested loops with loop-carried anti-dependence on the outer level.
 This is a variable-length array version in C99.
-Data race pair: a[i][j]@70:7 vs. a[i+1][j]@70:18
+Data race pair: a[i][j]@70:7:W vs. a[i+1][j]@70:18:R
 */
 #include <stdlib.h>
 int main(int argc,char *argv[])

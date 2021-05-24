@@ -10,8 +10,8 @@
 !Data races on outLen also cause output[outLen++] to have data races.
 !
 !Data race pairs (we allow two pairs to preserve the original code pattern):
-!1. outLen@34 vs. outLen@34
-!2. output[]@33 vs. output[]@33
+!1. outLen@34:9:W vs. outLen@34:9:W
+!2. output[]@33:9:W vs. output[]@33:9:W
 
 program DRB018_plusplus_orig_yes
     use omp_lib

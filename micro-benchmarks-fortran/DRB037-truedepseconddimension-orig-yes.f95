@@ -7,7 +7,7 @@
 
 !Only the outmost loop can be parallelized in this program.
 !The inner loop has true dependence.
-!Data race pair: b[i][j]@29:13 vs. b[i][j-1]@29:22
+!Data race pair: b[i][j]@29:13:W vs. b[i][j-1]@29:22:R
 
 
 program DRB037_truedepseconddimension_orig_yes

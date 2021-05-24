@@ -7,7 +7,7 @@
 
 !This one has data races due to true dependence.
 !But data races happen at instruction level, not thread level.
-!Data race pair: a[i+1]@32 vs. a[i]@32
+!Data race pair: a[i+1]@32:9:W vs. a[i]@32:18:R
 
 program DRB024_simdtruedep_orig_yes
     use omp_lib

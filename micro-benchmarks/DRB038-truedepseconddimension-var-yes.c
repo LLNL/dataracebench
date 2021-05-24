@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 Only the outmost loop can be parallelized in this program.
-Data race pair: b[i][j]@65:7 vs. b[i][j-1]@65:15
+Data race pair: b[i][j]@65:7:W vs. b[i][j-1]@65:15:R
 */
 #include <stdlib.h>
 int main(int argc, char* argv[]) 

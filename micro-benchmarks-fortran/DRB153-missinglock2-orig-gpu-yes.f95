@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Concurrent access of var@22:5 in an intra region. Missing Lock leads to intra region data race.
-!Data Race pairs, var@22:13 and var@22:19.
+!Data Race pairs, var@22:13:W vs. var@22:13:W
 
 program DRB153_missinglock2_orig_gpu_yes
     use omp_lib

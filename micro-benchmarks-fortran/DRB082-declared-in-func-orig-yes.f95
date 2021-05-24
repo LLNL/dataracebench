@@ -8,7 +8,7 @@
 !A variable is declared inside a function called within a parallel region.
 !The variable should be shared if it uses static storage.
 !
-!Data race pair: q@19:7 vs. q@19:7
+!Data race pair: i@19:7:W vs. i@19:7:W
 
 module global_foo
     use omp_lib

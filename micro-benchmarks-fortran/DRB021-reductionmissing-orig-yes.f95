@@ -8,8 +8,8 @@
 !A kernel with two level parallelizable loop with reduction:
 !if reduction(+:sum) is missing, there is race condition.
 !Data race pairs: we allow multiple pairs to preserve the pattern.
-!  sum@37"13 vs. sum@37:13
-!  sum@37:13 vs. sum@37:22
+!  getSum@37:13:W vs. getSum@37:13:W
+!  getSum@37:13:W vs. getSum@37:22:R
 
 program DRB021_reductionmissing_orig_yes
     use omp_lib

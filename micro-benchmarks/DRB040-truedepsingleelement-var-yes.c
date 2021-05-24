@@ -45,7 +45,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*
-Data race pair: a[i]@63:5 vs. a[0]@63:15
+Data race pair: a[i]@63:5:W vs. a[0]@63:15:R
 */
 #include <stdlib.h>
 int main (int argc, char* argv[])

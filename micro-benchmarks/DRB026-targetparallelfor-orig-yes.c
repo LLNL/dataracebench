@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 Race condition due to anti-dependence within a loop offloaded to accelerators.
-Data race pair: a[i]@64:5 vs. a[i+1]@64:10
+Data race pair: a[i]@64:5:W vs. a[i+1]@64:10:R
 */
 
 int main(int argc, char* argv[])

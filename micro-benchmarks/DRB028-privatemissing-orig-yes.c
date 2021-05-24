@@ -45,8 +45,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 /* 
 tmp should be annotated as private to avoid race condition.
-Data race pairs: tmp@65:5 vs. tmp@66:12
-                 tmp@65:5 vs. tmp@65:5
+Data race pairs: tmp@65:5:W vs. tmp@66:12:R
+                 tmp@65:5:W vs. tmp@65:5:W
 */
 #include <stdlib.h>
 #include <stdio.h>

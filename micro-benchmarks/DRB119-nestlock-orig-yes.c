@@ -12,7 +12,7 @@ A nested lock can be locked several times. It doesn't unlock until you have unse
 it as many times as the number of calls to omp_set_nest_lock.
 incr_b is called at line 48 and line 53. So, it needs a nest_lock enclosing line 32
 Missing nest_lock will lead to race condition at line:32.
-Data Race Pairs, p->b@32:2 and p->b@32:2.
+Data Race Pairs, p->b@32:6:W vs. p->b@32:6:W
 */
 
 #include <omp.h>

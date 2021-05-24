@@ -48,7 +48,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 A function arguments is passed by reference: 
 its data-sharing attribute is the same as its actual argument's. 
 i is shared. *q is shared.
-Data race pair: *q(i)@59:4 vs. *q(i)@59:4 
+Data race pair: *q@59:4:W vs. *q@59:4:W 
 */
 
 #include<stdio.h>

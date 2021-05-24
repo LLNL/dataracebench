@@ -8,7 +8,7 @@
 !The distribute parallel do directive at line 22 will execute loop using multiple teams.
 !The loop iterations are distributed across the teams in chunks in round robin fashion.
 !The omp lock is only guaranteed for a contention group, i.e, within a team.
-!Data Race Pair, var@25:9 and var@25:15.
+!Data Race Pair, var@25:9:W vs. var@25:9:W
 
 program DRB150_missinglock1_orig_gpu_yes
     use omp_lib

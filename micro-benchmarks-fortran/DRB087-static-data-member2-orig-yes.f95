@@ -8,7 +8,7 @@
 !For the case of a variable which is referenced within a construct:
 !static data member should be shared, unless it is within a threadprivate directive.
 !
-!Dependence pair: counter@37:5 vs. counter@37:15
+!Dependence pair: counter@37:5:W vs. counter@37:5:W
 
 
 module DRB087

@@ -19,7 +19,7 @@
 !When N is 180, two iterations with N=0 and N= 5 have loop carried dependences.
 !For static even scheduling, we must have at least 36 threads (180/36=5 iterations)
 !so iteration 0 and 5 will be scheduled to two different threads.
-!Data race pair: base[idx]@80:9 vs. base[idx]@81:9
+!Data race pair: base[idx]@80:9:W vs. base[idx]@81:9:W
 
 
 module DRB006

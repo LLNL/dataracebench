@@ -6,8 +6,8 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !tmp should be annotated as private to avoid race condition.
-!Data race pairs: tmp@28 vs. tmp@29
-!                 tmp@28 vs. tmp@28
+!Data race pairs: tmp@28:9:W vs. tmp@29:16:R
+!                 tmp@28:9:W vs. tmp@28:9:W
 
 program DRB028_privatemissing_orig_yes
     use omp_lib

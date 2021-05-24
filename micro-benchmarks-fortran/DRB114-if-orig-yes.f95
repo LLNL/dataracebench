@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !When if() evalutes to true, this program has data races due to true dependence within the loop at 31.
-!Data race pair: a[i+1]@32:9 vs. a[i]@32:18
+!Data race pair: a[i+1]@32:9:W vs. a[i]@32:18:R
 
 program DRB114_if_orig_yes
     use omp_lib

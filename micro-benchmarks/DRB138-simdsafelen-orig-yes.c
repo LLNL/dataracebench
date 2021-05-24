@@ -10,7 +10,7 @@
 /* The safelen(2) clause at safelen(2)@24:20 guarantees that the vector code is safe for vectors
  * up to 2 (inclusive). In the loop, m@25:12 can be 2 or more for the correct execution. If the
  * value of m is less than 2, the behavior is undefined.
- * Data Race Pair: b[i]@26:5 and b[i-m]@26:12.
+ * Data Race Pair: b[i]@26:5:W vs. b[i-m]@26:12:R
  * */
 
 #include <stdio.h>

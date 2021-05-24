@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !The increment at line number 22 is critical for the variable
-!var@22:13. Therefore, there is a possible Data Race pair var@22:13 and var@22:19.
+!var@22:13. Therefore, there is a possible Data Race pair var@22:13:W vs. var@22:19:R
 
 program DRB144_atomiccritical_orig_gpu_yes
     use omp_lib

@@ -7,7 +7,7 @@
 
 !The assignment to a@21:9 is  not synchronized with the update of a@29:11 as a result of the
 !reduction computation in the for loop.
-!Data Race pair: a@21:9 and a@24:30
+!Data Race pair: a@21:9:W vs. a@24:30:W
 
 
 program DRB140_reduction_barrier_orig_yes

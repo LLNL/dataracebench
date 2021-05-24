@@ -10,7 +10,7 @@
 /*
 The distribute parallel for directive at line 27 will execute loop using multiple teams.
 The loop iterations are distributed across the teams in chunks in round robin fashion.
-The omp lock is only guaranteed for a contention group, i.e, within a team. Data Race Pair, var@30:5 and var@30:5.
+The omp lock is only guaranteed for a contention group, i.e, within a team. Data Race Pair, var@30:5:W vs. var@30:5:W
 */
 
 

@@ -7,7 +7,7 @@
 
 !use of omp target + teams
 !Without protection, master threads from two teams cause data races.
-!Data race pair: a@24:9 vs. a@24:9
+!Data race pair: a@24:9:W vs. a@24:9:W
 
 program DRB116_target_teams_orig_yes
     use omp_lib

@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !Only the outmost loop can be parallelized in this program.
-!Data race pair: b[i][j]@51:13 vs. b[i][j-1]@51:22
+!Data race pair: b[i][j]@51:13:W vs. b[i][j-1]@51:22:R
 
 program DRB038_truedepseconddimension_var_yes
     use omp_lib

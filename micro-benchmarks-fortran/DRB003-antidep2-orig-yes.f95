@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !A two-level loop nest with loop carried anti-dependence on the outer level.
-!Data race pair: a[i][j]@29:13 vs. a[i+1][j]@29:31
+!Data race pair: a[i][j]@29:13:W vs. a[i+1][j]@29:31:R
 
 program DRB003_antidep2_orig_yes
     use omp_lib

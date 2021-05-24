@@ -12,7 +12,7 @@
  * The created task will access different instances of the variable x if the task is not merged,
  * as x is firstprivate, but it will access the same variable x if the task is merged. It can
  * print two different values for x depending on the decisions taken by the implementation.
- * Data Race Pairs, x@27:5 and x@27:5
+ * Data Race Pairs, x@27:5:W vs. x@27:5:W
  */
 
 #include <omp.h>

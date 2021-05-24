@@ -22,7 +22,7 @@
 !  This causes loop-carried data dependence between j=2 and j=3.
 !
 !
-!Data race pair: b[i][j]@67 vs. b[i-1][j]@67
+!Data race pair: b[i][j]@67:13:W vs. b[i-1][j]@67:22:R
 
 
 program DRB015_outofbounds_var_yes

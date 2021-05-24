@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !The -1 operation on numNodes2 is not protected, causing data race.
-!Data race pair: numNodes2@32:13 vs. numNodes2@32:13
+!Data race pair: numNodes2@32:13:W vs. numNodes2@32:13:W
 
 program DRB011_minusminus_orig_yes
     use omp_lib

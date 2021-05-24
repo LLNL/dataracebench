@@ -47,7 +47,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 /* 
 Only the outmost loop can be parallelized in this program.
 The inner loop has true dependence.
-Data race pair: b[i][j]@63:7 vs. b[i][j-1]@63:15
+Data race pair: b[i][j]@63:7:W vs. b[i][j-1]@63:15:R
 */
 #include <stdlib.h>
 #include <stdio.h>

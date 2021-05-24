@@ -48,8 +48,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 The loop in this example cannot be parallelized.
 
 Data race pairs: we allow two pairs to preserve the original code pattern.
- 1. x@71:12 vs. x@72:5
- 2. x@72:5 vs. x@72:5
+ 1. x@71:12:R vs. x@72:5:W
+ 2. x@72:5:W vs. x@72:5:W
 */
 
 #include <stdio.h>

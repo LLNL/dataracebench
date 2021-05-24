@@ -7,7 +7,7 @@
 
 !The workshare construct is only available in Fortran. The workshare spreads work across the threads 
 !executing the parallel. There is an implicit barrier. The nowait nullifies this barrier and hence
-!there is a race at line:29 due to nowait at line:26. Data Race Pairs, AA@25:9 and AA@29:!5.
+!there is a race at line:29 due to nowait at line:26. Data Race Pairs, AA@25:9:W vs. AA@29:15:R
 
 
 program DRB169_workshare_orig_yes 

@@ -9,7 +9,7 @@
 
 /* This kernel imitates the nature of a program from the NAS Parallel Benchmarks 3.0 MG suit.
  * Due to missing construct to write r1[k]@38:9 synchronously, there is a Data Race.
- * Data Race Pair, r1[k]@38:9 and r1[k]@38:9.
+ * Data Race Pair, r1[k]@38:9:W vs. r1[k]@38:9:W
  * */
 
 #include <stdio.h>

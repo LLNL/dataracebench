@@ -9,7 +9,7 @@
 
 /*
 The increment at line number 26 is critical for the variable
-var@26:5. Therefore, there is a possible Data Race pair var@26:5 and var@26:5.
+var@26:5. Therefore, there is a possible Data Race pair var@26:5:W vs. var@26:5:W
 */
 
 #include <stdio.h>

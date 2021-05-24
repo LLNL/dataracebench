@@ -8,8 +8,8 @@
 !A file-scope variable used within a function called by a parallel region.
 !No threadprivate is used to avoid data races.
 !
-!Data race pairs  sum0@39:13 vs. sum0@39:19
-!                 sum0@39:13 vs. sum0@39:13
+!Data race pairs  sum@39:13:W vs. sum@39:19:R
+!                 sum@39:13:W vs. sum@39:13:W
 
 module DRB084
     implicit none

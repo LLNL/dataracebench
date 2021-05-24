@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 A linear expression is used as array subscription.
-Data race pair: a[2*i+1]@66:5 vs. a[i]@66:14
+Data race pair: a[2*i+1]@66:5:W vs. a[i]@66:14:R
 */
 #include <stdlib.h>
 int main(int argc, char* argv[])

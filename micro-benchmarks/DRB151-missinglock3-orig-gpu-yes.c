@@ -10,7 +10,7 @@
 /*This example is referred from DRACC by Adrian Schmitz et al.
 The distribute parallel for directive at line 24 will execute loop using multiple teams.
 The loop iterations are distributed across the teams in chunks in round robin fashion.
-The missing lock enclosing var@26:5 leads to data race. Data Race Pairs, var@26:5 and var@26:5.
+The missing lock enclosing var@26:5 leads to data race. Data Race Pairs, var@26:5:W vs. var@26:5:W
 */
 
 #include <omp.h>

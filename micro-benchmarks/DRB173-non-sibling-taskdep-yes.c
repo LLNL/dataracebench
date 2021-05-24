@@ -12,7 +12,7 @@ for details.
  * Data race between non-sibling tasks with declared task dependency
  * Derived from code in https://hal.archives-ouvertes.fr/hal-02177469/document,
  * Listing 1.1
- * Data Race Pair, a@27:8 and a@33:8
+ * Data Race Pair, a@30:7:W vs. a@36:7:W
  * */
 
 #include <omp.h>

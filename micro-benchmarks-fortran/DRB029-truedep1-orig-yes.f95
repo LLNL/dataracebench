@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !This program has data races due to true dependence within the loop at 63.
-!Data race pair: a[i+1]@27 vs. a[i]@27
+!Data race pair: a[i+1]@27:9:W vs. a[i]@27:18:R
 
 program DRB029_truedep1_orig_yes
     use omp_lib

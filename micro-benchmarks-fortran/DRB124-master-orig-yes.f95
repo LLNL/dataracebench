@@ -11,7 +11,7 @@
 !master thread and concurrently read by the others.
 !
 !Solution: master construct at line 23:24 does not have an implicit barrier better
-!use single. Data Race Pair, init@24:9 and init@26:17.
+!use single. Data Race Pair, init@24:9:W vs. init@26:17:R
 
 program DRB124_master_orig_yes
     use omp_lib

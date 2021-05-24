@@ -48,8 +48,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 A file-scope variable used within a function called by a parallel region.
 No threadprivate is used to avoid data races.
 
-Data race pairs  sum0@61:3 vs. sum0@61:8
-                 sum0@61:3 vs. sum0@61:3
+Data race pairs  sum0@61:3:W vs. sum0@61:8:R
+                 sum0@61:3:W vs. sum0@61:3:W
 */
 #include <stdio.h>
 #include <assert.h>

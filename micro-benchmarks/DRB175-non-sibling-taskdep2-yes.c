@@ -13,7 +13,7 @@ for details.
  * with declared task dependency
  * Derived from code in https://hal.archives-ouvertes.fr/hal-02177469/document,
  * Listing 1.3
- * Data Race Pair, a@27:6 and a@27:6
+ * Data Race Pair, a@28:6:W vs. a@28:6:W
  * */
 
 #include <omp.h>

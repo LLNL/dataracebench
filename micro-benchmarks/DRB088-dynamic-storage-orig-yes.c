@@ -50,7 +50,7 @@ objects with dynamic storage duration should be shared.
 Putting it within a threadprivate directive may cause seg fault since
  threadprivate copies are not allocated!
 
-Dependence pair: *counter@63:6 vs. *counter@63:6
+Dependence pair: *counter@63:6:W vs. *counter@63:6:W
 */
 
 #include<stdio.h>

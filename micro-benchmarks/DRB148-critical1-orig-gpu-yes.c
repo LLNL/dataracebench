@@ -12,7 +12,7 @@ This example is referred from DataRaceOnAccelerator : A Micro-benchmark Suite fo
 Correctness Tools Targeting Accelerators.
 Though we have used critical directive to ensure that addition and subtraction are not overlapped,
 due to different locks addlock@30:26 and sublock@33:26 interleave each others operation.
-Data Race pairs, var@31:5 and var@34:5
+Data Race pairs, var@31:5:W vs. var@34:5:W
 */
 
 #include <omp.h>

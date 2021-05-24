@@ -10,8 +10,8 @@
 !* shared if the variable has a static storage duration.
 !
 !Dependence pairs:
-!   tmp@38:13 vs. tmp@38:13
-!   tmp@38:13 vs. tmp@39:20
+!   tmp@38:13:W vs. tmp@38:13:W
+!   tmp@38:13:W vs. tmp@39:20:R
 
 
 program DRB090_static_local_orig_yes

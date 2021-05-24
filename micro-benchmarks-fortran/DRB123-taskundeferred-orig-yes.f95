@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !A single thread will spawn all the tasks. Add if(0) to avoid the data race, undeferring the tasks.
-!Data Race Pairs, var@21:9 and var@21:15
+!Data Race Pairs, var@21:9:W vs. var@21:9:W
 
 program DRB123_taskundeferred_orig_yes
     use omp_lib

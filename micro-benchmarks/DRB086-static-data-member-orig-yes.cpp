@@ -48,7 +48,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 For the case of a variable which is not referenced within a construct:
 static data member should be shared, unless it is within a threadprivate directive.
 
-Dependence pair: a.counter@72:6 vs. a.counter@72:6
+Dependence pair: a.counter@72:6:W vs. a.counter@72:6:W
 */
 
 #include<iostream>

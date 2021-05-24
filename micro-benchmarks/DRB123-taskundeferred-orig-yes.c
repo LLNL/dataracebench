@@ -10,7 +10,7 @@
 /*
 A single thread will spawn all the tasks. Add if(0) to avoid the data race, undeferring the tasks.
 
-Data Race pairs var@30:9 and var@30:9.
+Data Race pairs var@30:9:W vs. var@30:9:W
 */
 
 #include <omp.h>

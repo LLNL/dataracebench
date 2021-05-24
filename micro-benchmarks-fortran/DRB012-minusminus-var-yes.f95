@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !The -1 operation is not protected, causing race condition.
-!Data race pair: numNodes2@59:13 vs. numNodes2@59:13
+!Data race pair: numNodes2@59:13:W vs. numNodes2@59:13:W
 
 program DRB012_minusminus_var_yes
     use omp_lib

@@ -6,7 +6,7 @@
 !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!
 
 !The outer loop has a loop-carried true dependence.
-!Data race pair: b[i][j]@56:13 vs. b[i-1][j-1]@56:22
+!Data race pair: b[i][j]@56:13:W vs. b[i-1][j-1]@56:22:R
 
 program DRB032_truedepfirstdimension_var_yes
     use omp_lib

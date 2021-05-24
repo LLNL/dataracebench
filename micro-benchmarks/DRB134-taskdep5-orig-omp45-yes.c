@@ -11,7 +11,7 @@
  * by x with the in dependence type in the depend clause of the second task. Generating task
  * at the first taskwait only waits for the first child task to complete. The second taskwait
  * guarantees completion of the second task before y is accessed. If we access y before the
- * second taskwait, there is a race condition at line 28:2 and 34:18. Data Race Pair, y@28:2 and y@34:19
+ * second taskwait, there is a race condition at line 28:2 and 34:18. Data Race Pair, y@28:2:W vs. y@34:19:R
  * */
 
 

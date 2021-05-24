@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 /*
 This one has race condition due to true dependence.
 But data races happen at instruction level, not thread level.
-Data race pair: a[i+1]@68:5 vs. a[i]@68:12  
+Data race pair: a[i+1]@68:5:W vs. a[i]@68:12:R  
 */
 #include <stdlib.h>
 int main(int argc, char* argv[])

@@ -9,7 +9,7 @@
 !Programming Interface Examples Version 4.5.0 .
 !We added one critical section to make it a test with only one pair of data races.
 !The data race will not generate wrong result though. So the assertion always passes.
-!Data race pair:  i@37:13 vs. i@38:15
+!Data race pair:  i@37:13:W vs. i@38:15:R
 
 module DRB074
     use omp_lib

@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 The outer loop has a loop-carried true dependence.
-Data race pair: b[i][j]@69:7 vs. b[i-1][j-1]@69:15
+Data race pair: b[i][j]@69:7:W vs. b[i-1][j-1]@69:15:R
 */
 #include <stdlib.h>
 int main(int argc, char* argv[])

@@ -30,7 +30,7 @@ def genRaceInfoJsonFile(inputfile, outputdir):
 		os.makedirs(outputdir)
 	outputfile=outputdir+'/'+outputfile
 	# print ('Input: ', inputfile, ' Output:', outputfile)
-	file = open(inputfile,"r")
+	file = open(inputfile,"r",encoding="utf-8")
 	haveRace = False
 	if re.search("-yes",filename):
 		haveRace = True

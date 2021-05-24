@@ -53,6 +53,8 @@ EXEC_DIR="$OUTPUT_DIR/exec"
 LOGFILE="$LOG_DIR/dataracecheck.log"
 LANGUAGE="default"
 
+PYTHON=${PYTHON:-"python3"}
+LOGPARSER="scripts/log-parser/logParser.py"
 
 MEMCHECK=${MEMCHECK:-"/usr/bin/time"}
 TIMEOUTCMD=${TIMEOUTCMD:-"timeout"}
@@ -316,6 +318,7 @@ for tool in "${TOOLS[@]}"; do
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
     logname="$(basename "$test").$tool.log"
+    jsonlogname="$(basename "$test").$tool.json"
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
     if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $POLYFLAG"; fi
 
@@ -398,6 +401,7 @@ for tool in "${TOOLS[@]}"; do
                 check_return_code $?;
 		echo "testname return $testreturn"
                 races=$(grep -ce 'WARNING: ThreadSanitizer: data race' tmp.log) 
+                $PYTHON $LOGPARSER --tool archer tmp.log > $LOG_DIR/$jsonlogname
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               coderrect)
                 ccc="clang"

@@ -56,6 +56,8 @@ def main(argv):
 					break
 			
 		x = re.search("^Read",content[i])
+		if not x:
+			x = re.search("^Atomic read",content[i])
 		if (x):
 			y = content[i].split()
 			index = y.index('at')

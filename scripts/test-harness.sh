@@ -49,6 +49,7 @@ TESTS=($(grep -l main micro-benchmarks/*.c micro-benchmarks/*.cpp))
 FORTRANTESTS=($(find micro-benchmarks-fortran -iregex ".*\.F[0-9]*" -o -iregex ".*\.for"))
 OUTPUT_DIR="results"
 LOG_DIR="$OUTPUT_DIR/log"
+INSPECTOR_LOG_DIR="$LOG_DIR/inspector"
 EXEC_DIR="$OUTPUT_DIR/exec"
 LOGFILE="$LOG_DIR/dataracecheck.log"
 LANGUAGE="default"
@@ -69,8 +70,8 @@ ARCHER=${ARCHER:-"clang-archer"}
 ARCHER_COMPILE_FLAGS="-larcher"
 
 INSPECTOR=${INSPECTOR:-"inspxe-cl"}
-ICC_COMPILE_FLAGS="-O0 -fopenmp -std=c99 -qopenmp-offload=host"
-ICPC_COMPILE_FLAGS="-O0 -fopenmp -qopenmp-offload=host"
+ICC_COMPILE_FLAGS="-O0 -fopenmp -std=c99 -qopenmp-offload=host -g"
+ICPC_COMPILE_FLAGS="-O0 -fopenmp -qopenmp-offload=host -g"
 
 ROMP_CPP_COMPILE_FLAGS="-g -std=c++11 -fopenmp -lomp"
 ROMP_C_COMPILE_FLAGS="-g -fopenmp -lomp"
@@ -297,9 +298,11 @@ for tool in "${TOOLS[@]}"; do
     'inspector-max-resources')
       runtime_flags+=" -collect ti3 -knob scope=extreme -knob stack-depth=16 -knob use-maximum-resources=true"
       tool='inspector'
+      mkdir -p "$INSPECTOR_LOG_DIR"
       ;;
     'inspector')
       runtime_flags+=" -collect ti2"
+      mkdir -p "$INSPECTOR_LOG_DIR"
       ;;
   esac
 
@@ -318,6 +321,7 @@ for tool in "${TOOLS[@]}"; do
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
     logname="$(basename "$test").$tool.log"
+    inspectorLogDir="$(basename "$test").$tool"
     jsonlogname="$(basename "$test").$tool.json"
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
     if grep -q 'PolyBench' "$test"; then additional_compile_flags+=" $POLYFLAG"; fi
@@ -429,10 +433,12 @@ for tool in "${TOOLS[@]}"; do
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               inspector)
 #                races=$($MEMCHECK -f "%M" -o "$MEMLOG" $INSPECTOR $runtime_flags -- "./$exname" $size  2>&1 | tee -a "$LOG_DIR/$logname" | grep 'Data race' | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/') ;;
-		$TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" $INSPECTOR $runtime_flags -- "./$exname" $size &> tmp.log;
+		$TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" $INSPECTOR $runtime_flags -result-dir $INSPECTOR_LOG_DIR/$inspectorLogDir-$ITER  -- "./$exname" $size &> tmp.log;
 		check_return_code $?;
                 echo "testname return $testreturn";
-                races=$(grep 'Data race' tmp.log | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/');
+                $INSPECTOR -report problems -result-dir $INSPECTOR_LOG_DIR/$inspectorLogDir-$ITER -report-output $INSPECTOR_LOG_DIR/$logname
+#                races=$(grep 'Data race' tmp.log | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/');
+                races=$(grep -E '^P[0-9]+' $INSPECTOR_LOG_DIR/$logname  | wc -l)
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               romp)
                 $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" "./$rompexec" $size &> tmp.log;
@@ -585,10 +591,12 @@ for tool in "${TOOLS[@]}"; do
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               inspector)
 #                races=$($MEMCHECK -f "%M" -o "$MEMLOG" $INSPECTOR $runtime_flags -- "./$exname" $size  2>&1 | tee -a "$LOG_DIR/$logname" | grep 'Data race' | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/') ;;
-		$TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" $INSPECTOR $runtime_flags -- "./$exname" $size &> tmp.log;
+		$TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" $INSPECTOR $runtime_flags -result-dir $INSPECTOR_LOG_DIR/$inspectorLogDir-$ITER  -- "./$exname" $size &> tmp.log;
 		check_return_code $?;
                 echo "testname return $testreturn";
-                races=$(grep 'Data race' tmp.log | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/');
+                $INSPECTOR -report problems -result-dir $INSPECTOR_LOG_DIR/$inspectorLogDir-$ITER -report-output $INSPECTOR_LOG_DIR/$logname
+#                races=$(grep 'Data race' tmp.log | sed -E 's/[[:space:]]*([[:digit:]]+).*/\1/');
+                races=$(grep -E '^P[0-9]+' $INSPECTOR_LOG_DIR/$logname  | wc -l)
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               romp)
                 $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" "./$rompexec" $size &> tmp.log;

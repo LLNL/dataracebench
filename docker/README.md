@@ -33,7 +33,7 @@ sudo docker pull yshixyz/dataracebench:archer
 ```
 #### ROMP
 ```bash
-sudo docker pull yshixyz/dataracebench:test
+sudo docker pull yshixyz/dataracebench:romp
 ```
 #### Intel Inspector
 A valid license is required to install and use Intel Inspector.
@@ -52,7 +52,7 @@ sudo docker run -it --name drb_tsan yshixyz/dataracebench:Tsan
 ```
 #### ROMP
 ```bash
-sudo docker run -it --name drb_romp yshixyz/dataracebench:test
+sudo docker run -it --name drb_romp yshixyz/dataracebench:romp
 ```
 
 #### Intel Inspector

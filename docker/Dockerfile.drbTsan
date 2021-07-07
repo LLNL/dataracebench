@@ -15,12 +15,12 @@ RUN apt-get update && \
         software-properties-common \
         wget && \
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
-    add-apt-repository -y 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main' && \
+    add-apt-repository -y 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main' && \
     apt-get update && \
     apt-get install -y \ 
         bc \
         build-essential \
-        clang-10 \
+        clang-12 \
         cmake \
         curl \
         gdb \
@@ -32,8 +32,8 @@ RUN apt-get update && \
     rm -rf /var/cache/*
 
 # Setup environment.
-RUN ln -s /usr/bin/clang-10 /usr/bin/clang
-RUN ln -s /usr/bin/clang++-10 /usr/bin/clang++
+RUN ln -s /usr/bin/clang-12 /usr/bin/clang
+RUN ln -s /usr/bin/clang++-12 /usr/bin/clang++
 ENV CC /usr/bin/clang
 ENV CXX /usr/bin/clang++
 

@@ -1,0 +1,44 @@
+# pull base image
+
+FROM ubuntu:18.04
+
+# install gcc git fortran package later that only for test
+RUN groupadd -g 9999 drb && \
+    useradd -r -u 9999 -g drb -m -d /home/drb drb
+
+RUN apt-get update && \
+    apt-get install -y \
+        apt-utils \
+        dialog \
+        software-properties-common \
+        wget && \
+    apt-get update && \
+    apt-get install -y \ 
+        bc \
+        build-essential \
+        cmake \
+        curl \
+        gdb \
+        git \
+        python3-dev \
+        time \
+        vim && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/*
+
+USER drb
+WORKDIR /home/drb
+
+RUN git clone --branch  romp-build  https://github.com/peihunglin/spack.git
+
+ENV PATH=$PATH:/home/drb/spack/bin 
+RUN spack install environment-modules  
+#RUN cd `spack location --install-dir environment-modules`/init && \
+#    . ./bash 
+
+RUN spack install romp@master
+
+#ENV DYNINSTAPI_RT_LIB=`spack location --install-dir dyninst`/lib/libdyninstAPI_RT.so
+#ENV ROMP_PATH=`spack location --install-dir romp`/lib/libromp.so
+#ENV PATH=$PATH:`spack location --install-dir romp`/bin
+#ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`spack location --install-dir dyninst`/lib:`spack location --install-dir llvm-openmp@romp-mod`/lib

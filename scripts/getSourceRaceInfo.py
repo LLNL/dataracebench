@@ -91,6 +91,7 @@ def genRaceInfoJsonFile(inputfile, outputdir):
 			rset = re.findall("(?:\*)*[a-zA-Z]\S*(?:\[.*\])*\@\d+\:\d+", match)
 			#print("rset has ", len(rset))
 	
+	# read/write race combination 
 	for r in rset:
 		for w in wset:
 			js = {}
@@ -107,6 +108,22 @@ def genRaceInfoJsonFile(inputfile, outputdir):
 			js["ref2_type"] = "R"
 			jsAry.append(js)
 
+	# write/write race combination 
+	for w1 in wset:
+		for w2 in wset:
+			js = {}
+			w1info = res = re.split('\@|\:', w1)
+			w2info = res = re.split('\@|\:', w2)
+			js["microbenchmark"] = filename
+			js["ref1_dataname"] = w1info[0]
+			js["ref1_line"] = w1info[1]
+			js["ref1_column"] = w1info[2]
+			js["ref1_type"] = "W"
+			js["ref2_dataname"] = w2info[0]
+			js["ref2_line"] = w2info[1]
+			js["ref2_column"] = w2info[2]
+			js["ref2_type"] = "W"
+			jsAry.append(js)
 	
 	if (haveRace and len(jsAry) == 0):
 		print(filename + " should have race but found no race encoding in source code!")

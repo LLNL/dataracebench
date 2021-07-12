@@ -8,7 +8,7 @@ def main(argv):
 	jsAry = []
 	content = [line.strip() for line in Lines]
 	for i in range(0,len(content)):
-		x = re.search("RAW",content[i])
+		x = re.search("RAW: data race",content[i])
 		if (x):
 			y = content[i].split()
 			index = y.index('addr:')
@@ -22,15 +22,15 @@ def main(argv):
 				filename=location[0].split('@')
 				js["ref1_filename"] = filename[0]
 				js["ref1_line"] = location[1]
-				js["ref1_type"] = "W"
-				js["ref1_symbolPos"] = y[1]
+				js["ref1_type"] = "N/A"
+				js["ref1_column"] = y[1].split(":")[1]
 				file = y[3].rsplit("/",1)
 				# js["file loaction"] = file[0]
 				location = file[1].split(":")
 				js["ref2_filename"] = filename[0]
 				js["ref2_line"] = location[1]
-				js["ref1_type"] = "R"
-				js["ref2_symbolPos"] = y[4]
+				js["ref2_type"] = "N/A"
+				js["ref2_column"] = y[4].split(":")[1]
 				# js["tool"] = "romp"
 			jsAry.append(js)
 	js = {}

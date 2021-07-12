@@ -18,7 +18,7 @@ def main(argv):
 				file1 = y1[0].rsplit("/",1)
 				location = file1[1].split(":")
 				f1 = location[0].split("(")
-				js["microbenchmark"] = f1[0]
+				js["ref1_filename"] = f1[0]
 				if(y1[3] == "Read:"):
 					js["ref1_type"] = "R"
 				else:
@@ -31,7 +31,7 @@ def main(argv):
 				file2 = y2[0].rsplit("/",1)
 				location = file2[1].split(":")
 				f2 = location[0].split("(")
-				#js["ref2_filename"] = f2[0]
+				js["ref2_filename"] = f2[0]
 				if(y2[3] == "Read:"):
 					js["ref2_type"] = "R"
 				else:

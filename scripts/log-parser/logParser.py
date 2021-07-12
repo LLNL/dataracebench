@@ -22,6 +22,9 @@ def main(argv):
 	elif args.tool == ascii('inspector'):
 		# print("processing Inspector log")
 		InspectoroutputParser.main([args.logfile[0].name])
+	elif args.tool == ascii('romp'):
+		# print("processing Inspector log")
+		RompoutputParser.main([args.logfile[0].name])
 
 #    try:
 #        opts, args = getopt.getopt(sys.argv[1:], "ht:v", ["help", "tool="])

@@ -14,6 +14,7 @@ RUN apt-get update && \
         dialog \
         software-properties-common \
         wget && \
+    add-apt-repository ppa:ubuntu-toolchain-r/test && \
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     add-apt-repository -y 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main' && \
     apt-get update && \
@@ -27,7 +28,8 @@ RUN apt-get update && \
         git \
         python3-dev \
         time \
-        vim && \
+        vim \
+        gcc-10 g++-10 gfortran-10 && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/cache/*
 
@@ -36,6 +38,8 @@ RUN ln -s /usr/bin/clang-12 /usr/bin/clang
 RUN ln -s /usr/bin/clang++-12 /usr/bin/clang++
 ENV CC /usr/bin/clang
 ENV CXX /usr/bin/clang++
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-10
+
 
 USER drb
 WORKDIR /home/drb

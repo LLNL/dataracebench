@@ -1,7 +1,9 @@
 import sys, getopt
 import ArchoutputParser
 import InspectoroutputParser
+import CoderrectoutputParser
 import RompoutputParser
+import LLOVoutputParser
 import argparse
 
 
@@ -22,6 +24,15 @@ def main(argv):
 	elif args.tool == ascii('inspector'):
 		# print("processing Inspector log")
 		InspectoroutputParser.main([args.logfile[0].name])
+	elif args.tool == ascii('romp'):
+		# print("processing Inspector log")
+		RompoutputParser.main([args.logfile[0].name])
+	elif args.tool == ascii('coderrect'):
+		# print("processing Coderrect log")
+		CoderrectoutputParser.main([args.logfile[0].name])
+	elif args.tool == ascii('llov'):
+		# print("processing LLOV log")
+		LLOVoutputParser.main([args.logfile[0].name])
 
 #    try:
 #        opts, args = getopt.getopt(sys.argv[1:], "ht:v", ["help", "tool="])

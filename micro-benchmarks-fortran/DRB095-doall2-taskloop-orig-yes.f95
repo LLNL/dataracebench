@@ -9,8 +9,8 @@
 !Only one loop is associated with omp taskloop.
 !The inner loop's loop iteration variable will be shared if it is shared in the enclosing context.
 !Data race pairs (we allow multiple ones to preserve the pattern):
-!  Write_set = {j@36:20, j@36:30 (implicit step +1)}
-!  Read_set = {j@36:22, j@36:24, j@37:35}
+!  Write_set = {j@36:20 (implicit step +1)}
+!  Read_set = {j@36:20, j@37:35}
 !  Any pair from Write_set vs. Write_set  and Write_set vs. Read_set is a data race pair.
 
 !need to run with large thread number and large num of iterations.

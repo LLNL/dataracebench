@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdio.h>
 /*
  *  loop missing the linear clause
- *  Data race pair:  j@67:7:R vs. j@68:5:W 
+ *  Data race pairs:  j@67:7:R vs. j@68:5:W and j@68:5:W vs. j@68:5:W 
 */
 int main()
 {

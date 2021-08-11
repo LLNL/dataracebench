@@ -54,10 +54,12 @@ def main(argv):
 								js["ref2_column"] = -1
 							#item["tool"] = "Archer"
 					break
-			
+		atomicRead = False	
 		x = re.search("^Read",content[i])
 		if not x:
 			x = re.search("^Atomic read",content[i])
+			if (x):
+				atomicRead = True	
 		if (x):
 			y = content[i].split()
 			index = y.index('at')
@@ -80,7 +82,12 @@ def main(argv):
 					else:
 						js["ref1_column"] = -1
 			jsAry.append(js)
+		atomicWrite = False	
 		x = re.search("^Previous write",content[i])
+		if not x:
+			x = re.search("^Previous atomic write",content[i])
+			if (x):
+				atomicWrite = True	
 		if (x):
 			y = content[i].split()
 			index = y.index('at')
@@ -90,6 +97,8 @@ def main(argv):
 					Thread = re.split(":",y[index1+2])
 					item["ref2_thread"] = y[index1+1] + ' ' + Thread[0]
 					y1 = content[i+1].split()
+					if(atomicWrite):
+						y1 = content[i+2].split()
 					for item1 in y1:
 						if(re.search("^/",item1)):
 							file = item1.rsplit("/",1)

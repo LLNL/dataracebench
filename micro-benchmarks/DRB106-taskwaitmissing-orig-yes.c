@@ -46,8 +46,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdio.h>
 /* This is a program based on a test contributed by Yizi Gu@Rice Univ.
  * Classic Fibonacci calculation using task but missing taskwait. 
- * Data races pairs: i@61:5:W vs. i@65:12:R
- *                   j@63:5:W vs. j@65:14:R
+ * Data races pairs: i@61:5:W vs. i@65:14:R
+ *                   j@63:5:W vs. j@65:16:R
  * */
 unsigned int input = 10;
 int fib(unsigned int n)

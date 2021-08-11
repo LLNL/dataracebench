@@ -49,7 +49,7 @@ This benchmark is extracted from flush_nolist.1c of OpenMP Application
 Programming Interface Examples Version 4.5.0 .
 We added one critical section to make it a test with only one pair of data races.
 The data race will not generate wrong result though. So the assertion always passes.
-Data race pair:  i@70:10:W vs. i@71:11:R
+Data race pair:  *q@60:3:W vs. i@71:11:R
 */
 #include<stdio.h>
 #include<assert.h>

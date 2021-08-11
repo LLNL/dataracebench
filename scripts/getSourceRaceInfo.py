@@ -25,7 +25,7 @@ def main(argv):
 
 def genRaceInfoJsonFile(inputfile, outputdir):
 	filename = os.path.basename(inputfile)
-	outputfile=filename.rsplit('.')[0]+'.json'
+	outputfile=filename+'.json'
 	if not os.path.exists(outputdir):
 		os.makedirs(outputdir)
 	outputfile=outputdir+'/'+outputfile

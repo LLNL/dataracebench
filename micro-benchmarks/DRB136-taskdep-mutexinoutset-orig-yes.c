@@ -9,9 +9,16 @@
 
 
 /* Due to the missing mutexinoutset dependence type on c, these tasks will execute in any
- * order leading to the data race at line 36. Data Race Pair, d@36:7:W vs. d@36:7:W
+ * order leading to the data race at line 36. 
+   Data Race Pairs 
+   c@33:7:W vs. c@39:7:W
+   c@33:7:W vs. c@41:7:W
+   c@33:7:W vs. c@39:7:R
+   c@33:7:W vs. c@41:7:R
+   c@39:7:W vs. c@41:7:W
+   c@39:7:W vs. c@43:11:R
+   c@41:7:W vs. c@43:11:R
  * */
-
 
 #include <stdio.h>
 #include <omp.h>
@@ -29,9 +36,9 @@ int main(){
     #pragma omp task depend(out: b)
       b = 3;
     #pragma omp task depend(in: a)
-      c += a;
+      c+= a;
     #pragma omp task depend(in: b)
-      c += b;
+      c+= b;
     #pragma omp task depend(in: c)
       d = c;
   }

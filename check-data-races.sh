@@ -98,23 +98,7 @@ fi
  
 
 if [[ -z "$OPTION" || "$OPTION" == "--help" ]]; then
-
-    echo
-    echo "Usage: $0 [--run] [--help]"
-    echo
-    echo "--help      : this option"
-    echo "--small     : compile and test all benchmarks using small parameters with Helgrind, ThreadSanitizer, Archer, Intel inspector."
-    echo "--run       : compile and run all benchmarks with gcc (no evaluation)"
-    echo "--run-intel : compile and run all benchmarks with Intel compilers (no evaluation)"
-    echo "--helgrind  : compile and test all benchmarks with Helgrind"
-    echo "--tsan-clang: compile and test all benchmarks with clang ThreadSanitizer"
-    echo "--tsan-gcc  : compile and test all benchmarks with gcc ThreadSanitizer"
-    echo "--archer    : compile and test all benchmarks with Archer"
-    echo "--coderrect : compile and test all benchmarks with Coderrect Scanner"
-    echo "--inspector : compile and test all benchmarks with Intel Inspector"
-    echo "--romp      : compile and test all benchmarks with Romp"
-    echo "--customize : compile and test customized test list and tools"
-    echo
+    help
     exit
 fi
 

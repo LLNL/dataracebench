@@ -66,6 +66,19 @@ VALGRIND_COMPILE_CPP_FLAGS="-g -fopenmp"
 CLANG=${CLANG:-"clang"}
 TSAN_COMPILE_FLAGS="-fopenmp -fsanitize=thread -g"
 
+# Path to LLOV is fixed due to it's only available in container
+LLOV_COMPILER="/home/llvm/Work/LLOV"
+LLOV_COMPILE_FLAGS=" -Xclang -load -Xclang $LLOV_COMPILER/lib/OpenMPVerify.so"
+LLOV_COMPILE_FLAGS+=" -Xclang -disable-O0-optnone"
+LLOV_COMPILE_FLAGS+=" -fopenmp -fopenmp-version=45"
+LLOV_COMPILE_FLAGS+=" -mllvm -polly-process-unprofitable"
+LLOV_COMPILE_FLAGS+=" -mllvm -polly-invariant-load-hoisting"
+LLOV_COMPILE_FLAGS+=" -mllvm -polly-ignore-parameter-bounds"
+LLOV_COMPILE_FLAGS+=" -mllvm -polly-dependences-on-demand"
+LLOV_COMPILE_FLAGS+=" -mllvm -polly-precise-fold-accesses"
+#LLOV_COMPILE_FLAGS+=" -mllvm -openmp-verify-disable-aa"
+LLOV_COMPILE_FLAGS+=" -g"
+
 ARCHER=${ARCHER:-"clang-archer"}
 ARCHER_COMPILE_FLAGS="-larcher"
 
@@ -118,6 +131,7 @@ valid_tool_name () {
     inspector) return 0 ;;
     inspector-max-resources) return 0 ;;
     romp) return 0;;   
+    llov) return 0;;   
     *) return 1 ;;
   esac
 }
@@ -144,6 +158,10 @@ check_return_code () {
     139) echo "Seg Fault"; testreturn=11 ;;
     *) testreturn=0  ;;
   esac
+}
+
+generateCSV () {
+  echo "$tool,$id,\"$testname\",$haverace,${thread:-"N/A"},${size:-"N/A"},${races:-0},"N/A","N/A",${compilereturn:-1},"N/A"" >> "$file"
 }
 
 if [[ "$1" == "--help" ]]; then
@@ -320,6 +338,7 @@ for tool in "${TOOLS[@]}"; do
     # Compile
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
+    compilelog="$LOG_DIR/$(basename "$test").$tool.${ITER}_comp.log"
     logname="$(basename "$test").$tool.log"
     inspectorLogDir="$(basename "$test").$tool"
     jsonlogname="$(basename "$test").$tool.json"
@@ -337,6 +356,7 @@ for tool in "${TOOLS[@]}"; do
         coderrect)  coderrect -XbcOnly clang++ -fopenmp -fopenmp-version=45 -g $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1 ;;
         tsan-clang) clang++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   g++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        llov)       $LLOV_COMPILER/bin/clang++ $LLOV_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm 2> $compilelog;;
         inspector)  icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         romp)       g++ $ROMP_CPP_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm;
                     echo $exname
@@ -352,6 +372,7 @@ for tool in "${TOOLS[@]}"; do
         coderrect)  coderrect -XbcOnly clang -fopenmp -fopenmp-version=45 -g $additional_compile_flags $test -o $exname -lm  > /dev/null 2>&1 ;;
         tsan-clang) clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   gcc $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        llov)       $LLOV_COMPILER/bin/clang $LLOV_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm 2> $compilelog;;
         inspector)  icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         romp)       gcc $ROMP_C_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm;
                     echo $exname
@@ -360,6 +381,19 @@ for tool in "${TOOLS[@]}"; do
     fi
     compilereturn=$?; 
     echo "compile return code: $compilereturn";
+
+    if [[ $tool == llov ]] ; then
+      echo "llov checking";
+      races=$(grep -ce 'Data Race detected.' $compilelog);
+      racefree=$(grep -ce 'Region is Data Race Free.' $compilelog);
+      if [[ $compilereturn -gt 0  ||  $races -eq 0  &&  $racefree -eq 0 ]]; then
+          races="NA"
+      fi
+      rm -f $exname
+      generateCSV
+      # Static Tool
+      continue
+    fi
 
     THREAD_INDEX=0
     for thread in "${THREADLIST[@]}"; do

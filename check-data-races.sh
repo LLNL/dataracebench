@@ -68,6 +68,7 @@ help () {
     echo "--coderrect : compile and test all benchmarks with Coderrect Scanner"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
+    echo "--llov    : compile and test all benchmarks with LLVM OpenMP Verifier (LLOVE)"
     echo "--customize : compile and test customized test list and tools"
     echo
 }
@@ -259,6 +260,10 @@ fi
 
 if [[ "$OPTION" == "--romp" ]]; then
    scripts/test-harness.sh -t 8 -n 5 -d 32 -l $LANGUAGE -x romp
+fi
+
+if [[ "$OPTION" == "--llov" ]]; then
+   scripts/test-harness.sh -t 8 -n 5 -d 32 -l  $LANGUAGE -x llov
 fi
 
 if [[ "$OPTION" == "--customize" ]]; then

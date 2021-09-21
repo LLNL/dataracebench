@@ -50,8 +50,8 @@ For a variable declared in a scope inside an OpenMP construct:
 * shared if the variable has a static storage duration. 
 
 Dependence pairs: 
-   tmp@73:5:W vs. tmp@73:5:W
-   tmp@73:5:W vs. tmp@74:12:R
+   tmp@73:7:W vs. tmp@73:7:W
+   tmp@73:7:W vs. tmp@74:14:R
 */
 #include<stdio.h>
 

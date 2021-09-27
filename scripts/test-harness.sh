@@ -79,6 +79,9 @@ LLOV_COMPILE_FLAGS+=" -mllvm -polly-precise-fold-accesses"
 #LLOV_COMPILE_FLAGS+=" -mllvm -openmp-verify-disable-aa"
 LLOV_COMPILE_FLAGS+=" -O0 -g"
 
+# Path to LLOV is fixed due to it's only available in container
+FLANG_PATH=/home/llvm/installs/flang-2020-03-16
+
 ARCHER=${ARCHER:-"clang-archer"}
 ARCHER_COMPILE_FLAGS="-O0 -larcher"
 
@@ -92,6 +95,8 @@ ROMP_C_COMPILE_FLAGS="-O0 -g -fopenmp -lomp"
 FORTRAN_LINK_FLAGS="-ffree-line-length-none -fopenmp -c -fsanitize=thread"
 FORTRAN_COMPILE_FLAGS="-O0 -fopenmp -fsanitize=thread -lgfortran"
 IFORT_FORTRAN_FLAGS="-O0 -free -qopenmp -qopenmp-offload=host -Tf"
+
+
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
 FPOLYFLAG="-Imicro-benchmarks-fortran micro-benchmarks-fortran/utilities/fpolybench.o"
 VARLEN_PATTERN='[[:alnum:]]+-var-[[:alnum:]]+\.c'
@@ -534,6 +539,7 @@ for tool in "${TOOLS[@]}"; do
     linkname="$EXEC_DIR/$testname.o"
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
+    compilelog="$LOG_DIR/$(basename "$test").$tool.${ITER}_comp.log"
     logname="$(basename "$test").$tool.log"
     linklib=" "
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi
@@ -551,12 +557,36 @@ for tool in "${TOOLS[@]}"; do
         coderrect)  coderrect -XbcOnly gfortran -O0 -g -fopenmp $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1;
                     ls .coderrect/build/$exname.bc ;; # make $? to be 1 if coderrect could not compile the fortran case
         inspector)  ifort $IFORT_FORTRAN_FLAGS  $test -o $exname -lm ;;
+        llov)       $FLANG_PATH/bin/flang -fopenmp -S -emit-llvm "$test" -o "$exname.ll";
+                    $LLOV_COMPILER/bin/opt -mem2reg -O1 "$exname.ll" -S -o "$exname.ssa.ll";
+                    $LLOV_COMPILER/bin/opt -load $LLOV_COMPILER/lib/OpenMPVerify.so \
+                        -openmp-resetbounds "$exname.ssa.ll" -inline -S -o "$exname.resetbounds.ll";
+                    $LLOV_COMPILER/bin/opt -load $LLOV_COMPILER/lib/OpenMPVerify.so \
+                        -polly-detect-fortran-arrays -polly-process-unprofitable \
+                        -polly-invariant-load-hoisting -polly-ignore-parameter-bounds \
+                        -polly-dependences-on-demand -polly-precise-fold-accesses \
+                        -disable-output \
+                        -openmp-verify \
+                        "$exname.resetbounds.ll" 2> $compilelog;
+                    rm -f $exname.ll $exname.ssa.ll $exname.resetbounds.ll;;
         romp)       gfortran -O0 -g -fopenmp -lomp -ffree-line-length-none $additional_compile_flags $test -o $exname -lm;
                     echo $exname
                     InstrumentMain --program=$exname;;
       esac
     compilereturn=$?; 
     echo "compile return code: $compilereturn";
+
+    if [[ $tool == llov ]] ; then
+      races=$(grep -ce 'Data Race detected.' $compilelog);
+      racefree=$(grep -ce 'Region is Data Race Free.' $compilelog);
+      if [ $races -eq 0 ] && [ $racefree -eq 0 ]; then
+          races="NA"
+      fi
+      rm -f $exname
+      generateCSV
+      # Static Tool
+      continue
+    fi
 
     THREAD_INDEX=0
     for thread in "${THREADLIST[@]}"; do

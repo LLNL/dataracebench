@@ -540,6 +540,7 @@ for tool in "${TOOLS[@]}"; do
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
     compilelog="$LOG_DIR/$(basename "$test").$tool.${ITER}_comp.log"
+    inspectorLogDir="$(basename "$test").$tool"
     logname="$(basename "$test").$tool.log"
     linklib=" "
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi

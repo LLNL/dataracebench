@@ -94,7 +94,7 @@ ROMP_C_COMPILE_FLAGS="-O0 -g -fopenmp -lomp"
 
 FORTRAN_LINK_FLAGS="-ffree-line-length-none -fopenmp -c -fsanitize=thread"
 FORTRAN_COMPILE_FLAGS="-O0 -fopenmp -fsanitize=thread -lgfortran"
-IFORT_FORTRAN_FLAGS="-O0 -free -qopenmp -qopenmp-offload=host -Tf"
+IFORT_FORTRAN_FLAGS="-g -O0 -free -qopenmp -qopenmp-offload=host -Tf"
 
 
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"

@@ -94,7 +94,7 @@ ROMP_C_COMPILE_FLAGS="-O0 -g -fopenmp -lomp"
 
 FORTRAN_LINK_FLAGS="-ffree-line-length-none -fopenmp -c -fsanitize=thread"
 FORTRAN_COMPILE_FLAGS="-O0 -fopenmp -fsanitize=thread -lgfortran"
-IFORT_FORTRAN_FLAGS="-O0 -free -qopenmp -qopenmp-offload=host -Tf"
+IFORT_FORTRAN_FLAGS="-g -O0 -free -qopenmp -qopenmp-offload=host -Tf"
 
 
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
@@ -540,6 +540,7 @@ for tool in "${TOOLS[@]}"; do
     exname="$EXEC_DIR/$(basename "$test").$tool.out"
     rompexec="$exname.inst"
     compilelog="$LOG_DIR/$(basename "$test").$tool.${ITER}_comp.log"
+    inspectorLogDir="$(basename "$test").$tool"
     logname="$(basename "$test").$tool.log"
     linklib=" "
     if [[ -e "$LOG_DIR/$logname" ]]; then rm "$LOG_DIR/$logname"; fi

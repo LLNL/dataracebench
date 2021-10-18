@@ -1,0 +1,2658 @@
+{
+  "DRB001-antidep1-orig-yes.c": {
+    "basicInfo": {
+      "id": 1,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Anti-dependence",
+        "single loop"
+      ]
+    }
+  },
+  "DRB002-antidep1-var-yes.c": {
+    "basicInfo": {
+      "id": 2,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Anti-dependence",
+        "single loop"
+      ]
+    }
+  },
+  "DRB003-antidep2-orig-yes.c": {
+    "basicInfo": {
+      "id": 3,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Anti-dependence",
+        "2-level loop"
+      ]
+    }
+  },
+  "DRB004-antidep2-var-yes.c": {
+    "basicInfo": {
+      "id": 4,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Anti-dependence",
+        "2-level loop"
+      ]
+    }
+  },
+  "DRB005-indirectaccess1-orig-yes.c": {
+    "basicInfo": {
+      "id": 5,
+      "language": "C",
+      "Plabel": [
+        "Y7"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Indirect access"
+      ]
+    }
+  },
+  "DRB006-indirectaccess2-orig-yes.c": {
+    "basicInfo": {
+      "id": 6,
+      "language": "C",
+      "Plabel": [
+        "Y7"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Indirect access"
+      ]
+    }
+  },
+  "DRB007-indirectaccess3-orig-yes.c": {
+    "basicInfo": {
+      "id": 7,
+      "language": "C",
+      "Plabel": [
+        "Y7"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Indirect access"
+      ]
+    }
+  },
+  "DRB008-indirectaccess4-orig-yes.c": {
+    "basicInfo": {
+      "id": 8,
+      "language": "C",
+      "Plabel": [
+        "Y7"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Indirect access"
+      ]
+    }
+  },
+  "DRB009-lastprivatemissing-orig-yes.c": {
+    "basicInfo": {
+      "id": 9,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "lastprivate"
+      ]
+    }
+  },
+  "DRB010-lastprivatemissing-var-yes.c": {
+    "basicInfo": {
+      "id": 10,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "lastprivate"
+      ]
+    }
+  },
+  "DRB011-minusminus-orig-yes.c": {
+    "basicInfo": {
+      "id": 11,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB012-minusminus-var-yes.c": {
+    "basicInfo": {
+      "id": 12,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB013-nowait-orig-yes.c": {
+    "basicInfo": {
+      "id": 12,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "nowait"
+      ]
+    }
+  },
+  "DRB014-outofbounds-orig-yes.c": {
+    "basicInfo": {
+      "id": 14,
+      "language": "C",
+      "Plabel": [
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "out of bound",
+        "true dependence"
+      ]
+    }
+  },
+  "DRB015-outofbounds-var-yes.c": {
+    "basicInfo": {
+      "id": 15,
+      "language": "C",
+      "Plabel": [
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "out of bound",
+        "true dependence"
+      ]
+    }
+  },
+  "DRB016-outputdep-orig-yes.c": {
+    "basicInfo": {
+      "id": 16,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Output dependence",
+        "true dependence"
+      ]
+    }
+  },
+  "DRB017-outputdep-var-yes.c": {
+    "basicInfo": {
+      "id": 17,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "Output dependence",
+        "true dependence"
+      ]
+    }
+  },
+  "DRB018-plusplus-orig-yes.c": {
+    "basicInfo": {
+      "id": 18,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB019-plusplus-var-yes.c": {
+    "basicInfo": {
+      "id": 19,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB020-privatemissing-orig-yes.c": {
+    "basicInfo": {
+      "id": 20,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB021-privatemissing-var-yes.c": {
+    "basicInfo": {
+      "id": 21,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB022-reductionmissing-orig-yes.c": {
+    "basicInfo": {
+      "id": 22,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "reduction"
+      ]
+    }
+  },
+  "DRB023-reductionmissing-var-yes.c": {
+    "basicInfo": {
+      "id": 23,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "reduction"
+      ]
+    }
+  },
+  "DRB024-sections1-orig-yes.c": {
+    "basicInfo": {
+      "id": 24,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "reduction"
+      ]
+    }
+  },
+  "DRB025-simdtruedep-orig-yes.c": {
+    "basicInfo": {
+      "id": 25,
+      "language": "C",
+      "Plabel": [
+        "Y1",
+        "Y4"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "SIMD"
+      ]
+    }
+  },
+  "DRB026-simdtruedep-var-yes.c": {
+    "basicInfo": {
+      "id": 26,
+      "language": "C",
+      "Plabel": [
+        "Y1",
+        "Y4"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "SIMD"
+      ]
+    }
+  },
+  "DRB027-targetparallelfor-orig-yes.c": {
+    "basicInfo": {
+      "id": 27,
+      "language": "C",
+      "Plabel": [
+        "Y1",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "offload"
+      ]
+    }
+  },
+  "DRB028-taskdependmissing-orig-yes.c": {
+    "basicInfo": {
+      "id": 28,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "task"
+      ]
+    }
+  },
+  "DRB029-truedep1-orig-yes.c": {
+    "basicInfo": {
+      "id": 29,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence",
+        "single loop"
+      ]
+    }
+  },
+  "DRB030-truedep1-var-yes.c": {
+    "basicInfo": {
+      "id": 30,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence",
+        "single loop"
+      ]
+    }
+  },
+  "DRB031-truedepfirstdimension-orig-yes.c": {
+    "basicInfo": {
+      "id": 31,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence",
+        "2D loop"
+      ]
+    }
+  },
+  "DRB032-truedepfirstdimension-var-yes.c": {
+    "basicInfo": {
+      "id": 32,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence",
+        "2d loop"
+      ]
+    }
+  },
+  "DRB033-truedeplinear-orig-yes.c": {
+    "basicInfo": {
+      "id": 33,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence"
+      ]
+    }
+  },
+  "DRB034-truedeplinear-var-yes.c": {
+    "basicInfo": {
+      "id": 34,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence"
+      ]
+    }
+  },
+  "DRB035-truedepscalar-orig-yes.c": {
+    "basicInfo": {
+      "id": 35,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence"
+      ]
+    }
+  },
+  "DRB036-truedepscalar-var-yes.c": {
+    "basicInfo": {
+      "id": 36,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence"
+      ]
+    }
+  },
+  "DRB037-truedepseconddimension-orig-yes.c": {
+    "basicInfo": {
+      "id": 37,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence",
+        "2D loop"
+      ]
+    }
+  },
+  "DRB038-truedepseconddimension-var-yes.c": {
+    "basicInfo": {
+      "id": 38,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence",
+        "2D loop"
+      ]
+    }
+  },
+  "DRB039-truedepsingleelement-orig-yes.c": {
+    "basicInfo": {
+      "id": 39,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence"
+      ]
+    }
+  },
+  "DRB040-truedepsingleelement-var-yes.c": {
+    "basicInfo": {
+      "id": 40,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence"
+      ]
+    }
+  },
+  "DRB073-doall2-orig-yes.c": {
+    "basicInfo": {
+      "id": 73,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "true dependence"
+      ]
+    }
+  },
+  "DRB074-flush-orig-yes.c": {
+    "basicInfo": {
+      "id": 74,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "reduction",
+        "flush"
+      ]
+    }
+  },
+  "DRB075-getthreadnum-orig-yes.c": {
+    "basicInfo": {
+      "id": 75,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB080-func-arg-orig-yes.c": {
+    "basicInfo": {
+      "id": 80,
+      "language": "C",
+      "Plabel": [
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB082-declared-in-func-orig-yes.c": {
+    "basicInfo": {
+      "id": 82,
+      "language": "C",
+      "Plabel": [
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB084-threadprivatemissing-orig-yes.c": {
+    "basicInfo": {
+      "id": 84,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "threadprivate"
+      ]
+    }
+  },
+  "DRB086-static-data-member-orig-yes.cpp": {
+    "basicInfo": {
+      "id": 86,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "threadprivate"
+      ]
+    }
+  },
+  "DRB087-static-data-member2-orig-yes.cpp": {
+    "basicInfo": {
+      "id": 87,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "threadprivate"
+      ]
+    }
+  },
+  "DRB088-dynamic-storage-orig-yes.c": {
+    "basicInfo": {
+      "id": 88,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "dynamica storage variable"
+      ]
+    }
+  },
+  "DRB089-dynamic-storage2-orig-yes.c": {
+    "basicInfo": {
+      "id": 89,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "dynamica storage variable"
+      ]
+    }
+  },
+  "DRB090-static-local-orig-yes.c": {
+    "basicInfo": {
+      "id": 89,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "static variable"
+      ]
+    }
+  },
+  "DRB092-threadprivatemissing2-orig-yes.c": {
+    "basicInfo": {
+      "id": 92,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "threadprivate"
+      ]
+    }
+  },
+  "DRB095-doall2-taskloop-orig-yes.c": {
+    "basicInfo": {
+      "id": 95,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB106-taskwaitmissing-orig-yes.c": {
+    "basicInfo": {
+      "id": 106,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "task"
+      ]
+    }
+  },
+  "DRB109-orderedmissing-orig-yes.c": {
+    "basicInfo": {
+      "id": 109,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB111-linearmissing-orig-yes.c": {
+    "basicInfo": {
+      "id": 111,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB114-if-orig-yes.c": {
+    "basicInfo": {
+      "id": 114,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB115-forsimd-orig-yes.c": {
+    "basicInfo": {
+      "id": 115,
+      "language": "C",
+      "Plabel": [
+        "Y1",
+        "Y4"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "SIMD"
+      ]
+    }
+  },
+  "DRB116-target-teams-orig-yes.c": {
+    "basicInfo": {
+      "id": 116,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "target teams"
+      ]
+    }
+  },
+  "DRB117-taskwait-waitonlychild-orig-yes.c": {
+    "basicInfo": {
+      "id": 117,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "taskwait"
+      ]
+    }
+  },
+  "DRB119-nestlock-orig-yes.c": {
+    "basicInfo": {
+      "id": 119,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB123-taskundeferred-orig-yes.c": {
+    "basicInfo": {
+      "id": 123,
+      "language": "C",
+      "Plabel": [
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "task"
+      ]
+    }
+  },
+  "DRB124-master-orig-yes.c": {
+    "basicInfo": {
+      "id": 124,
+      "language": "C",
+      "Plabel": [
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB129-mergeable-taskwait-orig-yes.c": {
+    "basicInfo": {
+      "id": 129,
+      "language": "C",
+      "Plabel": [
+        "Y2"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB131-taskdep4-orig-omp45-yes.c": {
+    "basicInfo": {
+      "id": 131,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "taskwait"
+      ]
+    }
+  },
+  "DRB134-taskdep5-orig-omp45-yes.c": {
+    "basicInfo": {
+      "id": 134,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB136-taskdep-mutexinoutset-orig-yes.c": {
+    "basicInfo": {
+      "id": 134,
+      "language": "C",
+      "Plabel": [
+        "Y1",
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "task"
+      ]
+    }
+  },
+  "DRB138-simdsafelen-orig-yes.c": {
+    "basicInfo": {
+      "id": 138,
+      "language": "C",
+      "Plabel": [
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "simd"
+      ]
+    }
+  },
+  "DRB140-reduction-barrier-orig-yes.c": {
+    "basicInfo": {
+      "id": 140,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": [
+        "reduction"
+      ]
+    }
+  },
+  "DRB142-acquirerelease-orig-yes.c": {
+    "basicInfo": {
+      "id": 142,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB144-critical-missingreduction-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 144,
+      "language": "C",
+      "Plabel": [
+        "Y3",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB148-critical1-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 148,
+      "language": "C",
+      "Plabel": [
+        "Y3",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB150-missinglock1-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 150,
+      "language": "C",
+      "Plabel": [
+        "Y3",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB151-missinglock3-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 151,
+      "language": "C",
+      "Plabel": [
+        "Y3",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB153-missinglock2-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 153,
+      "language": "C",
+      "Plabel": [
+        "Y2",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB156-missingordered-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 156,
+      "language": "C",
+      "Plabel": [
+        "Y5",
+        "Y6"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB157-missingorderedsimd-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 157,
+      "language": "C",
+      "Plabel": [
+        "Y4",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": [
+        "SIMD"
+      ]
+    }
+  },
+  "DRB160-nobarrier-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 160,
+      "language": "C",
+      "Plabel": [
+        "Y3",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB161-nolocksimd-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 161,
+      "language": "C",
+      "Plabel": [
+        "Y3",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": [
+        "SIMD"
+      ]
+    }
+  },
+  "DRB164-simdmissinglock1-orig-gpu-yes.c": {
+    "basicInfo": {
+      "id": 164,
+      "language": "C",
+      "Plabel": [
+        "Y3",
+        "Y5"
+      ]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": [
+        "SIMD"
+      ]
+    }
+  },
+  "DRB165-taskdep4-orig-omp50-yes.c": {
+    "basicInfo": {
+      "id": 165,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "5.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB168-taskdep5-orig-omp50-yes.c": {
+    "basicInfo": {
+      "id": 168,
+      "language": "C",
+      "Plabel": [
+        "Y1"
+      ]
+    },
+    "OMPProperty": {
+      "version": "5.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB041-3mm-parallel-no.c": {
+    "basicInfo": {
+      "id": 41,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Polyhedral"]
+    }
+  },
+  "DRB042-3mm-tile-no.c": {
+    "basicInfo": {
+      "id": 42,
+      "language": "C",
+      "Plabel": ["N2","N4"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Polyhedral"]
+    }
+  },
+  "DRB043-adi-parallel-no.c": {
+    "basicInfo": {
+      "id": 43,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Polyhedral"]
+    }
+  },
+  "DRB044-adi-tile-no.c": {
+    "basicInfo": {
+      "id": 43,
+      "language": "C",
+      "Plabel": ["N2","N4"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Polyhedral"]
+    }
+  },
+  "DRB045-doall1-orig-no.c": {
+    "basicInfo": {
+      "id": 45,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Doall loop"]
+    }
+  },
+  "DRB046-doall2-orig-no.c": {
+    "basicInfo": {
+      "id": 46,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Doall loop"]
+    }
+  },
+  "DRB047-doallchar-orig-no.c": {
+    "basicInfo": {
+      "id": 47,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Doall loop"]
+    }
+  },
+  "DRB048-firstprivate-orig-no.c": {
+    "basicInfo": {
+      "id": 47,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["firstprivate"]
+    }
+  },
+  "DRB049-fprintf-orig-no.c": {
+    "basicInfo": {
+      "id": 49,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB050-functionparameter-orig-no.c": {
+    "basicInfo": {
+      "id": 50,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB051-getthreadnum-orig-no.c": {
+    "basicInfo": {
+      "id": 51,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB052-indirectaccesssharebase-orig-no.c": {
+    "basicInfo": {
+      "id": 52,
+      "language": "C",
+      "Plabel": ["N7"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Indirect array accesses"]
+    }
+  },
+  "DRB053-inneronly1-orig-no.c": {
+    "basicInfo": {
+      "id": 53,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Two-level nested loop"]
+    }
+  },
+  "DRB054-inneronly2-orig-no.c": {
+    "basicInfo": {
+      "id": 54,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Two-level nested loop"]
+    }
+  },
+  "DRB055-jacobi2d-parallel-no.c": {
+    "basicInfo": {
+      "id": 55,
+      "language": "C",
+      "Plabel": ["N7"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Polyhedral"]
+    }
+  },
+  "DRB056-jacobi2d-tile-no.c": {
+    "basicInfo": {
+      "id": 56,
+      "language": "C",
+      "Plabel": ["N4","N7"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["Polyhedral"]
+    }
+  },
+  "DRB057-jacobiinitialize-orig-no.c": {
+    "basicInfo": {
+      "id": 57,
+      "language": "C",
+      "Plabel": ["N7"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB058-jacobikernel-orig-no.c": {
+    "basicInfo": {
+      "id": 58,
+      "language": "C",
+      "Plabel": ["N7"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["reduction"]
+    }
+  },
+  "DRB059-lastprivate-orig-no.c": {
+    "basicInfo": {
+      "id": 59,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["lastprivate"]
+    }
+  },
+  "DRB060-matrixmultiply-orig-no.c": {
+    "basicInfo": {
+      "id": 60,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB061-matrixvector1-orig-no.c": {
+    "basicInfo": {
+      "id": 61,
+      "language": "C",
+      "Plabel": ["N7"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB062-matrixvector2-orig-no.c": {
+    "basicInfo": {
+      "id": 62,
+      "language": "C",
+      "Plabel": ["N7"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB063-outeronly1-orig-no.c": {
+    "basicInfo": {
+      "id": 63,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB064-outeronly2-orig-no.c": {
+    "basicInfo": {
+      "id": 63,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB065-pireduction-orig-no.c": {
+    "basicInfo": {
+      "id": 65,
+      "language": "C",
+      "Plabel": ["N7"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB066-pointernoaliasing-orig-no.c": {
+    "basicInfo": {
+      "id": 66,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB067-restrictpointer1-orig-no.c": {
+    "basicInfo": {
+      "id": 67,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB068-restrictpointer2-orig-no.c": {
+    "basicInfo": {
+      "id": 68,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB069-sectionslock1-orig-no.c": {
+    "basicInfo": {
+      "id": 69,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB070-simd1-orig-no.c": {
+    "basicInfo": {
+      "id": 70,
+      "language": "C",
+      "Plabel": ["N1","N4"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB071-targetparallelfor-orig-no.c": {
+    "basicInfo": {
+      "id": 71,
+      "language": "C",
+      "Plabel": ["N1","N5"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB072-taskdep1-orig-no.c": {
+    "basicInfo": {
+      "id": 72,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB076-flush-orig-no.c": {
+    "basicInfo": {
+      "id": 76,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB077-single-orig-no.c": {
+    "basicInfo": {
+      "id": 77,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB078-taskdep2-orig-no.c": {
+    "basicInfo": {
+      "id": 78,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB079-taskdep3-orig-no.c": {
+    "basicInfo": {
+      "id": 79,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB081-func-arg-orig-no.c": {
+    "basicInfo": {
+      "id": 81,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB083-declared-in-func-orig-no.c": {
+    "basicInfo": {
+      "id": 83,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB085-threadprivate-orig-no.c": {
+    "basicInfo": {
+      "id": 85,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["threadprivate"]
+    }
+  },
+  "DRB091-threadprivate2-orig-no.c": {
+    "basicInfo": {
+      "id": 91,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["threadprivate"]
+    }
+  },
+  "DRB093-doall2-collapse-orig-no.c": {
+    "basicInfo": {
+      "id": 93,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["collapse"]
+    }
+  },
+  "DRB094-doall2-ordered-orig-no.c": {
+    "basicInfo": {
+      "id": 94,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB096-doall2-taskloop-collapse-orig-no.c": {
+    "basicInfo": {
+      "id": 96,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB097-target-teams-distribute-orig-no.c": {
+    "basicInfo": {
+      "id": 97,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB098-simd2-orig-no.c": {
+    "basicInfo": {
+      "id": 97,
+      "language": "C",
+      "Plabel": ["N1","N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["SIMD"]
+    }
+  },
+  "DRB099-targetparallelfor2-orig-no.c": {
+    "basicInfo": {
+      "id": 99,
+      "language": "C",
+      "Plabel": ["N1","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["target"]
+    }
+  },
+  "DRB100-task-reference-orig-no.cpp": {
+    "basicInfo": {
+      "id": 100,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB101-task-value-orig-no.cpp": {
+    "basicInfo": {
+      "id": 101,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB102-copyprivate-orig-no.c": {
+    "basicInfo": {
+      "id": 102,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB103-master-orig-no.c": {
+    "basicInfo": {
+      "id": 103,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB104-nowait-barrier-orig-no.c": {
+    "basicInfo": {
+      "id": 104,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB105-taskwait-orig-no.c": {
+    "basicInfo": {
+      "id": 105,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["taskwait"]
+    }
+  },
+  "DRB107-taskgroup-orig-no.c": {
+    "basicInfo": {
+      "id": 107,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB108-atomic-orig-no.c": {
+    "basicInfo": {
+      "id": 108,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["atomic"]
+    }
+  },
+  "DRB110-ordered-orig-no.c": {
+    "basicInfo": {
+      "id": 110,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB112-linear-orig-no.c": {
+    "basicInfo": {
+      "id": 112,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB113-default-orig-no.c": {
+    "basicInfo": {
+      "id": 113,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB118-nestlock-orig-no.c": {
+    "basicInfo": {
+      "id": 118,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB120-barrier-orig-no.c": {
+    "basicInfo": {
+      "id": 120,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["barrier"]
+    }
+  },
+  "DRB121-reduction-orig-no.c": {
+    "basicInfo": {
+      "id": 121,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["reduction"]
+    }
+  },
+  "DRB122-taskundeferred-orig-no.c": {
+    "basicInfo": {
+      "id": 122,
+      "language": "C",
+      "Plabel": ["N6"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["tasks"]
+    }
+  },
+  "DRB125-single-orig-no.c": {
+    "basicInfo": {
+      "id": 125,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB126-firstprivatesections-orig-no.c": {
+    "basicInfo": {
+      "id": 126,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["firstprivate"]
+    }
+  },
+  "DRB127-tasking-threadprivate1-orig-no.c": {
+    "basicInfo": {
+      "id": 127,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB128-tasking-threadprivate2-orig-no.c": {
+    "basicInfo": {
+      "id": 128,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB130-mergeable-taskwait-orig-no.c": {
+    "basicInfo": {
+      "id": 130,
+      "language": "C",
+      "Plabel": ["N2"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB132-taskdep4-orig-omp45-no.c": {
+    "basicInfo": {
+      "id": 132,
+      "language": "C",
+      "Plabel": ["N1","N3"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB133-taskdep5-orig-omp45-no.c": {
+    "basicInfo": {
+      "id": 133,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB135-taskdep-mutexinoutset-orig-no.c": {
+    "basicInfo": {
+      "id": 135,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["task"]
+    }
+  },
+  "DRB137-simdsafelen-orig-no.c": {
+    "basicInfo": {
+      "id": 137,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["SIMD"]
+    }
+  },
+  "DRB139-worksharingcritical-orig-no.c": {
+    "basicInfo": {
+      "id": 139,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["SIMD"]
+    }
+  },
+  "DRB141-reduction-barrier-orig-no.c": {
+    "basicInfo": {
+      "id": 141,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["reduction"]
+    }
+  },
+  "DRB143-acquirerelease-orig-no.c": {
+    "basicInfo": {
+      "id": 143,
+      "language": "C",
+      "Plabel": ["N3"]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB145-atomiccritical-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 145,
+      "language": "C",
+      "Plabel": ["N2","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": ["reduction"]
+    }
+  },
+  "DRB146-atomicupdate-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 146,
+      "language": "C",
+      "Plabel": ["N1","N3","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": ["atomic"]
+    }
+  },
+  "DRB147-critical1-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 147,
+      "language": "C",
+      "Plabel": ["N1","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": ["critical"]
+    }
+  },
+  "DRB149-missingdata1-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 149,
+      "language": "C",
+      "Plabel": ["N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB152-missinglock2-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 152,
+      "language": "C",
+      "Plabel": ["N3","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB154-missinglock3-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 154,
+      "language": "C",
+      "Plabel": ["N3","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB155-missingordered-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 155,
+      "language": "C",
+      "Plabel": ["N1","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB158-missingtaskbarrier-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 158,
+      "language": "C",
+      "Plabel": ["N1","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB159-nobarrier-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 159,
+      "language": "C",
+      "Plabel": ["N3","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB162-nolocksimd-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 162,
+      "language": "C",
+      "Plabel": ["N4","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": ["reduction"]
+    }
+  },
+  "DRB163-simdmissinglock1-orig-gpu-no.c": {
+    "basicInfo": {
+      "id": 163,
+      "language": "C",
+      "Plabel": ["N4","N5"]
+    },
+    "OMPProperty": {
+      "version": "4.5",
+      "HW": "GPU"
+    },
+    "codeProeprty": {
+      "pattern": ["SIMD"]
+    }
+  },
+  "DRB166-taskdep4-orig-omp50-no.c": {
+    "basicInfo": {
+      "id": 166,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "5.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": ["SIMD"]
+    }
+  },
+  "DRB167-taskdep4-orig-omp50-no.c": {
+    "basicInfo": {
+      "id": 167,
+      "language": "C",
+      "Plabel": ["N1"]
+    },
+    "OMPProperty": {
+      "version": "5.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  }
+}

@@ -1,4 +1,4 @@
-# DataRaceBench 1.3.2
+# DataRaceBench 1.4.0
 
 DataRaceBench is a benchmark suite designed to systematically and
 quantitatively evaluate the effectiveness of data race detection

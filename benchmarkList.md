@@ -97,7 +97,7 @@ DRB161-nolocksimd-orig-gpu-yes.c                    |Y5, Y3 | Concurrent access 
 DRB164-simdmissinglock1-orig-gpu-yes.c              |Y5, Y3 | Concurrent access on a counter with no lock with simd across teams. Inter-region data race									| DRACC
 DRB165-taskdep4-orig-omp50-yes.c                    |Y3	    | Missing taskwait. Accessing a variable before task completion. 													| OpenMP Official Examples
 DRB168-taskdep5-orig-omp50-yes.c                    |Y1	    | OpenMP depend clause for only one variable in a bivariate equation. 												| OpenMP Official Examples
-DRB169-missingsyncwrite-orig-yes.c                  |Y6	    | Missing parallell construct for writ                                												| NAS Parallel Benchmarkss
+DRB169-missingsyncwrite-orig-yes.c                  |Y6	    | Missing parallell construct for write                                												| NAS Parallel Benchmarkss
 DRB173-non-sibling-taskdep-yes.c                    |Y6	    | Non-sibling tasks with declared task dependency                     												| New
 DRB175-non-sibling-taskdep2-yes.c                   |Y6	    | Non-sibling tasks with declared task dependency                     												| New
 DRB177-fib-taskdep-yes.c                            |Y6	    | Race due to scale problem size by providing size argument           												| Fibonacci Code

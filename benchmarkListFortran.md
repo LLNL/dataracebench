@@ -98,6 +98,8 @@ DRB164-simdmissinglock1-orig-gpu-yes.f95			| Y5,Y3	| Concurrent access on a coun
 DRB165-taskdep4-orig-omp50-yes.f95					| Y3	| Missing taskwait. Accessing a variable before task completion. 														| OpenMP Official Examples
 DRB168-taskdep5-orig-omp50-yes.f95					| Y1	| OpenMP depend clause for only one variable in a bivariate equation. 													| OpenMP Official Examples
 DRB169-workshare-orig-yes.f95						| Y3	| nowait clause nullifying the workshare directive's implicit barrier. 													| New
+DRB171-input-dependence-var-yes.f95                 |Y1	    | Input dependence race                                               												| OMPRacer
+DRB172-thread-sensitivity-yes.f95                   |Y6	    | Conflicting writes to same address                                  												| New
 
 
 # Microbenchmarks without known data races

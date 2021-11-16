@@ -99,13 +99,13 @@ long long int nElement(long long int i) {
     }
     else if (i < max(m, n)) {
         //Number of elements in the diagonal is stable
-        long int min = min(m, n);
+        long long int min = min(m, n);
         return min - 1;
     }
     else {
         //Number of elements in the diagonal is decreasing
-        long int min = min(m, n);
-        return 2 * min - i + abs(m - n) - 2;
+        long long int min = min(m, n);
+        return 2 * min - i + labs(m - n) - 2;
     }
 }
 

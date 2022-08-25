@@ -10,7 +10,7 @@ Ubuntu 18.04
 sudo apt update
 sudo apt install docker.io
 ```
-or check the guide in docker offical website.
+or check the guide in docker official website.
 https://docs.docker.com/get-docker/
 
 ## Using Docker images
@@ -40,7 +40,7 @@ A valid license is required to install and use Intel Inspector.
 
 ### Create a container
 
-After download the docker image from docker hub, user need create contariner for four tools.
+After downloading the docker image from docker hub, the user needs to create a container for the four tools.
 
 #### Archer
 ```bash
@@ -57,7 +57,7 @@ sudo docker run -it --name drb_romp yshixyz/dataracebench:romp
 
 #### Intel Inspector
 
-Assump user have built their own Intel image:
+Assumes user have built their own Intel image:
 
 ```bash
 sudo docker run -it --name drb_intel bash
@@ -80,7 +80,7 @@ sudo docker exec -it drb_tsan bash
 ```
 ### Run scripts
 
-#### set enviorments
+#### set environments
 When entering a container, you need set the enviorment for ROMP and Intel Insepctor.
 For using ROMP, you need run following code to set the enviorment:
 ```bash
@@ -95,7 +95,7 @@ export ROMP_PATH=/home/drb/spack/Modules/packages/linux-ubuntu18.04-haswell/gcc-
 export PATH=/home/drb/spack/Modules/packages/linux-ubuntu18.04-haswell/gcc-7.4.0/romp-master-i4tglb74pfvppyxbq42iljsrcxmexnrv/bin:$PATH
 ```
 
-For Intel Inspector, you need run following code to set the enviorment:
+For Intel Inspector, you need run following code to set the environment:
 ```bash
 source /opt/intel/parallel_studio_xe_2020.0.088/bin/psxevars.sh
 export PATH=/opt/intel/bin:$PATH
@@ -122,7 +122,7 @@ git clone https://github.com/LLNL/dataracebench.git
 #### Archer
 
 ```bash
-# enter the Archer tools srouce folder first
+# enter the Archer tools source folder first
 cd docker
 docker build -t drb-archer -f Dockerfile.drbArcher .
 ```
@@ -130,7 +130,7 @@ docker build -t drb-archer -f Dockerfile.drbArcher .
 #### ThreadSanitizer
 
 ```bash
-# enter the Tsan srouce folder first
+# enter the Tsan source folder first
 cd docker
 docker build -t drb-tsan -f Dockerfile.drbTsan .
 ```
@@ -143,7 +143,7 @@ The instruction for using Romp can be find at https://github.com/zygyz/romp.
 Intel Inspector need a valid intel license to use. User need its own intel license to use Intel Inspector. And you should use this empty docker image.
 
 ```bash
-# enter the datarace srouce folder first
+# enter the datarace source folder first
 cd docker
 docker build -t drb-tsan -f Dockerfile.dataracebench .
 ```

@@ -68,7 +68,7 @@ int main()
   counter = (int*) malloc(sizeof(int));
   if (counter== NULL)
   {
-    fprintf(stderr, "malloc() failes\n");
+    fprintf(stderr, "malloc() fails\n");
     exit(1);
   }
   *counter = 0; 

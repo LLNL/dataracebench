@@ -55,7 +55,7 @@ We use the default loop scheduling (static even) in OpenMP.
 It is possible that two dependent iterations will be scheduled
 within a same chunk to a same thread. So there is no runtime data races.
 
-When N is 180, two iteraions with N=0 and N= 5 have loop carried dependences.
+When N is 180, two iterations with N=0 and N= 5 have loop carried dependencies.
 For static even scheduling, we must have at least 36 threads (180/36=5 iterations)
 so iteration 0 and 5 will be scheduled to two different threads.
 Data race pair: xa1[idx]@128:5:W vs. xa2[idx]@129:5:W

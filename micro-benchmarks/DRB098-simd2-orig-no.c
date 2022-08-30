@@ -45,7 +45,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 #include <stdio.h>
 /*
-Two-dimension array computation with a vetorization directive
+Two-dimension array computation with a vectorization directive
 collapse(2) makes simd associate with 2 loops.
 Loop iteration variables should be predetermined as lastprivate. 
 */

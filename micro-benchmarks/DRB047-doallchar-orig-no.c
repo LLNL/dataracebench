@@ -48,7 +48,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 One dimension array computation
 with finer granularity than traditional 4 bytes.
 
-Dynamic tools monitoring 4-bytes elements may wrongfuly report race condition.
+Dynamic tools monitoring 4-bytes elements may wrongfully report race condition.
 */
 char a[100];
 int main()

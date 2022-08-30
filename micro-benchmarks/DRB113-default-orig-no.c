@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 Two-dimensional array computation:
-default(none) to enforce explictly list all variables in data-sharing attribute clauses
+default(none) to enforce explicitly list all variables in data-sharing attribute clauses
 default(shared) to cover another option.
 */
 

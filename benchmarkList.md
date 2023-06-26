@@ -202,4 +202,4 @@ DRB171-threadprivate3-orig-no.c          |N1		 |  example of a threadprivate var
 DRB172-critical2-orig-no.c               |N2, N3 	 | Use of private and explicit barrier tto ensure no data race.                                                    						| NAS Benchmark
 DRB174-non-sibling-taskdep-no.c          |N3		 | Use of taskwait ensures no data race. 															| New
 DRB176-fib-taskdep-no.c                  |N3		 | Fibonacci code with proper task dependency.                                                                     						| Fibonacci code
-DRB182-atomic3_no.c                      |N3     | sync with busy wait loop using atomic                                               |sc4drf
+DRB182-atomic3_no.c                      |N3     | sync with busy wait loop using atomic                                               |[Sequential Consistency for Data-race-free Programs](https://github.com/verified-software-lab/sc4drf/tree/main/experiments/civl/extra)

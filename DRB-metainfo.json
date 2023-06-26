@@ -6101,5 +6101,37 @@
         "Smith-Waterman"
       ]
     }
+  },
+  "DRB182-atomic3_no.c": {
+    "basicInfo": {
+      "id": 182,
+      "language": "C",
+      "Plabel": [
+        "N3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
+  },
+  "DRB183-atomic3_yes.c": {
+    "basicInfo": {
+      "id": 183,
+      "language": "C",
+      "Plabel": [
+        "Y3"
+      ]
+    },
+    "OMPProperty": {
+      "version": "3.0",
+      "HW": ""
+    },
+    "codeProeprty": {
+      "pattern": []
+    }
   }
 }

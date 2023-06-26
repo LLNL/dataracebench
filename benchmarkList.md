@@ -105,7 +105,7 @@ DRB178-input-dependence-var-yes.c                   |Y1	    | Input dependence r
 DRB179-thread-sensitivity-yes.cc                    |Y6	    | Conflicting writes to same address                                  												| New
 DRB180-miniAMR-yes.c                                |Y6	    | Race by shared index variable                                       												| MiniAMR app               
 DRB181-SmithWaterman-yes.c                          |Y6	    | Race appears with larger data size                                  												| Smith-Waterman app
-DRB183-atomic3_yes.c                                |Y3     | Races because the write is not protected by atomic                                          | sc4drf
+DRB183-atomic3_yes.c                                |Y3     | Races because the write is not protected by atomic                                          | [Sequential Consistency for Data-race-free Programs](https://github.com/verified-software-lab/sc4drf/tree/main/experiments/civl/extra)
 
 # Microbenchmarks without known data races
 

@@ -13,7 +13,7 @@
 
  * one synchronization commented out.
  * enters.  So race on x can occur.
- * Data race pair: x@39:7:W vs. x@51:7:W
+ * Data race pair: x@104:9:W vs. x@111:9:W
  */
 
 #include <stdio.h>

@@ -11,7 +11,7 @@
  * This is a program based on a dataset contributed by 
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
  
- * implements 2-thread reuseable barrier using 3 locks, no race [inline]
+ * implements 2-thread reuseable barrier using 3 locks, no race.
  */
 
 #include <stdio.h>

@@ -11,7 +11,7 @@
  * This is a program based on a dataset contributed by 
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
  
- * 2-thread flag barrier using busy-wait loops and critical, no race [inline]
+ * 2-thread flag barrier using busy-wait loops and critical, no race.
  */
 
 #include <stdio.h>

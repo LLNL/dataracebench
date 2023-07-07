@@ -12,7 +12,7 @@
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
  * Race due because u1 and u2 become aliased
- * Data race pair: u[1 - p][i]@38:7:W vs. u[p][i - 1]@38:15:R
+ * Data race pairs: u[1 - p][i]@38:7:W vs. u[p][i - 1]@38:15:R
  *                 u[1 - p][i]@38:7:W vs. u[p][i + 1]@38:50:R
  */
 

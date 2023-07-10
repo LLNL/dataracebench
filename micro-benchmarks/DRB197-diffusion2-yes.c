@@ -11,9 +11,9 @@
  * This is a program based on a dataset contributed by
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
- * Race due because u1 and u2 become aliased
+ * Overlap of the two ranges u[0] and u[1] when u[1][i] is accessed.
  * Data race pairs: u[1 - p][i]@38:7:W vs. u[p][i - 1]@38:15:R
- *                 u[1 - p][i]@38:7:W vs. u[p][i + 1]@38:50:R
+ *                  u[1 - p][i]@38:7:W vs. u[p][i + 1]@38:50:R
  */
 
 #include <stdlib.h>

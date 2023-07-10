@@ -11,11 +11,11 @@
  * This is a program based on a dataset contributed by
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
- * Race due because u1 and u2 become aliased
+ * Race due to u1 and u2 are aliased.
  * Data race pairs: u2[i]@39:7:W vs. u1[i]@39:15:R
- *                 u2[i]@39:7:W vs. u1[i - 1]@39:28:R
- *                 u2[i]@39:7:W vs. u1[i + 1]@39:40:R
- *                 u2[i]@39:7:W vs. u1[i]@39:56:R
+ *                  u2[i]@39:7:W vs. u1[i - 1]@39:28:R
+ *                  u2[i]@39:7:W vs. u1[i + 1]@39:40:R
+ *                  u2[i]@39:7:W vs. u1[i]@39:56:R
  */
 
 #include <stdlib.h>

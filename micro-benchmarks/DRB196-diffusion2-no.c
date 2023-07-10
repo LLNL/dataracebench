@@ -11,7 +11,7 @@
  * This is a program based on a dataset contributed by
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
- * no race, but it needs to mention that u1 and u2 are not aliased
+ * No race. The array b is divided into two non-overlapping halves that are referenced by u[0] and u[1].
  */
 
 #include <stdlib.h>

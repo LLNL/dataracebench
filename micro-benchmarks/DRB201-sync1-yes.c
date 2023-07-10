@@ -11,7 +11,7 @@
  * This is a program based on a dataset contributed by
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
- * Both threads set and unset the lock before changing the value of x.
+ * Thread with id 1 acquires and releases the lock, but then it modifies x without holding it.
  * Data race pair: size@35:7:W vs. size@42:7:W
  */
 

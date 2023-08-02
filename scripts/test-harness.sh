@@ -57,14 +57,16 @@ LANGUAGE="default"
 PYTHON=${PYTHON:-"python3"}
 LOGPARSER="scripts/log-parser/logParser.py"
 
+OPTIMIZATION=${OPTIMIZATION:-"-O3 -march=native"}
+
 MEMCHECK=${MEMCHECK:-"/usr/bin/time"}
 TIMEOUTCMD=${TIMEOUTCMD:-"timeout"}
 VALGRIND=${VALGRIND:-"valgrind"}
-VALGRIND_COMPILE_C_FLAGS="-O0 -g -std=c99 -fopenmp"
-VALGRIND_COMPILE_CPP_FLAGS="-O0 -g -fopenmp"
+VALGRIND_COMPILE_C_FLAGS="${OPTIMIZATION} -g -std=c99 -fopenmp"
+VALGRIND_COMPILE_CPP_FLAGS="${OPTIMIZATION} -g -fopenmp"
 
 CLANG=${CLANG:-"clang"}
-TSAN_COMPILE_FLAGS="-O0 -fopenmp -fsanitize=thread -g"
+TSAN_COMPILE_FLAGS="${OPTIMIZATION} -fopenmp -fsanitize=thread -g"
 
 # Path to LLOV is fixed due to it's only available in container
 LLOV_COMPILER="/home/llvm/Work/LLOV"
@@ -77,24 +79,24 @@ LLOV_COMPILE_FLAGS+=" -mllvm -polly-ignore-parameter-bounds"
 LLOV_COMPILE_FLAGS+=" -mllvm -polly-dependences-on-demand"
 LLOV_COMPILE_FLAGS+=" -mllvm -polly-precise-fold-accesses"
 #LLOV_COMPILE_FLAGS+=" -mllvm -openmp-verify-disable-aa"
-LLOV_COMPILE_FLAGS+=" -O0 -g"
+LLOV_COMPILE_FLAGS+=" ${OPTIMIZATION} -g"
 
 # Path to LLOV is fixed due to it's only available in container
 FLANG_PATH=/home/llvm/installs/flang-2020-03-16
 
 ARCHER=${ARCHER:-"clang-archer"}
-ARCHER_COMPILE_FLAGS="-O0 -larcher"
+ARCHER_COMPILE_FLAGS="${OPTIMIZATION} -larcher"
 
 INSPECTOR=${INSPECTOR:-"inspxe-cl"}
-ICC_COMPILE_FLAGS="-O0 -fopenmp -std=c99 -qopenmp-offload=host -g"
-ICPC_COMPILE_FLAGS="-O0 -fopenmp -qopenmp-offload=host -g"
+ICC_COMPILE_FLAGS="${OPTIMIZATION} -fopenmp -std=c99 -qopenmp-offload=host -g"
+ICPC_COMPILE_FLAGS="${OPTIMIZATION} -fopenmp -qopenmp-offload=host -g"
 
-ROMP_CPP_COMPILE_FLAGS="-O0 -g -std=c++11 -fopenmp -lomp"
-ROMP_C_COMPILE_FLAGS="-O0 -g -fopenmp -lomp"
+ROMP_CPP_COMPILE_FLAGS="${OPTIMIZATION} -g -std=c++11 -fopenmp -lomp"
+ROMP_C_COMPILE_FLAGS="${OPTIMIZATION} -g -fopenmp -lomp"
 
 FORTRAN_LINK_FLAGS="-ffree-line-length-none -fopenmp -c -fsanitize=thread"
-FORTRAN_COMPILE_FLAGS="-O0 -fopenmp -fsanitize=thread -lgfortran"
-IFORT_FORTRAN_FLAGS="-g -O0 -free -qopenmp -qopenmp-offload=host -Tf"
+FORTRAN_COMPILE_FLAGS="${OPTIMIZATION} -fopenmp -fsanitize=thread -lgfortran"
+IFORT_FORTRAN_FLAGS="-g ${OPTIMIZATION} -free -qopenmp -qopenmp-offload=host -Tf"
 
 
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
@@ -358,7 +360,7 @@ for tool in "${TOOLS[@]}"; do
         intel)      icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         helgrind)   g++ $VALGRIND_COMPILE_CPP_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer++ $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        coderrect)  coderrect -XbcOnly clang++ -fopenmp -fopenmp-version=45 -g -O0 $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1 ;;
+        coderrect)  coderrect -XbcOnly clang++ -fopenmp -fopenmp-version=45 -g ${OPTIMIZATION} $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1 ;;
         tsan-clang) clang++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   g++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         llov)       $LLOV_COMPILER/bin/clang++ $LLOV_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm 2> $compilelog;;
@@ -374,7 +376,7 @@ for tool in "${TOOLS[@]}"; do
         intel)      icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         helgrind)   gcc $VALGRIND_COMPILE_C_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
-        coderrect)  coderrect -XbcOnly clang -fopenmp -fopenmp-version=45 -g -O0 $additional_compile_flags $test -o $exname -lm  > /dev/null 2>&1 ;;
+        coderrect)  coderrect -XbcOnly clang -fopenmp -fopenmp-version=45 -g ${OPTIMIZATION} $additional_compile_flags $test -o $exname -lm  > /dev/null 2>&1 ;;
         tsan-clang) clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   gcc $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         llov)       $LLOV_COMPILER/bin/clang $LLOV_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm 2> $compilelog;;
@@ -555,7 +557,7 @@ for tool in "${TOOLS[@]}"; do
         tsan-gcc)   gfortran -fopenmp -fsanitize=thread $additional_compile_flags  $test -o $exname -lm  ;;
         archer)     gfortran $FORTRAN_LINK_FLAGS $additional_compile_flags $test -o $linkname;
 	            clang-archer $FORTRAN_COMPILE_FLAGS $linkname $linklib -o $exname $ARCHER_COMPILE_FLAGS -lm;;
-        coderrect)  coderrect -XbcOnly gfortran -O0 -g -fopenmp $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1;
+        coderrect)  coderrect -XbcOnly gfortran ${OPTIMIZATION} -g -fopenmp $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1;
                     ls .coderrect/build/$exname.bc ;; # make $? to be 1 if coderrect could not compile the fortran case
         inspector)  ifort $IFORT_FORTRAN_FLAGS  $test -o $exname -lm ;;
         llov)       $FLANG_PATH/bin/flang -fopenmp -S -emit-llvm "$test" -o "$exname.ll";
@@ -570,7 +572,7 @@ for tool in "${TOOLS[@]}"; do
                         -openmp-verify \
                         "$exname.resetbounds.ll" 2> $compilelog;
                     rm -f $exname.ll $exname.ssa.ll $exname.resetbounds.ll;;
-        romp)       gfortran -O0 -g -fopenmp -lomp -ffree-line-length-none $additional_compile_flags $test -o $exname -lm;
+        romp)       gfortran ${OPTIMIZATION} -g -fopenmp -lomp -ffree-line-length-none $additional_compile_flags $test -o $exname -lm;
                     echo $exname
                     InstrumentMain --program=$exname;;
       esac

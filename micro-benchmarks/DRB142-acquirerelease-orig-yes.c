@@ -15,7 +15,7 @@
  * variable.
  *
  * Implicit flush must be used after critical construct, after line:34 and before line:35 to avoid data race.
- * Data Race pair: x@34:9:W vs. x@34:9:W
+ * Data Race pair: x@34:9:W vs. x@43:11:R
  * */
 
 
@@ -39,9 +39,8 @@ int main(){
       while (tmp == 0) {
         #pragma omp atomic read acquire
         tmp = y;
-    }
-    #pragma omp critical
-    { if (x!=10) printf("x = %d\n", x); }
+      }
+      if (x!=10) printf("x = %d\n", x); 
     }
   }
   return 0;

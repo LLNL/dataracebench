@@ -35,7 +35,7 @@ int main(){
 
   #pragma omp target map(tofrom:b[0:C]) map(to:c[0:C],temp[0:C],a) device(0)
   {
-    #pragma omp teams
+    #pragma omp teams num_teams(4)
     for(int i=0; i<N ;i++){
       #pragma omp distribute
       for(int i=0; i<C; i++){

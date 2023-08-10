@@ -20,7 +20,7 @@ int var = 0;
 
 int main(){
   #pragma omp target map(tofrom:var) device(0)
-  #pragma omp teams distribute parallel for
+  #pragma omp teams distribute parallel for num_teams(4)
   for(int i=0; i<N*2; i++){
     #pragma omp critical
     var++;

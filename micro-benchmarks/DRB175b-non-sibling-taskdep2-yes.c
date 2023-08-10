@@ -9,10 +9,12 @@ for details.
  */
 
 /* 
- * Data race between non-sibling tasks with declared task dependency
+ * Data race between non-sibling tasks created from different implicit tasks 
+ * with declared task dependency
  * Derived from code in https://hal.archives-ouvertes.fr/hal-02177469/document,
- * Listing 1.1
- * Data Race Pair, a@30:7:W vs. a@36:7:W
+ * Listing 1.3
+ * Schedule encouraged to execute all tasks by thread 0.
+ * Data Race Pair, a@28:6:W vs. a@28:6:W
  * */
 
 #include <omp.h>
@@ -22,32 +24,16 @@ for details.
 void foo() {
   int a = 0, sem = 0;
 
-#pragma omp parallel num_threads(2)
-#pragma omp single
+#pragma omp parallel
   {
 #pragma omp task depend(inout : a) shared(a)
     {
-#pragma omp task depend(inout : a) shared(a)
-      {
-        a++;
-        SIGNAL(sem);
-        WAIT(sem,2);
-      }
+      SIGNAL(sem);
+      a++;
     }
-
-#pragma omp task depend(inout : a) shared(a)
-    {
-#pragma omp task depend(inout : a) shared(a)
-      {
-        a++;
-        SIGNAL(sem);
-        WAIT(sem,2);
-      }
-    }
-    // allow other thread to steal first task
-    WAIT(sem,1);
+    if (omp_get_thread_num() != 0)
+      WAIT(sem, omp_get_num_threads());
   }
-
   printf("a=%d\n", a);
 }
 

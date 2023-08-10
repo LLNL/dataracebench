@@ -16,20 +16,23 @@ for details.
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "signaling.h"
+
+int sem = 0;
 
 int fib(int n) {
   int i, j, s;
   if (n < 2)
     return n;
-#pragma omp task shared(i) depend(out : i)
+#pragma omp task shared(i, sem) depend(out : i)
   {
     i = fib(n - 1);
   }
-#pragma omp task shared(j) depend(out : j)
+#pragma omp task shared(j, sem) depend(out : j)
   {
     j = fib(n - 2);
   }
-#pragma omp task shared(i, j, s) depend(in : j)
+#pragma omp task shared(i, j, s, sem) depend(in : j)
   {
     s = i + j;
   }
@@ -41,7 +44,14 @@ int main(int argc, char **argv) {
   int n = 10;
   if (argc > 1)
     n = atoi(argv[1]);
-#pragma omp parallel sections
-  { printf("fib(%i) = %i\n", n, fib(n)); }
+#pragma omp parallel
+  { 
+#pragma omp masked
+  { 
+    printf("fib(%i) = %i\n", n, fib(n)); 
+    SIGNAL(sem);
+  }
+  WAIT(sem, 1);
+  }
   return 0;
 }

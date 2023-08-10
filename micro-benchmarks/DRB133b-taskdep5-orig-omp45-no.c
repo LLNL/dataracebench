@@ -25,7 +25,7 @@ void foo(){
   int x = 0, y = 2;
 
   #pragma omp task depend(inout: x) shared(x, sem)
-  {
+  { 
     SIGNAL(sem);
   x++;                                                                  // 1st child task
   }
@@ -33,10 +33,9 @@ void foo(){
   #pragma omp task depend(in: x) depend(inout: y) shared(x, y, sem)
   {
     SIGNAL(sem);
-  y -= x;                                                         //2nd child task
+    y -= x;                                                         //2nd child task
   }
 
-  WAIT(sem, 2);
   #pragma omp task depend(in: x) if(0)                                  // 1st taskwait
   {}
 
@@ -49,8 +48,13 @@ void foo(){
 
 int main(){
   #pragma omp parallel num_threads(2)
-  #pragma omp single
+  {
+    #pragma omp masked
+    {
   foo();
+    }
+    WAIT(sem, 2);
+  }
 
   return 0;
 }

@@ -50,6 +50,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdio.h>
 #include <assert.h>
 #include <unistd.h>
+#include "signaling.h"
 
 int main()
 {
@@ -62,7 +63,7 @@ int main()
       {
 #pragma omp task
         {
-          sleep(3);
+          delay(10000);
           result = 1; 
         }
       }

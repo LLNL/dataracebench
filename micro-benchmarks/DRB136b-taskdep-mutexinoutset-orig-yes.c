@@ -9,7 +9,10 @@
 
 
 /* Due to the missing mutexinoutset dependence type on c, these tasks will execute in any
- * order leading to the data race at line 36. Data Race Pair, d@36:7:W vs. d@36:7:W
+ * order leading to the data race at line 36. Data Race Pair, 
+   c@35:7:W vs. c@35:7:W
+   c@35:7:W vs. c@39:11:R
+   c@37:7:W vs. c@39:11:R
  * */
 
 
@@ -21,28 +24,42 @@ int main(){
   int a, b, c, d, sem = 0;
 
   #pragma omp parallel num_threads(2)
-  #pragma omp single
+  {
+  #pragma omp masked
   {
     #pragma omp task depend(out: c)
+    {
+      SIGNAL(sem);
       c = 1;
+    }
     #pragma omp task depend(out: a)
+    {
+      SIGNAL(sem);
       a = 2;
+    }
     #pragma omp task depend(out: b)
+    {
+      SIGNAL(sem);
       b = 3;
+    }
     #pragma omp task depend(in: a)
     {
       SIGNAL(sem);
-      WAIT(sem,2);
       c += a;
     }
     #pragma omp task depend(in: b)
     {
       SIGNAL(sem);
-      WAIT(sem,2);
       c += b;
     }
     #pragma omp task depend(in: c)
+    {
+      SIGNAL(sem);
       d = c;
+    }
+    #pragma omp taskwait
+  }
+  WAIT(sem, 6);
   }
 
   printf("%d\n",d);

@@ -46,7 +46,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 /* 
 When if() evaluates to true, this program has data races due to true dependence within the loop at 65.
-Data race pair: a[i+1]@66:5:W vs. a[i]@66:12:R
+Without argument, (argc+1)%2 will be 0.
+No data race.
 */
 #include <stdlib.h>
 #include <stdio.h>
@@ -60,7 +61,7 @@ int main(int argc, char* argv[])
   for (i=0;i<len;i++)
     a[i]=i;
    
-#pragma omp parallel for if (argc%2)
+#pragma omp parallel for if ((argc+1)%2)
   for (i=0;i<len-1;i++)
     a[i+1]=a[i]+1;
 

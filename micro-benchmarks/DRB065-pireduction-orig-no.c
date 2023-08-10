@@ -48,7 +48,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 Classic PI calculation using reduction    
 */
 
-#define num_steps 2000000000 
+#define num_steps 200000000
 
 #include <stdio.h>
 int main(int argc, char** argv)

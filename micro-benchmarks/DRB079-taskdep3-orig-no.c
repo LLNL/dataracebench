@@ -50,6 +50,7 @@ tasks with depend clauses to ensure execution order, no data races.
 #include <stdio.h> 
 #include <assert.h> 
 #include <unistd.h>
+#include "signaling.h"
 int main()
 {
   int i=0, j, k;
@@ -58,7 +59,7 @@ int main()
   {
 #pragma omp task depend (out:i)
     {
-      sleep(3);
+      delay(10000);
       i = 1;    
     }
 #pragma omp task depend (in:i)

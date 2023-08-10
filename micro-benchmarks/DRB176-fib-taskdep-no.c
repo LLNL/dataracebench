@@ -23,10 +23,10 @@ int fib(int n) {
   i = fib(n - 1);
 #pragma omp task shared(j) depend(out : j)
   j = fib(n - 2);
-#pragma omp task shared(i, j) depend(in : i, j)
+#pragma omp task shared(i, j, s) depend(in : i, j)
   s = i + j;
 #pragma omp taskwait
-  return i + j;
+  return s;
 }
 
 int main(int argc, char **argv) {

@@ -131,6 +131,7 @@ valid_tool_name () {
     helgrind) return 0 ;;
     archer) return 0 ;;
     coderrect) return 0 ;;
+    openrace) return 0 ;;
     tsan-clang) return 0 ;;
     tsan-gcc) return 0 ;;
     inspector) return 0 ;;
@@ -359,6 +360,7 @@ for tool in "${TOOLS[@]}"; do
         helgrind)   g++ $VALGRIND_COMPILE_CPP_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer++ $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         coderrect)  coderrect -XbcOnly clang++ -fopenmp -fopenmp-version=45 -g -O0 $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1 ;;
+        openrace)   clang++ -fopenmp -fopenmp-version=45 -Dmasked=master -g -S -emit-llvm $test -o $exname ;;
         tsan-clang) clang++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   g++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         llov)       $LLOV_COMPILER/bin/clang++ $LLOV_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm 2> $compilelog;;
@@ -375,6 +377,7 @@ for tool in "${TOOLS[@]}"; do
         helgrind)   gcc $VALGRIND_COMPILE_C_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         coderrect)  coderrect -XbcOnly clang -fopenmp -fopenmp-version=45 -g -O0 $additional_compile_flags $test -o $exname -lm  > /dev/null 2>&1 ;;
+        openrace)   clang -fopenmp -fopenmp-version=45 -Dmasked=master -g -S -emit-llvm $test -o $exname ;;
         tsan-clang) clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   gcc $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         llov)       $LLOV_COMPILER/bin/clang $LLOV_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm 2> $compilelog;;
@@ -455,6 +458,12 @@ for tool in "${TOOLS[@]}"; do
                 check_return_code $?;
 		echo "$testname return $testreturn"
                 races=$(grep -ce 'Found a data race' tmp.log)
+                cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
+              openrace)
+                openrace $exname &> tmp.log;
+                check_return_code $?;
+                echo "$testname return $testreturn"
+                races=$(grep -ce '= Races =' tmp.log)
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               tsan-clang)
 #                races=$($MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;

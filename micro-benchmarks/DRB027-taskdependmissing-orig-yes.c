@@ -47,7 +47,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 /*
 Two tasks without depend clause to protect data writes. 
 i is shared for two tasks based on implicit data-sharing attribute rules.
-Data race pair: i@63:5:W vs. i@67:5:W  
+Data race pair: i@64:5:W vs. i@70:5:W  
 */
 #include <assert.h> 
 #include <stdio.h> 

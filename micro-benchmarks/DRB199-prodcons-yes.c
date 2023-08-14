@@ -12,7 +12,9 @@
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
  * race introduced because critical sections have different names for producer and consumer.
- * Data race pair: size@34:11:W vs. size@45:11:W
+ * Data race pair: size@35:11:W vs. size@47:11:W
+                   size@33:13:R vs. size@47:11:W
+                   size@35:11:W vs. size@45:13:R
  */
 
 #include <stdio.h>

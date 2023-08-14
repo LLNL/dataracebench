@@ -14,7 +14,7 @@ for details.
  * Derived from code in https://hal.archives-ouvertes.fr/hal-02177469/document,
  * Listing 1.3
  * Schedule encouraged to execute all tasks by thread 0.
- * Data Race Pair, a@28:6:W vs. a@28:6:W
+ * Data Race Pair, a@32:7:W vs. a@32:7:W
  * */
 
 #include <omp.h>

@@ -11,7 +11,7 @@
 This kernel is referred from “DataRaceOnAccelerator A Micro-benchmark Suite for Evaluating
 Correctness Tools Targeting Accelerators” by Adrian Schmitz et al.
 Concurrent access of var@35:7 without acquiring locks causes atomicity violation. Data race present.
-Data Race Pairs, var@35:7:W vs. var@35:7:W
+Data Race Pairs, var[i]@35:7:W vs. var[i]@35:7:W
 */
 
 #include <stdio.h>

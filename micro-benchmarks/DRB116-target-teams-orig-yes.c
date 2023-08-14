@@ -48,7 +48,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 /*
 use of omp target + teams 
 Without protection, master threads from two teams cause data races.
-Data race pair: a@66:5:W vs. a@66:5:W
+Data race pair: a[50]*@66:5:W vs. a[50]*@66:5:W
 */
 int main(int argc, char* argv[])
 {

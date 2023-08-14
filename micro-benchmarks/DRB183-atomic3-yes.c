@@ -13,7 +13,8 @@
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
  
  * Race because the write to s is not protected by atomic
- * Data race pair: s@26:7:W vs. s@34:16:R
+ * Data race pair: s@27:7:W vs. s@35:16:R
+ *                 x@26:7:W vs. x@37:7:W
  */
 int main()
 {

@@ -12,7 +12,11 @@
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
  * wrong 2-thread flag barrier using busy-waits, race
- * Data race pair: x@85:9:W vs. x@92:9:W
+ * Data race pair: x@89:9:W vs. x@96:9:W
+ *                 x@84:58:R vs. x@89:9:W
+ *                 x@89:9:W vs. x@91:58:R
+ *                 x@91:58:R vs. x@96:9:W
+ *                 x@84:58:R vs. x@96:9:W
  */
 
 #include <stdio.h>

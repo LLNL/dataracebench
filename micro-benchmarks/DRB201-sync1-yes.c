@@ -12,7 +12,7 @@
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
  * Thread with id 1 acquires and releases the lock, but then it modifies x without holding it.
- * Data race pair: size@35:7:W vs. size@42:7:W
+ * Data race pair: x@37:7:W vs. x@45:7:W
  */
 
 #include <stdio.h>

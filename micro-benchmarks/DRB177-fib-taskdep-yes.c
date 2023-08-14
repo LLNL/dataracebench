@@ -11,7 +11,7 @@ for details.
 /* 
  * Fibonacci code with data race (possible to scale problem size by providing
  * size argument).
- * Data Race Pair, i@25:5:W vs. i@29:7:R
+ * Data Race Pair, i@25:5:W vs. i@29:9:R
  * */
 
 #include <stdio.h>
@@ -22,17 +22,11 @@ int fib(int n) {
   if (n < 2)
     return n;
 #pragma omp task shared(i) depend(out : i)
-  {
     i = fib(n - 1);
-  }
 #pragma omp task shared(j) depend(out : j)
-  {
     j = fib(n - 2);
-  }
 #pragma omp task shared(i, j, s) depend(in : j)
-  {
     s = i + j;
-  }
 #pragma omp taskwait
   return s;
 }

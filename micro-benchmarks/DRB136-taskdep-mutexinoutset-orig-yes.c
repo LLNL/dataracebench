@@ -9,7 +9,12 @@
 
 
 /* Due to the missing mutexinoutset dependence type on c, these tasks will execute in any
- * order leading to the data race at line 36. Data Race Pair, d@36:7:W vs. d@36:7:W
+ * order leading to the data race at line 36. 
+ * Data Race Pair, c@32:7:W vs. c+@41:7:W
+                   c@32:7:W vs. c+@47:7:W
+                   c+@41:7:W vs. c+@47:7:W
+                   c+@41:7:W vs. c@50:11:W
+                   c+@47:7:W vs. c@50:11:W
  * */
 
 

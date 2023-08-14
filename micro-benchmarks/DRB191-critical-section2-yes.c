@@ -12,7 +12,9 @@
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
  * Race due to different critical section names
- * Data race pair: size@34:11:W vs. size@49:11:W
+ * Data race pair: size@36:11:W vs. size@51:11:W
+                   size@34:13:R vs. size@51:11:W
+                   size@36:11:W vs. size@49:13:R
  */
 
 #include <stdio.h>

@@ -64,6 +64,7 @@ VALGRIND_COMPILE_C_FLAGS="-O0 -g -std=c99 -fopenmp"
 VALGRIND_COMPILE_CPP_FLAGS="-O0 -g -fopenmp"
 
 CLANG=${CLANG:-"clang"}
+CLANGXX=${CLANGXX:-"clang++"}
 TSAN_COMPILE_FLAGS="-O0 -fopenmp -fsanitize=thread -g"
 
 # Path to LLOV is fixed due to it's only available in container
@@ -95,6 +96,14 @@ ROMP_C_COMPILE_FLAGS="-O0 -g -fopenmp -lomp"
 FORTRAN_LINK_FLAGS="-ffree-line-length-none -fopenmp -c -fsanitize=thread"
 FORTRAN_COMPILE_FLAGS="-O0 -fopenmp -fsanitize=thread -lgfortran"
 IFORT_FORTRAN_FLAGS="-g -O0 -free -qopenmp -qopenmp-offload=host -Tf"
+
+
+if which bc > /dev/null 2>&1 ; then
+  CALCTIME="echo \"scale=3; (\$end-\$start)/1000000\" | bc"
+elif which $PYTHON > /dev/null 2>&1 ; then
+  CALCTIME="echo \"print('%.3f'%((\$end-\$start)/1.e6))\" | $PYTHON"
+fi
+
 
 
 POLYFLAG="micro-benchmarks/utilities/polybench.c -I micro-benchmarks -I micro-benchmarks/utilities -DPOLYBENCH_NO_FLUSH_CACHE -DPOLYBENCH_TIME -D_POSIX_C_SOURCE=200112L"
@@ -309,8 +318,12 @@ trap cleanup SIGINT SIGTERM
 if [[ "$LANGUAGE" == "c" || "$LANGUAGE" == "C" || "$LANGUAGE" == "c++" || "$LANGUAGE" == "C++" ]]; then
 
 for tool in "${TOOLS[@]}"; do
-
+  MEMUSAGE=
   MEMLOG="$LOG_DIR/$tool.memlog"
+  if which $MEMCHECK > /dev/null  2>&1 ; then
+    MEMUSAGE="$MEMCHECK -f \"%M\" -o \"$MEMLOG\""
+  fi
+  
   file="$OUTPUT_DIR/$tool.csv"
   echo "Saving to: $file and $MEMLOG"
   [ -e "$file" ] && rm "$file"
@@ -354,12 +367,12 @@ for tool in "${TOOLS[@]}"; do
       echo "testing C++ code:$test"
       case "$tool" in 
         gnu)        g++ -g -fopenmp $additional_compile_flags $test -o $exname -lm ;;
-        clang)      clang++ -fopenmp -g $additional_compile_flags $test -o $exname -lm ;;
+        clang)      ${CLANGXX} -fopenmp -g $additional_compile_flags $test -o $exname -lm ;;
         intel)      icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         helgrind)   g++ $VALGRIND_COMPILE_CPP_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer++ $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         coderrect)  coderrect -XbcOnly clang++ -fopenmp -fopenmp-version=45 -g -O0 $additional_compile_flags $test -o $exname -lm > /dev/null 2>&1 ;;
-        tsan-clang) clang++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        tsan-clang) ${CLANGXX} $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   g++ $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         llov)       $LLOV_COMPILER/bin/clang++ $LLOV_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm 2> $compilelog;;
         inspector)  icpc $ICPC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
@@ -370,12 +383,12 @@ for tool in "${TOOLS[@]}"; do
     else
       case "$tool" in 
         gnu)        gcc -g -std=c99 -fopenmp $additional_compile_flags $test -o $exname -lm ;;
-        clang)      clang -fopenmp -g $additional_compile_flags $test -o $exname -lm ;;
+        clang)      ${CLANG} -fopenmp -g $additional_compile_flags $test -o $exname -lm ;;
         intel)      icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         helgrind)   gcc $VALGRIND_COMPILE_C_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         archer)     clang-archer $ARCHER_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         coderrect)  coderrect -XbcOnly clang -fopenmp -fopenmp-version=45 -g -O0 $additional_compile_flags $test -o $exname -lm  > /dev/null 2>&1 ;;
-        tsan-clang) clang $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
+        tsan-clang) ${CLANG} $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         tsan-gcc)   gcc $TSAN_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
         llov)       $LLOV_COMPILER/bin/clang $LLOV_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm 2> $compilelog;;
         inspector)  icc $ICC_COMPILE_FLAGS $additional_compile_flags $test -o $exname -lm ;;
@@ -458,7 +471,7 @@ for tool in "${TOOLS[@]}"; do
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               tsan-clang)
 #                races=$($MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
-                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" env TSAN_OPTIONS="exitcode=0 ignore_noninstrumented_modules=1" "./$exname" $size &> tmp.log;
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMUSAGE env TSAN_OPTIONS="exitcode=0 halt_on_error=1 ignore_noninstrumented_modules=1" "./$exname" $size &> tmp.log;
                 check_return_code $?;
 		echo "$testname return $testreturn"
                 races=$(grep -ce 'WARNING: ThreadSanitizer: data race' tmp.log) 
@@ -488,7 +501,9 @@ for tool in "${TOOLS[@]}"; do
                 #races=$("./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'race found!') ;;
             esac
             end=$(date +%s%6N)
-            elapsedtime=$(echo "scale=3; ($end-$start)/1000000"|bc)
+#            elapsedtime=$(echo "scale=3; ($end-$start)/1000000"|bc)
+#            elapsedtime=$(echo "print('%.3f'%(($end-$start)/1.e6))" | python3)
+            elapsedtime=$(eval $CALCTIME)
             mem=$(cat $MEMLOG)
             echo "$tool,$id,\"$testname\",$haverace,$thread,${size:-"N/A"},${races:-0},$elapsedtime,$mem,$compilereturn,$testreturn" >> "$file"
             ITER_INDEX=$((ITER_INDEX+1))
@@ -508,7 +523,11 @@ elif [[ "$LANGUAGE" == "fortran" || "$LANGUAGE" == "FORTRAN" ]]; then
 
 for tool in "${TOOLS[@]}"; do
 
+  MEMUSAGE=
   MEMLOG="$LOG_DIR/$tool.memlog"
+  if which $MEMCHECK > /dev/null  2>&1 ; then
+    MEMUSAGE="$MEMCHECK -f \"%M\" -o \"$MEMLOG\""
+  fi
   file="$OUTPUT_DIR/$tool.csv"
   echo "Saving to: $file and $MEMLOG"
   [ -e "$file" ] && rm "$file"
@@ -641,7 +660,7 @@ for tool in "${TOOLS[@]}"; do
                 cat tmp.log >> "$LOG_DIR/$logname" || >tmp.log ;;
               tsan-clang)
 #                races=$($MEMCHECK -f "%M" -o "$MEMLOG" "./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'WARNING: ThreadSanitizer: data race') ;;
-                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMCHECK -f "%M" -o "$MEMLOG" env TSAN_OPTIONS="exitcode=0 ignore_noninstrumented_modules=1" "./$exname" $size &> tmp.log;
+                $TIMEOUTCMD $TIMEOUTMIN"m" $MEMUSAGE env TSAN_OPTIONS="exitcode=0 halt_on_error=1 ignore_noninstrumented_modules=1" "./$exname" $size &> tmp.log;
                 check_return_code $?;
 		echo "$testname return $testreturn"
                 races=$(grep -ce 'WARNING: ThreadSanitizer: data race' tmp.log) 
@@ -671,7 +690,9 @@ for tool in "${TOOLS[@]}"; do
                 #races=$("./$exname" $size 2>&1 | tee -a "$LOG_DIR/$logname" | grep -ce 'race found!') ;;
             esac
             end=$(date +%s%6N)
-            elapsedtime=$(echo "scale=3; ($end-$start)/1000000"|bc)
+#            elapsedtime=$(echo "scale=3; ($end-$start)/1000000"|bc)
+#            elapsedtime=$(echo "print('%.3f'%(($end-$start)/1.e6))" | python3)
+            elapsedtime=$(eval $CALCTIME)
             mem=$(cat $MEMLOG)
             echo "$tool,$id,\"$testname\",$haverace,$thread,${size:-"N/A"},${races:-0},$elapsedtime,$mem,$compilereturn,$testreturn" >> "$file"
             ITER_INDEX=$((ITER_INDEX+1))

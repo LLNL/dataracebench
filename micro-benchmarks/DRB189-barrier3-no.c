@@ -11,9 +11,7 @@
  * This is a program based on a dataset contributed by
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
- * one synchronization commented out.
- * enters.  So race on x can occur.
- * Data race pair: x@104:9:W vs. x@111:9:W
+ * No data race.
  */
 
 #include <stdio.h>

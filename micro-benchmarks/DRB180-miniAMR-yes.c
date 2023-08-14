@@ -10,15 +10,22 @@ for details.
 
 /*
    Simplified miniAMR proxy app to reproduce data race behavior. 
-   Data Race Pair, in@60:43:R vs. in@52:43:W
-                   work@65:19@W vs. work@65:19@W 
-                   bp->array@65:36@R vs. bp->array@75:19@W 
-                   bp->array@66:36@R vs. bp->array@75:19@W 
-                   bp->array@67:36@R vs. bp->array@75:19@W 
-                   bp->array@68:36@R vs. bp->array@75:19@W 
-                   bp->array@69:36@R vs. bp->array@75:19@W 
-                   bp->array@70:36@R vs. bp->array@75:19@W 
-                   bp->array@71:36@R vs. bp->array@75:19@W 
+   Data Race Pair, in@67:43:W vs. in@67:43:W
+                   in@67:12:W vs. in@67:43:W
+                   in@67:12:W vs. in@67:12:W
+                   in@67:12:W vs. in@67:20:R
+                   in@67:43:W vs. in@67:20:R
+                   in@67:12:W vs. in@68:23:R
+                   in@67:43:W vs. in@68:23:R
+                   work[i][j][k]@72:19:W vs. work[i][j][k]@72:19:W
+                   work[i][j][k]@72:19:W vs. work[i][j][k]@82:45:R
+                   bp->array[var][i-1][j  ][k  ]@72:36:R vs. bp->array[var][i][j][k]@82:19:W
+                   bp->array[var][i-1][j  ][k  ]@73:36:R vs. bp->array[var][i][j][k]@82:19:W
+                   bp->array[var][i-1][j  ][k  ]@74:36:R vs. bp->array[var][i][j][k]@82:19:W
+                   bp->array[var][i-1][j  ][k  ]@75:36:R vs. bp->array[var][i][j][k]@82:19:W
+                   bp->array[var][i-1][j  ][k  ]@76:36:R vs. bp->array[var][i][j][k]@82:19:W
+                   bp->array[var][i-1][j  ][k  ]@77:36:R vs. bp->array[var][i][j][k]@82:19:W
+                   bp->array[var][i-1][j  ][k  ]@78:36:R vs. bp->array[var][i][j][k]@82:19:W
  */
 
 #include <stdio.h>
@@ -55,7 +62,7 @@ void stencil_calc(int var, int stencil_in)
 
    int tid;
 
-#pragma omp parallel default(shared) private(i, j, k, bp)
+#pragma omp parallel for default(shared) private(i, j, k, bp)
   {
       for (in = 0; in < max_num_blocks; ++in) {
          bp = &blocks[in];

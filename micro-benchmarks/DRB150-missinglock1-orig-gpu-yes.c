@@ -24,7 +24,7 @@ int main(){
   omp_init_lock(&lck);
 
   #pragma omp target map(tofrom:var) device(0)
-  #pragma omp teams distribute parallel for
+  #pragma omp teams distribute parallel for num_teams(4)
   for (int i=0; i<100; i++){
     omp_set_lock(&lck);
     var++;

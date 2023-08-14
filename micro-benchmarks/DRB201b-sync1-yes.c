@@ -32,15 +32,15 @@ int main()
 #pragma omp barrier
     if (tid == 0)
     {
+      WAIT(sem, 1);
       omp_set_lock(&l);
-      SIGNAL(sem);
       x = 0;
       omp_unset_lock(&l);
     }
     else if (tid == 1)
     {
-      WAIT(sem, 1);
       omp_set_lock(&l);
+      SIGNAL(sem);
       omp_unset_lock(&l);
       x = 1;
     }

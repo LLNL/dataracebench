@@ -52,7 +52,9 @@ Some threads may finish the for loop early and execute errors = dt[9]+1
 while another thread may still be simultaneously executing
 the for worksharing region by writing to d[9], causing data races. 
 
-Data race pair: a[i]@72:7:W vs. a[9]@75:13:R
+Data race pair: a[i]@74:7:W vs. a[9]@77:13:R
+Data race pair: a[i]@74:7:W vs. a[9]@77:20:R
+Data race pair: a[i]@74:7:W vs. a[9]@77:31:R
 */
 
 #include <stdio.h>
@@ -72,7 +74,7 @@ int main()
       a[i] = b + a[i]*5;
 
 #pragma omp single
-    error = a[9] + 1;
+    error = a[9] + a[len/2] + a[len-1] + 1;
   }
 
   printf ("error = %d\n", error);

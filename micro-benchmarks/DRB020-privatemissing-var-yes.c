@@ -45,7 +45,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 */
 /*
 tmp should be put as private to avoid race condition
-Data race pair: tmp@65:5:W vs. tmp@66:12:R
+Data race pair: tmp@66:5:W vs. tmp@67:12:R
+                tmp@66:5:W vs. tmp@66:5:W
 */
 #include <stdlib.h>
 int main(int argc, char* argv[])

@@ -9,14 +9,14 @@ FDIR="micro-benchmarks-fortran"
 
 def main(argv):
 	# micro-bechmarks in C
-	cfiles = [f for f in os.listdir(CDIR) if os.path.isfile(os.path.join(CDIR, f))]
+	cfiles = [f for f in os.listdir(CDIR) if os.path.isfile(os.path.join(CDIR, f)) and (f.endswith(".c") or f.endswith(".cpp"))]
 	for f in cfiles:
 		fullpath = os.path.join(CDIR, f)
 		print("processing C:" + fullpath)
 		genRaceInfoJsonFile(fullpath,os.path.join(REF_DIR, "C"))
 
 	# micro-bechmarks in fortran
-	ffiles = [f for f in os.listdir(FDIR) if os.path.isfile(os.path.join(FDIR, f))]
+	ffiles = [f for f in os.listdir(FDIR) if os.path.isfile(os.path.join(FDIR, f)) and f.lower().endswith(".f95")]
 	for f in ffiles:
 		fullpath = os.path.join(FDIR, f)
 		print("processing Fortran:"+fullpath)
@@ -52,7 +52,7 @@ def genRaceInfoJsonFile(inputfile, outputdir):
 			match = x.group()
 			js["microbenchmark"] = filename
 			#print(match)
-			pair = re.findall("(?:\*)*[a-zA-Z]\S*(?:\[.*\])*\@\d+\:\d+\:[R,W]", match)
+			pair = re.findall("(?:\*)*[a-zA-Z]\S*(?:\[[^]]*\])*\@\d+\:\d+\:[R,W]", match)
 			#print(i,pair)
 			p1 = pair[0]
 			p2 = pair[1]

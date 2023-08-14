@@ -44,36 +44,36 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/* This is a program based on a test contributed by Yizi Gu@Rice Univ.
- * Use taskgroup to synchronize two tasks: 
- * */
-#include <stdio.h>
-#include <assert.h>
-#include <unistd.h>
+/*
+Two tasks without depend clause to protect data writes. 
+i is shared for two tasks based on implicit data-sharing attribute rules.
+Data race pair: i@66:5:W vs. i@71:5:W  
+*/
+#include <assert.h> 
+#include <stdio.h> 
 #include "signaling.h"
 
 int main()
 {
-  int result = 0;
-#pragma omp parallel
+  int i=0, sem=0;
+#pragma omp parallel shared(sem) num_threads(2)
+{
+#pragma omp masked
   {
-#pragma omp single
-    {
-#pragma omp taskgroup
-      {
 #pragma omp task
-        {
-          delay(10000);
-          result = 1; 
-        }
-      }
+   {
+    SIGNAL(sem);
+    i = 1;
+   }
 #pragma omp task
-      {
-        result = 2; 
-      }
-    }
+   {
+    SIGNAL(sem);
+    i = 2;    
+   }
+   #pragma omp taskwait
   }
-  printf ("result=%d\n", result);
-  assert (result==2);
-  return 0;
+  WAIT(sem, 2);
 }
+  printf ("i=%d\n",i);
+  return 0;
+} 

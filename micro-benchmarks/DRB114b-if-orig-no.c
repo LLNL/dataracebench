@@ -44,36 +44,27 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/* This is a program based on a test contributed by Yizi Gu@Rice Univ.
- * Use taskgroup to synchronize two tasks: 
- * */
+/* 
+When if() evaluates to true, this program has data races due to true dependence within the loop at 65.
+Without argument, (argc+1)%2 will be 0.
+No data race.
+*/
+#include <stdlib.h>
 #include <stdio.h>
-#include <assert.h>
-#include <unistd.h>
-#include "signaling.h"
-
-int main()
+#include <time.h>
+int main(int argc, char* argv[])
 {
-  int result = 0;
-#pragma omp parallel
-  {
-#pragma omp single
-    {
-#pragma omp taskgroup
-      {
-#pragma omp task
-        {
-          delay(10000);
-          result = 1; 
-        }
-      }
-#pragma omp task
-      {
-        result = 2; 
-      }
-    }
-  }
-  printf ("result=%d\n", result);
-  assert (result==2);
+  int i;
+  int len=100;
+  int a[100];
+
+  for (i=0;i<len;i++)
+    a[i]=i;
+   
+#pragma omp parallel for if ((argc+1)%2)
+  for (i=0;i<len-1;i++)
+    a[i+1]=a[i]+1;
+
+  printf("a[50]=%d\n", a[50]);   
   return 0;
 }

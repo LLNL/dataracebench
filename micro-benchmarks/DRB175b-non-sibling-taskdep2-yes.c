@@ -13,8 +13,8 @@ for details.
  * with declared task dependency
  * Derived from code in https://hal.archives-ouvertes.fr/hal-02177469/document,
  * Listing 1.3
- * Schedule forced to execute all tasks by different threads.
- * Data Race Pair, a@33:7:W vs. a@33:7:W
+ * Schedule encouraged to execute all tasks by thread 0.
+ * Data Race Pair, a@32:7:W vs. a@32:7:W
  * */
 
 #include <omp.h>
@@ -29,9 +29,10 @@ void foo() {
 #pragma omp task depend(inout : a) shared(a)
     {
       SIGNAL(sem);
-      WAIT(sem, omp_get_num_threads());
       a++;
     }
+    if (omp_get_thread_num() != 0)
+      WAIT(sem, omp_get_num_threads());
   }
   printf("a=%d\n", a);
 }

@@ -16,21 +16,22 @@
 
 #include <stdio.h>
 
-int cap = 10, size = 0;
+int cap = 10, size = 0, packages = 1000;
 unsigned r = 0;
 
 int main()
 {
-#pragma omp parallel sections shared(size, cap) firstprivate(r) num_threads(2)
+#pragma omp parallel sections shared(size, cap) firstprivate(r, packages) num_threads(2)
   {
 #pragma omp section
-    while (1)
+    while (packages)
     {
 #pragma omp critical
       {
         if (size < cap)
         {
           size++; // produce
+          packages--; // produced a package
           printf("Produced! size=%d\n", size);
           fflush(stdout);
         }
@@ -39,18 +40,19 @@ int main()
         r = (r + 1) % 10;
     }
 #pragma omp section
-    while (1)
+    while (packages)
     {
 #pragma omp critical
       {
         if (size > 0)
         {
           size--; // consume
+          packages--; // consumed a package
           printf("Consumed! size=%d\n", size);
           fflush(stdout);
         }
       }
-      for (int i = 0; i < 1000; i++)
+      for (int i = 0; i < 1500; i++)
         r = (r + 1) % 10;
     }
   }

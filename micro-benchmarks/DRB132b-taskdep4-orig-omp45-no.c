@@ -16,9 +16,11 @@
 #include <omp.h>
 #include "signaling.h"
 
+int sem = 0;
+
 void foo(){
 
-  int x = 0, y = 2, sem = 0;
+  int x = 0, y = 2;
 
   #pragma omp task depend(inout: x) shared(x, sem)
   {
@@ -32,7 +34,6 @@ void foo(){
     y--;                                                // 2nd child task
   }
 
-  WAIT(sem, 2);
   #pragma omp task depend(in: x) if(0)                // 1st taskwait
   {}
 
@@ -45,9 +46,12 @@ void foo(){
 
 
 int main(){
-  #pragma omp parallel num_threads(2)
-  #pragma omp single
+  #pragma omp parallel
+  {
+    #pragma omp masked
   foo();
+    WAIT(sem, 2);
+  }
 
   return 0;
 }

@@ -66,6 +66,7 @@ help () {
     echo "--tsan-gcc  : compile and test all benchmarks with gcc ThreadSanitizer"
     echo "--archer    : compile and test all benchmarks with Archer"
     echo "--coderrect : compile and test all benchmarks with Coderrect Scanner"
+    echo "--openrace  : compile and test all benchmarks with Openrace Scanner"
     echo "--inspector : compile and test all benchmarks with Intel Inspector"
     echo "--romp      : compile and test all benchmarks with Romp"
     echo "--llov    : compile and test all benchmarks with LLVM OpenMP Verifier (LLOVE)"
@@ -244,6 +245,10 @@ fi
 
 if [[ "$OPTION" == "--coderrect" ]]; then
     scripts/test-harness.sh -t 8 -n 1 -d 32 -l $LANGUAGE -x coderrect
+fi
+
+if [[ "$OPTION" == "--openrace" ]]; then
+    scripts/test-harness.sh -t 8 -n 1 -d 32 -l $LANGUAGE -x openrace
 fi
 
 if [[ "$OPTION" == "--tsan-clang" ]]; then

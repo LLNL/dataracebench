@@ -10,7 +10,7 @@
 /* 
 This example is from DRACC by Adrian Schmitz et al.
 Concurrent access on a counter with no lock with simd. Atomicity Violation. Intra Region.
-Data Race Pairs: var@33:7:W vs. var@33:7:W
+Data Race Pairs: var[i]@33:7:W vs. var[i]@33:7:W
 */
 
 #include <stdio.h>

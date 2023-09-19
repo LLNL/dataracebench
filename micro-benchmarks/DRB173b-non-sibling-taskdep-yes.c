@@ -23,31 +23,26 @@ void foo() {
   int a = 0, sem = 0;
 
 #pragma omp parallel num_threads(2)
-#pragma omp single
+{
+#pragma omp masked
+#pragma omp taskgroup
   {
 #pragma omp task depend(inout : a) shared(a)
     {
 #pragma omp task depend(inout : a) shared(a)
-      {
-        a++;
-        SIGNAL(sem);
-        WAIT(sem,2);
-      }
+      SIGNAL(sem);
+      a++;
     }
 
 #pragma omp task depend(inout : a) shared(a)
     {
 #pragma omp task depend(inout : a) shared(a)
-      {
-        a++;
-        SIGNAL(sem);
-        WAIT(sem,2);
-      }
+      SIGNAL(sem);
+      a++;
     }
-    // allow other thread to steal first task
-    WAIT(sem,1);
   }
-
+  WAIT(sem,2);
+}
   printf("a=%d\n", a);
 }
 

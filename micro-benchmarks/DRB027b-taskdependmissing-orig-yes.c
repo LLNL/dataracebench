@@ -57,22 +57,23 @@ int main()
 {
   int i=0, sem=0;
 #pragma omp parallel shared(sem) num_threads(2)
-#pragma omp single
+{
+#pragma omp masked
   {
 #pragma omp task
    {
-    i = 1;
     SIGNAL(sem);
-    WAIT(sem,2);
+    i = 1;
    }
 #pragma omp task
    {
-    i = 2;    
     SIGNAL(sem);
-    WAIT(sem,2);
+    i = 2;    
    }
+   #pragma omp taskwait
   }
-
+  WAIT(sem, 2);
+}
   printf ("i=%d\n",i);
   return 0;
 } 

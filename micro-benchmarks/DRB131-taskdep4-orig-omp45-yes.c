@@ -11,22 +11,30 @@
  * There is no completion restraint on the second child task. Hence, immediately after the first
  * taskwait it is unsafe to access the y variable since the second child task may still be
  * executing.
- * Data Race at y@28:2:W vs. y@34:19:R
+ * Data Race at y@34:4:W vs. y@42:19:R
 */
 
 #include <stdio.h>
 #include <omp.h>
+#include "signaling.h"
 
 void foo(){
 
-  int x = 0, y = 2;
+  int x = 0, y = 2, sem = 0;
 
-  #pragma omp task depend(inout: x) shared(x)
-  x++;                                                //1st Child Task
+  #pragma omp task depend(inout: x) shared(x, sem)
+  {
+    SIGNAL(sem);
+    x++;                                                //1st Child Task
+  }
 
-  #pragma omp task shared(y)
-  y--;                                                // 2nd child task
+  #pragma omp task shared(y, sem)
+  {
+    SIGNAL(sem);
+    y--;                                                // 2nd child task
+  }
 
+  WAIT(sem, 2);
   #pragma omp task depend(in: x) if(0)                // 1st taskwait
   {}
 
@@ -37,7 +45,7 @@ void foo(){
 
 
 int main(){
-  #pragma omp parallel
+  #pragma omp parallel num_threads(2)
   #pragma omp single
   foo();
 

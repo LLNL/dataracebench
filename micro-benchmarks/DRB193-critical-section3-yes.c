@@ -12,7 +12,8 @@
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
  * Race due to different critical section names
- * Data race pair: x@26:7:W vs. x@43:7:W
+ * Data race pair: x@27:7:W vs. x@44:7:W
+ * Data race pair: s@30:9:W vs. s@40:15:R
  */
 
 #include <stdio.h>

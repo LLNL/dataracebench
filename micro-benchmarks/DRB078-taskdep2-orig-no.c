@@ -50,6 +50,7 @@ i is shared for two tasks based on implicit data-sharing attribute rules.
 */
 #include <assert.h> 
 #include <unistd.h>
+#include "signaling.h"
 int main()
 {
   int i=0;
@@ -58,7 +59,7 @@ int main()
   {
 #pragma omp task depend (out:i)
     {
-      sleep(3);
+      delay(10000);
       i = 1;    
     }
 #pragma omp task depend (out:i)

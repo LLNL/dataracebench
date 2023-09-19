@@ -72,7 +72,7 @@ int main()
       a[i] = b + a[i]*5;
 
 #pragma omp single
-    error = a[9] + 1;
+    error = a[9] + a[len/2] + a[len-1] + 1;
   }
 
   printf ("error = %d\n", error);

@@ -11,9 +11,13 @@
  * This is a program based on a dataset contributed by
  * Wenhao Wu and Stephen F. Siegel @Univ. of Delaware.
 
- * one synchronization commented out.
- * enters.  So race on x can occur.
- * Data race pair: x@104:9:W vs. x@111:9:W
+ * As soon as one thread releases all locks, the other thread can perform multiple
+ * barrier_wait() cycles ending up concurrent execution of different epochs. 
+ * Data race pair: x@108:9:W vs. x@115:9:W
+                   x@108:9:W vs. x@103:58:R
+                   x@108:9:W vs. x@110:58:R
+                   x@101:58:R vs. x@115:9:W
+                   x@110:58:R vs. x@115:9:W
  */
 
 #include <stdio.h>

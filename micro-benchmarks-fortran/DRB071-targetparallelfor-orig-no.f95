@@ -14,6 +14,8 @@ program DRB071_targetparallelfor_orig_no
     integer :: i, len
     integer, dimension(:), allocatable :: a
 
+    len = 1000
+    
     allocate(a(len))
 
     do i = 1, len

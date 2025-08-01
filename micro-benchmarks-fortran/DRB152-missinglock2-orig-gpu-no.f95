@@ -15,6 +15,8 @@ program DRB152_missinglock2_orig_gpu_no
     integer :: var, i
     var = 0
 
+    call omp_init_lock (lck)
+
     !$omp target map(tofrom:var) device(0)
     !$omp teams num_teams(1)
     !$omp distribute parallel do
